@@ -1,79 +1,78 @@
-const webpack = require("webpack");
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
-
-
-let config = (env, options) => {
-console.log(path.resolve(__dirname, "./js"));
-
-    const MODE = options.mode;    
+const config = (env, options) => {
+    const MODE = options.mode;
     return {
         cache: false,
-        entry: "./wp-content/themes/belend/src/js/main.js",
+        entry: './wp-content/themes/belend/src/js/main.js',
         output: {
             path: path.resolve(__dirname),
-            filename: "./wp-content/themes/belend/js/main.js",
-            publicPath: '/wp-content/themes/belend/js'
+            filename: './wp-content/themes/belend/js/main.js',
+            publicPath: '/wp-content/themes/belend/js',
         },
         watch: true,
         devtool: MODE === 'development' ? 'source-map' : '',
         module: {
-            rules: [{
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },{
-                test: /\.(css|sass|scss)$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                            sourceMap: true,
-                            minimize: true,
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: (loader) => [
-                                require('autoprefixer')({
-                                    browsers: ['last 2 versions']
-                                })
-                            ]
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.(png|jpg|gif|svg|ttf|otf|woff|woff2)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            publicPath: '/',
-                            name: '[path][name].[ext]',
-                            emitFile: false
-                        }
-                    }
-                ]
-            }],
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader',
+                },
+                {
+                    test: /\.(css|sass|scss)$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: () => [
+                                    autoprefixer({
+                                        browsers: ['last 2 versions'],
+                                    }),
+                                ],
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.(png|jpg|gif|svg|ttf|otf|woff|woff2)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                publicPath: '/',
+                                name: '[path][name].[ext]',
+                                emitFile: false,
+                            },
+                        },
+                    ],
+                },
+            ],
         },
         node: {
-            fs: "empty" // avoids error messages
+            fs: 'empty', // avoids error messages
         },
-        plugins: [ 
+        plugins: [
             new MiniCssExtractPlugin({
-                filename: "./wp-content/themes/belend/css/main.css",
+                filename: './wp-content/themes/belend/css/main.css',
             }),
             new BrowserSyncPlugin({
                 host: 'localhost',
@@ -81,14 +80,12 @@ console.log(path.resolve(__dirname, "./js"));
                 proxy: 'http://belend.local/',
                 files: [
                     {
-                        match: [
-                            '**/*.php'
-                        ]
-                    }
-                ]
+                        match: ['**/*.php'],
+                    },
+                ],
             }),
-        ]
-    }
-} 
+        ],
+    };
+};
 
 module.exports = config;
