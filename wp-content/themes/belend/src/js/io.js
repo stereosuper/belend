@@ -1,6 +1,7 @@
 import 'intersection-observer';
+import { forEach } from './utils';
 
-const io = function intersectionObserver() {
+function IntersectionObserver() {
     this.resized = true;
 
     this.init = () => {
@@ -10,7 +11,7 @@ const io = function intersectionObserver() {
 
         const observer = new IntersectionObserver(
             entries => {
-                entries.forEach(entry => {
+                forEach(entries, entry => {
                     if (entry.intersectionRatio > 0.15) {
                         this[`${entry.target.dataset.io}In`](entry.target);
                         if (entry.target.hasAttribute('data-io-single'))
@@ -26,13 +27,13 @@ const io = function intersectionObserver() {
             }
         );
 
-        objectsToIO.forEach(obj => {
+        forEach(objectsToIO, obj => {
             if (!obj.hasAttribute('data-io-observed')) {
                 observer.observe(obj);
                 obj.setAttribute('data-io-observed', '');
             }
         });
     };
-};
+}
 
-export default new io();
+export default new IntersectionObserver();

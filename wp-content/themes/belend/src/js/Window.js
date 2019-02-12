@@ -1,63 +1,63 @@
-const $ = require('jquery-slim');
+import { requestAnimFrame } from './utils';
 
-const requestAnimFrame = require('./requestAnimFrame.js');
-const throttle = require('./throttle.js');
-const io = require('./io.js');
-
-const app = function Window() {
-    this.w = window.innerWidth;
-    this.h = $(window).height();
-    this.noTransitionElts = null;
+function Window() {
+    this.w = null;
+    this.h = null;
     this.resizeFunctions = [];
+    this.rtime = null;
+    this.timeoutWindow = false;
+    this.delta = 200;
+    this.noTransitionElts = [];
 
-    let rtime;
-    let timeout = false;
-    const delta = 200;
-
-    this.resizeend = () => {
-        if (new Date() - rtime < delta) {
-            setTimeout(this.resizeend, delta);
-        } else {
-            timeout = false;
-            this.noTransitionElts.removeClass('no-transition');
-        }
+    this.setNoTransitionElts = elements => {
+        this.noTransitionElts = elements;
     };
+}
 
-    this.noTransition = () => {
-        this.noTransitionElts.addClass('no-transition');
-        rtime = new Date();
-
-        if (timeout === false) {
-            timeout = true;
-            setTimeout(this.resizeend, delta);
-        }
-    };
-
-    this.ioResize = () => {
-        if (!io.resized) io.resized = true;
-    };
-
-    this.resizeHandler = () => {
-        this.w = window.innerWidth;
-        this.h = $(window).height();
-        this.resizeFunctions.forEach(f => {
-            f();
+Window.prototype.resizeend = function resizeend() {
+    if (new Date() - this.rtime < this.delta) {
+        setTimeout(this.resizeend, this.delta);
+    } else {
+        this.timeoutWindow = false;
+        [...this.noTransitionElts].map(el => {
+            el.classList.remove('no-transition');
+            return el;
         });
-    };
-
-    this.addResizeFunction = f => {
-        this.resizeFunctions.push(f);
-    };
-
-    this.init = () => {
-        this.resizeFunctions = [this.noTransition, this.ioResize];
-        $(window).on(
-            'resize',
-            throttle(() => {
-                requestAnimFrame(this.resizeHandler);
-            }, 60)
-        );
-    };
+    }
 };
 
-module.exports = new app();
+Window.prototype.noTransition = function noTransition() {
+    [...this.noTransitionElts].map(el => {
+        el.classList.add('no-transition');
+        return el;
+    });
+
+    this.rtime = new Date();
+
+    if (this.timeoutWindow === false) {
+        this.timeoutWindow = true;
+        setTimeout(this.resizeend.bind(this), this.delta);
+    }
+};
+
+Window.prototype.resizeHandler = function resizeHandler() {
+    this.w = window.innerWidth;
+    this.h = window.innerHeight;
+
+    this.noTransition();
+};
+
+Window.prototype.launchWindow = function launchWindow() {
+    requestAnimFrame(this.resizeHandler);
+};
+
+Window.prototype.init = function initWindow() {
+    this.resizeHandler();
+    window.addEventListener('resize', this.launchWindow);
+};
+
+Window.prototype.destroyWindow = function destroyWindow() {
+    window.removeEventListener('resize', this.launchWindow);
+};
+
+export default new Window();

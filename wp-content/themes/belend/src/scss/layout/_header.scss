@@ -4,6 +4,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    z-index: 1;
     span {
         position: absolute;
         width: 25px;
@@ -77,5 +78,21 @@
                 transform: translate(0, 0) rotateZ(45deg);
             }
         }
+    }
+}
+
+.main-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $white;
+}
+
+.main-header {
+    .logo {
+        position: relative;
+        z-index: 1;
     }
 }

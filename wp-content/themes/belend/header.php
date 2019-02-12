@@ -13,14 +13,20 @@
 		<script>document.getElementsByTagName('html')[0].className = 'js';</script>
 	</head>
 	<body <?php body_class(); ?>>
-		<header role='banner'>
-			<a href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+		<header class="main-header" role='banner'>
+			<a class="logo" href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
 				<img src="<?php echo get_template_directory_uri() . '/img/logo.svg' ?>" alt="">
 			</a>
 			<div class="burger js-burger">
 				<span></span>
 			</div>
-			<nav role="navigation">
+			<nav class="main-navigation" role="navigation">
+				<ul>
+					<li>Prêter</li>
+					<li>À propos</li>
+					<li>Nous contacter</li>
+				</ul>
+				<a href="#">Empruntez avec belend.fr</a>
 			</nav>
 		</header>
 		<main role="main">

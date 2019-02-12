@@ -392,7 +392,8 @@ button {
   position: relative;
   width: 30px;
   height: 30px;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 1; }
   .burger span {
     position: absolute;
     width: 25px;
@@ -447,6 +448,18 @@ button {
     .burger.activated span::after {
       -webkit-transform: translate(0, 0) rotateZ(45deg);
               transform: translate(0, 0) rotateZ(45deg); }
+
+.main-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white; }
+
+.main-header .logo {
+  position: relative;
+  z-index: 1; }
 
 /* Footer */
 /* Buttons */

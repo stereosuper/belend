@@ -1,15 +1,21 @@
-const snif = require('./Snif');
+import snif from './Snif';
 
-const init = function init(body, html) {
-    if (snif.isIOS()) html.addClass('is-ios');
+function Fallback() {
+    this.html = document.documentElement;
+}
 
-    if (snif.isSafari()) html.addClass('is-safari');
+Fallback.prototype.init = function init() {
+    if (snif.isIOS()) this.html.addClass('is-ios');
 
-    if (snif.isFF()) html.addClass('is-ff');
+    if (snif.isSafari()) this.html.addClass('is-safari');
 
-    if (snif.isMS()) html.addClass('is-ms');
+    if (snif.isFF()) this.html.addClass('is-ff');
 
-    if (snif.isIe11()) html.addClass('is-ie');
+    if (snif.isChromeAndroid()) this.html.classList.add('is-ca');
+
+    if (snif.isMS()) this.html.addClass('is-ms');
+
+    if (snif.isIe11()) this.html.addClass('is-ie');
 };
 
-export default init;
+export default new Fallback();
