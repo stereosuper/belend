@@ -1,28 +1,33 @@
 import '../scss/main.scss';
 
+import win from './Window';
+import io from './io';
+import scroll from './Scroll';
+import fallback from './fallback';
 
-import { TweenLite, TimelineLite } from 'gsap';
+import burger from './burger';
 
-
-import win from './Window.js';
-import io from './io.js';
-import scroll from './Scroll.js';
-import fallback from './fallback.js';
-import $ from 'jquery-slim';
-
-const html = $('html');
-const body = $('body');
+const html = document.documentElement;
+const [body] = document.getElementsByTagName('body');
 
 const loadHandler = () => {
     scroll.init();
-    win.noTransitionElts = $('.element-without-transition-on-resize');
+    win.noTransitionElts = document.getElementsByClassName(
+        'element-without-transition-on-resize'
+    );
     win.init();
     io.init();
     fallback(body, html);
-}
 
-if (document.readyState === 'complete') {
-   loadHandler();
-} else {
-   $(window).on('load', loadHandler);
-}
+    burger();
+};
+
+document.addEventListener(
+    'readystatechange',
+    () => {
+        if (document.readyState === 'complete') {
+            loadHandler();
+        }
+    },
+    false
+);

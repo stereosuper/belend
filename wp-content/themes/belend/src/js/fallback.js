@@ -1,4 +1,3 @@
-const $ = require('jquery-slim');
 const snif = require('./Snif');
 
 const init = function init(body, html) {

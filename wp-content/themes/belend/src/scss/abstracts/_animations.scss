@@ -1,0 +1,41 @@
+/* Animations */
+
+// Transition timing functions
+$alpha-timing-in: cubic-bezier(0.64, 0.04, 0.7, 0.09);
+$alpha-timing-out: cubic-bezier(0.4, 0.99, 0.47, 1);
+$beta-timing: cubic-bezier(0.44, 0.03, 0.59, 0.02);
+
+// Transitions functions
+@function beta($list) {
+    @return transition($list, $beta-timing);
+}
+
+@function alpha($type, $list) {
+    $timing-function: $alpha-timing-out;
+    @if ($type == "in") {
+        $timing-function: $alpha-timing-in;
+    } @else if ($type == "out") {
+        $timing-function: $alpha-timing-out;
+    }
+    @return transition($list, $timing-function);
+}
+
+// Transition generator
+@function transition($list, $timing-function) {
+    $transition: "";
+    $i: 1;
+    @each $property, $value in $list {
+        $transition: $transition +
+            " " +
+            $property +
+            " " +
+            $value +
+            " " +
+            $timing-function;
+        @if ($i != length($list)) {
+            $transition: $transition + ",";
+        }
+        $i: $i + 1;
+    }
+    @return #{$transition};
+}
