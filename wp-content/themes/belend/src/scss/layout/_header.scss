@@ -15,8 +15,7 @@
         bottom: 0;
         margin: auto;
         background-color: $primary-color;
-        transition: alpha(
-            "out",
+        transition: comme-dans-du-beurre(
             (
                 background-color: "0.23s 0.23s"
             )
@@ -35,8 +34,7 @@
         &::before {
             transform: translate(0, -9px);
             transform-origin: 50% 50%;
-            transition: alpha(
-                "out",
+            transition: comme-dans-du-beurre(
                 (
                     transform: "0.23s"
                 )
@@ -45,8 +43,7 @@
         &::after {
             transform: translate(0, 9px);
             transform-origin: 50% 50%;
-            transition: alpha(
-                "out",
+            transition: comme-dans-du-beurre(
                 (
                     transform: "0.23s"
                 )
@@ -56,16 +53,14 @@
     &.activated {
         span {
             background-color: transparent;
-            transition: alpha(
-                "out",
+            transition: comme-dans-du-beurre(
                 (
                     background-color: "0.23s"
                 )
             );
             &::before,
             &::after {
-                transition: alpha(
-                    "out",
+                transition: comme-dans-du-beurre(
                     (
                         transform: "0.23s 0.23s"
                     )
@@ -90,8 +85,7 @@
     padding: 0 $gutter * 3;
     margin-top: 96px;
     background-color: $white;
-    transition: alpha(
-        "out",
+    transition: comme-dans-du-beurre(
         (
             transform: "0.23s"
         )

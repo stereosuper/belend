@@ -1,6 +1,29 @@
 @charset "UTF-8";
 /* Functions */
 /* Animations */
+@-webkit-keyframes animated-gradient {
+  50% {
+    background-position: 0% 0%; }
+  0% {
+    background-position: 0% 0%; }
+  60% {
+    background-position: 100% 100%; }
+  65% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 0% 0%; } }
+@keyframes animated-gradient {
+  50% {
+    background-position: 0% 0%; }
+  0% {
+    background-position: 0% 0%; }
+  60% {
+    background-position: 100% 100%; }
+  65% {
+    background-position: 0% 0%; }
+  100% {
+    background-position: 0% 0%; } }
+
 /* Mixins */
 article,
 aside,
@@ -316,7 +339,7 @@ a {
   overflow: hidden; }
 
 .clearfix:after {
-  content: '';
+  content: "";
   display: table;
   clear: both; }
 
@@ -404,8 +427,8 @@ button {
     bottom: 0;
     margin: auto;
     background-color: #ff6308;
-    -webkit-transition:  background-color 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-    transition:  background-color 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+    -webkit-transition:  background-color 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+    transition:  background-color 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .burger span::before, .burger span::after {
       content: "";
       position: absolute;
@@ -420,28 +443,28 @@ button {
               transform: translate(0, -9px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1), -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+      -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .burger span::after {
       -webkit-transform: translate(0, 9px);
               transform: translate(0, 9px);
       -webkit-transform-origin: 50% 50%;
               transform-origin: 50% 50%;
-      -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1), -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+      -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
   .burger.activated span {
     background-color: transparent;
-    -webkit-transition:  background-color 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-    transition:  background-color 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+    -webkit-transition:  background-color 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+    transition:  background-color 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .burger.activated span::before, .burger.activated span::after {
-      -webkit-transition:  -webkit-transform 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  -webkit-transform 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-      transition:  transform 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1), -webkit-transform 0.23s 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+      -webkit-transition:  -webkit-transform 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  -webkit-transform 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+      transition:  transform 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .burger.activated span::before {
       -webkit-transform: translate(0, 0) rotateZ(-45deg);
               transform: translate(0, 0) rotateZ(-45deg); }
@@ -458,10 +481,10 @@ button {
   padding: 0 30px;
   margin-top: 96px;
   background-color: white;
-  -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-  transition:  -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-  transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1);
-  transition:  transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1), -webkit-transform 0.23s cubic-bezier(0.4, 0.99, 0.47, 1); }
+  -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+  transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+  transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+  transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
   .main-navigation.activated {
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0); }
@@ -494,6 +517,31 @@ button {
 
 /* Footer */
 /* Buttons */
+.btn {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  color: white;
+  background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
+  background-size: 1000%;
+  will-change: background-position;
+  -webkit-animation: animated-gradient 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+          animation: animated-gradient 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  border-radius: 2px;
+  overflow: hidden; }
+  .btn .icon {
+    width: 1.4rem;
+    height: 1.1rem;
+    margin-left: 10px; }
+
 /* Home specific style */
 /******* PRINT *******/
 @media print {

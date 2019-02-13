@@ -3,7 +3,6 @@ const burgerHandler = () => {
     const [mainNav] = document.getElementsByClassName('js-main-navigation');
 
     if (burger) {
-        console.log('TCL: burgerHandler -> burger', burger);
         burger.addEventListener(
             'click',
             () => {

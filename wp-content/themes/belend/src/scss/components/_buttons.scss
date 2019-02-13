@@ -1,1 +1,17 @@
 /* Buttons */
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: space-between;
+    align-items: center;
+    padding: $gutter * 2;
+    color: $white;
+    @include fluid-background-btn();
+    border-radius: 2px;
+    overflow: hidden;
+    .icon {
+        width: 1.4rem;
+        height: 1.1rem;
+        margin-left: $gutter;
+    }
+}

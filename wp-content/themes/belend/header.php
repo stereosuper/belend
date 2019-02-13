@@ -28,7 +28,7 @@
 					<li>À propos</li>
 					<li>Nous contacter</li>
 				</ul>
-				<a href="#">Emprunter<svg class='icon'><use xlink:href='#icon-arrow'></use></svg></a>
+				<a class="btn" href="#">Emprunter<svg class='icon'><use xlink:href='#icon-arrow'></use></svg></a>
 			</nav>
 		</header>
 		<main role="main">

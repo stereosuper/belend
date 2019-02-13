@@ -1,23 +1,21 @@
 /* Animations */
 
 // Transition timing functions
-$alpha-timing-in: cubic-bezier(0.64, 0.04, 0.7, 0.09);
-$alpha-timing-out: cubic-bezier(0.4, 0.99, 0.47, 1);
-$beta-timing: cubic-bezier(0.44, 0.03, 0.59, 0.02);
+$comme-dans-du-beurre-timing: cubic-bezier(0.25, 0.46, 0.25, 1);
+$plop-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$smooth-operator-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 // Transitions functions
-@function beta($list) {
-    @return transition($list, $beta-timing);
+@function comme-dans-du-beurre($list) {
+    @return transition($list, $comme-dans-du-beurre-timing);
 }
 
-@function alpha($type, $list) {
-    $timing-function: $alpha-timing-out;
-    @if ($type == "in") {
-        $timing-function: $alpha-timing-in;
-    } @else if ($type == "out") {
-        $timing-function: $alpha-timing-out;
-    }
-    @return transition($list, $timing-function);
+@function plop($list) {
+    @return transition($list, $plop-timing);
+}
+
+@function smooth-operator($list) {
+    @return transition($list, $smooth-operator-timing);
 }
 
 // Transition generator
@@ -38,4 +36,31 @@ $beta-timing: cubic-bezier(0.44, 0.03, 0.59, 0.02);
         $i: $i + 1;
     }
     @return #{$transition};
+}
+
+// Keyframes
+
+@keyframes animated-gradient {
+    50% {
+        background-position: 0% 0%;
+    }
+    0% {
+        background-position: 0% 0%;
+    }
+    60% {
+        background-position: 100% 100%;
+    }
+    65% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@mixin fluid-background-btn() {
+    @include btn-gradient();
+    background-size: 1000%;
+    will-change: background-position;
+    animation: animated-gradient 15s $smooth-operator-timing infinite;
 }

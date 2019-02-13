@@ -1172,7 +1172,6 @@ var burgerHandler = function burgerHandler() {
       mainNav = _document$getElements4[0];
 
   if (burger) {
-    console.log('TCL: burgerHandler -> burger', burger);
     burger.addEventListener('click', function () {
       burger.classList.toggle('activated');
       mainNav.classList.toggle('activated');
