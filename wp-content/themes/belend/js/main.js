@@ -936,17 +936,29 @@ Scroll.prototype.scrollHandler = function scrollHandler() {
 };
 
 Scroll.prototype.launchScroll = function launchScroll(e) {
+  var _this2 = this;
+
   this.event = e;
-  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["requestAnimFrame"])(this.scrollHandler);
+  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["requestAnimFrame"])(function () {
+    _this2.scrollHandler();
+  });
 };
 
 Scroll.prototype.init = function initScroll() {
+  var _this3 = this;
+
   this.scrollHandler();
-  window.addEventListener('scroll', this.launchScroll);
+  window.addEventListener('scroll', function () {
+    _this3.launchScroll();
+  }, false);
 };
 
 Scroll.prototype.destroyScroll = function destroyScroll() {
-  window.removeEventListener('scroll', this.launchScroll);
+  var _this4 = this;
+
+  window.removeEventListener('scroll', function () {
+    _this4.launchScroll();
+  }, false);
 };
 
 Scroll.prototype.onScrollEnd = function onScrollEnd() {
@@ -1050,8 +1062,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 function Window() {
-  var _this = this;
-
   this.w = null;
   this.h = null;
   this.resizeFunctions = [];
@@ -1059,15 +1069,19 @@ function Window() {
   this.timeoutWindow = false;
   this.delta = 200;
   this.noTransitionElts = [];
-
-  this.setNoTransitionElts = function (elements) {
-    _this.noTransitionElts = elements;
-  };
 }
 
+Window.prototype.setNoTransitionElts = function setNoTransitionElts(elements) {
+  this.noTransitionElts = elements;
+};
+
 Window.prototype.resizeend = function resizeend() {
+  var _this = this;
+
   if (new Date() - this.rtime < this.delta) {
-    setTimeout(this.resizeend, this.delta);
+    setTimeout(function () {
+      _this.resizeend();
+    }, this.delta);
   } else {
     this.timeoutWindow = false;
 
@@ -1079,6 +1093,8 @@ Window.prototype.resizeend = function resizeend() {
 };
 
 Window.prototype.noTransition = function noTransition() {
+  var _this2 = this;
+
   _toConsumableArray(this.noTransitionElts).map(function (el) {
     el.classList.add('no-transition');
     return el;
@@ -1088,7 +1104,9 @@ Window.prototype.noTransition = function noTransition() {
 
   if (this.timeoutWindow === false) {
     this.timeoutWindow = true;
-    setTimeout(this.resizeend.bind(this), this.delta);
+    setTimeout(function () {
+      _this2.resizeend();
+    }, this.delta);
   }
 };
 
@@ -1099,16 +1117,28 @@ Window.prototype.resizeHandler = function resizeHandler() {
 };
 
 Window.prototype.launchWindow = function launchWindow() {
-  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["requestAnimFrame"])(this.resizeHandler);
+  var _this3 = this;
+
+  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["requestAnimFrame"])(function () {
+    _this3.resizeHandler();
+  });
 };
 
 Window.prototype.init = function initWindow() {
+  var _this4 = this;
+
   this.resizeHandler();
-  window.addEventListener('resize', this.launchWindow);
+  window.addEventListener('resize', function () {
+    _this4.launchWindow();
+  }, false);
 };
 
 Window.prototype.destroyWindow = function destroyWindow() {
-  window.removeEventListener('resize', this.launchWindow);
+  var _this5 = this;
+
+  window.removeEventListener('resize', function () {
+    _this5.launchWindow();
+  }, false);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (new Window());
@@ -1137,9 +1167,14 @@ var burgerHandler = function burgerHandler() {
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       burger = _document$getElements2[0];
 
+  var _document$getElements3 = document.getElementsByClassName('js-main-navigation'),
+      _document$getElements4 = _slicedToArray(_document$getElements3, 1),
+      mainNav = _document$getElements4[0];
+
   if (burger) {
     burger.addEventListener('click', function () {
       burger.classList.toggle('activated');
+      mainNav.classList.toggle('activated');
     }, false);
   }
 };

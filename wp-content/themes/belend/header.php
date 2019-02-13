@@ -14,19 +14,21 @@
 	</head>
 	<body <?php body_class(); ?>>
 		<header class="main-header" role='banner'>
-			<a class="logo" href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
-				<img src="<?php echo get_template_directory_uri() . '/img/logo.svg' ?>" alt="">
-			</a>
-			<div class="burger js-burger">
-				<span></span>
+			<div class="mobile-header">
+				<a class="logo" href="<?php echo home_url('/'); ?>" title="<?php bloginfo( 'name' ); ?>" rel="home">
+					<img src="<?php echo get_template_directory_uri() . '/img/logo.svg' ?>" alt="">
+				</a>
+				<div class="burger js-burger">
+					<span></span>
+				</div>
 			</div>
-			<nav class="main-navigation" role="navigation">
+			<nav class="main-navigation js-main-navigation" role="navigation">
 				<ul>
 					<li>Prêter</li>
 					<li>À propos</li>
 					<li>Nous contacter</li>
 				</ul>
-				<a href="#">Empruntez avec belend.fr</a>
+				<a href="#">Emprunter<svg class='icon'><use xlink:href='#icon-arrow'></use></svg></a>
 			</nav>
 		</header>
 		<main role="main">

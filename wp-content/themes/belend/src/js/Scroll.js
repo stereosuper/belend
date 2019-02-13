@@ -23,16 +23,31 @@ Scroll.prototype.scrollHandler = function scrollHandler() {
 
 Scroll.prototype.launchScroll = function launchScroll(e) {
     this.event = e;
-    requestAnimFrame(this.scrollHandler);
+
+    requestAnimFrame(() => {
+        this.scrollHandler();
+    });
 };
 
 Scroll.prototype.init = function initScroll() {
     this.scrollHandler();
-    window.addEventListener('scroll', this.launchScroll);
+    window.addEventListener(
+        'scroll',
+        () => {
+            this.launchScroll();
+        },
+        false
+    );
 };
 
 Scroll.prototype.destroyScroll = function destroyScroll() {
-    window.removeEventListener('scroll', this.launchScroll);
+    window.removeEventListener(
+        'scroll',
+        () => {
+            this.launchScroll();
+        },
+        false
+    );
 };
 
 Scroll.prototype.onScrollEnd = function onScrollEnd() {

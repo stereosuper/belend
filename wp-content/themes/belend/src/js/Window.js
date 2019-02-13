@@ -8,15 +8,17 @@ function Window() {
     this.timeoutWindow = false;
     this.delta = 200;
     this.noTransitionElts = [];
-
-    this.setNoTransitionElts = elements => {
-        this.noTransitionElts = elements;
-    };
 }
+
+Window.prototype.setNoTransitionElts = function setNoTransitionElts(elements) {
+    this.noTransitionElts = elements;
+};
 
 Window.prototype.resizeend = function resizeend() {
     if (new Date() - this.rtime < this.delta) {
-        setTimeout(this.resizeend, this.delta);
+        setTimeout(() => {
+            this.resizeend();
+        }, this.delta);
     } else {
         this.timeoutWindow = false;
         [...this.noTransitionElts].map(el => {
@@ -36,7 +38,9 @@ Window.prototype.noTransition = function noTransition() {
 
     if (this.timeoutWindow === false) {
         this.timeoutWindow = true;
-        setTimeout(this.resizeend.bind(this), this.delta);
+        setTimeout(() => {
+            this.resizeend();
+        }, this.delta);
     }
 };
 
@@ -48,16 +52,30 @@ Window.prototype.resizeHandler = function resizeHandler() {
 };
 
 Window.prototype.launchWindow = function launchWindow() {
-    requestAnimFrame(this.resizeHandler);
+    requestAnimFrame(() => {
+        this.resizeHandler();
+    });
 };
 
 Window.prototype.init = function initWindow() {
     this.resizeHandler();
-    window.addEventListener('resize', this.launchWindow);
+    window.addEventListener(
+        'resize',
+        () => {
+            this.launchWindow();
+        },
+        false
+    );
 };
 
 Window.prototype.destroyWindow = function destroyWindow() {
-    window.removeEventListener('resize', this.launchWindow);
+    window.removeEventListener(
+        'resize',
+        () => {
+            this.launchWindow();
+        },
+        false
+    );
 };
 
 export default new Window();
