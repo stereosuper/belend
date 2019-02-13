@@ -840,12 +840,12 @@ function Fallback() {
 }
 
 Fallback.prototype.init = function init() {
-  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isIOS()) this.html.addClass('is-ios');
-  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isSafari()) this.html.addClass('is-safari');
-  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isFF()) this.html.addClass('is-ff');
+  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isIOS()) this.html.classList.add('is-ios');
+  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isSafari()) this.html.classList.add('is-safari');
+  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isFF()) this.html.classList.add('is-ff');
   if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isChromeAndroid()) this.html.classList.add('is-ca');
-  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isMS()) this.html.addClass('is-ms');
-  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isIe11()) this.html.addClass('is-ie');
+  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isMS()) this.html.classList.add('is-ms');
+  if (_Snif__WEBPACK_IMPORTED_MODULE_0__["default"].isIe11()) this.html.classList.add('is-ie');
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (new Fallback());
@@ -1172,6 +1172,7 @@ var burgerHandler = function burgerHandler() {
       mainNav = _document$getElements4[0];
 
   if (burger) {
+    console.log('TCL: burgerHandler -> burger', burger);
     burger.addEventListener('click', function () {
       burger.classList.toggle('activated');
       mainNav.classList.toggle('activated');
