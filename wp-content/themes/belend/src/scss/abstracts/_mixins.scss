@@ -61,10 +61,10 @@
 @mixin btn-gradient() {
     background: linear-gradient(
         27.6deg,
-        $secondary-color 0%,
-        $primary-color 25%,
-        $secondary-color 50%,
-        $primary-color 75%,
-        $secondary-color 100%
+        $secondary 0%,
+        $primary 25%,
+        $secondary 50%,
+        $primary 75%,
+        $secondary 100%
     );
 }

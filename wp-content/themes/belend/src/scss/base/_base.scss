@@ -16,47 +16,53 @@ html{
 }
 
 body{
-    font: 1.6em / 1.2 sans-serif;
+    font: 1.8em / 1.2 sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3, h4{
+    font-weight: 400;
+}
+
 h1{
-    font-size: 5rem;
+    font-size: 4.2rem;
     margin: 0.67em 0;
+    text-align: center;
 }
 
 h2{
-    font-size: 3rem;
+    font-size: 3.6rem;
     margin: 0.83em 0;
+    letter-spacing: -1px;
 }
 
 h3{
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     margin: 1em 0;
 }
 
 h4{
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin: 1.33em 0;
 }
 
 h5{
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 1.67em 0;
 }
 
 h6{
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 2.33em 0;
 }
 
 p{
-    margin: 1em 0;
+    margin: 1.5em 0;
 }
 
-b, strong{
-
+b, strong, .bold{
+    font-weight: 800;
 }
 
 i, em{
@@ -83,11 +89,34 @@ ol{
         counter-increment: ol-counter;
         &:before{
             content: counter(ol-counter)'.';
+            top: 7px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: $primary;
         }
     }
     ol{
         padding: 0 0 0 25px;
         margin: 1em 0;
+    }
+}
+ul{
+    > li{
+        &:before{
+            content: '';
+            width: 3px;
+            height: 3px;
+            background: $primary;
+        }
+    }
+}
+li{
+    padding: 0 0 0 20px;
+    position: relative;
+    &:before{
+        position: absolute;
+        top: 10px;
+        left: 0;
     }
 }
 
@@ -133,6 +162,10 @@ hr{
     border: 0;
     margin: 3em auto 5em;
     background: $black;
+}
+
+main{
+    position: relative;
 }
 
 
@@ -187,16 +220,6 @@ a{
     text-align: right;
 }
 
-.inline-b{
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateY(-0.1em);
-}
-
-.full-width{
-    width: 100%;
-}
-
 .icon{
     width: 1.2em;
     height: 1.2em;
@@ -215,4 +238,12 @@ a{
 
 .no-transition{
     transition: none!important;
+}
+
+.primary{
+    color: $primary;
+}
+
+.secondary{
+    color: $secondary;
 }

@@ -1,16 +1,22 @@
 // Variables //
 
 // Colors
-$white: rgb(255, 255, 255);
-$black: rgb(0, 0, 0);
-$primary-color: #ff6308;
-$secondary-color: #f12525;
+$white: #fff;
+$black: #000;
+
+$grey: #828282;
+
+$primary: #ff6308;
+$secondary: #f12525;
+
 
 // Transition
 $transition: 0.3s ease-in-out;
 
+
 // Fonts
 // $font: 'font', sans-serif;
+
 
 // Mediaqueries
 $retina: "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)";
@@ -20,6 +26,7 @@ $desktop-small: "960px";
 $tablet: "780px";
 $phone: "580px";
 $phone-small: "400px";
+
 
 // Grid
 $col: 100/12 * 1%;
