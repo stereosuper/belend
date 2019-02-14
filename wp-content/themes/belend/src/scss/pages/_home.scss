@@ -1,1 +1,41 @@
 /* Home specific style */
+
+.home{
+    h1{
+        text-align: left;
+    }
+}
+
+.banner-img{
+    height: 480px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.intro{
+    padding: 170px 0 0;
+    position: relative;
+    text-align: center;
+    line-height: 1.35;
+    > div{
+        padding: 35px 25px;
+        margin: 0 0 0 100px;
+        text-align: left;
+        background: #fff;
+    }
+}
+
+.benefits{
+    margin: 45px 0;
+    text-align: center;
+    > li{
+        margin: 0 0 20px;
+        &:before{
+            content: none;
+        }
+    }
+}
