@@ -1,90 +1,32 @@
 /* Header */
-.burger {
+
+.main-header {
+    padding: 28px $gutter * 3 16px;
     position: relative;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 1;
-    span {
-        position: absolute;
-        width: 25px;
-        height: 2px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        background-color: $primary-color;
-        transition: comme-dans-du-beurre(
-            (
-                background-color: "0.23s 0.23s"
-            )
-        );
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: $primary-color;
-            border-radius: 5px;
-        }
-        &::before {
-            transform: translate(0, -9px);
-            transform-origin: 50% 50%;
-            transition: comme-dans-du-beurre(
-                (
-                    transform: "0.23s"
-                )
-            );
-        }
-        &::after {
-            transform: translate(0, 9px);
-            transform-origin: 50% 50%;
-            transition: comme-dans-du-beurre(
-                (
-                    transform: "0.23s"
-                )
-            );
-        }
+    z-index: 10;
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
     }
-    &.activated {
-        span {
-            background-color: transparent;
-            transition: comme-dans-du-beurre(
-                (
-                    background-color: "0.23s"
-                )
-            );
-            &::before,
-            &::after {
-                transition: comme-dans-du-beurre(
-                    (
-                        transform: "0.23s 0.23s"
-                    )
-                );
-            }
-            &::before {
-                transform: translate(0, 0) rotateZ(-45deg);
-            }
-            &::after {
-                transform: translate(0, 0) rotateZ(45deg);
-            }
-        }
+    .logo-wrapper{
+        width: 118px;
+        text-align: center;
+    }
+    .logo {
+        display: block;
     }
 }
 
 .main-navigation {
-    position: fixed;
     width: 100%;
+    padding: 0 $gutter * 3;
+    position: fixed;
     top: 0;
     left: 100%;
     bottom: 0;
-    padding: 0 $gutter * 3;
-    margin-top: 96px;
-    background-color: $white;
+    margin: 96px 0 0;
+    background: $white;
     transition: comme-dans-du-beurre(
         (
             transform: "0.23s"
@@ -98,19 +40,72 @@
     }
 }
 
-.main-header {
-    display: flex;
-    align-items: center;
-    height: 96px;
-    padding: 0 $gutter * 3;
-    .mobile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
+.burger {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1;
+    > span {
+        width: 25px;
+        height: 2px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background: $primary;
+        transition: comme-dans-du-beurre(
+            (
+                background-color: "0.23s 0.23s"
+            )
+        );
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $primary;
+            border-radius: 5px;
+            transform-origin: 50% 50%;
+            transition: comme-dans-du-beurre(
+                (
+                    transform: "0.23s"
+                )
+            );
+        }
+        &:before {
+            transform: translate(0, -9px);
+        }
+        &:after {
+            transform: translate(0, 9px);
+        }
     }
-    .logo {
-        position: relative;
-        z-index: 1;
+    &.activated {
+        span {
+            background: transparent;
+            transition: comme-dans-du-beurre(
+                (
+                    background-color: "0.23s"
+                )
+            );
+            &:before,
+            &:after {
+                transition: comme-dans-du-beurre(
+                    (
+                        transform: "0.23s 0.23s"
+                    )
+                );
+            }
+            &:before {
+                transform: translate(0, 0) rotateZ(-45deg);
+            }
+            &:after {
+                transform: translate(0, 0) rotateZ(45deg);
+            }
+        }
     }
 }

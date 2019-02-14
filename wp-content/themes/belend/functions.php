@@ -30,6 +30,11 @@ function belend_unregister_tags(){
 }
 add_action( 'init', 'belend_unregister_tags' );
 
+// ACF options page
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();	
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Clean WordPress head and remove some stuff for security
@@ -166,7 +171,7 @@ register_nav_menus( array('primary' => 'Primary Menu') );
 
 // Cleanup WP Menu html
 function belend_css_attributes_filter($var){
-    return is_array($var) ? array_intersect($var, array('current-menu-item', 'current_page_parent')) : '';
+    return is_array($var) ? array_intersect($var, array('current-menu-item', 'current_page_parent', 'has-btn')) : '';
 }
 add_filter( 'nav_menu_css_class', 'belend_css_attributes_filter' );
 
