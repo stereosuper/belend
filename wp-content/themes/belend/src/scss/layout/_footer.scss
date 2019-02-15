@@ -1,2 +1,19 @@
 /* Footer */
 
+.footer{
+    padding: 40px 0;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
+}
+
+.social{
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    > li{
+        &:before{
+            content: none;
+        }
+    }
+}

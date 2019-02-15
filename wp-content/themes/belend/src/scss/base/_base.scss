@@ -25,6 +25,10 @@ h1, h2, h3, h4{
     font-weight: 400;
 }
 
+h2, h3, h4{
+    color: $grey;
+}
+
 h1{
     font-size: 4.2rem;
     margin: 0.67em 0;
@@ -76,6 +80,7 @@ blockquote{
 ol, ul{
     padding: 0;
     margin: 1em 0;
+    list-style: none;
 }
 ul{
     ul{
@@ -246,4 +251,36 @@ a{
 
 .secondary{
     color: $secondary;
+}
+
+.dark-bg{
+    background: linear-gradient(101deg, #434343 23%, #1E1E1E 98%);
+    color: #fff;
+    h2, h3, h4{
+        color: inherit;
+    }
+}
+
+.grey-bg{
+    background: linear-gradient(68deg, #333 0, #8F8F8F 100%);
+    color: #fff;
+    h2, h3, h4{
+        color: inherit;
+    }
+}
+
+.red-bg{
+    background: linear-gradient(136deg, #903030 0, #E82424 100%);
+    color: #fff;
+    h2, h3, h4{
+        color: inherit;
+    }
+}
+
+.orange-bg{
+    background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
+    color: #fff;
+    h2, h3, h4{
+        color: inherit;
+    }
 }

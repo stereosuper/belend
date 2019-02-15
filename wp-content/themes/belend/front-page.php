@@ -6,7 +6,7 @@
             <div class='banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)'></div>
 
             <div class='intro'>
-                <div>
+                <div class='text'>
                     <h1>
                         <?php
                             $title = get_field('title');
@@ -25,51 +25,61 @@
 
                     <?php the_content(); ?>
                 </div>
-
-                <?php
-                    $btn = get_field('btn');
-                    if( $btn ) :
-                ?>
-                    <a class='btn' href='<?php echo $btn['url']; ?>' <?php if( $btn['target'] ) echo "target='_blank'"; ?>>
-                        <?php echo $btn['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
-                    </a>
+                
+                <div class='container'>
+                    <?php
+                        $btn = get_field('btn');
+                        if( $btn ) :
+                    ?>
+                        <a class='btn' href='<?php echo $btn['url']; ?>' <?php if( $btn['target'] ) echo "target='_blank'"; ?>>
+                            <?php echo $btn['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            
+            <div class='container'>
+                <?php if( have_rows('benefits') ): ?>
+                    <ul class='benefits'>
+                        <?php while ( have_rows('benefits') ) : the_row(); ?>
+                            <li>
+                                <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
+                                <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
                 <?php endif; ?>
             </div>
-
-            <?php if( have_rows('benefits') ): ?>
-                <ul class='benefits'>
-                    <?php while ( have_rows('benefits') ) : the_row(); ?>
-                        <li>
-                            <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
-                            <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            <?php endif; ?>
         </header>
 
-        <section>
-            <?php $loc = get_field('localisation'); if( $loc ) : ?>
-                <h2><?php echo $loc['locTitle']; ?></h2>
-                <?php echo $loc['locText']; ?>
-                <?php
-                    $locLink = $loc['locLink'];
-                    if( $locLink ) :
-                ?>
-                    <a href='<?php echo $locLink['url']; ?>' <?php if( $locLink['target'] ) echo "target='_blank'"; ?>>
-                        <?php echo $locLink['title']; ?>
-                    </a>
+        <section class='dark-bg'>
+            <div class='container'>
+                <?php $loc = get_field('localisation'); if( $loc ) : ?>
+                    <h2><?php echo $loc['locTitle']; ?></h2>
+                    <?php echo $loc['locText']; ?>
+                    <?php
+                        $locLink = $loc['locLink'];
+                        if( $locLink ) :
+                    ?>
+                        <a href='<?php echo $locLink['url']; ?>' <?php if( $locLink['target'] ) echo "target='_blank'"; ?>>
+                            <?php echo $locLink['title']; ?>
+                        </a>
+                    <?php endif; ?>
                 <?php endif; ?>
-            <?php endif; ?>
+            </div>
+        </section>
 
-            <?php if( get_field('nbText') ) : ?>
-                <h3><?php the_field('nbText'); ?></h3>
-                <span><?php the_field('nb'); ?></span>
-            <?php endif; ?>
+        <section class='red-bg align-center'>
+            <div class='container'>
+                <?php if( get_field('nbText') ) : ?>
+                    <h3><?php the_field('nbText'); ?></h3>
+                    <span><?php the_field('nb'); ?></span>
+                <?php endif; ?>
+            </div>
         </section>
         
         <?php $quotes = get_field('quotes'); if( $quotes ) : ?>
-            <section>
+            <section class='container'>
                 <h2><?php echo $quotes['quotesTitle']; ?></h2>
                 
                 <?php if( $quotes['quotes'] ): ?>
@@ -85,37 +95,41 @@
         <?php endif; ?>
 
         <section>
-            <?php $pro = get_field('pro'); if( $pro ) : ?>
-                <div>
-                    <h2><?php echo $pro['proTitle']; ?></h2>
-                    <?php echo $pro['proText']; ?>
+            <?php $pro = get_field('pro', 'options'); if( $pro ) : ?>
+                <div class='orange-bg'>
+                    <div class='container'>
+                        <h2><?php echo $pro['title']; ?></h2>
+                        <?php echo $pro['text']; ?>
 
-                    <?php if( $pro['proBtn'] ) : ?>
-                        <a class='btn' href='<?php echo $pro['proBtn']['url']; ?>' <?php if( $pro['proBtn']['target'] ) echo "target='_blank'"; ?>>
-                            <?php echo $pro['proBtn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
-                        </a>
-                    <?php endif; ?>
+                        <?php if( $pro['btn'] ) : ?>
+                            <a class='btn-invert' href='<?php echo $pro['btn']['url']; ?>' <?php if( $pro['btn']['target'] ) echo "target='_blank'"; ?>>
+                                <?php echo $pro['btn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             <?php endif; ?>
 
-            <?php $individual = get_field('individual'); if( $individual ) : ?>
-                <div>
-                    <h2><?php echo $individual['individualTitle']; ?></h2>
-                    <?php echo $individual['individualText']; ?>
+            <?php $individual = get_field('individual', 'options'); if( $individual ) : ?>
+                <div class='grey-bg'>
+                    <div class='container'>
+                        <h2><?php echo $individual['title']; ?></h2>
+                        <?php echo $individual['text']; ?>
 
-                    <?php if( $individual['individualBtn'] ) : ?>
-                        <a class='btn' href='<?php echo $individual['individualBtn']['url']; ?>' <?php if( $individual['individualBtn']['target'] ) echo "target='_blank'"; ?>>
-                            <?php echo $individual['individualBtn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
-                        </a>
-                    <?php endif; ?>
+                        <?php if( $individual['btn'] ) : ?>
+                            <a class='btn-invert' href='<?php echo $individual['btn']['url']; ?>' <?php if( $individual['btn']['target'] ) echo "target='_blank'"; ?>>
+                                <?php echo $individual['btn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             <?php endif; ?>
         </section>
 
-        <?php if( have_rows('benefits2') ): ?>
-            <section>
+        <?php if( have_rows('benefits', 'options') ): ?>
+            <section class='container'>
                 <ul class='benefits'>
-                    <?php while ( have_rows('benefits2') ) : the_row(); ?>
+                    <?php while ( have_rows('benefits', 'options') ) : the_row(); ?>
                         <li>
                             <h3><?php the_sub_field('title'); ?></h3>
                             <?php the_sub_field('text'); ?>
