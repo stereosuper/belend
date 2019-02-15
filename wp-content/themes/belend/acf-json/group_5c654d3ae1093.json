@@ -391,7 +391,7 @@
                             "key": "field_5c6560a3b3094",
                             "label": "Citation",
                             "name": "quote",
-                            "type": "text",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -402,9 +402,9 @@
                             },
                             "default_value": "",
                             "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "maxlength": "",
+                            "rows": 3,
+                            "new_lines": ""
                         },
                         {
                             "key": "field_5c6560b0b3095",
@@ -628,7 +628,7 @@
             "collapsed": "",
             "min": 0,
             "max": 3,
-            "layout": "table",
+            "layout": "block",
             "button_label": "Ajouter un bénéfice",
             "sub_fields": [
                 {
@@ -708,5 +708,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550225161
+    "modified": 1550228088
 }

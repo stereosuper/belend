@@ -47,6 +47,83 @@
                 </ul>
             <?php endif; ?>
         </header>
+
+        <section>
+            <?php $loc = get_field('localisation'); if( $loc ) : ?>
+                <h2><?php echo $loc['locTitle']; ?></h2>
+                <?php echo $loc['locText']; ?>
+                <?php
+                    $locLink = $loc['locLink'];
+                    if( $locLink ) :
+                ?>
+                    <a href='<?php echo $locLink['url']; ?>' <?php if( $locLink['target'] ) echo "target='_blank'"; ?>>
+                        <?php echo $locLink['title']; ?>
+                    </a>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if( get_field('nbText') ) : ?>
+                <h3><?php the_field('nbText'); ?></h3>
+                <span><?php the_field('nb'); ?></span>
+            <?php endif; ?>
+        </section>
+        
+        <?php $quotes = get_field('quotes'); if( $quotes ) : ?>
+            <section>
+                <h2><?php echo $quotes['quotesTitle']; ?></h2>
+                
+                <?php if( $quotes['quotes'] ): ?>
+                    <?php foreach( $quotes['quotes'] as $quote ) : ?>
+                        <blockquote>
+                            <?php echo $quote['quote']; ?>
+                            <?php echo $quote['name']; ?>
+                            <?php echo $quote['job']; ?>
+                        </blockquote>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </section>
+        <?php endif; ?>
+
+        <section>
+            <?php $pro = get_field('pro'); if( $pro ) : ?>
+                <div>
+                    <h2><?php echo $pro['proTitle']; ?></h2>
+                    <?php echo $pro['proText']; ?>
+
+                    <?php if( $pro['proBtn'] ) : ?>
+                        <a class='btn' href='<?php echo $pro['proBtn']['url']; ?>' <?php if( $pro['proBtn']['target'] ) echo "target='_blank'"; ?>>
+                            <?php echo $pro['proBtn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php $individual = get_field('individual'); if( $individual ) : ?>
+                <div>
+                    <h2><?php echo $individual['individualTitle']; ?></h2>
+                    <?php echo $individual['individualText']; ?>
+
+                    <?php if( $individual['individualBtn'] ) : ?>
+                        <a class='btn' href='<?php echo $individual['individualBtn']['url']; ?>' <?php if( $individual['individualBtn']['target'] ) echo "target='_blank'"; ?>>
+                            <?php echo $individual['individualBtn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </section>
+
+        <?php if( have_rows('benefits2') ): ?>
+            <section>
+                <ul class='benefits'>
+                    <?php while ( have_rows('benefits2') ) : the_row(); ?>
+                        <li>
+                            <h3><?php the_sub_field('title'); ?></h3>
+                            <?php the_sub_field('text'); ?>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            </section>
+        <?php endif; ?>
         
     <?php endif; ?>
 
