@@ -167,7 +167,7 @@ add_filter( 'menu_order', 'belend_menu_order' );
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus( array('primary' => 'Primary Menu') );
+register_nav_menus( array('primary' => 'Primary Menu', 'secondary' => 'Secondary Menu') );
 
 // Cleanup WP Menu html
 function belend_css_attributes_filter($var){

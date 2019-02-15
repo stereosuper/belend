@@ -7,6 +7,26 @@
     background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
 }
 
+.logo-footer{
+    width: 175px;
+    margin: 0 auto 60px;
+    > img{
+        display: block;
+    }
+}
+
+.menu-footer{
+    li{
+        margin: 0 0 30px;
+        &:before{
+            content: none;
+        }
+    }
+    a{
+        text-decoration: underline;
+    }
+}
+
 .social{
     display: flex;
     margin: 0;

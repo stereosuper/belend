@@ -2,8 +2,12 @@
 
         <footer role='contentinfo' class='footer'>
             <div class='container'>
-                <?php echo wp_get_attachment_image(get_field('logoWhite', 'options'), 'full'); ?>
-                <?php echo get_bloginfo('description'); ?>
+                <div class='logo-footer'>
+                    <?php echo wp_get_attachment_image(get_field('logoWhite', 'options'), 'full'); ?>
+                    <?php echo get_bloginfo('description'); ?>
+                </div>
+
+                <?php wp_nav_menu(array('theme_location' => 'secondary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu-footer')); ?>
 
                 <?php if( have_rows('social', 'options') ): ?>
                     <ul class='social'>
