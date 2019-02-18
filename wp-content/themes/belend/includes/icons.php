@@ -1,5 +1,10 @@
-<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <defs>
+        <symbol id="icon-arrow" viewBox="0 0 14 11" fill="none">
+            <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M1 5.5h8"/>
+            <path d="M12.5 4.634a1 1 0 0 1 0 1.732L7.25 9.397a1 1 0 0 1-1.5-.866V2.47a1 1 0 0 1 1.5-.866l5.25 3.031z" fill="currentColor"/>
+        </symbol>
+
         <symbol id="icon-fb" viewBox="0 0 32 32">
             <title>Facebook</title>
             <path fill="currentColor" d="M20.155 10.656l-1.506 0.001c-1.181 0-1.41 0.561-1.41 1.384v1.816h2.817l-0.367 2.845h-2.45v7.298h-2.937v-7.298h-2.456v-2.845h2.456v-2.097c0-2.435 1.487-3.76 3.658-3.76 1.040 0 1.934 0.077 2.195 0.112v2.544zM16 0c-8.836 0-16 7.163-16 16 0 8.836 7.164 16 16 16 8.837 0 16-7.164 16-16 0-8.837-7.163-16-16-16z"/>
