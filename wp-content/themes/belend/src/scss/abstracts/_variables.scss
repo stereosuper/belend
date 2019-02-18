@@ -5,9 +5,12 @@ $white: #fff;
 $black: #000;
 
 $grey: #828282;
+$dark-grey: #7C7C7C;
+$black-grey: #312F2F;
 
 $primary: #ff6308;
 $secondary: #f12525;
+$dark-red: #903030;
 
 
 // Transition
@@ -21,14 +24,14 @@ $transition: 0.3s ease-in-out;
 // Mediaqueries
 $retina: "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)";
 
-$desktop: "1100px";
-$desktop-small: "960px";
-$tablet: "780px";
-$phone: "580px";
-$phone-small: "400px";
+$desktop: 1100px;
+$desktop-small: 960px;
+$tablet: 780px;
+$phone: 580px;
+$phone-small: 400px;
 
 
 // Grid
 $col: 100/12 * 1%;
 
-$gutter: 10px;
+$gutter: 15px;

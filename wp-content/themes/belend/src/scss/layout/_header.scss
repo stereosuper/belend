@@ -1,7 +1,7 @@
 /* Header */
 
 .main-header {
-    padding: 28px $gutter * 3 16px;
+    padding: 27px 0 16px;
     position: relative;
     z-index: 10;
     .container {
@@ -11,10 +11,13 @@
     }
     .logo-wrapper{
         width: 118px;
-        text-align: center;
     }
     .logo {
         display: block;
+        + img{
+            display: block;
+            margin: 9px 0 0 32px;
+        }
     }
 }
 

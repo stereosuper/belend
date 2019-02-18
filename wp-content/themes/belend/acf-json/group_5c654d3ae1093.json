@@ -133,7 +133,7 @@
                     "key": "field_5c65571d915df",
                     "label": "Icone",
                     "name": "icon",
-                    "type": "text",
+                    "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -142,11 +142,16 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "return_format": "id",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 },
                 {
                     "key": "field_5c655734915e0",
@@ -490,5 +495,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550251952
+    "modified": 1550486366
 }

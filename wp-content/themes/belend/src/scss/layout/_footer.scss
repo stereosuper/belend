@@ -1,5 +1,32 @@
 /* Footer */
 
+.benefits{
+    margin: 10px 0 50px;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: $dark-red;
+    > li{
+        padding: 35px 0 0;
+        &:before{
+            content: none;
+        }
+    }
+    h3{
+        padding: 0 0 0 70px;
+        margin: 0 0 20px;
+        color: inherit;
+    }
+    .title{
+        position: relative;
+    }
+    img{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
 .footer{
     padding: 40px 0;
     text-align: center;
@@ -9,13 +36,16 @@
 
 .logo-footer{
     width: 175px;
-    margin: 0 auto 60px;
-    > img{
+    margin: 0 auto 50px;
+    img:first-child{
         display: block;
+        margin: 0 auto 25px;
     }
 }
 
 .menu-footer{
+    margin: 0 0 60px;
+    font-size: 1.4rem;
     li{
         margin: 0 0 30px;
         &:before{
@@ -23,7 +53,7 @@
         }
     }
     a{
-        text-decoration: underline;
+        border-bottom: 1px solid;
     }
 }
 
@@ -32,8 +62,19 @@
     margin: 0;
     justify-content: center;
     > li{
+        margin: 0 10px;
+        overflow: hidden;
         &:before{
             content: none;
         }
+    }
+    span{
+        position: absolute;
+        top: -100em;
+        left: -100em;
+    }
+    .icon{
+        width: 32px;
+        height: 32px;
     }
 }

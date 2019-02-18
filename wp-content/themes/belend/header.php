@@ -20,7 +20,7 @@
 					<a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
 						<?php echo wp_get_attachment_image(get_field('logo', 'options'), 'full'); ?>
 					</a>
-					<?php echo get_bloginfo('description'); ?>
+					<?php echo wp_get_attachment_image(get_field('baseline', 'options'), 'full', false, array('alt' => get_bloginfo('description'))); ?>
 				</div>
 
 				<button class='burger js-burger'><span></span></button>

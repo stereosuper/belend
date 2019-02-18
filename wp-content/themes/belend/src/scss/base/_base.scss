@@ -16,7 +16,7 @@ html{
 }
 
 body{
-    font: 1.8em / 1.2 sans-serif;
+    font: 1.8em / 1.35 sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -70,11 +70,22 @@ b, strong, .bold{
 }
 
 i, em{
-
+    font-style: italic;
 }
 
 blockquote{
-    margin: 1em 40px;
+    margin: 50px 0;
+    font-style: italic;
+    color: $dark-grey;
+}
+cite{
+    display: block;
+    text-align: right;
+    color: $black-grey;
+    .name{
+        display: block;
+        font-style: normal;
+    }
 }
 
 ol, ul{
