@@ -2,6 +2,7 @@
 
 .home{
     h1{
+        margin-top: 0;
         text-align: left;
     }
 }
@@ -9,7 +10,7 @@
 .banner-img{
     height: 480px;
     position: absolute;
-    top: 0;
+    top: 95px;
     right: 0;
     left: 0;
     background-size: cover;
@@ -17,13 +18,16 @@
 }
 
 .intro{
-    padding: 170px 0 0;
+    padding: 260px 0 0;
     position: relative;
     text-align: center;
     .text{
         padding: 35px 25px;
         margin: 0 0 0 100px;
         text-align: left;
+        background: #fff;
+    }
+    .container{
         background: #fff;
     }
 }

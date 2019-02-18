@@ -88,8 +88,13 @@
                         <blockquote>
                             <p><?php echo $quote['quote']; ?></p>
                             <cite>
-                                <span class='name'><?php echo $quote['name']; ?></span>
-                                <?php echo $quote['job']; ?>
+                                <div>
+                                    <span class='name'><?php echo $quote['name']; ?></span>
+                                    <?php echo $quote['job']; ?>
+                                </div>
+                                <div class='img'>
+                                    <?php echo wp_get_attachment_image($quote['photo']); ?>
+                                </div>
                             </cite>
                         </blockquote>
                     <?php endforeach; ?>
@@ -99,8 +104,8 @@
 
         <section>
             <?php $pro = get_field('pro', 'options'); if( $pro ) : ?>
-                <div class='orange-bg target'>
-                    <div class='container'>
+                <div class='orange-bg target t-pro'>
+                    <div class='txt'>
                         <h2><?php echo $pro['title']; ?></h2>
                         <?php echo $pro['text']; ?>
 
@@ -110,12 +115,13 @@
                             </a>
                         <?php endif; ?>
                     </div>
+                    <div class='bg' style='background-image:url(<?php echo wp_get_attachment_url($pro['img'], 'full'); ?>)'></div>
                 </div>
             <?php endif; ?>
 
             <?php $individual = get_field('individual', 'options'); if( $individual ) : ?>
-                <div class='grey-bg target'>
-                    <div class='container'>
+                <div class='grey-bg target t-individual'>
+                    <div class='txt'>
                         <h2><?php echo $individual['title']; ?></h2>
                         <?php echo $individual['text']; ?>
 
@@ -125,6 +131,7 @@
                             </a>
                         <?php endif; ?>
                     </div>
+                    <div class='bg' style='background-image:url(<?php echo wp_get_attachment_url($individual['img'], 'full'); ?>)'></div>
                 </div>
             <?php endif; ?>
         </section>

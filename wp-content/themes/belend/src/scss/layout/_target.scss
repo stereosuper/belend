@@ -1,3 +1,20 @@
 .target{
-    padding: 10px 0 30px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    .bg{
+        width: 20%;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    .txt{
+        width: 80%;
+        padding: 10px $gutter*2 40px;
+    }
+}
+
+.t-individual{
+    .txt{
+        order: 2;
+    }
 }
