@@ -101,13 +101,15 @@
     }
 
     .logo-footer{
+        width: 310px;
         margin: 0;
+        text-align: center;
     }
 
     .social{
         display: block;
         > li{
-            margin: 0 0 10px;
+            margin: 0 0 20px;
         }
         span{
             position: static;

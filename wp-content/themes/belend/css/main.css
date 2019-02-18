@@ -586,7 +586,7 @@ button {
   height: 96px;
   padding: 0 45px;
   background-color: #fff;
-  z-index: 10; }
+  z-index: 100; }
   .main-header .container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -775,11 +775,13 @@ button {
           -ms-flex-pack: justify;
               justify-content: space-between; }
   .logo-footer {
-    margin: 0; }
+    width: 310px;
+    margin: 0;
+    text-align: center; }
   .social {
     display: block; }
     .social > li {
-      margin: 0 0 10px; }
+      margin: 0 0 20px; }
     .social span {
       position: static; }
   .social-title {
