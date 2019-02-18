@@ -247,18 +247,20 @@ h3,
 h4 {
   color: #828282; }
 
-h1 {
+h1,
+.h1 {
   font-size: 4.2rem;
   margin: 0.67em 0;
   text-align: center; }
 
-h2 {
+h2,
+.h2 {
   font-size: 3.6rem;
   margin: 0.83em 0;
   letter-spacing: -1px; }
 
 h3,
-.page-template-contact .contact-container header p {
+.h3 {
   font-size: 2.2rem;
   margin: 1em 0; }
 
@@ -525,7 +527,12 @@ a {
 /* Placeholders */
 /* Grid */
 .container {
-  max-width: 1200px;
+  max-width: 1260px;
+  padding: 0 30px;
+  margin: 0 auto; }
+
+.container-small {
+  max-width: 1160px;
   padding: 0 30px;
   margin: 0 auto; }
 
@@ -840,15 +847,13 @@ button {
 
 .page-template-contact {
   margin-top: 96px; }
-  .page-template-contact .contact-container {
-    padding: 0 30px; }
-    .page-template-contact .contact-container header h1 {
-      color: #312F2F; }
-    .page-template-contact .contact-container header p {
-      color: #828282;
-      text-align: center; }
-    .page-template-contact .contact-container .description {
-      text-align: center; }
+  .page-template-contact .contact-container header h1 {
+    color: #312F2F; }
+  .page-template-contact .contact-container header p {
+    color: #828282;
+    text-align: center; }
+  .page-template-contact .contact-container .description {
+    text-align: center; }
 
 /******* PRINT *******/
 @media print {

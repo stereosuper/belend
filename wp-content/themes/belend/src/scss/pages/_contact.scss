@@ -2,7 +2,6 @@
     margin-top: $header-height;
 
     .contact-container {
-        padding: 0 $gutter * 2;
         header {
             h1 {
                 color: $black-grey;
@@ -10,7 +9,6 @@
             p {
                 color: $grey;
                 text-align: center;
-                @extend %h3;
             }
         }
         .description {
