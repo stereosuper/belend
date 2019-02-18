@@ -25,8 +25,10 @@
 
 				<button class='burger js-burger'><span></span></button>
 
-				<nav class='main-navigation js-main-navigation' role='navigation'>
-					<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
+				<nav class="main-navigation js-main-navigation" role="navigation" aria-modal="true">
+					<div class="main-navigation-container">
+						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu')); ?>
+					</div>
 				</nav>
 			</div>
 		</header>

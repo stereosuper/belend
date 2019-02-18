@@ -1288,9 +1288,9 @@ var throttle = function throttle(callback, delay) {
   !*** ./wp-content/themes/belend/src/scss/main.scss ***!
   \*****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-// extracted by mini-css-extract-plugin
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\n@import \"layout/grid\", \"layout/forms\", \"layout/header\", \"layout/footer\",\n^\n      File to import not found or unreadable: layout/target.\n      in /Users/albanmezino/Documents/www/stereosuper/belend/wp-content/themes/belend/src/scss/main.scss (line 12, column 1)\n    at runLoaders (/Users/albanmezino/Documents/www/stereosuper/belend/node_modules/webpack/lib/NormalModule.js:301:20)\n    at /Users/albanmezino/Documents/www/stereosuper/belend/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/albanmezino/Documents/www/stereosuper/belend/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/albanmezino/Documents/www/stereosuper/belend/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.render [as callback] (/Users/albanmezino/Documents/www/stereosuper/belend/node_modules/sass-loader/lib/loader.js:52:13)\n    at Object.done [as callback] (/Users/albanmezino/Documents/www/stereosuper/belend/node_modules/neo-async/async.js:8077:18)\n    at options.error (/Users/albanmezino/Documents/www/stereosuper/belend/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ })
 
