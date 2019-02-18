@@ -10,16 +10,19 @@
                 <?php wp_nav_menu(array('theme_location' => 'secondary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu-footer')); ?>
 
                 <?php if( have_rows('social', 'options') ): ?>
-                    <ul class='social'>
-                        <?php while ( have_rows('social', 'options') ) : the_row(); ?>
-                            <li>
-                                <a href='<?php echo get_sub_field('link')['url']; ?>' <?php if( get_sub_field('link')['target'] ) echo "target='_blank'"; ?>>
-                                    <span><?php echo get_sub_field('link')['title']; ?></span>
-                                    <svg class='icon'><use xlink:href='#icon-<?php the_sub_field('icon') ?>'></use></svg>
-                                </a>
-                            </li>
-                        <?php endwhile; ?>
-                    </ul>
+                    <div class='social-footer'>
+                        <p class='social-title'><?php _e('Belend.fr sur :', 'belend'); ?></p>
+                        <ul class='social'>
+                            <?php while ( have_rows('social', 'options') ) : the_row(); ?>
+                                <li>
+                                    <a href='<?php echo get_sub_field('link')['url']; ?>' <?php if( get_sub_field('link')['target'] ) echo "target='_blank'"; ?>>
+                                        <svg class='icon'><use xlink:href='#icon-<?php the_sub_field('icon') ?>'></use></svg>
+                                        <span><?php echo get_sub_field('link')['title']; ?></span>
+                                    </a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </div>
                 <?php endif; ?>
             </div>
         </footer>

@@ -232,15 +232,19 @@ html {
     right: 0; }
 
 body {
-  font: 1.8em / 1.35 sans-serif;
+  font: 1.8em / 1.35 'upgrade', sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
 main {
   overflow: hidden; }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 400; }
+
+h1, h2, h3, h4 {
+  font-family: 'upgrade-lights'; }
 
 h2,
 h3,
@@ -252,6 +256,10 @@ h1,
   font-size: 4.2rem;
   margin: 0.67em 0;
   text-align: center; }
+  h1 > span,
+  .h1 > span {
+    font-family: 'upgrade';
+    font-weight: 400; }
 
 h2,
 .h2 {
@@ -282,7 +290,7 @@ p {
 b,
 strong,
 .bold {
-  font-weight: 800; }
+  font-weight: 400; }
 
 i,
 em {
@@ -340,12 +348,15 @@ cite {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  font-family: 'upgrade-lights';
   text-align: right;
   color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
-    font-style: normal; }
+    font-family: 'upgrade';
+    font-style: normal;
+    font-weight: 400; }
   cite .img {
     width: 46px;
     height: 46px;
@@ -714,9 +725,10 @@ button {
 .menu-footer {
   margin: 0 0 60px;
   font-size: 1.4rem; }
-  .menu-footer li {
+  .menu-footer > li {
+    padding: 0;
     margin: 0 0 30px; }
-    .menu-footer li:before {
+    .menu-footer > li:before {
       content: none; }
   .menu-footer a {
     border-bottom: 1px solid; }
@@ -726,21 +738,52 @@ button {
   display: -ms-flexbox;
   display: flex;
   margin: 0;
+  font-size: 1.4rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
   .social > li {
-    margin: 0 10px;
+    padding: 0;
+    margin: 0 20px;
     overflow: hidden; }
     .social > li:before {
       content: none; }
   .social span {
     position: absolute;
     top: -100em;
-    left: -100em; }
+    left: -100em;
+    margin: 0 0 0 10px;
+    border-bottom: 1px solid; }
   .social .icon {
     width: 32px;
     height: 32px; }
+
+.social-title {
+  display: none;
+  margin: 0 0 20px;
+  font-size: 2.2rem; }
+
+@media (min-width: 960px) {
+  .footer {
+    padding: 80px 10% 80px 0;
+    text-align: left; }
+    .footer > .container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+  .logo-footer {
+    margin: 0; }
+  .social {
+    display: block; }
+    .social > li {
+      margin: 0 0 10px; }
+    .social span {
+      position: static; }
+  .social-title {
+    display: block; } }
 
 .target {
   display: -webkit-box;
@@ -843,7 +886,8 @@ button {
     margin: 0 0 20px;
     font-size: 1.8rem; }
   .home-nb span {
-    font-size: 5.2rem; }
+    font-size: 5.2rem;
+    font-family: 'upgrade-lights'; }
 
 .page-template-contact {
   margin-top: 96px; }
