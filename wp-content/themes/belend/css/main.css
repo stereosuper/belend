@@ -274,9 +274,27 @@ i, em {
   font-style: italic; }
 
 blockquote {
-  margin: 50px 0;
+  position: relative;
+  margin: 70px 0;
   font-style: italic;
   color: #7C7C7C; }
+  blockquote:before {
+    content: '"';
+    position: absolute;
+    top: -30px;
+    left: -20px;
+    font-size: 4rem;
+    color: #ff6308; }
+  blockquote:after {
+    content: '';
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    right: -50px;
+    background: rgba(196, 196, 196, 0.3);
+    -webkit-filter: blur(15px);
+            filter: blur(15px); }
 
 cite {
   display: block;
