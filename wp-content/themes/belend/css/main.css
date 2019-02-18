@@ -543,7 +543,7 @@ a {
   margin: 0 auto; }
 
 .container-small {
-  max-width: 1160px;
+  max-width: 1320px;
   padding: 0 30px;
   margin: 0 auto; }
 
@@ -764,6 +764,15 @@ button {
   font-size: 2.2rem; }
 
 @media (min-width: 960px) {
+  .benefits {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 70px; }
+    .benefits > li {
+      padding: 0 30px; }
+    .benefits h3 {
+      padding: 0 0 0 55px; }
   .footer {
     padding: 80px 10% 80px 0;
     text-align: left; }
@@ -786,6 +795,10 @@ button {
       position: static; }
   .social-title {
     display: block; } }
+
+@media (min-width: 1260px) {
+  .benefits h3, .benefits p {
+    padding: 0 0 0 80px; } }
 
 .target {
   display: -webkit-box;

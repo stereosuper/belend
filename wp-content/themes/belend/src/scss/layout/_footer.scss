@@ -91,6 +91,17 @@
 
 
 @media (min-width: $desktop-small){
+    .benefits{
+        display: flex;
+        margin-top: 70px;
+        > li{
+            padding: 0 $gutter*2;
+        }
+        h3{
+            padding: 0 0 0 55px;
+        }
+    }
+
     .footer{
         padding: 80px 10% 80px 0;
         text-align: left;
@@ -117,5 +128,13 @@
     }
     .social-title{
         display: block;
+    }
+}
+
+@media (min-width: $desktop){
+    .benefits{
+        h3, p{
+            padding: 0 0 0 80px;
+        }
     }
 }
