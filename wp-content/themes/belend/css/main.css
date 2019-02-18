@@ -226,16 +226,25 @@ sup {
 html {
   font-size: 62.5%;
   /* sets the base font to 10px for easier math */ }
+  html.no-scroll {
+    position: fixed;
+    left: 0;
+    right: 0; }
 
 body {
   font: 1.8em / 1.35 sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 400; }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   color: #828282; }
 
 h1 {
@@ -267,10 +276,13 @@ h6 {
 p {
   margin: 1.5em 0; }
 
-b, strong, .bold {
+b,
+strong,
+.bold {
   font-weight: 800; }
 
-i, em {
+i,
+em {
   font-style: italic; }
 
 blockquote {
@@ -286,7 +298,7 @@ blockquote {
     font-size: 4rem;
     color: #ff6308; }
   blockquote:after {
-    content: '';
+    content: "";
     height: 50px;
     position: absolute;
     bottom: 0;
@@ -304,7 +316,8 @@ cite {
     display: block;
     font-style: normal; }
 
-ol, ul {
+ol,
+ul {
   padding: 0;
   margin: 1em 0;
   list-style: none; }
@@ -328,7 +341,7 @@ ol {
     margin: 1em 0; }
 
 ul > li:before {
-  content: '';
+  content: "";
   width: 3px;
   height: 3px;
   background: #ff6308; }
@@ -341,26 +354,28 @@ li {
     top: 10px;
     left: 0; }
 
-dt, dd {
+dt,
+dd {
   display: inline;
   margin: 0; }
 
 dt:after {
-  content: ': '; }
+  content: ": "; }
 
 dd + dt:before {
-  content: '\A';
+  content: "\A";
   white-space: pre; }
 
 dd + dd:before {
-  content: ', ';
+  content: ", ";
   margin: 0 0 0 -0.25em; }
 
 img {
   max-width: 100%;
   height: auto; }
 
-code, pre {
+code,
+pre {
   display: block;
   padding: 10px 15px;
   margin: 1em 0;
@@ -441,27 +456,35 @@ a {
   color: #f12525; }
 
 .dark-bg {
-  background: linear-gradient(101deg, #434343 23%, #1E1E1E 98%);
+  background: linear-gradient(101deg, #434343 23%, #1e1e1e 98%);
   color: #fff; }
-  .dark-bg h2, .dark-bg h3, .dark-bg h4 {
+  .dark-bg h2,
+  .dark-bg h3,
+  .dark-bg h4 {
     color: inherit; }
 
 .grey-bg {
-  background: linear-gradient(68deg, #333 0, #8F8F8F 100%);
+  background: linear-gradient(68deg, #333 0, #8f8f8f 100%);
   color: #fff; }
-  .grey-bg h2, .grey-bg h3, .grey-bg h4 {
+  .grey-bg h2,
+  .grey-bg h3,
+  .grey-bg h4 {
     color: inherit; }
 
 .red-bg {
-  background: linear-gradient(136deg, #903030 0, #E82424 100%);
+  background: linear-gradient(136deg, #903030 0, #e82424 100%);
   color: #fff; }
-  .red-bg h2, .red-bg h3, .red-bg h4 {
+  .red-bg h2,
+  .red-bg h3,
+  .red-bg h4 {
     color: inherit; }
 
 .orange-bg {
-  background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
+  background: linear-gradient(701deg, #f12525 32%, #ff6308 68%);
   color: #fff; }
-  .orange-bg h2, .orange-bg h3, .orange-bg h4 {
+  .orange-bg h2,
+  .orange-bg h3,
+  .orange-bg h4 {
     color: inherit; }
 
 /* Placeholders */

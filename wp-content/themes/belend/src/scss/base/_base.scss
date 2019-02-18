@@ -1,84 +1,97 @@
 /******* GÉNÉRAL *******/
 
-::-moz-selection{
+::-moz-selection {
     background: $black;
     color: $white;
     text-shadow: none;
 }
-::selection{
+::selection {
     background: $black;
     color: $white;
     text-shadow: none;
 }
 
-html{
+html {
     font-size: 62.5%; /* sets the base font to 10px for easier math */
+    &.no-scroll {
+        position: fixed;
+        left: 0;
+        right: 0;
+    }
 }
 
-body{
+body {
     font: 1.8em / 1.35 sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
     font-weight: 400;
 }
 
-h2, h3, h4{
+h2,
+h3,
+h4 {
     color: $grey;
 }
 
-h1{
+h1 {
     font-size: 4.2rem;
     margin: 0.67em 0;
     text-align: center;
 }
 
-h2{
+h2 {
     font-size: 3.6rem;
     margin: 0.83em 0;
     letter-spacing: -1px;
 }
 
-h3{
+h3 {
     font-size: 2.2rem;
     margin: 1em 0;
 }
 
-h4{
+h4 {
     font-size: 2rem;
     margin: 1.33em 0;
 }
 
-h5{
+h5 {
     font-size: 1.8rem;
     margin: 1.67em 0;
 }
 
-h6{
+h6 {
     font-size: 1.6rem;
     margin: 2.33em 0;
 }
 
-p{
+p {
     margin: 1.5em 0;
 }
 
-b, strong, .bold{
+b,
+strong,
+.bold {
     font-weight: 800;
 }
 
-i, em{
+i,
+em {
     font-style: italic;
 }
 
-blockquote{
+blockquote {
     position: relative;
     margin: 70px 0;
     font-style: italic;
     color: $dark-grey;
-    &:before{
+    &:before {
         content: '"';
         position: absolute;
         top: -30px;
@@ -86,8 +99,8 @@ blockquote{
         font-size: 4rem;
         color: $primary;
     }
-    &:after{
-        content: '';
+    &:after {
+        content: "";
         height: 50px;
         position: absolute;
         bottom: 0;
@@ -97,101 +110,104 @@ blockquote{
         filter: blur(15px);
     }
 }
-cite{
+cite {
     display: block;
     text-align: right;
     color: $black-grey;
-    .name{
+    .name {
         display: block;
         font-style: normal;
     }
 }
 
-ol, ul{
+ol,
+ul {
     padding: 0;
     margin: 1em 0;
     list-style: none;
 }
-ul{
-    ul{
+ul {
+    ul {
         padding: 0 0 0 25px;
         margin: 1em 0;
     }
 }
-ol{
+ol {
     counter-reset: ol-counter;
-    > li{
+    > li {
         counter-increment: ol-counter;
-        &:before{
-            content: counter(ol-counter)'.';
+        &:before {
+            content: counter(ol-counter) ".";
             top: 7px;
             font-size: 1.2rem;
             font-weight: 800;
             color: $primary;
         }
     }
-    ol{
+    ol {
         padding: 0 0 0 25px;
         margin: 1em 0;
     }
 }
-ul{
-    > li{
-        &:before{
-            content: '';
+ul {
+    > li {
+        &:before {
+            content: "";
             width: 3px;
             height: 3px;
             background: $primary;
         }
     }
 }
-li{
+li {
     padding: 0 0 0 20px;
     position: relative;
-    &:before{
+    &:before {
         position: absolute;
         top: 10px;
         left: 0;
     }
 }
 
-dt, dd{
+dt,
+dd {
     display: inline;
     margin: 0;
 }
-dt{
-    &:after{
-        content: ': ';
+dt {
+    &:after {
+        content: ": ";
     }
 }
-dd{
-    + dt{
-        &:before{
-            content: '\A';
+dd {
+    + dt {
+        &:before {
+            content: "\A";
             white-space: pre;
         }
     }
-    + dd{
-        &:before{
-            content: ', ';
+    + dd {
+        &:before {
+            content: ", ";
             margin: 0 0 0 -0.25em;
         }
     }
 }
 
-img{
+img {
     max-width: 100%;
     height: auto;
 }
 
-code, pre{
+code,
+pre {
     display: block;
     padding: 10px 15px;
     margin: 1em 0;
     background: grey;
 }
 
-hr{
+hr {
     height: 1px;
     max-width: 250px;
     border: 0;
@@ -199,34 +215,33 @@ hr{
     background: $black;
 }
 
-main{
+main {
     position: relative;
 }
 
-
 /******* LIENS / BOUTONS *******/
 
-a{
+a {
     color: inherit;
     text-decoration: none;
     transition: $transition;
-    &:focus, &:hover{
+    &:focus,
+    &:hover {
     }
-    &:focus{
+    &:focus {
         outline: 0;
     }
-    &:active{
+    &:active {
         filter: saturate(200%);
     }
 }
 
-
 /******* CLASSES GENERALES  *******/
 
-.hidden{
+.hidden {
     display: none !important;
 }
-.visually-hidden{
+.visually-hidden {
     width: 1px;
     height: 1px;
     padding: 0;
@@ -237,80 +252,89 @@ a{
     overflow: hidden;
 }
 
-.clearfix{
+.clearfix {
     @include clearfix;
 }
 
-.pos-relative{
+.pos-relative {
     position: relative;
 }
 
-.align-center{
+.align-center {
     text-align: center;
 }
-.align-left{
+.align-left {
     text-align: left;
 }
-.align-right{
+.align-right {
     text-align: right;
 }
 
-.icon{
+.icon {
     width: 1.2em;
     height: 1.2em;
     fill: currentColor;
 }
 
-.img-fit{
-    &.compat-object-fit{
+.img-fit {
+    &.compat-object-fit {
         background-size: cover;
         background-position: 50% 50%;
-        img{ // hide image if object fit is not supported - opacity to 0 for the link area
+        img {
+            // hide image if object fit is not supported - opacity to 0 for the link area
             opacity: 0;
         }
     }
 }
 
-.no-transition{
-    transition: none!important;
+.no-transition {
+    transition: none !important;
 }
 
-.primary{
+.primary {
     color: $primary;
 }
 
-.secondary{
+.secondary {
     color: $secondary;
 }
 
-.dark-bg{
-    background: linear-gradient(101deg, #434343 23%, #1E1E1E 98%);
+.dark-bg {
+    background: linear-gradient(101deg, #434343 23%, #1e1e1e 98%);
     color: #fff;
-    h2, h3, h4{
+    h2,
+    h3,
+    h4 {
         color: inherit;
     }
 }
 
-.grey-bg{
-    background: linear-gradient(68deg, #333 0, #8F8F8F 100%);
+.grey-bg {
+    background: linear-gradient(68deg, #333 0, #8f8f8f 100%);
     color: #fff;
-    h2, h3, h4{
+    h2,
+    h3,
+    h4 {
         color: inherit;
     }
 }
 
-.red-bg{
-    background: linear-gradient(136deg, #903030 0, #E82424 100%);
+.red-bg {
+    background: linear-gradient(136deg, #903030 0, #e82424 100%);
     color: #fff;
-    h2, h3, h4{
+    h2,
+    h3,
+    h4 {
         color: inherit;
     }
 }
 
-.orange-bg{
-    background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
+.orange-bg {
+    background: linear-gradient(701deg, #f12525 32%, #ff6308 68%);
     color: #fff;
-    h2, h3, h4{
+    h2,
+    h3,
+    h4 {
         color: inherit;
     }
 }
