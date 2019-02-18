@@ -497,10 +497,6 @@ button {
 
 /* Header */
 .main-header {
-<<<<<<< HEAD
-  padding: 27px 0 16px;
-  position: relative;
-=======
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,9 +508,8 @@ button {
   left: 0;
   right: 0;
   height: 96px;
-  padding: 0 30px;
+  padding: 0 45px;
   background-color: #fff;
->>>>>>> 🎨header nav
   z-index: 10; }
   .main-header .container {
     display: -webkit-box;
@@ -529,13 +524,9 @@ button {
     width: 100%;
     padding: 0; }
   .main-header .logo-wrapper {
-<<<<<<< HEAD
-    width: 118px; }
-=======
     width: 118px;
     text-align: center;
     z-index: 1; }
->>>>>>> 🎨header nav
   .main-header .logo {
     display: block; }
     .main-header .logo + img {
@@ -543,11 +534,6 @@ button {
       margin: 9px 0 0 32px; }
 
 .main-navigation {
-<<<<<<< HEAD
-  width: 100%;
-  padding: 0 45px;
-=======
->>>>>>> 🎨header nav
   position: fixed;
   top: 0;
   left: 100%;
@@ -564,7 +550,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 96px 30px 0; }
+    padding: 96px 45px 0; }
   .main-navigation .menu {
     font-weight: 700; }
   .main-navigation.activated {
