@@ -1120,19 +1120,21 @@ Window.prototype.toggleNoScroll = function toggleNoScroll(_ref) {
   var transitionElement = _ref.transitionElement,
       noScroll = _ref.noScroll;
 
-  if (noScroll) {
-    var removeScroll = function removeScroll() {
-      document.documentElement.style.top = "".concat(-window.scrollY, "px");
-      document.documentElement.classList.add('no-scroll');
-      transitionElement.removeEventListener('transitionend', removeScroll, false);
-    };
+  var removeScroll = function removeScroll() {
+    document.documentElement.style.top = "".concat(-window.scrollY, "px");
+    document.documentElement.classList.add('no-scroll');
+    transitionElement.removeEventListener('transitionend', removeScroll, false);
+  };
 
+  if (noScroll) {
     transitionElement.addEventListener('transitionend', removeScroll, false);
   } else {
     var scrollY = Math.abs(parseInt(document.documentElement.style.top.replace('px', ''), 10));
     document.documentElement.style.top = '';
     document.documentElement.classList.remove('no-scroll');
-    window.scrollTo(0, scrollY);
+    setTimeout(function () {
+      window.scrollTo(0, scrollY);
+    }, 0);
   }
 };
 

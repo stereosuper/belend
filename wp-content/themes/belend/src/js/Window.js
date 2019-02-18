@@ -55,18 +55,18 @@ Window.prototype.toggleNoScroll = function toggleNoScroll({
     transitionElement,
     noScroll,
 }) {
+    const removeScroll = () => {
+        document.documentElement.style.top = `${-window.scrollY}px`;
+        document.documentElement.classList.add('no-scroll');
+
+        transitionElement.removeEventListener(
+            'transitionend',
+            removeScroll,
+            false
+        );
+    };
+
     if (noScroll) {
-        const removeScroll = () => {
-            document.documentElement.style.top = `${-window.scrollY}px`;
-            document.documentElement.classList.add('no-scroll');
-
-            transitionElement.removeEventListener(
-                'transitionend',
-                removeScroll,
-                false
-            );
-        };
-
         transitionElement.addEventListener(
             'transitionend',
             removeScroll,
@@ -79,7 +79,9 @@ Window.prototype.toggleNoScroll = function toggleNoScroll({
         document.documentElement.style.top = '';
         document.documentElement.classList.remove('no-scroll');
 
-        window.scrollTo(0, scrollY);
+        setTimeout(() => {
+            window.scrollTo(0, scrollY);
+        }, 0);
     }
 };
 

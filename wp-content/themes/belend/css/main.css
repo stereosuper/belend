@@ -257,7 +257,8 @@ h2 {
   margin: 0.83em 0;
   letter-spacing: -1px; }
 
-h3 {
+h3,
+.page-template-contact .contact-container header p {
   font-size: 2.2rem;
   margin: 1em 0; }
 
@@ -785,7 +786,16 @@ button {
     font-size: 5.2rem; }
 
 .page-template-contact {
-  height: 200vh; }
+  margin-top: 96px; }
+  .page-template-contact .contact-container {
+    padding: 0 30px; }
+    .page-template-contact .contact-container header h1 {
+      color: #312F2F; }
+    .page-template-contact .contact-container header p {
+      color: #828282;
+      text-align: center; }
+    .page-template-contact .contact-container .description {
+      text-align: center; }
 
 /******* PRINT *******/
 @media print {
