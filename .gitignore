@@ -9,6 +9,8 @@
 
 node_modules/**
 
+/**
 !wp-content/
 wp-content/*
 !wp-content/mu-plugins
+!wp-content/themes
