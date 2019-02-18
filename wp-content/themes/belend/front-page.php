@@ -102,7 +102,7 @@
             </section>
         <?php endif; ?>
 
-        <section>
+        <section class='container-desk'>
             <?php $pro = get_field('pro', 'options'); if( $pro ) : ?>
                 <div class='orange-bg target t-pro'>
                     <div class='txt'>

@@ -18,3 +18,30 @@
         order: 2;
     }
 }
+
+
+@media (min-width: $desktop-small){
+    .target{
+        width: 50%;
+        .bg{
+            width: 25%;
+        }
+        .txt{
+            width: 60%;
+        }
+    }
+
+    .t-pro{
+        float: right;
+        right: 50px;
+        z-index: 1;
+        .txt{
+            order: 2;
+        }
+    }
+
+    .t-individual{
+        margin: 100px 0 0;
+        left: 50px;
+    }
+}

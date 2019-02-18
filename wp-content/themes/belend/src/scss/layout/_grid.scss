@@ -1,13 +1,24 @@
 /* Grid */
 
-.container {
-    max-width: #{1200px + $gutter * 4};
+.container, .container-small{
     padding: 0 $gutter * 2;
     margin: 0 auto;
 }
 
+.container {
+    max-width: #{1200px + $gutter * 4};
+}
+
 .container-small {
     max-width: #{$desktop + $gutter * 4};
-    padding: 0 $gutter * 2;
-    margin: 0 auto;
+}
+
+
+@media (min-width: $desktop-small){
+    .container-desk{
+        max-width: #{1200px + $gutter * 4};
+        padding: 5px $gutter * 2;
+        margin: 0 auto;
+        overflow: hidden;
+    }
 }

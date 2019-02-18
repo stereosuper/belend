@@ -537,15 +537,22 @@ a {
 
 /* Placeholders */
 /* Grid */
-.container {
-  max-width: 1260px;
+.container, .container-small {
   padding: 0 30px;
   margin: 0 auto; }
 
+.container {
+  max-width: 1260px; }
+
 .container-small {
-  max-width: 1320px;
-  padding: 0 30px;
-  margin: 0 auto; }
+  max-width: 1320px; }
+
+@media (min-width: 960px) {
+  .container-desk {
+    max-width: 1260px;
+    padding: 5px 30px;
+    margin: 0 auto;
+    overflow: hidden; } }
 
 /* Forms */
 input, textarea, select, button {
@@ -818,6 +825,25 @@ button {
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2; }
+
+@media (min-width: 960px) {
+  .target {
+    width: 50%; }
+    .target .bg {
+      width: 25%; }
+    .target .txt {
+      width: 60%; }
+  .t-pro {
+    float: right;
+    right: 50px;
+    z-index: 1; }
+    .t-pro .txt {
+      -webkit-box-ordinal-group: 3;
+          -ms-flex-order: 2;
+              order: 2; }
+  .t-individual {
+    margin: 100px 0 0;
+    left: 50px; } }
 
 /* Buttons */
 .btn, .link, .btn-invert {
