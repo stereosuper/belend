@@ -3,16 +3,43 @@
 
     .contact-container {
         header {
+            margin: 0 0 $line-height;
             h1 {
+                margin-bottom: $line-height * 2;
                 color: $black-grey;
             }
-            p {
+            .subtitle {
                 color: $grey;
                 text-align: center;
+                font-size: 2.4rem;
+                p {
+                    margin: 0;
+                }
             }
         }
         .description {
+            margin: 0 0 #{$line-height * 2};
             text-align: center;
+        }
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .page-template-contact {
+        .contact-container {
+            header {
+                margin-bottom: $line-height * 2;
+                h1 {
+                    margin-bottom: $line-height * 6;
+                    font-size: 6.4rem;
+                }
+                .subtitle {
+                    font-size: 3.6rem;
+                }
+            }
+            .description {
+                margin: 0 0 #{$line-height * 4};
+            }
         }
     }
 }

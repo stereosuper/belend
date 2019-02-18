@@ -11,7 +11,7 @@ get_header();
                 <h1><?php echo $title ?></h1>
             <?php endif; ?>
             <?php if ($sub_title = get_the_content()): ?>
-                <p class="h3"><?php echo $sub_title ?></p>
+                <div class="subtitle"><?php echo $sub_title ?></div>
             <?php endif; ?>
         </header>
         <div class="contact-content">

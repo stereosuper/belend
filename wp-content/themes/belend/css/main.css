@@ -292,7 +292,7 @@ blockquote {
   position: relative;
   margin: 70px 0;
   font-style: italic;
-  color: #7C7C7C; }
+  color: #7c7c7c; }
   blockquote:before {
     content: '"';
     position: absolute;
@@ -341,7 +341,7 @@ cite {
       -ms-flex-align: start;
           align-items: flex-start;
   text-align: right;
-  color: #312F2F; }
+  color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
@@ -847,13 +847,31 @@ button {
 
 .page-template-contact {
   margin-top: 96px; }
-  .page-template-contact .contact-container header h1 {
-    color: #312F2F; }
-  .page-template-contact .contact-container header p {
-    color: #828282;
-    text-align: center; }
+  .page-template-contact .contact-container header {
+    margin: 0 0 25px; }
+    .page-template-contact .contact-container header h1 {
+      margin-bottom: 50px;
+      color: #312f2f; }
+    .page-template-contact .contact-container header .subtitle {
+      color: #828282;
+      text-align: center;
+      font-size: 2.4rem; }
+      .page-template-contact .contact-container header .subtitle p {
+        margin: 0; }
   .page-template-contact .contact-container .description {
+    margin: 0 0 50px;
     text-align: center; }
+
+@media (min-width: 960px) {
+  .page-template-contact .contact-container header {
+    margin-bottom: 50px; }
+    .page-template-contact .contact-container header h1 {
+      margin-bottom: 150px;
+      font-size: 6.4rem; }
+    .page-template-contact .contact-container header .subtitle {
+      font-size: 3.6rem; }
+  .page-template-contact .contact-container .description {
+    margin: 0 0 100px; } }
 
 /******* PRINT *******/
 @media print {
