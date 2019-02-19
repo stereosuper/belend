@@ -53,7 +53,7 @@
             </div>
         </header>
 
-        <section class='dark-bg home-map'>
+        <section class='home-map'>
             <div class='container'>
                 <?php $loc = get_field('localisation'); if( $loc ) : ?>
                     <h2><?php echo $loc['locTitle']; ?></h2>
@@ -70,7 +70,7 @@
             </div>
         </section>
 
-        <section class='red-bg align-center home-nb'>
+        <section class='home-nb align-center'>
             <div class='container'>
                 <?php if( get_field('nbText') ) : ?>
                     <h3><?php the_field('nbText'); ?></h3>
@@ -106,7 +106,7 @@
 
         <section class='container-desk'>
             <?php $pro = get_field('pro', 'options'); if( $pro ) : ?>
-                <div class='orange-bg target t-pro'>
+                <div class='target t-pro'>
                     <div class='txt'>
                         <h2><?php echo $pro['title']; ?></h2>
                         <?php echo $pro['text']; ?>
@@ -122,7 +122,7 @@
             <?php endif; ?>
 
             <?php $individual = get_field('individual', 'options'); if( $individual ) : ?>
-                <div class='grey-bg target t-individual'>
+                <div class='target t-individual'>
                     <div class='txt'>
                         <h2><?php echo $individual['title']; ?></h2>
                         <?php echo $individual['text']; ?>

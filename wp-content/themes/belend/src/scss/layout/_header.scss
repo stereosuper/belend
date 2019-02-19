@@ -75,7 +75,7 @@ $header-height: 96px;
         right: 0;
         bottom: 0;
         margin: auto;
-        background: $primary;
+        background: $primary-color;
         transition: comme-dans-du-beurre(
             (
                 background-color: "0.23s 0.23s"
@@ -89,7 +89,7 @@ $header-height: 96px;
             height: 100%;
             top: 0;
             left: 0;
-            background: $primary;
+            background: $primary-color;
             border-radius: 5px;
             transform-origin: 50% 50%;
             transition: comme-dans-du-beurre(

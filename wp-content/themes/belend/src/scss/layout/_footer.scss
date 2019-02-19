@@ -1,25 +1,25 @@
 /* Footer */
 
-.benefits{
+.benefits {
     margin: 10px 0 50px;
     font-size: 1.4rem;
     line-height: 1.8;
     color: $dark-red;
-    > li{
+    > li {
         padding: 35px 0 0;
-        &:before{
+        &:before {
             content: none;
         }
     }
-    h3{
+    h3 {
         padding: 0 0 0 70px;
         margin: 0 0 20px;
         color: inherit;
     }
-    .title{
+    .title {
         position: relative;
     }
-    img{
+    img {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -27,113 +27,113 @@
     }
 }
 
-.footer{
+.footer {
     padding: 40px 0;
     text-align: center;
     color: #fff;
-    background: linear-gradient(701deg, #F12525 32%, #FF6308 68%);
+    @include background-gradient(26deg, "orange");
 }
 
-.logo-footer{
+.logo-footer {
     width: 175px;
     margin: 0 auto 50px;
-    img:first-child{
+    img:first-child {
         display: block;
         margin: 0 auto 25px;
     }
 }
 
-.menu-footer{
+.menu-footer {
     margin: 0 0 60px;
     font-size: 1.4rem;
-    > li{
+    > li {
         padding: 0;
         margin: 0 0 30px;
-        &:before{
+        &:before {
             content: none;
         }
     }
-    a{
+    a {
         border-bottom: 1px solid;
     }
 }
 
-.social{
+.social {
     display: flex;
     margin: 0;
     font-size: 1.4rem;
     justify-content: center;
-    > li{
+    > li {
         padding: 0;
         margin: 0 20px;
         overflow: hidden;
-        &:before{
+        &:before {
             content: none;
         }
     }
-    span{
+    span {
         position: absolute;
         top: -100em;
         left: -100em;
         margin: 0 0 0 10px;
         border-bottom: 1px solid;
     }
-    .icon{
+    .icon {
         width: 32px;
         height: 32px;
     }
 }
-.social-title{
+.social-title {
     display: none;
     margin: 0 0 20px;
     font-size: 2.2rem;
 }
 
-
-@media (min-width: $desktop-small){
-    .benefits{
+@media (min-width: $desktop-small) {
+    .benefits {
         display: flex;
         margin-top: 70px;
-        > li{
-            padding: 0 $gutter*2;
+        > li {
+            padding: 0 $gutter * 2;
         }
-        h3{
+        h3 {
             padding: 0 0 0 55px;
         }
     }
 
-    .footer{
+    .footer {
         padding: 80px 10% 80px 0;
         text-align: left;
-        > .container{
+        > .container {
             display: flex;
             justify-content: space-between;
         }
     }
 
-    .logo-footer{
+    .logo-footer {
         width: 310px;
         margin: 0;
         text-align: center;
     }
 
-    .social{
+    .social {
         display: block;
-        > li{
+        > li {
             margin: 0 0 20px;
         }
-        span{
+        span {
             position: static;
         }
     }
-    .social-title{
+    .social-title {
         display: block;
     }
 }
 
-@media (min-width: $desktop){
-    .benefits{
-        h3, p{
+@media (min-width: $desktop) {
+    .benefits {
+        h3,
+        p {
             padding: 0 0 0 80px;
         }
     }

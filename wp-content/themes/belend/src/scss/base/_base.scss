@@ -21,22 +21,30 @@ html {
 }
 
 body {
-    font: 1.8em / 1.35 'upgrade', sans-serif;
+    font: 1.8em / 1.35 "upgrade", sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-main{
+main {
     overflow: hidden;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
 }
 
-h1, h2, h3, h4{
-    font-family: 'upgrade-lights';
+h1,
+h2,
+h3,
+h4 {
+    font-family: "upgrade-lights";
 }
 
 h2,
@@ -50,8 +58,8 @@ h1,
     font-size: 4.2rem;
     margin: 0.67em 0;
     text-align: center;
-    > span{
-        font-family: 'upgrade';
+    > span {
+        font-family: "upgrade";
         font-weight: 400;
     }
 }
@@ -111,7 +119,7 @@ blockquote {
         top: -30px;
         left: -20px;
         font-size: 4rem;
-        color: $primary;
+        color: $primary-color;
     }
     &:after {
         content: "";
@@ -124,14 +132,14 @@ blockquote {
         background: rgba(196, 196, 196, 0.3);
         filter: blur(44px);
     }
-    p{
-        padding: 0 $gutter*2 20px;
+    p {
+        padding: 0 $gutter * 2 20px;
         position: relative;
         z-index: 10;
-        margin: 20px $gutter*-2;
+        margin: 20px $gutter * -2;
         background: #fff;
-        &:after{
-            content: '';
+        &:after {
+            content: "";
             width: 20px;
             height: 20px;
             position: absolute;
@@ -143,21 +151,21 @@ blockquote {
         }
     }
 }
-cite{
+cite {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-    font-family: 'upgrade-lights';
+    font-family: "upgrade-lights";
     text-align: right;
     color: $black-grey;
     .name {
         display: block;
         margin: 5px 0 0;
-        font-family: 'upgrade';
+        font-family: "upgrade";
         font-style: normal;
         font-weight: 400;
     }
-    .img{
+    .img {
         width: 46px;
         height: 46px;
         overflow: hidden;
@@ -187,7 +195,7 @@ ol {
             top: 7px;
             font-size: 1.2rem;
             font-weight: 800;
-            color: $primary;
+            color: $primary-color;
         }
     }
     ol {
@@ -201,7 +209,7 @@ ul {
             content: "";
             width: 3px;
             height: 3px;
-            background: $primary;
+            background: $primary-color;
         }
     }
 }
@@ -338,49 +346,9 @@ a {
 }
 
 .primary {
-    color: $primary;
+    color: $primary-color;
 }
 
 .secondary {
-    color: $secondary;
-}
-
-.dark-bg {
-    background: linear-gradient(101deg, #434343 23%, #1e1e1e 98%);
-    color: #fff;
-    h2,
-    h3,
-    h4 {
-        color: inherit;
-    }
-}
-
-.grey-bg {
-    background: linear-gradient(68deg, #333 0, #8f8f8f 100%);
-    color: #fff;
-    h2,
-    h3,
-    h4 {
-        color: inherit;
-    }
-}
-
-.red-bg {
-    background: linear-gradient(136deg, #903030 0, #e82424 100%);
-    color: #fff;
-    h2,
-    h3,
-    h4 {
-        color: inherit;
-    }
-}
-
-.orange-bg {
-    background: linear-gradient(701deg, #f12525 32%, #ff6308 68%);
-    color: #fff;
-    h2,
-    h3,
-    h4 {
-        color: inherit;
-    }
+    color: $secondary-color;
 }

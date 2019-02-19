@@ -61,10 +61,32 @@
 @mixin btn-gradient() {
     background: linear-gradient(
         27.6deg,
-        $secondary 0%,
-        $primary 25%,
-        $secondary 50%,
-        $primary 75%,
-        $secondary 100%
+        $secondary-color 0%,
+        $primary-color 25%,
+        $secondary-color 50%,
+        $primary-color 75%,
+        $secondary-color 100%
     );
+}
+
+@mixin background-gradient($angle, $color) {
+    color: #fff;
+    @if ($color == "orange") {
+        background: linear-gradient(
+            $angle,
+            $secondary-color 32%,
+            $primary-color 68%
+        );
+    } @else if ($color == "red") {
+        background: linear-gradient($angle, #903030 0, #e82424 100%);
+    } @else if ($color == "grey") {
+        background: linear-gradient($angle, #333 0, #8f8f8f 100%);
+    } @else if ($color == "dark") {
+        background: linear-gradient($angle, #434343 23%, #1e1e1e 98%);
+    }
+    h2,
+    h3,
+    h4 {
+        color: inherit;
+    }
 }

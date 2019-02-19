@@ -1,6 +1,5 @@
 .page-template-contact {
     margin-top: $header-height;
-
     .contact-container {
         header {
             margin: 0 0 $line-height;
@@ -21,6 +20,9 @@
             margin: 0 0 #{$line-height * 2};
             text-align: center;
         }
+    }
+    .offer {
+        padding: $line-height * 2 $gutter * 2;
     }
 }
 

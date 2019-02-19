@@ -21,9 +21,9 @@ get_header();
         </div>
     </article>
     <?php if( have_rows('sections') ): ?>
-        <section>
+        <article class="offers">
             <?php while ( have_rows('sections') ) : the_row(); ?>
-                <section>
+                <section class="offer">
                     <header>
                         <?php if ($title = get_sub_field('title')): ?>
                             <h2><?php echo $title ?></h2>
@@ -42,12 +42,12 @@ get_header();
                                 $target = 'target="'. $link['target'] . '"';
                                 $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
                         ?>
-                            <a href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>><?php echo $title ?></a>
+                            <a href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>><?php echo $title ?></article>
                         <?php endif; ?>
                     </footer>
                 </section>
             <?php endwhile; ?>
-        </section>
+        </article>
     <?php endif; ?>
 <?php endif; ?>
 <?php get_footer(); ?>

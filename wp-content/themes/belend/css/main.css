@@ -232,7 +232,7 @@ html {
     right: 0; }
 
 body {
-  font: 1.8em / 1.35 'upgrade', sans-serif;
+  font: 1.8em / 1.35 "upgrade", sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -240,11 +240,19 @@ body {
 main {
   overflow: hidden; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400; }
 
-h1, h2, h3, h4 {
-  font-family: 'upgrade-lights'; }
+h1,
+h2,
+h3,
+h4 {
+  font-family: "upgrade-lights"; }
 
 h2,
 h3,
@@ -258,7 +266,7 @@ h1,
   text-align: center; }
   h1 > span,
   .h1 > span {
-    font-family: 'upgrade';
+    font-family: "upgrade";
     font-weight: 400; }
 
 h2,
@@ -327,7 +335,7 @@ blockquote {
     margin: 20px -30px;
     background: #fff; }
     blockquote p:after {
-      content: '';
+      content: "";
       width: 20px;
       height: 20px;
       position: absolute;
@@ -349,13 +357,13 @@ cite {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  font-family: 'upgrade-lights';
+  font-family: "upgrade-lights";
   text-align: right;
   color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
-    font-family: 'upgrade';
+    font-family: "upgrade";
     font-style: normal;
     font-weight: 400; }
   cite .img {
@@ -503,38 +511,6 @@ a {
 
 .secondary {
   color: #f12525; }
-
-.dark-bg {
-  background: linear-gradient(101deg, #434343 23%, #1e1e1e 98%);
-  color: #fff; }
-  .dark-bg h2,
-  .dark-bg h3,
-  .dark-bg h4 {
-    color: inherit; }
-
-.grey-bg {
-  background: linear-gradient(68deg, #333 0, #8f8f8f 100%);
-  color: #fff; }
-  .grey-bg h2,
-  .grey-bg h3,
-  .grey-bg h4 {
-    color: inherit; }
-
-.red-bg {
-  background: linear-gradient(136deg, #903030 0, #e82424 100%);
-  color: #fff; }
-  .red-bg h2,
-  .red-bg h3,
-  .red-bg h4 {
-    color: inherit; }
-
-.orange-bg {
-  background: linear-gradient(701deg, #f12525 32%, #ff6308 68%);
-  color: #fff; }
-  .orange-bg h2,
-  .orange-bg h3,
-  .orange-bg h4 {
-    color: inherit; }
 
 /* Placeholders */
 /* Grid */
@@ -721,7 +697,12 @@ button {
   padding: 40px 0;
   text-align: center;
   color: #fff;
-  background: linear-gradient(701deg, #F12525 32%, #FF6308 68%); }
+  color: #fff;
+  background: linear-gradient(26deg, #f12525 32%, #ff6308 68%); }
+  .footer h2,
+  .footer h3,
+  .footer h4 {
+    color: inherit; }
 
 .logo-footer {
   width: 175px;
@@ -805,7 +786,8 @@ button {
     display: block; } }
 
 @media (min-width: 1260px) {
-  .benefits h3, .benefits p {
+  .benefits h3,
+  .benefits p {
     padding: 0 0 0 80px; } }
 
 .target {
@@ -822,10 +804,25 @@ button {
     width: 80%;
     padding: 10px 30px 40px; }
 
-.t-individual .txt {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2; }
+.t-individual {
+  color: #fff;
+  background: linear-gradient(50deg, #333 0, #8f8f8f 100%); }
+  .t-individual h2,
+  .t-individual h3,
+  .t-individual h4 {
+    color: inherit; }
+  .t-individual .txt {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2; }
+
+.t-pro {
+  color: #fff;
+  background: linear-gradient(50deg, #f12525 32%, #ff6308 68%); }
+  .t-pro h2,
+  .t-pro h3,
+  .t-pro h4 {
+    color: inherit; }
 
 @media (min-width: 960px) {
   .target {
@@ -919,17 +916,29 @@ button {
     margin: 0 auto 5px; }
 
 .home-map {
-  padding: 30px 0 80px; }
+  padding: 30px 0 80px;
+  color: #fff;
+  background: linear-gradient(117deg, #434343 23%, #1e1e1e 98%); }
+  .home-map h2,
+  .home-map h3,
+  .home-map h4 {
+    color: inherit; }
 
 .home-nb {
   padding: 43px 0 38px;
-  margin: -1px auto 0; }
+  margin: -1px auto 0;
+  color: #fff;
+  background: linear-gradient(127deg, #903030 0, #e82424 100%); }
+  .home-nb h2,
+  .home-nb h3,
+  .home-nb h4 {
+    color: inherit; }
   .home-nb h3 {
     margin: 0 0 20px;
     font-size: 1.8rem; }
   .home-nb span {
     font-size: 5.2rem;
-    font-family: 'upgrade-lights'; }
+    font-family: "upgrade-lights"; }
 
 @media (min-width: 780px) {
   .home-quotes-wrapper {
@@ -1031,6 +1040,8 @@ button {
   .page-template-contact .contact-container .description {
     margin: 0 0 50px;
     text-align: center; }
+  .page-template-contact .offer {
+    padding: 50px 30px; }
 
 @media (min-width: 960px) {
   .page-template-contact .contact-container header {

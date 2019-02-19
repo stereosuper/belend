@@ -1,46 +1,50 @@
-.target{
+.target {
     display: flex;
     position: relative;
     overflow: hidden;
-    .bg{
+    .bg {
         width: 20%;
         background-size: cover;
         background-position: 50% 50%;
     }
-    .txt{
+    .txt {
         width: 80%;
-        padding: 10px $gutter*2 40px;
+        padding: 10px $gutter * 2 40px;
     }
 }
 
-.t-individual{
-    .txt{
+.t-individual {
+    @include background-gradient(50deg, "grey");
+    .txt {
         order: 2;
     }
 }
 
+.t-pro {
+    @include background-gradient(50deg, "orange");
+}
 
-@media (min-width: $desktop-small){
-    .target{
+@media (min-width: $desktop-small) {
+    .target {
         width: 50%;
-        .bg{
+        .bg {
             width: 25%;
         }
-        .txt{
+        .txt {
             width: 60%;
         }
     }
 
-    .t-pro{
+    .t-pro {
         float: right;
         right: 50px;
         z-index: 1;
-        .txt{
+        .txt {
             order: 2;
         }
     }
 
-    .t-individual{
+    .t-individual {
         margin: 100px 0 0;
         left: 50px;
     }
