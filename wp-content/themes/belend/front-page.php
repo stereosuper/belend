@@ -146,18 +146,20 @@
         </section>
 
         <?php if( have_rows('benefits', 'options') ): ?>
-            <section class='container'>
-                <ul class='benefits'>
-                    <?php while ( have_rows('benefits', 'options') ) : the_row(); ?>
-                        <li>
-                            <div class='title'>
-                                <?php echo wp_get_attachment_image(get_sub_field('icon'), 'full'); ?>
-                                <h3><?php the_sub_field('title'); ?></h3>
-                            </div>
-                            <?php the_sub_field('text'); ?>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
+            <section class='benefits-wrapper'>
+                <div class='container'>
+                    <ul class='benefits'>
+                        <?php while ( have_rows('benefits', 'options') ) : the_row(); ?>
+                            <li>
+                                <div class='title'>
+                                    <?php echo wp_get_attachment_image(get_sub_field('icon'), 'full'); ?>
+                                    <h3><?php the_sub_field('title'); ?></h3>
+                                </div>
+                                <?php the_sub_field('text'); ?>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                </div>
             </section>
         <?php endif; ?>
         
