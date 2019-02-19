@@ -1192,6 +1192,12 @@ button {
   .page-template-contact .contact-container .description {
     margin: 0 0 50px;
     text-align: center; }
+  .page-template-contact .gform_wrapper .gform_body ul {
+    margin: 0; }
+    .page-template-contact .gform_wrapper .gform_body ul li {
+      padding: 0; }
+      .page-template-contact .gform_wrapper .gform_body ul li::before {
+        content: none; }
   .page-template-contact .offer {
     padding: 50px 30px; }
     .page-template-contact .offer:first-child {
