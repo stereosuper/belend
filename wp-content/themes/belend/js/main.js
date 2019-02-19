@@ -1204,11 +1204,13 @@ var burgerHandler = function burgerHandler(windowHandler) {
       mainNav.classList.toggle('activated');
 
       if (state.burgerActivated) {
+        mainNav.setAttribute('aria-expanded', true);
         windowHandler.toggleNoScroll({
           transitionElement: mainNav,
           noScroll: true
         });
       } else {
+        mainNav.setAttribute('aria-expanded', false);
         windowHandler.toggleNoScroll({
           transitionElement: mainNav,
           noScroll: false

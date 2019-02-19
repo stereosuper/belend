@@ -14,7 +14,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class='main-header' role='banner'>
+		<header class='main-header'>
 			<div class='container'>
 				<div class='logo-wrapper'>
 					<a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
@@ -25,7 +25,7 @@
 
 				<button class='burger js-burger'><span></span></button>
 
-				<nav class="main-navigation js-main-navigation" role="navigation" aria-modal="true">
+				<nav class="main-navigation js-main-navigation" aria-expanded="false">
 					<div class="main-navigation-container">
 						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu')); ?>
 					</div>
@@ -33,4 +33,4 @@
 			</div>
 		</header>
 
-		<main role='main'>
+		<main>

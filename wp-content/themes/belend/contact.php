@@ -20,5 +20,34 @@ get_header();
             <?php endif; ?>
         </div>
     </article>
+    <?php if( have_rows('sections') ): ?>
+        <section>
+            <?php while ( have_rows('sections') ) : the_row(); ?>
+                <section>
+                    <header>
+                        <?php if ($title = get_sub_field('title')): ?>
+                            <h2><?php echo $title ?></h2>
+                        <?php endif; ?>
+                    </header>
+                    <div>
+                        <?php if ($text = get_sub_field('text')): ?>
+                            <?php echo $text ?>
+                        <?php endif; ?>
+                    </div>
+                    <footer>
+                        <?php
+                            if ($link = get_sub_field('link')): 
+                                $url = $link['url'];
+                                $title = $link['title'];
+                                $target = 'target="'. $link['target'] . '"';
+                                $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
+                        ?>
+                            <a href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>><?php echo $title ?></a>
+                        <?php endif; ?>
+                    </footer>
+                </section>
+            <?php endwhile; ?>
+        </section>
+    <?php endif; ?>
 <?php endif; ?>
 <?php get_footer(); ?>
