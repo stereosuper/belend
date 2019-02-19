@@ -10,9 +10,10 @@
 node_modules/**
 
 *.php
-wp-content/**
+wp-content/languages
+wp-content/plugins
+wp-content/upgrade
+wp-content/uploads
+wp-content/*.php
 wp-admin/**
 wp-includes/**
-!wp-content/
-!wp-content/mu-plugins
-!wp-content/themes
