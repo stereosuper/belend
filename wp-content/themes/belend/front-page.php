@@ -3,7 +3,7 @@
     <?php if ( have_posts() ) : the_post(); ?>
 
         <header class='hero'>
-            <div>
+            <div class='container-desk-big'>
                 <div class='banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)'></div>
 
                 <div class='intro'>

@@ -536,6 +536,12 @@ a {
     margin: 0 auto;
     overflow: hidden; } }
 
+@media (min-width: 1300px) {
+  .container-desk-big {
+    max-width: 1260px;
+    padding: 5px 30px;
+    margin: 0 auto; } }
+
 /* Forms */
 input, textarea, select, button {
   -webkit-transition: 0.3s ease-in-out;
@@ -1177,11 +1183,11 @@ button {
       margin-right: 7.5px; }
   .intro {
     margin-top: 200px;
-    margin-left: 15%; }
+    margin-left: 150px; }
   .banner-img {
     width: 575px;
     height: 800px;
-    left: 50%; } }
+    left: 52%; } }
 
 .page-template-contact {
   margin-top: 96px; }
