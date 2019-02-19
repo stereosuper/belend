@@ -104,6 +104,7 @@ blockquote {
     margin: 70px 0;
     font-style: italic;
     color: $dark-grey;
+    background: #fff;
     &:before {
         content: '"';
         position: absolute;

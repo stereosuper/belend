@@ -63,3 +63,82 @@
         font-family: 'upgrade-lights';
     }
 }
+
+
+@media (min-width: $tablet){
+    .home-quotes{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .home-quote{
+        width: 45%;
+        margin: 20px 0 50px;
+        &:last-of-type{
+            margin-top: 100px;
+        }
+        > p{
+            &:after{
+                right: 20%;
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop){
+    .home-quotes-wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 100px;
+        > h2{
+            width: 25%;
+        }
+    }
+
+    .home-quotes{
+        width: 75%;
+    }
+
+    .home-quote{
+        width: 47%;
+        &:before{
+            top: 5px;
+            left: 10px;
+            z-index: 20;
+        }
+        &:after{
+            left: -20px;
+            right: -20px;
+            bottom: 100px;
+            filter: blur(25px);
+        }
+        &:first-of-type{
+            margin-top: -130px;
+        }
+        &:last-of-type{
+            margin-top: 30px;
+        }
+        > p{
+            padding-top: 20px;
+            margin: 0;
+            &:after{
+                right: 15%;
+            }
+        }
+        cite{
+            margin-top: 40px;
+            align-items: flex-end;
+            > div{
+                &:first-child{
+                    margin-bottom: -10px;
+                }
+            }
+            .img{
+                width: 105px;
+                height: 105px;
+            }
+        }
+    }
+}

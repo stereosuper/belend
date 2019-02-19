@@ -80,24 +80,26 @@
         </section>
         
         <?php $quotes = get_field('quotes'); if( $quotes ) : ?>
-            <section class='container'>
+            <section class='home-quotes-wrapper container'>
                 <h2><?php echo $quotes['quotesTitle']; ?></h2>
                 
                 <?php if( $quotes['quotes'] ): ?>
-                    <?php foreach( $quotes['quotes'] as $quote ) : ?>
-                        <blockquote>
-                            <p><?php echo $quote['quote']; ?></p>
-                            <cite>
-                                <div>
-                                    <span class='name'><?php echo $quote['name']; ?></span>
-                                    <?php echo $quote['job']; ?>
-                                </div>
-                                <div class='img'>
-                                    <?php echo wp_get_attachment_image($quote['photo']); ?>
-                                </div>
-                            </cite>
-                        </blockquote>
-                    <?php endforeach; ?>
+                    <div class='home-quotes'>
+                        <?php foreach( $quotes['quotes'] as $quote ) : ?>
+                            <blockquote class='home-quote'>
+                                <p><?php echo $quote['quote']; ?></p>
+                                <cite>
+                                    <div>
+                                        <span class='name'><?php echo $quote['name']; ?></span>
+                                        <?php echo $quote['job']; ?>
+                                    </div>
+                                    <div class='img'>
+                                        <?php echo wp_get_attachment_image($quote['photo']); ?>
+                                    </div>
+                                </cite>
+                            </blockquote>
+                        <?php endforeach; ?>
+                    </div>
                 <?php endif; ?>
             </section>
         <?php endif; ?>

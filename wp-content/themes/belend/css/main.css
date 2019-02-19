@@ -300,7 +300,8 @@ blockquote {
   position: relative;
   margin: 70px 0;
   font-style: italic;
-  color: #7c7c7c; }
+  color: #7c7c7c;
+  background: #fff; }
   blockquote:before {
     content: '"';
     position: absolute;
@@ -929,6 +930,73 @@ button {
   .home-nb span {
     font-size: 5.2rem;
     font-family: 'upgrade-lights'; }
+
+@media (min-width: 780px) {
+  .home-quotes {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; }
+  .home-quote {
+    width: 45%;
+    margin: 20px 0 50px; }
+    .home-quote:last-of-type {
+      margin-top: 100px; }
+    .home-quote > p:after {
+      right: 20%; } }
+
+@media (min-width: 1260px) {
+  .home-quotes-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin-bottom: 100px; }
+    .home-quotes-wrapper > h2 {
+      width: 25%; }
+  .home-quotes {
+    width: 75%; }
+  .home-quote {
+    width: 47%; }
+    .home-quote:before {
+      top: 5px;
+      left: 10px;
+      z-index: 20; }
+    .home-quote:after {
+      left: -20px;
+      right: -20px;
+      bottom: 100px;
+      -webkit-filter: blur(25px);
+              filter: blur(25px); }
+    .home-quote:first-of-type {
+      margin-top: -130px; }
+    .home-quote:last-of-type {
+      margin-top: 30px; }
+    .home-quote > p {
+      padding-top: 20px;
+      margin: 0; }
+      .home-quote > p:after {
+        right: 15%; }
+    .home-quote cite {
+      margin-top: 40px;
+      -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end; }
+      .home-quote cite > div:first-child {
+        margin-bottom: -10px; }
+      .home-quote cite .img {
+        width: 105px;
+        height: 105px; } }
 
 .page-template-contact {
   margin-top: 96px; }
