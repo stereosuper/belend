@@ -22,7 +22,7 @@
     right: 0;
     left: 0;
     background-size: cover;
-    background-position: 50% 50%;
+    background-position: 0 20%;
 }
 
 .intro {
@@ -133,6 +133,52 @@
             margin: 0 $gutter 0 0;
         }
     }
+
+    .intro{
+        width: 500px;
+        padding: 45px 30px 70px 50px;
+        margin-left: $gutter*2;
+        text-align: left;
+        background: #fff;
+        > .text{
+            padding: 0;
+            margin: 0;
+        }
+        > .container{
+            padding: 0;
+        }
+    }
+
+    .hero{
+        background: $grey-light url(../../img/b.svg) 30px -30px no-repeat;
+    }
+
+    .banner-img{
+        width: 400px;
+        height: 560px;
+        left: 55%;
+        top: 165px;
+        box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
+    }
+
+    .home-benefits-wrapper{
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: $desktop-small){
+    .intro{
+        width: 650px;
+    }
+
+    .banner-img{
+        width: 450px;
+        height: 625px;
+    }
+
+    .home-benefits-wrapper{
+        margin-top: 100px;
+    }
 }
 
 @media (min-width: $desktop) {
@@ -215,6 +261,7 @@
     }
 
     .home-benefits-wrapper{
+        margin-top: 0;
         text-align: left;
     }
     .home-benefits{
@@ -234,28 +281,12 @@
     }
 
     .intro{
-        width: 650px;
-        padding: 45px 30px 70px 50px;
         margin-left: 15%;
-        text-align: left;
-        background: #fff;
-        > .text{
-            padding: 0;
-            margin: 0;
-        }
-        > .container{
-            padding: 0;
-        }
-    }
-
-    .hero{
-        background: $grey-light;
     }
     
     .banner-img{
         width: 575px;
         height: 800px;
         left: 50%;
-        top: 165px;
     }
 }

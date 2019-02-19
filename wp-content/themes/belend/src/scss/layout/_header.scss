@@ -3,21 +3,21 @@ $header-height: 96px;
 
 .main-header {
     display: flex;
-    align-items: center;
+    height: $header-height;
+    padding: 0 $gutter * 3;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: $header-height;
-    padding: 0 $gutter * 3;
-    background-color: $white;
     z-index: 100;
+    align-items: center;
+    background: $white;
     .container {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
         width: 100%;
         padding: 0;
+        justify-content: space-between;
+        align-items: flex-start;
     }
     .logo-wrapper {
         width: 118px;
@@ -28,6 +28,7 @@ $header-height: 96px;
         display: block;
         + img {
             display: block;
+            width: 64px;
             margin: 9px 0 0 32px;
         }
     }
@@ -45,20 +46,26 @@ $header-height: 96px;
             transform: "0.23s"
         )
     );
-    .main-navigation-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: $header-height $gutter * 3 0;
-    }
     .menu {
         font-weight: 700;
+        > li{
+            &:before{
+                content: none;
+            }
+        }
     }
     &.activated {
         transform: translate3d(-100%, 0, 0);
     }
+}
+
+.main-navigation-container {
+    padding: $header-height $gutter * 3 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .burger {
@@ -81,12 +88,11 @@ $header-height: 96px;
                 background-color: "0.23s 0.23s"
             )
         );
-        &:before,
-        &:after {
-            content: "";
-            position: absolute;
+        &:before, &:after {
+            content: '';
             width: 100%;
             height: 100%;
+            position: absolute;
             top: 0;
             left: 0;
             background: $primary-color;
@@ -126,6 +132,59 @@ $header-height: 96px;
             }
             &:after {
                 transform: translate(0, 0) rotateZ(45deg);
+            }
+        }
+    }
+}
+
+
+@media (min-width: $tablet){
+    .main-header{
+        .logo-wrapper{
+            display: flex;
+            width: 250px;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media (min-width: $desktop-small){
+    .main-header{
+        background: none;
+        .logo-wrapper{
+            width: 335px;
+        }
+        .logo{
+            > img{
+                width: 200px;
+            }
+            + img{
+                width: 95px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .burger{
+        display: none;
+    }
+
+    .main-navigation{
+        position: static;
+        background: none;
+    }
+
+    .main-navigation-container{
+        padding: 0;
+        position: static;
+        .menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            > li{
+                padding: 0 0 0 35px;
             }
         }
     }

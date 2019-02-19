@@ -1,6 +1,6 @@
 /* Buttons */
 
-.btn, .link, .btn-invert{
+.btn, .link, .btn-invert, .has-btn > a{
     font-weight: 700;
     .icon {
         width: 1.4rem;
@@ -9,7 +9,7 @@
     }
 }
 
-.btn, .btn-invert{
+.btn, .btn-invert, .has-btn > a{
     display: inline-flex;
     padding: 20px 20px 19px;
     position: relative;
@@ -17,13 +17,16 @@
     border-radius: 2px;
     color: $white;
 }
-.btn {
+.btn, .has-btn > a{
     border: 2px solid transparent;
     overflow: hidden;
     @include fluid-background-btn();
 }
 .btn-invert{
     border: 2px solid;
+}
+.has-btn > a {
+    padding: 10px 20px 11px;
 }
 
 .link{
