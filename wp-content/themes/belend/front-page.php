@@ -53,22 +53,25 @@
             </div>
         </header>
 
-        <section class='home-map'>
-            <div class='container'>
-                <?php $loc = get_field('localisation'); if( $loc ) : ?>
-                    <h2><?php echo $loc['locTitle']; ?></h2>
-                    <?php echo $loc['locText']; ?>
-                    <?php
-                        $locLink = $loc['locLink'];
-                        if( $locLink ) :
-                    ?>
-                        <a href='<?php echo $locLink['url']; ?>' <?php if( $locLink['target'] ) echo "target='_blank'"; ?> class='link'>
-                            <span><?php echo $locLink['title']; ?></span><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
-                        </a>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
-        </section>
+        <?php $loc = get_field('localisation'); if( $loc ) : ?>
+            <section class='dark-bg home-map'>
+                <div class='container'>
+                    <div class='txt'>
+                        <h2><?php echo $loc['locTitle']; ?></h2>
+                        <?php echo $loc['locText']; ?>
+                        <?php
+                            $locLink = $loc['locLink'];
+                            if( $locLink ) :
+                        ?>
+                            <a href='<?php echo $locLink['url']; ?>' <?php if( $locLink['target'] ) echo "target='_blank'"; ?> class='link'>
+                                <span><?php echo $locLink['title']; ?></span><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php echo wp_get_attachment_image($loc['img'], 'full'); ?>
+            </section>
+        <?php endif; ?>
 
         <section class='home-nb align-center'>
             <div class='container'>
@@ -94,7 +97,7 @@
                                         <?php echo $quote['job']; ?>
                                     </div>
                                     <div class='img'>
-                                        <?php echo wp_get_attachment_image($quote['photo']); ?>
+                                        <?php echo wp_get_attachment_image($quote['photo'], 'full'); ?>
                                     </div>
                                 </cite>
                             </blockquote>

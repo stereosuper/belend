@@ -917,15 +917,23 @@ button {
 
 .home-map {
   padding: 30px 0 80px;
+  position: relative;
   color: #fff;
   background: linear-gradient(117deg, #434343 23%, #1e1e1e 98%); }
   .home-map h2,
   .home-map h3,
   .home-map h4 {
     color: inherit; }
+  .home-map > img {
+    display: none;
+    width: 62%;
+    position: absolute;
+    bottom: 0;
+    right: 0; }
 
 .home-nb {
   padding: 43px 0 38px;
+  position: relative;
   margin: -1px auto 0;
   color: #fff;
   background: linear-gradient(127deg, #903030 0, #e82424 100%); }
@@ -1015,7 +1023,13 @@ button {
         width: 105px;
         height: 105px; }
   .home-map {
+    padding-top: 100px;
     padding-bottom: 350px; }
+    .home-map > img {
+      display: block; }
+    .home-map .txt {
+      width: 45%;
+      padding: 0 15px 0 0; }
   .home-nb {
     height: 320px;
     padding-left: 20px;

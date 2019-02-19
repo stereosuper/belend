@@ -49,13 +49,22 @@
 
 .home-map {
     padding: 30px 0 80px;
-    @include background-gradient(117deg, "dark");
+    position: relative;
+    @include background-gradient(117deg, 'dark');
+    > img{
+        display: none;
+        width: 62%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }
 
 .home-nb {
     padding: 43px 0 38px;
+    position: relative;
     margin: -1px auto 0;
-    @include background-gradient(127deg, "red");
+    @include background-gradient(127deg, 'red');
     h3 {
         margin: 0 0 20px;
         font-size: 1.8rem;
@@ -157,8 +166,17 @@
         }
     }
 
-    .home-map {
+
+    .home-map{
+        padding-top: 100px;
         padding-bottom: 350px;
+        > img{
+            display: block;
+        }
+        .txt{
+            width: 45%;
+            padding: 0 $gutter 0 0;
+        }
     }
 
     .home-nb {
