@@ -19,32 +19,42 @@ get_header();
                 <p class="description"><?php echo $description ?></p>
             <?php endif; ?>
         </div>
+        <?php if ($form = get_field('form_shortcode')): ?>
+            <div>
+                <?php echo do_shortcode($form); ?>
+            </div>
+        <?php endif; ?>
     </article>
     <?php if( have_rows('sections') ): ?>
         <article class="offers">
             <?php while ( have_rows('sections') ) : the_row(); ?>
                 <section class="offer">
-                    <header>
-                        <?php if ($title = get_sub_field('title')): ?>
-                            <h2><?php echo $title ?></h2>
-                        <?php endif; ?>
-                    </header>
-                    <div>
-                        <?php if ($text = get_sub_field('text')): ?>
-                            <?php echo $text ?>
-                        <?php endif; ?>
+                    <div class="offer-content-wrapper">
+                        <header>
+                            <?php if ($title = get_sub_field('title')): ?>
+                                <h2><?php echo $title ?></h2>
+                            <?php endif; ?>
+                        </header>
+                        <div class="offer-content">
+                            <?php if ($text = get_sub_field('text')): ?>
+                                <?php echo $text ?>
+                            <?php endif; ?>
+                        </div>
+                        <footer>
+                            <?php
+                                if ($link = get_sub_field('link')): 
+                                    $url = $link['url'];
+                                    $title = $link['title'];
+                                    $target = 'target="'. $link['target'] . '"';
+                                    $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
+                            ?>
+                                <a class="btn-invert" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+                                    <span><?php echo $title ?></span>
+                                    <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                                </a>
+                            <?php endif; ?>
+                        </footer>
                     </div>
-                    <footer>
-                        <?php
-                            if ($link = get_sub_field('link')): 
-                                $url = $link['url'];
-                                $title = $link['title'];
-                                $target = 'target="'. $link['target'] . '"';
-                                $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
-                        ?>
-                            <a href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>><?php echo $title ?></article>
-                        <?php endif; ?>
-                    </footer>
                 </section>
             <?php endwhile; ?>
         </article>

@@ -57,6 +57,35 @@
     }
 }
 
+// Grid columns
+
+@function grid-column-pixels(
+    $container-size,
+    $gap-size,
+    $wanted-col-number,
+    $total-col-number
+) {
+    $total-gap-area: ($gap-size * ($total-col-number - 1));
+    $column-area: ($container-size - $total-gap-area);
+    $column-width: ($column-area / $total-col-number);
+    $wanted-gap-area: $gap-size * ($wanted-col-number - 1);
+
+    @return $column-width * $wanted-col-number + $wanted-gap-area;
+}
+
+@function grid-column-percent(
+    $container-size,
+    $gap-size,
+    $wanted-col-number,
+    $total-col-number
+) {
+    $gap-percent: $gap-size / $container-size * 100;
+    $total-gap: $gap-percent * ($total-col-number - 1);
+    $col-width: (100 - $total-gap) / $total-col-number;
+    @return $col-width * $wanted-col-number + $gap-percent *
+        ($wanted-col-number - 1);
+}
+
 // Gradients
 @mixin btn-gradient() {
     background: linear-gradient(
