@@ -19,11 +19,11 @@ get_header();
                 <p class="description"><?php echo $description ?></p>
             <?php endif; ?>
         </div>
-        <?php if ($form = get_field('form_shortcode')): ?>
-            <div>
-                <?php echo do_shortcode($form); ?>
-            </div>
-        <?php endif; ?>
+        <?php 
+            if ($form = get_field('form_shortcode')) {
+                echo do_shortcode($form);
+            }
+        ?>
     </article>
     <?php if( have_rows('sections') ): ?>
         <article class="offers">

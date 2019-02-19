@@ -21,6 +21,21 @@
             text-align: center;
         }
     }
+    .gform_wrapper {
+        background-color: red;
+        .gform_body {
+            ul {
+                li {
+                    background-color: blue;
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+        }
+        .gform_footer {
+        }
+    }
     .offer {
         padding: $line-height * 2 $gutter * 2;
         &:first-child {
