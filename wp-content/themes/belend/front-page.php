@@ -54,7 +54,7 @@
         </header>
 
         <?php $loc = get_field('localisation'); if( $loc ) : ?>
-            <section class='dark-bg home-map'>
+            <section class='home-map'>
                 <div class='container'>
                     <div class='txt'>
                         <h2><?php echo $loc['locTitle']; ?></h2>
