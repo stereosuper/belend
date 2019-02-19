@@ -34,7 +34,6 @@
 
 .home-benefits {
     margin: 70px 0 50px;
-    text-align: center;
     > li {
         padding: 0 0 20px;
         &:before {
@@ -106,6 +105,22 @@
 
     .home-map {
         padding-bottom: 160px;
+    }
+
+    .home-benefits{
+        display: inline-flex;
+        //width: 50%;
+        text-align: left;
+        > li{
+            display: flex;
+            max-width: 230px;
+            padding: 0 $gutter;
+        }
+        img{
+            min-width: 45px;
+            height: 45px;
+            margin: 0 $gutter 0 0;
+        }
     }
 }
 

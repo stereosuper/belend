@@ -905,8 +905,7 @@ button {
     background: #fff; }
 
 .home-benefits {
-  margin: 70px 0 50px;
-  text-align: center; }
+  margin: 70px 0 50px; }
   .home-benefits > li {
     padding: 0 0 20px; }
     .home-benefits > li:before {
@@ -972,7 +971,22 @@ button {
     width: 420px;
     margin-top: -100px; }
   .home-map {
-    padding-bottom: 160px; } }
+    padding-bottom: 160px; }
+  .home-benefits {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    text-align: left; }
+    .home-benefits > li {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      max-width: 230px;
+      padding: 0 15px; }
+    .home-benefits img {
+      min-width: 45px;
+      height: 45px;
+      margin: 0 15px 0 0; } }
 
 @media (min-width: 1260px) {
   .home-quotes-wrapper {

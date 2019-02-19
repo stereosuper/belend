@@ -38,14 +38,16 @@
                 </div>
             </div>
             
-            <div class='container'>
+            <div class='container align-center'>
                 <?php if( have_rows('benefits') ): ?>
                     <ul class='home-benefits'>
                         <?php while ( have_rows('benefits') ) : the_row(); ?>
                             <li>
                                 <?php echo wp_get_attachment_image(get_sub_field('icon'), 'full'); ?>
-                                <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
-                                <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
+                                <div>
+                                    <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
+                                    <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
+                                </div>
                             </li>
                         <?php endwhile; ?>
                     </ul>
