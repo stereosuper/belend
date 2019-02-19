@@ -512,6 +512,11 @@ a {
 .secondary {
   color: #f12525; }
 
+@media (min-width: 1260px) {
+  h1 {
+    font-size: 6.4rem;
+    line-height: 1.12; } }
+
 /* Placeholders */
 /* Grid */
 .container, .container-small {
@@ -883,6 +888,12 @@ button {
   margin-top: 0;
   text-align: left; }
 
+.hero {
+  position: relative;
+  z-index: 10; }
+  .hero > div {
+    padding: 5px 0; }
+
 .banner-img {
   height: 480px;
   position: absolute;
@@ -893,8 +904,8 @@ button {
   background-position: 50% 50%; }
 
 .intro {
-  padding: 260px 0 0;
   position: relative;
+  margin: 260px 0 0;
   text-align: center; }
   .intro .text {
     padding: 35px 25px;
@@ -903,6 +914,9 @@ button {
     background: #fff; }
   .intro .container {
     background: #fff; }
+
+.home-benefits-wrapper {
+  text-align: center; }
 
 .home-benefits {
   margin: 70px 0 50px; }
@@ -926,6 +940,7 @@ button {
   .home-map > img {
     display: none;
     width: 62%;
+    max-width: 940px;
     position: absolute;
     bottom: 0;
     right: 0; }
@@ -1050,7 +1065,38 @@ button {
     margin-top: -240px;
     margin-right: 0;
     margin-left: 10%;
-    text-align: left; } }
+    text-align: left; }
+  .home-benefits-wrapper {
+    text-align: left; }
+  .home-benefits {
+    width: 50%;
+    margin-left: -7.5px;
+    margin-right: -7.5px; }
+    .home-benefits > li {
+      max-width: 190px;
+      padding: 0 7.5px; }
+      .home-benefits > li:nth-child(2) {
+        max-width: 210px; }
+    .home-benefits img {
+      margin-right: 7.5px; }
+  .intro {
+    width: 650px;
+    padding: 45px 30px 70px 50px;
+    margin-left: 15%;
+    text-align: left;
+    background: #fff; }
+    .intro > .text {
+      padding: 0;
+      margin: 0; }
+    .intro > .container {
+      padding: 0; }
+  .hero {
+    background: #e9e8e1; }
+  .banner-img {
+    width: 575px;
+    height: 800px;
+    left: 50%;
+    top: 165px; } }
 
 .page-template-contact {
   margin-top: 96px; }

@@ -7,6 +7,14 @@
     }
 }
 
+.hero{
+    position: relative;
+    z-index: 10;
+    > div{
+        padding: 5px 0;
+    }
+}
+
 .banner-img {
     height: 480px;
     position: absolute;
@@ -18,8 +26,8 @@
 }
 
 .intro {
-    padding: 260px 0 0;
     position: relative;
+    margin: 260px 0 0;
     text-align: center;
     .text {
         padding: 35px 25px;
@@ -32,6 +40,9 @@
     }
 }
 
+.home-benefits-wrapper{
+    text-align: center;
+}
 .home-benefits {
     margin: 70px 0 50px;
     > li {
@@ -53,6 +64,7 @@
     > img{
         display: none;
         width: 62%;
+        max-width: 940px;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -109,7 +121,6 @@
 
     .home-benefits{
         display: inline-flex;
-        //width: 50%;
         text-align: left;
         > li{
             display: flex;
@@ -201,5 +212,50 @@
         margin-right: 0;
         margin-left: 10%;
         text-align: left;
+    }
+
+    .home-benefits-wrapper{
+        text-align: left;
+    }
+    .home-benefits{
+        width: 50%;
+        margin-left: -$gutter/2;
+        margin-right: -$gutter/2;
+        > li{
+            max-width: 190px;
+            padding: 0 $gutter/2;
+            &:nth-child(2){
+                max-width: 210px;
+            }
+        }
+        img{
+            margin-right: $gutter/2;
+        }
+    }
+
+    .intro{
+        width: 650px;
+        padding: 45px 30px 70px 50px;
+        margin-left: 15%;
+        text-align: left;
+        background: #fff;
+        > .text{
+            padding: 0;
+            margin: 0;
+        }
+        > .container{
+            padding: 0;
+        }
+    }
+
+    .hero{
+        background: $grey-light;
+    }
+    
+    .banner-img{
+        width: 575px;
+        height: 800px;
+        left: 50%;
+        top: 165px;
     }
 }

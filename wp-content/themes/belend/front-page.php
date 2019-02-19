@@ -3,55 +3,57 @@
     <?php if ( have_posts() ) : the_post(); ?>
 
         <header class='hero'>
-            <div class='banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)'></div>
+            <div>
+                <div class='banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)'></div>
 
-            <div class='intro'>
-                <div class='text'>
-                    <h1>
+                <div class='intro'>
+                    <div class='text'>
+                        <h1>
+                            <?php
+                                $title = get_field('title');
+                                if( $title ) :
+                            ?>
+                                <?php echo $title['title1']; ?>
+                                <?php if( $title['title2'] ) : ?>
+                                    <span class='primary'><?php echo $title['title2']; ?></span>, <br>
+                                <?php endif; ?>
+                                <?php echo $title['title3']; ?>
+                                <?php if( $title['title4'] ) : ?>
+                                    <span class='secondary'><?php echo $title['title4']; ?></span>.
+                                <?php endif; ?>
+                            <?php else : the_title(); endif; ?>
+                        </h1>
+
+                        <?php the_content(); ?>
+                    </div>
+                    
+                    <div class='container'>
                         <?php
-                            $title = get_field('title');
-                            if( $title ) :
+                            $btn = get_field('btn');
+                            if( $btn ) :
                         ?>
-                            <?php echo $title['title1']; ?>
-                            <?php if( $title['title2'] ) : ?>
-                                <span class='primary'><?php echo $title['title2']; ?></span>, <br>
-                            <?php endif; ?>
-                            <?php echo $title['title3']; ?>
-                            <?php if( $title['title4'] ) : ?>
-                                <span class='secondary'><?php echo $title['title4']; ?></span>.
-                            <?php endif; ?>
-                        <?php else : the_title(); endif; ?>
-                    </h1>
-
-                    <?php the_content(); ?>
+                            <a class='btn' href='<?php echo $btn['url']; ?>' <?php if( $btn['target'] ) echo "target='_blank'"; ?>>
+                                <?php echo $btn['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
                 
-                <div class='container'>
-                    <?php
-                        $btn = get_field('btn');
-                        if( $btn ) :
-                    ?>
-                        <a class='btn' href='<?php echo $btn['url']; ?>' <?php if( $btn['target'] ) echo "target='_blank'"; ?>>
-                            <?php echo $btn['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
-                        </a>
+                <div class='container home-benefits-wrapper'>
+                    <?php if( have_rows('benefits') ): ?>
+                        <ul class='home-benefits'>
+                            <?php while ( have_rows('benefits') ) : the_row(); ?>
+                                <li>
+                                    <?php echo wp_get_attachment_image(get_sub_field('icon'), 'full'); ?>
+                                    <div>
+                                        <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
+                                        <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
+                                    </div>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
                     <?php endif; ?>
                 </div>
-            </div>
-            
-            <div class='container align-center'>
-                <?php if( have_rows('benefits') ): ?>
-                    <ul class='home-benefits'>
-                        <?php while ( have_rows('benefits') ) : the_row(); ?>
-                            <li>
-                                <?php echo wp_get_attachment_image(get_sub_field('icon'), 'full'); ?>
-                                <div>
-                                    <span <?php if( get_sub_field('bold1') ) echo "class='bold' "; ?>><?php the_sub_field('text1'); ?></span>
-                                    <span <?php if( get_sub_field('bold2') ) echo "class='bold' "; ?>><?php the_sub_field('text2'); ?></span>
-                                </div>
-                            </li>
-                        <?php endwhile; ?>
-                    </ul>
-                <?php endif; ?>
             </div>
         </header>
 

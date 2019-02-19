@@ -352,3 +352,11 @@ a {
 .secondary {
     color: $secondary-color;
 }
+
+
+@media (min-width: $desktop){
+    h1{
+        font-size: 6.4rem;
+        line-height: 1.12;
+    }
+}
