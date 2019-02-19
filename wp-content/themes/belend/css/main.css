@@ -989,6 +989,7 @@ button {
 .home-map {
   padding: 30px 0 80px;
   position: relative;
+  overflow: hidden;
   color: #fff;
   background: linear-gradient(117deg, #434343 23%, #1e1e1e 98%); }
   .home-map h2,
@@ -997,11 +998,11 @@ button {
     color: inherit; }
   .home-map > img {
     display: none;
-    width: 62%;
-    max-width: 940px;
+    width: 55%;
+    max-width: 750px;
     position: absolute;
-    bottom: 0;
-    right: 0; }
+    bottom: -30%;
+    right: 15px; }
 
 .home-nb {
   padding: 43px 0 38px;
@@ -1063,6 +1064,7 @@ button {
   .intro {
     width: 500px;
     padding: 45px 30px 70px 50px;
+    margin-top: 230px;
     margin-left: 30px;
     text-align: left;
     background: #fff; }
@@ -1077,7 +1079,7 @@ button {
     width: 400px;
     height: 560px;
     left: 55%;
-    top: 165px;
+    top: 150px;
     -webkit-box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
             box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25); }
   .home-benefits-wrapper {
@@ -1088,7 +1090,8 @@ button {
     width: 650px; }
   .banner-img {
     width: 450px;
-    height: 625px; }
+    height: 625px;
+    top: 120px; }
   .home-benefits-wrapper {
     margin-top: 100px; } }
 
@@ -1110,7 +1113,8 @@ button {
   .home-quotes {
     width: 75%; }
   .home-quote {
-    width: 47%; }
+    width: 47%;
+    font-size: 2rem; }
     .home-quote:before {
       top: 5px;
       left: 10px;
@@ -1122,7 +1126,7 @@ button {
       -webkit-filter: blur(25px);
               filter: blur(25px); }
     .home-quote:first-of-type {
-      margin-top: -130px; }
+      margin-top: -145px; }
     .home-quote:last-of-type {
       margin-top: 30px; }
     .home-quote > p {
@@ -1155,6 +1159,8 @@ button {
     margin-right: 0;
     margin-left: 10%;
     text-align: left; }
+    .home-nb span {
+      font-size: 7.2rem; }
   .home-benefits-wrapper {
     margin-top: 0;
     text-align: left; }
@@ -1170,6 +1176,7 @@ button {
     .home-benefits img {
       margin-right: 7.5px; }
   .intro {
+    margin-top: 200px;
     margin-left: 15%; }
   .banner-img {
     width: 575px;

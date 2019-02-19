@@ -60,14 +60,15 @@
 .home-map {
     padding: 30px 0 80px;
     position: relative;
+    overflow: hidden;
     @include background-gradient(117deg, 'dark');
     > img{
         display: none;
-        width: 62%;
-        max-width: 940px;
+        width: 55%;
+        max-width: 750px;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: -30%;
+        right: $gutter;
     }
 }
 
@@ -137,6 +138,7 @@
     .intro{
         width: 500px;
         padding: 45px 30px 70px 50px;
+        margin-top: 230px;
         margin-left: $gutter*2;
         text-align: left;
         background: #fff;
@@ -157,7 +159,7 @@
         width: 400px;
         height: 560px;
         left: 55%;
-        top: 165px;
+        top: 150px;
         box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
     }
 
@@ -174,6 +176,7 @@
     .banner-img{
         width: 450px;
         height: 625px;
+        top: 120px;
     }
 
     .home-benefits-wrapper{
@@ -199,6 +202,7 @@
 
     .home-quote {
         width: 47%;
+        font-size: 2rem;
         &:before {
             top: 5px;
             left: 10px;
@@ -211,7 +215,7 @@
             filter: blur(25px);
         }
         &:first-of-type {
-            margin-top: -130px;
+            margin-top: -145px;
         }
         &:last-of-type {
             margin-top: 30px;
@@ -258,6 +262,9 @@
         margin-right: 0;
         margin-left: 10%;
         text-align: left;
+        span{
+            font-size: 7.2rem;
+        }
     }
 
     .home-benefits-wrapper{
@@ -281,6 +288,7 @@
     }
 
     .intro{
+        margin-top: 200px;
         margin-left: 15%;
     }
     
