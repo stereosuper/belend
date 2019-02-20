@@ -20,14 +20,22 @@ $offers = array(
                 <div class="subtitle"><?php echo $sub_title ?></div>
             <?php endif; ?>
         </header>
-        <div class="contact-content">
+        <div class="contact-content js-contact-content">
             <?php if ($description = get_field('description')): ?>
-                <p class="description"><?php echo $description ?></p>
+            <p class="description"><?php echo $description ?></p>
             <?php endif; ?>
         </div>
         <?php 
             if ($form = get_field('form_shortcode')) {
                 echo do_shortcode($form);
+                ?>
+                <script type="text/javascript">
+                    jQuery(document).on('gform_confirmation_loaded', function(event, formId){
+                        // code to be trigger when confirmation page is loaded
+                        jQuery('.js-contact-content').remove();
+                    });
+                </script>
+                <?php
             }
         ?>
     </article>

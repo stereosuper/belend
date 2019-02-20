@@ -97,6 +97,20 @@
             }
         }
     }
+    .gform_confirmation_wrapper {
+        margin-bottom: $line-height * 5;
+        .gform_confirmation_message {
+            text-align: center;
+            .confirmation-title {
+                color: $confirmation-color;
+                font-size: 2rem;
+                margin-bottom: $line-height;
+            }
+            .confirmation-subtitle {
+                font-size: 1.6rem;
+            }
+        }
+    }
     .offer {
         padding: $line-height * 2 $gutter * 2;
         &:first-child {
@@ -113,6 +127,13 @@
         }
         .offer-content {
             margin-bottom: $line-height;
+        }
+    }
+    .benefits-wrapper {
+        background-color: $grey-super-light;
+        .benefits {
+            padding: 10px 0 50px;
+            margin: 0;
         }
     }
 }
@@ -160,6 +181,17 @@
                 }
             }
         }
+        .gform_confirmation_wrapper {
+            .gform_confirmation_message {
+                .confirmation-title {
+                    font-size: 2.6rem;
+                    margin-bottom: $line-height;
+                }
+                .confirmation-subtitle {
+                    font-size: 1.8rem;
+                }
+            }
+        }
         .offers {
             display: flex;
         }
@@ -186,6 +218,12 @@
             .description {
                 margin: 0 0 #{$line-height * 4};
                 padding: 0 $col;
+            }
+        }
+        .benefits-wrapper {
+            .benefits {
+                padding: 0;
+                margin: 70px 0 50px;
             }
         }
     }

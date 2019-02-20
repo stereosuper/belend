@@ -35,6 +35,9 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();	
 }
 
+// Gravity forms
+add_filter( 'gform_init_scripts_footer', '__return_true' );
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Clean WordPress head and remove some stuff for security
@@ -247,10 +250,13 @@ function belend_scripts(){
 
     wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
+    wp_enqueue_script('jquery', false, array(), false, false);
+
 	// footer
 	wp_enqueue_script( 'belend-scripts', get_template_directory_uri() . '/js/main.js', array(), BELEND_VERSION, true );
 
     wp_deregister_script( 'wp-embed' );
+
 }
 add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 

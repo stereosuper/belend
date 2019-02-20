@@ -1290,6 +1290,16 @@ button {
       display: -ms-inline-flexbox;
       display: inline-flex;
       position: relative; }
+  .page-template-contact .gform_confirmation_wrapper {
+    margin-bottom: 125px; }
+    .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message {
+      text-align: center; }
+      .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-title {
+        color: #6fcf97;
+        font-size: 2rem;
+        margin-bottom: 25px; }
+      .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-subtitle {
+        font-size: 1.6rem; }
   .page-template-contact .offer {
     padding: 50px 30px; }
     .page-template-contact .offer:first-child {
@@ -1312,6 +1322,11 @@ button {
         margin: 0; }
     .page-template-contact .offer .offer-content {
       margin-bottom: 25px; }
+  .page-template-contact .benefits-wrapper {
+    background-color: #f2f2f2; }
+    .page-template-contact .benefits-wrapper .benefits {
+      padding: 10px 0 50px;
+      margin: 0; }
 
 @media (min-width: 780px) {
   .page-template-contact .gform_wrapper {
@@ -1336,6 +1351,11 @@ button {
         min-width: 423.33333px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
         min-width: 204.16667px; }
+  .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-title {
+    font-size: 2.6rem;
+    margin-bottom: 25px; }
+  .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-subtitle {
+    font-size: 1.8rem; }
   .page-template-contact .offers {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1354,7 +1374,10 @@ button {
       font-size: 3.6rem; }
   .page-template-contact .contact-container .description {
     margin: 0 0 100px;
-    padding: 0 8.33333%; } }
+    padding: 0 8.33333%; }
+  .page-template-contact .benefits-wrapper .benefits {
+    padding: 0;
+    margin: 70px 0 50px; } }
 
 @media (min-width: 1300px) {
   .page-template-contact .offer {
