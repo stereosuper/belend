@@ -1248,6 +1248,14 @@ button {
       margin-bottom: 25px; }
       .page-template-contact .gform_wrapper .gform_body ul li::before {
         content: none; }
+  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container input,
+  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container textarea,
+  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container .gfield_select {
+    border-color: #f12525; }
+  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .validation_message {
+    margin-top: 0.5rem;
+    color: #f12525;
+    font-size: 1.4rem; }
   .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label {
     display: block;
     margin-left: 15px;
@@ -1296,6 +1304,8 @@ button {
     display: -ms-inline-flexbox;
     display: inline-flex;
     position: relative; }
+    .page-template-contact .gform_wrapper .gform_footer img.gform_ajax_spinner {
+      display: none; }
 
 .page-template-contact .gform_confirmation_wrapper {
   margin-bottom: 125px; }

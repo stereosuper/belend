@@ -34,6 +34,20 @@
                 }
             }
             .gfield {
+                &.gfield_error {
+                    .ginput_container {
+                        input,
+                        textarea,
+                        .gfield_select {
+                            border-color: $form-error-color;
+                        }
+                    }
+                    .validation_message {
+                        margin-top: 0.5rem;
+                        color: $form-error-color;
+                        font-size: 1.4rem;
+                    }
+                }
                 .gfield_label {
                     display: block;
                     margin-left: $gutter;
@@ -94,6 +108,9 @@
             .button {
                 @extend .btn;
             }
+            img.gform_ajax_spinner {
+                display: none;
+            }
         }
     }
     .gform_confirmation_wrapper {
@@ -101,7 +118,7 @@
         .gform_confirmation_message {
             text-align: center;
             .confirmation-title {
-                color: $confirmation-color;
+                color: $form-confirmation-color;
                 font-size: 2rem;
                 margin-bottom: $line-height;
             }

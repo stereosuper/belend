@@ -1297,9 +1297,6 @@ var loadHandler = function loadHandler() {
 document.addEventListener('readystatechange', function () {
   if (document.readyState === 'complete') {
     loadHandler();
-    document.addEventListener('gform_confirmation_loaded', function () {
-      console.log('vghjbknlm');
-    }, false);
   }
 }, false);
 

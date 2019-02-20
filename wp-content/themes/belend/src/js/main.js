@@ -27,14 +27,6 @@ document.addEventListener(
     () => {
         if (document.readyState === 'complete') {
             loadHandler();
-
-            document.addEventListener(
-                'gform_confirmation_loaded',
-                () => {
-                    console.log('vghjbknlm');
-                },
-                false
-            );
         }
     },
     false
