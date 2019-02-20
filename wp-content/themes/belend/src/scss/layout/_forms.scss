@@ -29,6 +29,8 @@ input, textarea{
 }
 
 input{
+    border: 0;
+    border-bottom: 1px solid $black-grey;
     // hide the symbols of input search
     &[type=search]{
         &::-webkit-search-cancel-button, &::-webkit-search-decoration{

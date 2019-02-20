@@ -1,11 +1,11 @@
 /* Grid */
 
-.container, .container-small{
+.container, .container-small, .gform_body{
     padding: 0 $gutter * 2;
     margin: 0 auto;
 }
 
-.container {
+.container, .gform_body{
     max-width: #{1200px + $gutter * 4};
 }
 
