@@ -241,6 +241,24 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Gravity
+/*-----------------------------------------------------------------------------------*/
+function my_custom_function( $progress_bar, $form, $confirmation_message ) {
+ 
+    $progress_bar .= '<ul>
+        <li>Page 1</li>
+        <li>Page 2</li>
+        <li>Page 3</li>
+    </ul>';
+
+    //var_dump($form);
+ 
+    return $progress_bar;
+}
+add_filter( 'gform_progress_bar', 'my_custom_function', 10, 3 );
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
 function belend_scripts(){

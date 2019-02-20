@@ -9835,6 +9835,43 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 /***/ }),
 
+/***/ "./wp-content/themes/belend/src/js/form.js":
+/*!*************************************************!*\
+  !*** ./wp-content/themes/belend/src/js/form.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var moveProgessBar = function moveProgessBar() {
+  var progresswrapper = document.getElementById('progressbar');
+  var progressbar = document.getElementsByClassName('gf_progressbar')[0];
+  if (!progressbar || !progresswrapper) return;
+  console.log(progressbar);
+  console.log(document.getElementsByClassName('gf_progressbar_title')[0]); //progresswrapper.appendChild(progressbar);
+};
+
+var formHandler = function formHandler() {
+  moveProgessBar(); // const buttons = document.getElementsByClassName('button');
+  // if(!buttons) return;
+  // Array.from(buttons).forEach(e => {
+  //     e.addEventListener('click', () => {
+  //         moveProgessBar();
+  //     }, false);
+  // });
+
+  jQuery(document).ready(function () {
+    jQuery(document).on('gform_post_render', function () {
+      moveProgessBar();
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (formHandler);
+
+/***/ }),
+
 /***/ "./wp-content/themes/belend/src/js/headerScroll.js":
 /*!*********************************************************!*\
   !*** ./wp-content/themes/belend/src/js/headerScroll.js ***!
@@ -9853,7 +9890,7 @@ var addClassOnScroll = function addClassOnScroll() {
   _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 40 ? header.classList.add('on') : header.classList.remove('on');
 };
 
-var headerScrollHandler = function headerScrollHandler(windowHandler) {
+var headerScrollHandler = function headerScrollHandler() {
   _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(addClassOnScroll);
 };
 
@@ -9926,6 +9963,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _burger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./burger */ "./wp-content/themes/belend/src/js/burger.js");
 /* harmony import */ var _headerScroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./headerScroll */ "./wp-content/themes/belend/src/js/headerScroll.js");
 /* harmony import */ var _homeSprite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./homeSprite */ "./wp-content/themes/belend/src/js/homeSprite.js");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+
 
 
 
@@ -9943,8 +9982,9 @@ var loadHandler = function loadHandler() {
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
+  Object(_form__WEBPACK_IMPORTED_MODULE_8__["default"])();
 };
 
 document.addEventListener('readystatechange', function () {

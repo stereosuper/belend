@@ -8,7 +8,7 @@ const addClassOnScroll = () => {
     scroll.scrollTop > 40 ? header.classList.add('on') : header.classList.remove('on');
 };
 
-const headerScrollHandler = windowHandler => {
+const headerScrollHandler = () => {
     scroll.addScrollFunction( addClassOnScroll );
 };
 
