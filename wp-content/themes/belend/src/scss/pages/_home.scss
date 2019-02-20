@@ -2,7 +2,7 @@
 
 .home {
     h1 {
-        margin-top: 0;
+        margin: 0 0 0.65em;
         text-align: left;
     }
 }
@@ -18,7 +18,7 @@
 .banner-img {
     height: 480px;
     position: absolute;
-    top: 95px;
+    top: 0;
     right: 0;
     left: 0;
     background-size: cover;
@@ -27,7 +27,7 @@
 
 .intro {
     position: relative;
-    margin: 260px 0 0;
+    margin: 165px 0 0;
     text-align: center;
     .text {
         padding: 35px 25px;
