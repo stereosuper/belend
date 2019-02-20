@@ -244,8 +244,9 @@ function belend_scripts(){
     // header
 	wp_enqueue_style( 'belend-style', get_template_directory_uri() . '/css/main.css', array(), BELEND_VERSION );
 
+    wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
+
 	// footer
-	wp_deregister_script('jquery');
 	wp_enqueue_script( 'belend-scripts', get_template_directory_uri() . '/js/main.js', array(), BELEND_VERSION, true );
 
     wp_deregister_script( 'wp-embed' );
@@ -302,4 +303,12 @@ add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 // }
 // add_action( 'tgmpa_register', 'belend_register_required_plugins' );
 
-?>
+
+
+add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2 );
+
+function belend_send_partial_entry($partial_entry, $form){
+    $vxg_salesforce=new vxg_salesforce();
+    $vxg_salesforce->instance();
+    $vxg_salesforce->push($partial_entry, $form);
+}
