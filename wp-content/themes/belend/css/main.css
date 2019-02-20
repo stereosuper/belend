@@ -367,6 +367,7 @@ cite {
     font-style: normal;
     font-weight: 400; }
   cite .img {
+    min-width: 46px;
     width: 46px;
     height: 46px;
     overflow: hidden;
@@ -1172,6 +1173,7 @@ button {
       .home-quote cite > div:first-child {
         margin-bottom: -10px; }
       .home-quote cite .img {
+        min-width: 105px;
         width: 105px;
         height: 105px; }
   .home-map {
