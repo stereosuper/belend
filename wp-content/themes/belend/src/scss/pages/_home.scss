@@ -7,12 +7,10 @@
     }
 }
 
-.hero{
+.hero {
     position: relative;
+    padding: $line-height * 7 0 0;
     z-index: 10;
-    > div{
-        padding: 5px 0;
-    }
 }
 
 .banner-img {
@@ -21,26 +19,31 @@
     top: 0;
     right: 0;
     left: 0;
-    background-size: cover;
-    background-position: 0 20%;
+    background-position: -225px 50%;
+    background-repeat: no-repeat;
+    background-size: auto 145%;
 }
 
 .intro {
     position: relative;
-    margin: 165px 0 0;
     text-align: center;
     .text {
+        max-width: 240px;
         padding: 35px 25px;
-        margin: 0 0 0 100px;
+        margin: 0 0 0 auto;
         text-align: left;
         background: #fff;
     }
     .container {
+        padding: $line-height $gutter;
         background: #fff;
+        .btn {
+            font-size: 1.6rem;
+        }
     }
 }
 
-.home-benefits-wrapper{
+.home-benefits-wrapper {
     text-align: center;
 }
 .home-benefits {
@@ -61,8 +64,8 @@
     padding: 30px 0 80px;
     position: relative;
     overflow: hidden;
-    @include background-gradient(117deg, 'dark');
-    > img{
+    @include background-gradient(117deg, "dark");
+    > img {
         display: none;
         width: 55%;
         max-width: 750px;
@@ -76,7 +79,7 @@
     padding: 43px 0 38px;
     position: relative;
     margin: -1px auto 0;
-    @include background-gradient(127deg, 'red');
+    @include background-gradient(127deg, "red");
     h3 {
         margin: 0 0 20px;
         font-size: 1.8rem;
@@ -84,6 +87,39 @@
     span {
         font-size: 5.2rem;
         font-family: "upgrade-lights";
+    }
+}
+
+@media (min-width: $phone-small) {
+    .banner-img {
+        height: 600px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-position: -225px 50%;
+        background-repeat: no-repeat;
+        background-size: auto 145%;
+    }
+    .intro {
+        .container {
+            .btn {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (min-width: $phone) {
+    .banner-img {
+        height: 600px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-position: -50px 50%;
+        background-repeat: no-repeat;
+        background-size: auto 145%;
     }
 }
 
@@ -120,42 +156,42 @@
         padding-bottom: 160px;
     }
 
-    .home-benefits{
+    .home-benefits {
         display: inline-flex;
         text-align: left;
-        > li{
+        > li {
             display: flex;
             max-width: 230px;
             padding: 0 $gutter;
         }
-        img{
+        img {
             min-width: 45px;
             height: 45px;
             margin: 0 $gutter 0 0;
         }
     }
 
-    .intro{
+    .intro {
         width: 500px;
         padding: 45px 30px 70px 50px;
         margin-top: 230px;
-        margin-left: $gutter*2;
+        margin-left: $gutter * 2;
         text-align: left;
         background: #fff;
-        > .text{
+        > .text {
             padding: 0;
             margin: 0;
         }
-        > .container{
+        > .container {
             padding: 0;
         }
     }
 
-    .hero{
+    .hero {
         background: $grey-light url(../../img/b.svg) 30px -30px no-repeat;
     }
 
-    .banner-img{
+    .banner-img {
         width: 400px;
         height: 560px;
         left: 55%;
@@ -163,23 +199,23 @@
         box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
     }
 
-    .home-benefits-wrapper{
+    .home-benefits-wrapper {
         margin-top: 40px;
     }
 }
 
-@media (min-width: $desktop-small){
-    .intro{
+@media (min-width: $desktop-small) {
+    .intro {
         width: 650px;
     }
 
-    .banner-img{
+    .banner-img {
         width: 450px;
         height: 625px;
         top: 120px;
     }
 
-    .home-benefits-wrapper{
+    .home-benefits-wrapper {
         margin-top: 100px;
     }
 }
@@ -243,14 +279,13 @@
         }
     }
 
-
-    .home-map{
+    .home-map {
         padding-top: 100px;
         padding-bottom: 350px;
-        > img{
+        > img {
             display: block;
         }
-        .txt{
+        .txt {
             width: 45%;
             padding: 0 $gutter 0 0;
         }
@@ -263,37 +298,37 @@
         margin-right: 0;
         margin-left: 10%;
         text-align: left;
-        span{
+        span {
             font-size: 7.2rem;
         }
     }
 
-    .home-benefits-wrapper{
+    .home-benefits-wrapper {
         margin-top: 0;
         text-align: left;
     }
-    .home-benefits{
+    .home-benefits {
         width: 50%;
         margin-left: -$gutter/2;
         margin-right: -$gutter/2;
-        > li{
+        > li {
             max-width: 190px;
             padding: 0 $gutter/2;
-            &:nth-child(2){
+            &:nth-child(2) {
                 max-width: 210px;
             }
         }
-        img{
+        img {
             margin-right: $gutter/2;
         }
     }
 
-    .intro{
+    .intro {
         margin-top: 200px;
         margin-left: 150px;
     }
-    
-    .banner-img{
+
+    .banner-img {
         width: 575px;
         height: 800px;
         left: 52%;

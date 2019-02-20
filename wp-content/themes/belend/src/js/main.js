@@ -7,6 +7,7 @@ import fallback from './Fallback';
 
 import burger from './burger';
 import headerScroll from './headerScroll';
+import homeSprite from './homeSprite';
 
 const loadHandler = () => {
     scroll.init();
@@ -20,6 +21,7 @@ const loadHandler = () => {
 
     burger(win);
     headerScroll(win);
+    homeSprite();
 };
 
 document.addEventListener(

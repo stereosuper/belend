@@ -73,3 +73,5 @@ Sprite.prototype.checkShouldStop = function checkShouldStop() {
         this.tl.resume();
     }
 };
+
+export default Sprite;

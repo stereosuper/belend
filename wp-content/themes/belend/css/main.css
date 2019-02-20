@@ -987,9 +987,8 @@ button {
 
 .hero {
   position: relative;
+  padding: 175px 0 0;
   z-index: 10; }
-  .hero > div {
-    padding: 5px 0; }
 
 .banner-img {
   height: 480px;
@@ -997,20 +996,24 @@ button {
   top: 0;
   right: 0;
   left: 0;
-  background-size: cover;
-  background-position: 0 20%; }
+  background-position: -225px 50%;
+  background-repeat: no-repeat;
+  background-size: auto 145%; }
 
 .intro {
   position: relative;
-  margin: 165px 0 0;
   text-align: center; }
   .intro .text {
+    max-width: 240px;
     padding: 35px 25px;
-    margin: 0 0 0 100px;
+    margin: 0 0 0 auto;
     text-align: left;
     background: #fff; }
   .intro .container {
+    padding: 25px 15px;
     background: #fff; }
+    .intro .container .btn, .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .intro .container .button {
+      font-size: 1.6rem; }
 
 .home-benefits-wrapper {
   text-align: center; }
@@ -1059,6 +1062,30 @@ button {
   .home-nb span {
     font-size: 5.2rem;
     font-family: "upgrade-lights"; }
+
+@media (min-width: 400px) {
+  .banner-img {
+    height: 600px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-position: -225px 50%;
+    background-repeat: no-repeat;
+    background-size: auto 145%; }
+  .intro .container .btn, .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .intro .container .button {
+    font-size: 1.8rem; } }
+
+@media (min-width: 580px) {
+  .banner-img {
+    height: 600px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-position: -50px 50%;
+    background-repeat: no-repeat;
+    background-size: auto 145%; } }
 
 @media (min-width: 780px) {
   .home-quotes-wrapper {
