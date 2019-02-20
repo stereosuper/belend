@@ -1,5 +1,14 @@
 *.codekit
 
+.idea/
+
+docker
+.env
+.env.dist
+docker-compose.yml
+docker-compose.dev.yml
+wp-cli
+
 .DS_Store
 *.DS_Store
 **/.DS_Store
