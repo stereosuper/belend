@@ -1,17 +1,36 @@
 /* Buttons */
-.btn {
-    padding: $gutter * 2;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 2px;
-    overflow: hidden;
+
+.btn, .link, .btn-invert, .has-btn > a{
     font-weight: 700;
-    color: $white;
-    @include fluid-background-btn();
     .icon {
         width: 1.4rem;
         height: 1.1rem;
         margin: 0 0 0 $gutter;
+    }
+}
+
+.btn, .btn-invert, .has-btn > a{
+    display: inline-flex;
+    padding: 20px 20px 19px;
+    position: relative;
+    align-items: center;
+    border-radius: 2px;
+    color: $white;
+}
+.btn, .has-btn > a{
+    border: 2px solid transparent;
+    overflow: hidden;
+    @include fluid-background-btn();
+}
+.btn-invert{
+    border: 2px solid;
+}
+.has-btn > a {
+    padding: 10px 20px 11px;
+}
+
+.link{
+    > span{
+        border-bottom: solid 1px;
     }
 }

@@ -14,23 +14,23 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class='main-header' role='banner'>
+		<header class='main-header'>
 			<div class='container'>
 				<div class='logo-wrapper'>
-                    <?php if(function_exists('get_field')):?>
-                        <a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
-                            <?php echo wp_get_attachment_image(get_field('logo', 'options'), 'full'); ?>
-                        </a>
-                    <?php endif; ?>
-					<?php echo get_bloginfo('description'); ?>
+					<a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
+						<?php echo wp_get_attachment_image(get_field('logo', 'options'), 'full'); ?>
+					</a>
+					<?php echo wp_get_attachment_image(get_field('baseline', 'options'), 'full', false, array('alt' => get_bloginfo('description'))); ?>
 				</div>
 
 				<button class='burger js-burger'><span></span></button>
 
-				<nav class='main-navigation js-main-navigation' role='navigation'>
-					<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => '')); ?>
+				<nav class="main-navigation js-main-navigation" aria-expanded="false">
+					<div class="main-navigation-container">
+						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu')); ?>
+					</div>
 				</nav>
 			</div>
 		</header>
 
-		<main role='main'>
+		<main>

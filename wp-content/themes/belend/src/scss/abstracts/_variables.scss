@@ -4,31 +4,34 @@
 $white: #fff;
 $black: #000;
 
+$grey-super-light: #f2f2f2;
+$grey-light: #e9e8e1;
 $grey: #828282;
+$light-grey: #bdbdbd;
+$dark-grey: #7c7c7c;
+$black-grey: #312f2f;
 
-$primary: #ff6308;
-$secondary: #f12525;
-
+$primary-color: #ff6308;
+$secondary-color: #f12525;
+$dark-red: #903030;
 
 // Transition
 $transition: 0.3s ease-in-out;
 
-
 // Fonts
 // $font: 'font', sans-serif;
-
 
 // Mediaqueries
 $retina: "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)";
 
-$desktop: "1100px";
-$desktop-small: "960px";
-$tablet: "780px";
-$phone: "580px";
-$phone-small: "400px";
-
+$desktop: 1300px;
+$desktop-small: 960px;
+$tablet: 780px;
+$phone: 580px;
+$phone-small: 400px;
 
 // Grid
 $col: 100/12 * 1%;
 
-$gutter: 10px;
+$gutter: 15px;
+$line-height: 25px;

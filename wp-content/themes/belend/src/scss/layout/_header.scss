@@ -1,43 +1,86 @@
 /* Header */
+$header-height: 96px;
 
 .main-header {
-    padding: 28px $gutter * 3 16px;
-    position: relative;
-    z-index: 10;
+    display: flex;
+    height: $header-height;
+    padding: 0 $gutter * 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    align-items: center;
+    background: $white;
     .container {
         display: flex;
+        width: 100%;
+        padding: 0;
         justify-content: space-between;
         align-items: flex-start;
     }
-    .logo-wrapper{
+    .logo-wrapper {
         width: 118px;
         text-align: center;
+        z-index: 1;
     }
     .logo {
         display: block;
+        + img {
+            display: block;
+            width: 64px;
+            margin: 9px 0 0 32px;
+        }
     }
 }
 
 .main-navigation {
-    width: 100%;
-    padding: 0 $gutter * 3;
     position: fixed;
     top: 0;
     left: 100%;
+    right: -100%;
     bottom: 0;
-    margin: 96px 0 0;
     background: $white;
     transition: comme-dans-du-beurre(
         (
             transform: "0.23s"
         )
     );
+    .menu {
+        font-weight: 700;
+        text-align: center;
+        > li{
+            padding: 0;
+            margin: 9vh 0 0;
+            &:before{
+                content: none;
+            }
+            &:first-child{
+                margin-top: 0;
+            }
+            &.has-btn{
+                position: absolute;
+                bottom: 30px;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
     &.activated {
         transform: translate3d(-100%, 0, 0);
     }
-    ul {
-        font-weight: 700;
-    }
+}
+
+.main-navigation-container {
+    display: flex;
+    padding: $header-height $gutter * 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .burger {
@@ -54,21 +97,20 @@
         right: 0;
         bottom: 0;
         margin: auto;
-        background: $primary;
+        background: $primary-color;
         transition: comme-dans-du-beurre(
             (
                 background-color: "0.23s 0.23s"
             )
         );
-        &:before,
-        &:after {
+        &:before, &:after {
             content: '';
-            position: absolute;
             width: 100%;
             height: 100%;
+            position: absolute;
             top: 0;
             left: 0;
-            background: $primary;
+            background: $primary-color;
             border-radius: 5px;
             transform-origin: 50% 50%;
             transition: comme-dans-du-beurre(
@@ -105,6 +147,64 @@
             }
             &:after {
                 transform: translate(0, 0) rotateZ(45deg);
+            }
+        }
+    }
+}
+
+
+@media (min-width: $tablet){
+    .main-header{
+        .logo-wrapper{
+            display: flex;
+            width: 250px;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media (min-width: $desktop-small){
+    .main-header{
+        background: none;
+        .logo-wrapper{
+            width: 335px;
+        }
+        .logo{
+            > img{
+                width: 200px;
+            }
+            + img{
+                width: 95px;
+                margin-left: 0;
+            }
+        }
+    }
+
+    .burger{
+        display: none;
+    }
+
+    .main-navigation{
+        position: static;
+        background: none;
+    }
+
+    .main-navigation-container{
+        display: block;
+        padding: 0;
+        position: static;
+        .menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            > li{
+                padding: 0 0 0 35px;
+                margin: 0;
+                &.has-btn{
+                    position: static;
+                }
             }
         }
     }

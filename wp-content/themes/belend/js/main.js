@@ -1116,6 +1116,28 @@ Window.prototype.resizeHandler = function resizeHandler() {
   this.noTransition();
 };
 
+Window.prototype.toggleNoScroll = function toggleNoScroll(_ref) {
+  var transitionElement = _ref.transitionElement,
+      noScroll = _ref.noScroll;
+
+  var removeScroll = function removeScroll() {
+    document.documentElement.style.top = "".concat(-window.scrollY, "px");
+    document.documentElement.classList.add('no-scroll');
+    transitionElement.removeEventListener('transitionend', removeScroll, false);
+  };
+
+  if (noScroll) {
+    transitionElement.addEventListener('transitionend', removeScroll, false);
+  } else {
+    var scrollY = Math.abs(parseInt(document.documentElement.style.top.replace('px', ''), 10));
+    document.documentElement.style.top = '';
+    document.documentElement.classList.remove('no-scroll');
+    setTimeout(function () {
+      window.scrollTo(0, scrollY);
+    }, 0);
+  }
+};
+
 Window.prototype.launchWindow = function launchWindow() {
   var _this3 = this;
 
@@ -1162,7 +1184,11 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var burgerHandler = function burgerHandler() {
+var burgerHandler = function burgerHandler(windowHandler) {
+  var state = {
+    burgerActivated: false
+  };
+
   var _document$getElements = document.getElementsByClassName('js-burger'),
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       burger = _document$getElements2[0];
@@ -1173,8 +1199,23 @@ var burgerHandler = function burgerHandler() {
 
   if (burger) {
     burger.addEventListener('click', function () {
+      state.burgerActivated = !state.burgerActivated;
       burger.classList.toggle('activated');
       mainNav.classList.toggle('activated');
+
+      if (state.burgerActivated) {
+        mainNav.setAttribute('aria-expanded', true);
+        windowHandler.toggleNoScroll({
+          transitionElement: mainNav,
+          noScroll: true
+        });
+      } else {
+        mainNav.setAttribute('aria-expanded', false);
+        windowHandler.toggleNoScroll({
+          transitionElement: mainNav,
+          noScroll: false
+        });
+      }
     }, false);
   }
 };
@@ -1213,7 +1254,7 @@ var loadHandler = function loadHandler() {
   _Window__WEBPACK_IMPORTED_MODULE_1__["default"].init();
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
-  Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
 };
 
 document.addEventListener('readystatechange', function () {

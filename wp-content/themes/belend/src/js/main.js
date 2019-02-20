@@ -17,7 +17,7 @@ const loadHandler = () => {
     io.init();
     fallback.init();
 
-    burger();
+    burger(win);
 };
 
 document.addEventListener(

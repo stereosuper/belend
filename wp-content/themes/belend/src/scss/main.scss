@@ -9,10 +9,11 @@
 
 @import "abstracts/placeholders";
 
-@import "layout/grid", "layout/forms", "layout/header", "layout/footer";
+@import "layout/grid", "layout/forms", "layout/header", "layout/footer",
+    "layout/target";
 
 @import "components/buttons";
 
-@import "pages/home";
+@import "pages/home", "pages/contact";
 
 @import "base/print";

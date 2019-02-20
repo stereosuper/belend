@@ -51,6 +51,40 @@ Window.prototype.resizeHandler = function resizeHandler() {
     this.noTransition();
 };
 
+Window.prototype.toggleNoScroll = function toggleNoScroll({
+    transitionElement,
+    noScroll,
+}) {
+    const removeScroll = () => {
+        document.documentElement.style.top = `${-window.scrollY}px`;
+        document.documentElement.classList.add('no-scroll');
+
+        transitionElement.removeEventListener(
+            'transitionend',
+            removeScroll,
+            false
+        );
+    };
+
+    if (noScroll) {
+        transitionElement.addEventListener(
+            'transitionend',
+            removeScroll,
+            false
+        );
+    } else {
+        const scrollY = Math.abs(
+            parseInt(document.documentElement.style.top.replace('px', ''), 10)
+        );
+        document.documentElement.style.top = '';
+        document.documentElement.classList.remove('no-scroll');
+
+        setTimeout(() => {
+            window.scrollTo(0, scrollY);
+        }, 0);
+    }
+};
+
 Window.prototype.launchWindow = function launchWindow() {
     requestAnimFrame(() => {
         this.resizeHandler();

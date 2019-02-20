@@ -1,0 +1,213 @@
+.page-template-contact {
+    margin-top: $header-height;
+    .contact-container {
+        header {
+            margin: 0 0 $line-height;
+            h1 {
+                margin-bottom: $line-height * 2;
+                color: $black-grey;
+            }
+            .subtitle {
+                color: $grey;
+                text-align: center;
+                font-size: 2.4rem;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+        .description {
+            margin: 0 0 #{$line-height * 2};
+            text-align: center;
+        }
+    }
+    .gform_wrapper {
+        margin: $line-height * 4 0 $line-height * 3;
+        .gform_body {
+            ul {
+                margin: 0;
+                li {
+                    padding: 0;
+                    margin-bottom: $line-height;
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+            .gfield {
+                .gfield_label {
+                    display: block;
+                    margin-left: $gutter;
+                    margin-bottom: $line-height * 0.5;
+                    font-weight: 700;
+                    .gfield_required {
+                        margin-left: $gutter * 0.5;
+                        color: $primary-color;
+                        font-size: 0.75em;
+                        font-weight: 400;
+                    }
+                }
+                .ginput_container {
+                    width: 100%;
+                    input,
+                    textarea,
+                    .gfield_select {
+                        width: 100%;
+                        border: 1px solid $light-grey;
+                        border-radius: 4px;
+                        padding: $gutter;
+                    }
+                    &.ginput_container_text,
+                    &.ginput_container_select {
+                        max-width: grid-column-pixels($desktop, $gutter, 3, 12);
+                    }
+                    &.ginput_container_email {
+                        max-width: grid-column-pixels($desktop, $gutter, 4, 12);
+                    }
+                    &.ginput_container_phone {
+                        max-width: grid-column-pixels($desktop, $gutter, 2, 12);
+                    }
+                    &.ginput_container_select {
+                        position: relative;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: $gutter;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-top: 9px solid $black;
+                            transform: translateY(-50%);
+                        }
+                    }
+                    .gfield_select {
+                        appearance: none;
+                    }
+                }
+            }
+        }
+        .gform_footer {
+            display: inline-flex;
+            position: relative;
+            .button {
+                @extend .btn;
+            }
+        }
+    }
+    .offer {
+        padding: $line-height * 2 $gutter * 2;
+        &:first-child {
+            @include background-gradient(44deg, "grey");
+        }
+        &:last-child {
+            @include background-gradient(46deg, "orange");
+        }
+        header {
+            margin-bottom: $line-height;
+            h2 {
+                margin: 0;
+            }
+        }
+        .offer-content {
+            margin-bottom: $line-height;
+        }
+        footer {
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .page-template-contact {
+        .gform_wrapper {
+            width: grid-column-pixels($desktop, $gutter, 6, 12);
+            margin: $line-height * 4 auto $line-height * 3;
+            .gform_body {
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .gfield {
+                    .ginput_container {
+                        &.ginput_container_text,
+                        &.ginput_container_select {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                3,
+                                12
+                            );
+                        }
+                        &.ginput_container_email {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                4,
+                                12
+                            );
+                        }
+                        &.ginput_container_phone {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                2,
+                                12
+                            );
+                        }
+                    }
+                }
+            }
+        }
+        .offers {
+            display: flex;
+        }
+        .offer {
+            width: 50%;
+        }
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .page-template-contact {
+        .contact-container {
+            header {
+                padding: 0 $col * 3;
+                margin-bottom: $line-height * 2;
+                h1 {
+                    margin-bottom: $line-height * 4;
+                    font-size: 6.4rem;
+                }
+                .subtitle {
+                    font-size: 3.6rem;
+                }
+            }
+            .description {
+                margin: 0 0 #{$line-height * 4};
+                padding: 0 $col;
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .page-template-contact {
+        .offer {
+            padding: $line-height * 2 0;
+            &:first-child {
+                padding-right: #{grid-column-pixels($desktop, $gutter, 1, 12) +
+                    $gutter * 0.5};
+                .offer-content-wrapper {
+                    margin-left: auto;
+                    margin-right: 0;
+                }
+            }
+            &:last-child {
+                padding-left: #{grid-column-pixels($desktop, $gutter, 1, 12) +
+                    $gutter * 0.5};
+            }
+            .offer-content-wrapper {
+                max-width: #{grid-column-pixels($desktop, $gutter, 4, 12)};
+            }
+        }
+    }
+}

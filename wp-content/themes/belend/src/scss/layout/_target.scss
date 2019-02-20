@@ -1,0 +1,51 @@
+.target {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    .bg {
+        width: 20%;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+    .txt {
+        width: 80%;
+        padding: 10px $gutter * 2 40px;
+    }
+}
+
+.t-individual {
+    @include background-gradient(50deg, "grey");
+    .txt {
+        order: 2;
+    }
+}
+
+.t-pro {
+    @include background-gradient(50deg, "orange");
+}
+
+@media (min-width: $desktop-small) {
+    .target {
+        width: 50%;
+        .bg {
+            width: 25%;
+        }
+        .txt {
+            width: 60%;
+        }
+    }
+
+    .t-pro {
+        float: right;
+        right: 50px;
+        z-index: 1;
+        .txt {
+            order: 2;
+        }
+    }
+
+    .t-individual {
+        margin: 100px 0 0;
+        left: 50px;
+    }
+}

@@ -242,7 +242,8 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 /*-----------------------------------------------------------------------------------*/
 function belend_scripts(){
     // header
-	wp_enqueue_style( 'belend-style', get_template_directory_uri() . '/css/main.css', array(), BELEND_VERSION );
+    wp_enqueue_style( 'belend-style', get_template_directory_uri() . '/css/main.css', array(), BELEND_VERSION );
+    wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
     wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
