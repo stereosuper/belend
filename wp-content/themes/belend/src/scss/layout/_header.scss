@@ -48,9 +48,21 @@ $header-height: 96px;
     );
     .menu {
         font-weight: 700;
+        text-align: center;
         > li{
+            padding: 0;
+            margin: 9vh 0 0;
             &:before{
                 content: none;
+            }
+            &:first-child{
+                margin-top: 0;
+            }
+            &.has-btn{
+                position: absolute;
+                bottom: 30px;
+                left: 0;
+                right: 0;
             }
         }
     }
@@ -60,12 +72,15 @@ $header-height: 96px;
 }
 
 .main-navigation-container {
-    padding: $header-height $gutter * 3 0;
+    display: flex;
+    padding: $header-height $gutter * 3;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .burger {
@@ -176,6 +191,7 @@ $header-height: 96px;
     }
 
     .main-navigation-container{
+        display: block;
         padding: 0;
         position: static;
         .menu{
@@ -185,6 +201,10 @@ $header-height: 96px;
             margin: 0;
             > li{
                 padding: 0 0 0 35px;
+                margin: 0;
+                &.has-btn{
+                    position: static;
+                }
             }
         }
     }
