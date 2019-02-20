@@ -1208,9 +1208,23 @@ button {
   .page-template-contact .gform_wrapper .gform_body ul {
     margin: 0; }
     .page-template-contact .gform_wrapper .gform_body ul li {
-      padding: 0; }
+      padding: 0;
+      margin-bottom: 25px; }
       .page-template-contact .gform_wrapper .gform_body ul li::before {
         content: none; }
+  .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label {
+    margin-left: 15px;
+    font-weight: 700; }
+    .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label .gfield_required {
+      margin-left: 7.5px;
+      color: #ff6308;
+      font-size: 0.75em;
+      font-weight: 400; }
+  .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container input {
+    width: 100%;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    padding: 15px; }
   .page-template-contact .offer {
     padding: 50px 30px; }
     .page-template-contact .offer:first-child {

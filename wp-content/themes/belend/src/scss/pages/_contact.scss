@@ -27,8 +27,29 @@
                 margin: 0;
                 li {
                     padding: 0;
+                    margin-bottom: $line-height;
                     &::before {
                         content: none;
+                    }
+                }
+            }
+            .gfield {
+                .gfield_label {
+                    margin-left: $gutter;
+                    font-weight: 700;
+                    .gfield_required {
+                        margin-left: $gutter * 0.5;
+                        color: $primary-color;
+                        font-size: 0.75em;
+                        font-weight: 400;
+                    }
+                }
+                .ginput_container {
+                    input {
+                        width: 100%;
+                        border: 1px solid $light-grey;
+                        border-radius: 4px;
+                        padding: $gutter;
                     }
                 }
             }
