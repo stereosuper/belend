@@ -17,9 +17,11 @@
 		<header class='main-header' role='banner'>
 			<div class='container'>
 				<div class='logo-wrapper'>
-					<a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
-						<?php echo wp_get_attachment_image(get_field('logo', 'options'), 'full'); ?>
-					</a>
+                    <?php if(function_exists('get_field')):?>
+                        <a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>
+                            <?php echo wp_get_attachment_image(get_field('logo', 'options'), 'full'); ?>
+                        </a>
+                    <?php endif; ?>
 					<?php echo get_bloginfo('description'); ?>
 				</div>
 
