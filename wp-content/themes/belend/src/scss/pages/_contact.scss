@@ -22,6 +22,7 @@
         }
     }
     .gform_wrapper {
+        margin: $line-height * 4 0 $line-height * 3;
         .gform_body {
             ul {
                 margin: 0;
@@ -35,7 +36,9 @@
             }
             .gfield {
                 .gfield_label {
+                    display: block;
                     margin-left: $gutter;
+                    margin-bottom: $line-height * 0.5;
                     font-weight: 700;
                     .gfield_required {
                         margin-left: $gutter * 0.5;
@@ -45,16 +48,50 @@
                     }
                 }
                 .ginput_container {
-                    input {
+                    width: 100%;
+                    input,
+                    textarea,
+                    .gfield_select {
                         width: 100%;
                         border: 1px solid $light-grey;
                         border-radius: 4px;
                         padding: $gutter;
                     }
+                    &.ginput_container_text,
+                    &.ginput_container_select {
+                        max-width: grid-column-pixels($desktop, $gutter, 3, 12);
+                    }
+                    &.ginput_container_email {
+                        max-width: grid-column-pixels($desktop, $gutter, 4, 12);
+                    }
+                    &.ginput_container_phone {
+                        max-width: grid-column-pixels($desktop, $gutter, 2, 12);
+                    }
+                    &.ginput_container_select {
+                        position: relative;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            right: $gutter;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-top: 9px solid $black;
+                            transform: translateY(-50%);
+                        }
+                    }
+                    .gfield_select {
+                        appearance: none;
+                    }
                 }
             }
         }
         .gform_footer {
+            display: inline-flex;
+            position: relative;
+            .button {
+                @extend .btn;
+            }
         }
     }
     .offer {
@@ -81,6 +118,46 @@
 
 @media (min-width: $tablet) {
     .page-template-contact {
+        .gform_wrapper {
+            width: grid-column-pixels($desktop, $gutter, 6, 12);
+            margin: $line-height * 4 auto $line-height * 3;
+            .gform_body {
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                .gfield {
+                    .ginput_container {
+                        &.ginput_container_text,
+                        &.ginput_container_select {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                3,
+                                12
+                            );
+                        }
+                        &.ginput_container_email {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                4,
+                                12
+                            );
+                        }
+                        &.ginput_container_phone {
+                            min-width: grid-column-pixels(
+                                $desktop,
+                                $gutter,
+                                2,
+                                12
+                            );
+                        }
+                    }
+                }
+            }
+        }
         .offers {
             display: flex;
         }
@@ -129,7 +206,7 @@
                     $gutter * 0.5};
             }
             .offer-content-wrapper {
-                max-width: grid-column-pixels($desktop, $gutter, 4, 12);
+                max-width: #{grid-column-pixels($desktop, $gutter, 4, 12)};
             }
         }
     }
