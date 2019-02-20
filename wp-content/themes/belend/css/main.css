@@ -1261,6 +1261,8 @@ button {
         border: 1px solid #bdbdbd;
         border-radius: 4px;
         padding: 15px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea {
+        height: 175px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
         max-width: 313.75px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
@@ -1324,12 +1326,16 @@ button {
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
-      min-width: 313.75px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
-      min-width: 423.33333px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
-      min-width: 204.16667px; }
+    .page-template-contact .gform_wrapper .gform_body .gfield {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
+        min-width: 313.75px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
+        min-width: 423.33333px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
+        min-width: 204.16667px; }
   .page-template-contact .offers {
     display: -webkit-box;
     display: -ms-flexbox;

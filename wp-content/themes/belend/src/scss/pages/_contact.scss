@@ -57,6 +57,9 @@
                         border-radius: 4px;
                         padding: $gutter;
                     }
+                    textarea {
+                        height: $line-height * 7;
+                    }
                     &.ginput_container_text,
                     &.ginput_container_select {
                         max-width: grid-column-pixels($desktop, $gutter, 3, 12);
@@ -111,8 +114,6 @@
         .offer-content {
             margin-bottom: $line-height;
         }
-        footer {
-        }
     }
 }
 
@@ -128,6 +129,7 @@
                     justify-content: space-between;
                 }
                 .gfield {
+                    flex: 1 0 auto;
                     .ginput_container {
                         &.ginput_container_text,
                         &.ginput_container_select {
