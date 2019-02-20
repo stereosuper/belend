@@ -22,6 +22,9 @@
     }
     .gform_wrapper {
         margin: $line-height * 4 0 $line-height * 3;
+        .validation_error {
+            display: none;
+        }
         .gform_body {
             ul {
                 margin: 0;

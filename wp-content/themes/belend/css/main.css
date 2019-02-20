@@ -1241,6 +1241,8 @@ button {
 
 .page-template-contact .gform_wrapper {
   margin: 100px 0 75px; }
+  .page-template-contact .gform_wrapper .validation_error {
+    display: none; }
   .page-template-contact .gform_wrapper .gform_body ul {
     margin: 0; }
     .page-template-contact .gform_wrapper .gform_body ul li {
