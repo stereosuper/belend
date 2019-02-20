@@ -918,6 +918,8 @@ function Scroll() {
   this.event = null;
   this.timeoutScroll = null;
   this.scrollEnd = true;
+  this.scrollFunctions = [];
+  this.endFunctions = [];
 }
 
 Scroll.prototype.scrollHandler = function scrollHandler() {
@@ -933,6 +935,9 @@ Scroll.prototype.scrollHandler = function scrollHandler() {
   this.timeoutScroll = setTimeout(function () {
     _this.onScrollEnd();
   }, 66);
+  this.scrollFunctions.forEach(function (f) {
+    f();
+  });
 };
 
 Scroll.prototype.launchScroll = function launchScroll(e) {
@@ -963,6 +968,19 @@ Scroll.prototype.destroyScroll = function destroyScroll() {
 
 Scroll.prototype.onScrollEnd = function onScrollEnd() {
   this.scrollEnd = true;
+  this.endFunctions.forEach(function (f) {
+    f();
+  });
+};
+
+Scroll.prototype.addScrollFunction = function addScrollFunction(f) {
+  var onEnd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  this.scrollFunctions.push(f);
+  if (onEnd) this.endFunctions.push(f);
+};
+
+Scroll.prototype.addEndFunction = function addEndFunction(f) {
+  this.endFunctions.push(f);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (new Scroll());
@@ -1197,30 +1215,46 @@ var burgerHandler = function burgerHandler(windowHandler) {
       _document$getElements4 = _slicedToArray(_document$getElements3, 1),
       mainNav = _document$getElements4[0];
 
-  if (burger) {
-    burger.addEventListener('click', function () {
-      state.burgerActivated = !state.burgerActivated;
-      burger.classList.toggle('activated');
-      mainNav.classList.toggle('activated');
-
-      if (state.burgerActivated) {
-        mainNav.setAttribute('aria-expanded', true);
-        windowHandler.toggleNoScroll({
-          transitionElement: mainNav,
-          noScroll: true
-        });
-      } else {
-        mainNav.setAttribute('aria-expanded', false);
-        windowHandler.toggleNoScroll({
-          transitionElement: mainNav,
-          noScroll: false
-        });
-      }
-    }, false);
-  }
+  if (!burger) return;
+  burger.addEventListener('click', function () {
+    state.burgerActivated = !state.burgerActivated;
+    burger.classList.toggle('activated');
+    mainNav.classList.toggle('activated');
+    mainNav.setAttribute('aria-expanded', state.burgerActivated);
+    windowHandler.toggleNoScroll({
+      transitionElement: mainNav,
+      noScroll: state.burgerActivated
+    });
+  }, false);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (burgerHandler);
+
+/***/ }),
+
+/***/ "./wp-content/themes/belend/src/js/headerScroll.js":
+/*!*********************************************************!*\
+  !*** ./wp-content/themes/belend/src/js/headerScroll.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+
+
+var addClassOnScroll = function addClassOnScroll() {
+  var header = document.getElementById('header');
+  if (!header) return;
+  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 40 ? header.classList.add('on') : header.classList.remove('on');
+};
+
+var headerScrollHandler = function headerScrollHandler(windowHandler) {
+  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(addClassOnScroll);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (headerScrollHandler);
 
 /***/ }),
 
@@ -1240,6 +1274,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
 /* harmony import */ var _Fallback__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Fallback */ "./wp-content/themes/belend/src/js/Fallback.js");
 /* harmony import */ var _burger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./burger */ "./wp-content/themes/belend/src/js/burger.js");
+/* harmony import */ var _headerScroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./headerScroll */ "./wp-content/themes/belend/src/js/headerScroll.js");
+
 
 
 
@@ -1255,6 +1291,7 @@ var loadHandler = function loadHandler() {
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
 };
 
 document.addEventListener('readystatechange', function () {

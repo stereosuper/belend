@@ -5,6 +5,8 @@ function Scroll() {
     this.event = null;
     this.timeoutScroll = null;
     this.scrollEnd = true;
+    this.scrollFunctions = [];
+    this.endFunctions = [];
 }
 
 Scroll.prototype.scrollHandler = function scrollHandler() {
@@ -19,6 +21,10 @@ Scroll.prototype.scrollHandler = function scrollHandler() {
     this.timeoutScroll = setTimeout(() => {
         this.onScrollEnd();
     }, 66);
+
+    this.scrollFunctions.forEach((f) => {
+        f();
+    });
 };
 
 Scroll.prototype.launchScroll = function launchScroll(e) {
@@ -52,6 +58,18 @@ Scroll.prototype.destroyScroll = function destroyScroll() {
 
 Scroll.prototype.onScrollEnd = function onScrollEnd() {
     this.scrollEnd = true;
+    this.endFunctions.forEach((f) => {
+        f();
+    });
+};
+
+Scroll.prototype.addScrollFunction = function addScrollFunction(f, onEnd = false) {
+    this.scrollFunctions.push(f);
+    if(onEnd) this.endFunctions.push(f);
+};
+
+Scroll.prototype.addEndFunction = function addEndFunction(f) {
+    this.endFunctions.push(f);
 };
 
 export default new Scroll();

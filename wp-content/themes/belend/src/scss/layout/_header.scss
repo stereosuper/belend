@@ -12,6 +12,9 @@ $header-height: 96px;
     z-index: 100;
     align-items: center;
     background: $white;
+    &.on{
+        background: rgba($white, 0.9);
+    }
     .container {
         display: flex;
         width: 100%;

@@ -6,6 +6,7 @@ import scroll from './Scroll';
 import fallback from './Fallback';
 
 import burger from './burger';
+import headerScroll from './headerScroll';
 
 const loadHandler = () => {
     scroll.init();
@@ -18,6 +19,7 @@ const loadHandler = () => {
     fallback.init();
 
     burger(win);
+    headerScroll(win);
 };
 
 document.addEventListener(
