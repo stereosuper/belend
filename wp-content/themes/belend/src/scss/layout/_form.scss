@@ -16,6 +16,37 @@
 //     }
 // }
 
+.gform_page_fields{
+    > ul{
+        &:first-child{
+            margin: 0 $gutter*-2;
+            padding: 0 $gutter*2 1px;
+            background: $grey-light;
+            h2{
+                margin: 0;
+                font-size: 2.6rem;
+                color: $primary-color;
+            }
+            h3{
+                margin: 0;
+                line-height: 1.2;
+                color: $black;
+            }
+            p{
+                margin-top: 0;
+                line-height: 1.3;
+            }
+            .detail{
+                display: block;
+                margin: 20px 0 0;
+            }
+            .inactive-page{
+                display: none;
+            }
+        }
+    }
+}
+
 .gform_wrapper{
     ul{
         padding: 0;
@@ -118,13 +149,6 @@
     line-height: 1.35;
 }
 
-.gf_progressbar_title{
-    // margin-top: 0;
-    // font-size: 2.6rem;
-    // color: $primary-color;
-    display: none;
-}
-
 .gfield_required{
     display: none;
 }
@@ -134,8 +158,10 @@
     // TO DO : infobulle
 }
 
-.form-nav{
-    background: $grey-light;
+.hidden-title{
+    > .gfield_label{
+        display: none;
+    }
 }
 
 .progressbar{
@@ -205,5 +231,60 @@
     .progressbar{
         width: 340px;
         margin: 0 0 0 auto;
+    }
+
+    .gform_page_fields{
+        display: flex;
+        > ul{
+            &:first-child{
+                width: 35%;
+                margin: 0 5% 0 0;
+                h2{
+                    font-size: 3.6rem;
+                    &:after{
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 40px;
+                        margin: -35px 0 0 15px;
+                        background: #BDBDBD;
+                    }
+                }
+                h3{
+                    line-height: 1.5;
+                    margin: 0 0 20px;
+                }
+                .inactive-page{
+                    display: block;
+                    margin: 0 0 3px;
+                    font-family: 'upgrade-lights';
+                    font-size: 2.2rem;
+                    color: #BDBDBD;
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 40px;
+                        margin: 0 0 0 15px;
+                        background: #BDBDBD;
+                    }
+                    + .inactive-page{
+                        &:before{
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        .form-fields{
+            width: 60%;
+        }
+    }
+
+    .gform_wrapper{
+        .field-help{
+            padding: 35px 0 0;
+            border-top: 1px solid #E0E0E0;
+        }
     }
 }

@@ -950,6 +950,27 @@ button {
     margin: 100px 0 0;
     left: 50px; } }
 
+.gform_page_fields > ul:first-child {
+  margin: 0 -30px;
+  padding: 0 30px 1px;
+  background: #e9e8e1; }
+  .gform_page_fields > ul:first-child h2 {
+    margin: 0;
+    font-size: 2.6rem;
+    color: #ff6308; }
+  .gform_page_fields > ul:first-child h3 {
+    margin: 0;
+    line-height: 1.2;
+    color: #000; }
+  .gform_page_fields > ul:first-child p {
+    margin-top: 0;
+    line-height: 1.3; }
+  .gform_page_fields > ul:first-child .detail {
+    display: block;
+    margin: 20px 0 0; }
+  .gform_page_fields > ul:first-child .inactive-page {
+    display: none; }
+
 .gform_wrapper ul {
   padding: 0; }
   .gform_wrapper ul > li {
@@ -1037,17 +1058,14 @@ button {
   font-size: 1.6rem;
   line-height: 1.35; }
 
-.gf_progressbar_title {
-  display: none; }
-
 .gfield_required {
   display: none; }
 
 .instruction {
   display: none; }
 
-.form-nav {
-  background: #e9e8e1; }
+.hidden-title > .gfield_label {
+  display: none; }
 
 .progressbar {
   height: 2px;
@@ -1100,7 +1118,46 @@ button {
               align-items: center; }
   .progressbar {
     width: 340px;
-    margin: 0 0 0 auto; } }
+    margin: 0 0 0 auto; }
+  .gform_page_fields {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .gform_page_fields > ul:first-child {
+      width: 35%;
+      margin: 0 5% 0 0; }
+      .gform_page_fields > ul:first-child h2 {
+        font-size: 3.6rem; }
+        .gform_page_fields > ul:first-child h2:after {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 40px;
+          margin: -35px 0 0 15px;
+          background: #BDBDBD; }
+      .gform_page_fields > ul:first-child h3 {
+        line-height: 1.5;
+        margin: 0 0 20px; }
+      .gform_page_fields > ul:first-child .inactive-page {
+        display: block;
+        margin: 0 0 3px;
+        font-family: 'upgrade-lights';
+        font-size: 2.2rem;
+        color: #BDBDBD; }
+        .gform_page_fields > ul:first-child .inactive-page:before {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 40px;
+          margin: 0 0 0 15px;
+          background: #BDBDBD; }
+        .gform_page_fields > ul:first-child .inactive-page + .inactive-page:before {
+          height: 20px; }
+    .gform_page_fields .form-fields {
+      width: 60%; }
+  .gform_wrapper .field-help {
+    padding: 35px 0 0;
+    border-top: 1px solid #E0E0E0; } }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button, .link, .btn-invert, .has-btn > a, .gform_next_button {
