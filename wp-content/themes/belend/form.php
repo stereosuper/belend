@@ -16,7 +16,9 @@ get_header(); ?>
 		</div>
 	</section>
 
-	<?php the_content(); ?>
+	<div class='form-wrapper'>
+		<?php the_content(); ?>
+	</div>
 	
 <?php endif; ?>
 
