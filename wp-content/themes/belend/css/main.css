@@ -556,17 +556,22 @@ input, textarea, select, button {
   input:focus, textarea:focus, select:focus, button:focus {
     outline: 0; }
 
-input:-webkit-autofill, textarea:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #fff inset;
-          box-shadow: 0 0 0 1000px #fff inset; }
-
-input:invalid, textarea:invalid {
-  -webkit-box-shadow: none;
-          box-shadow: none; }
+input, textarea {
+  line-height: 1.35; }
+  input:-webkit-autofill, textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+            box-shadow: 0 0 0 1000px #fff inset; }
+  input:invalid, textarea:invalid {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
 
 input {
   border: 0;
-  border-bottom: 1px solid #312f2f; }
+  border-bottom: 1px solid #312f2f;
+  color: #ff6308; }
+  input[readonly] {
+    border: 0;
+    font-weight: 500; }
   input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
     display: none; }
 
@@ -952,6 +957,12 @@ button {
     .gform_wrapper ul > li:before {
       content: none; }
 
+.gform_fields {
+  line-height: 3; }
+
+.gform_ajax_spinner {
+  display: none !important; }
+
 .gform_page_footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -962,6 +973,25 @@ button {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
+
+.gform_next_button {
+  margin-left: auto; }
+
+.gform_previous_button {
+  color: #000; }
+
+.ginput_container_number {
+  margin: 0 5px 0 10px; }
+
+.field-inline {
+  display: inline-block; }
+  .field-inline label + div {
+    display: inline-block; }
+
+.field-price:after {
+  content: ' €';
+  display: inline-block;
+  margin: 0 10px 0 0; }
 
 .gfield_radio {
   display: -webkit-box;
@@ -995,7 +1025,6 @@ button {
 
 .form-progress {
   padding: 30px 0;
-  margin: 95px 0 0;
   text-align: center;
   background: #312f2f;
   color: #fff; }
@@ -1004,13 +1033,74 @@ button {
     font-family: 'upgrade';
     font-size: 1.8rem; }
 
-.gf_progressbar_title {
-  margin-top: 0;
-  font-size: 2.6rem;
-  color: #ff6308; }
+.field-help {
+  font-size: 1.6rem;
+  line-height: 1.35; }
 
-.gf_progressbar_wrapper {
+.gf_progressbar_title {
+  display: none; }
+
+.gfield_required {
+  display: none; }
+
+.instruction {
+  display: none; }
+
+.form-nav {
   background: #e9e8e1; }
+
+.progressbar {
+  height: 2px;
+  position: relative;
+  margin: 20px 0 0;
+  font-size: 1.4rem;
+  line-height: 21px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.4);
+  color: #ff6308; }
+  .progressbar > span {
+    width: 35px;
+    height: 21px;
+    position: absolute;
+    top: -10px;
+    left: 0;
+    border-radius: 50px;
+    background: #fff; }
+
+@media (min-width: 780px) {
+  .form-progress {
+    padding-top: 10px;
+    margin: 95px 0 0;
+    text-align: left; }
+    .form-progress h1 {
+      display: inline; }
+      .form-progress h1:before, .form-progress h1:after {
+        content: ' - '; }
+  .gfield_radio {
+    font-size: 1.8rem; }
+    .gfield_radio > li {
+      width: calc(33% - 24px);
+      min-height: 165px; }
+    .gfield_radio label {
+      padding: 30px 20px; }
+    .gfield_radio input:checked + label {
+      font-weight: 400;
+      color: #fff;
+      background: linear-gradient(61deg, #F12525 32%, #FF6308 68%); } }
+
+@media (min-width: 1300px) {
+  .form-progress {
+    padding-bottom: 10px; }
+    .form-progress .container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+  .progressbar {
+    width: 340px;
+    margin: 0 0 0 auto; } }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button, .link, .btn-invert, .has-btn > a, .gform_next_button {

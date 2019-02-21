@@ -9844,16 +9844,19 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var moveProgessBar = function moveProgessBar() {
-  var progresswrapper = document.getElementById('progressbar');
-  var progressbar = document.getElementsByClassName('gf_progressbar')[0];
-  if (!progressbar || !progresswrapper) return;
-  console.log(progressbar);
-  console.log(document.getElementsByClassName('gf_progressbar_title')[0]); //progresswrapper.appendChild(progressbar);
+var progress = function progress() {
+  var progressbar = jQuery('#progressbar');
+  var pages = jQuery('.gform_page');
+  if (!progressbar.length || !pages.length) return;
+  var pagesLength = jQuery('.gform_page').length;
+  var currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
+  var percent = Math.round(currentPage * 100 / pagesLength);
+  var width = progressbar.width() / 100 * percent > 35 ? Math.round(progressbar.width() / 100 * percent) : 35;
+  progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
 var formHandler = function formHandler() {
-  moveProgessBar(); // const buttons = document.getElementsByClassName('button');
+  progress(); // const buttons = document.getElementsByClassName('button');
   // if(!buttons) return;
   // Array.from(buttons).forEach(e => {
   //     e.addEventListener('click', () => {
@@ -9863,7 +9866,7 @@ var formHandler = function formHandler() {
 
   jQuery(document).ready(function () {
     jQuery(document).on('gform_post_render', function () {
-      moveProgessBar();
+      progress();
     });
   });
 };

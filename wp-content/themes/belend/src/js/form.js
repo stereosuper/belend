@@ -1,17 +1,19 @@
-const moveProgessBar = () => {
-    const progresswrapper = document.getElementById('progressbar');
-    const progressbar = document.getElementsByClassName('gf_progressbar')[0];
+const progress = () => {
+    const progressbar = jQuery('#progressbar');
+    const pages = jQuery('.gform_page');
 
-    if(!progressbar || !progresswrapper) return;
+    if( !progressbar.length || !pages.length ) return;
 
-    console.log(progressbar);
-    console.log(document.getElementsByClassName('gf_progressbar_title')[0]);
-
-    //progresswrapper.appendChild(progressbar);
+    const pagesLength = jQuery('.gform_page').length;
+    const currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
+    const percent = Math.round((currentPage*100)/pagesLength);
+    const width = (progressbar.width() / 100) * percent > 35 ? Math.round((progressbar.width() / 100) * percent) : 35;
+    
+    progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
 const formHandler = () => {
-    moveProgessBar();
+    progress();
 
     // const buttons = document.getElementsByClassName('button');
 
@@ -26,7 +28,7 @@ const formHandler = () => {
     jQuery(document).ready(function(){
 
         jQuery(document).on('gform_post_render', function(){
-            moveProgessBar();
+            progress();
         });
 
     });

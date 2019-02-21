@@ -244,18 +244,20 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 /* Gravity
 /*-----------------------------------------------------------------------------------*/
 function my_custom_function( $progress_bar, $form, $confirmation_message ) {
- 
-    $progress_bar .= '<ul>
-        <li>Page 1</li>
-        <li>Page 2</li>
-        <li>Page 3</li>
-    </ul>';
+    
+    $progress_bar .= '<div class="nav">';
 
-    //var_dump($form);
+    var_dump($form['fields']);
+
+    foreach($form['pagination']['pages'] as $page){
+        $progress_bar .= '<div class="page">' . $page . '</div>';
+    }
+
+    $progress_bar .= '</div>';
  
     return $progress_bar;
 }
-add_filter( 'gform_progress_bar', 'my_custom_function', 10, 3 );
+//add_filter( 'gform_progress_bar', 'my_custom_function', 10, 3 );
 
 
 /*-----------------------------------------------------------------------------------*/
