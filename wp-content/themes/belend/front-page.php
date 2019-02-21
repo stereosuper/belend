@@ -4,7 +4,7 @@
 
         <header class='hero'>
             <div class='container-desk-big'>
-                <div class='banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)'></div>
+                <div class='banner-img js-banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)' data-src="<?php echo get_template_directory_uri() . '/img/water-sprite.png' ?>"></div>
 
                 <div class='intro'>
                     <div class='text'>

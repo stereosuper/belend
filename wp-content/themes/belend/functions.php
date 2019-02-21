@@ -40,6 +40,9 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();	
 }
 
+// Gravity forms
+add_filter( 'gform_init_scripts_footer', '__return_true' );
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Clean WordPress head and remove some stuff for security
@@ -243,19 +246,41 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* Gravity
+/*-----------------------------------------------------------------------------------*/
+function my_custom_function( $progress_bar, $form, $confirmation_message ) {
+    
+    $progress_bar .= '<div class="nav">';
+
+    var_dump($form['fields']);
+
+    foreach($form['pagination']['pages'] as $page){
+        $progress_bar .= '<div class="page">' . $page . '</div>';
+    }
+
+    $progress_bar .= '</div>';
+ 
+    return $progress_bar;
+}
+//add_filter( 'gform_progress_bar', 'my_custom_function', 10, 3 );
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
 /*-----------------------------------------------------------------------------------*/
 function belend_scripts(){
     // header
     wp_enqueue_style( 'belend-style', get_template_directory_uri() . '/css/main.css', array(), BELEND_VERSION );
+    
     wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
-    wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
+    wp_enqueue_script('jquery', false, array(), false, false);
 
 	// footer
 	wp_enqueue_script( 'belend-scripts', get_template_directory_uri() . '/js/main.js', array(), BELEND_VERSION, true );
 
     wp_deregister_script( 'wp-embed' );
+
 }
 add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 

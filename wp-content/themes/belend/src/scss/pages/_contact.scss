@@ -1,5 +1,4 @@
 .page-template-contact {
-    margin-top: $header-height;
     .contact-container {
         header {
             margin: 0 0 $line-height;
@@ -23,6 +22,9 @@
     }
     .gform_wrapper {
         margin: $line-height * 4 0 $line-height * 3;
+        .validation_error {
+            display: none;
+        }
         .gform_body {
             ul {
                 margin: 0;
@@ -35,6 +37,20 @@
                 }
             }
             .gfield {
+                &.gfield_error {
+                    .ginput_container {
+                        input,
+                        textarea,
+                        .gfield_select {
+                            border-color: $form-error-color;
+                        }
+                    }
+                    .validation_message {
+                        margin-top: 0.5rem;
+                        color: $form-error-color;
+                        font-size: 1.4rem;
+                    }
+                }
                 .gfield_label {
                     display: block;
                     margin-left: $gutter;
@@ -56,6 +72,9 @@
                         border: 1px solid $light-grey;
                         border-radius: 4px;
                         padding: $gutter;
+                    }
+                    textarea {
+                        height: $line-height * 7;
                     }
                     &.ginput_container_text,
                     &.ginput_container_select {
@@ -92,6 +111,23 @@
             .button {
                 @extend .btn;
             }
+            img.gform_ajax_spinner {
+                display: none;
+            }
+        }
+    }
+    .gform_confirmation_wrapper {
+        margin-bottom: $line-height * 5;
+        .gform_confirmation_message {
+            text-align: center;
+            .confirmation-title {
+                color: $form-confirmation-color;
+                font-size: 2rem;
+                margin-bottom: $line-height;
+            }
+            .confirmation-subtitle {
+                font-size: 1.6rem;
+            }
         }
     }
     .offer {
@@ -111,7 +147,12 @@
         .offer-content {
             margin-bottom: $line-height;
         }
-        footer {
+    }
+    .benefits-wrapper {
+        background-color: $grey-super-light;
+        .benefits {
+            padding: 10px 0 50px;
+            margin: 0;
         }
     }
 }
@@ -128,6 +169,7 @@
                     justify-content: space-between;
                 }
                 .gfield {
+                    flex: 1 0 auto;
                     .ginput_container {
                         &.ginput_container_text,
                         &.ginput_container_select {
@@ -158,6 +200,17 @@
                 }
             }
         }
+        .gform_confirmation_wrapper {
+            .gform_confirmation_message {
+                .confirmation-title {
+                    font-size: 2.6rem;
+                    margin-bottom: $line-height;
+                }
+                .confirmation-subtitle {
+                    font-size: 1.8rem;
+                }
+            }
+        }
         .offers {
             display: flex;
         }
@@ -184,6 +237,12 @@
             .description {
                 margin: 0 0 #{$line-height * 4};
                 padding: 0 $col;
+            }
+        }
+        .benefits-wrapper {
+            .benefits {
+                padding: 0;
+                margin: 70px 0 50px;
             }
         }
     }

@@ -19,6 +19,7 @@ input, textarea, select, button{
 }
 
 input, textarea{
+    line-height: 1.35;
   	&:-webkit-autofill{
       	box-shadow: 0 0 0 1000px #fff inset;
   	}
@@ -29,6 +30,13 @@ input, textarea{
 }
 
 input{
+    border: 0;
+    border-bottom: 1px solid $black-grey;
+    color: $primary-color;
+    &[readonly]{
+        border: 0;
+        font-weight: 500;
+    }
     // hide the symbols of input search
     &[type=search]{
         &::-webkit-search-cancel-button, &::-webkit-search-decoration{

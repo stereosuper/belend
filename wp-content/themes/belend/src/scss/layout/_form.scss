@@ -1,0 +1,191 @@
+.gform_wrapper{
+    ul{
+        padding: 0;
+        > li{
+            padding: 0;
+            &:before{
+                content: none;
+            }
+        }
+    }
+}
+
+.gform_fields{
+    line-height: 3;
+}
+
+.gform_ajax_spinner {
+    display: none !important;
+}
+
+.gform_page_footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.gform_next_button{
+    margin-left: auto;
+}
+.gform_previous_button{
+    color: $black;
+}
+
+.ginput_container_number{
+    margin: 0 5px 0 10px;
+}
+
+.field-inline{
+    display: inline-block;
+    label + div{
+        display: inline-block;
+    }
+}
+
+.field-price{
+    &:after{
+        content: ' €';
+        display: inline-block;
+        margin: 0 10px 0 0;
+    }
+}
+
+.gfield_radio{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px -12px;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    text-align: center;
+    > li{
+        width: calc(50% - 24px);
+        min-height: 95px;
+        position: relative;
+        margin: 0 12px 24px;
+    }
+    label{
+        display: block;
+        height: 100%;
+        padding: 15px 20px;
+        border: 1px solid $grey;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input{
+        position: absolute;
+        top: 0;
+        left: -99em;
+        &:checked{
+            + label{
+                color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+    }
+}
+
+.form-progress{
+    padding: 30px 0;
+    text-align: center;
+    background: $black-grey;
+    color: #fff;
+    h1{
+        margin: 0;
+        font-family: 'upgrade';
+        font-size: 1.8rem;
+    }
+}
+
+.field-help{
+    font-size: 1.6rem;
+    line-height: 1.35;
+}
+
+.gf_progressbar_title{
+    // margin-top: 0;
+    // font-size: 2.6rem;
+    // color: $primary-color;
+    display: none;
+}
+
+.gfield_required{
+    display: none;
+}
+
+.instruction{
+    display: none;
+    // TO DO : infobulle
+}
+
+.form-nav{
+    background: $grey-light;
+}
+
+.progressbar{
+    height: 2px;
+    position: relative;
+    margin: 20px 0 0;
+    font-size: 1.4rem;
+    line-height: 21px;
+    text-align: center;
+    background: rgba(#fff, 0.4);
+    color: $primary-color;
+    > span{
+        width: 35px;
+        height: 21px;
+        position: absolute;
+        top: -10px;
+        left: 0;
+        border-radius: 50px;
+        background: #fff;
+    }
+}
+
+
+@media (min-width: $tablet){
+    .form-progress{
+        padding-top: 10px;
+        margin: 95px 0 0;
+        text-align: left;
+        h1{
+            display: inline;
+            &:before, &:after{
+                content: ' - ';
+            }
+        }
+    }
+
+    .gfield_radio{
+        font-size: 1.8rem;
+        > li{
+            width: calc(33% - 24px);
+            min-height: 165px;
+        }
+        label{
+            padding: 30px 20px;
+        }
+        input{
+            &:checked{
+                + label{
+                    font-weight: 400;
+                    color: #fff;
+                    background: linear-gradient(61deg, #F12525 32%, #FF6308 68%)
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop){
+    .form-progress{
+        padding-bottom: 10px;
+        .container{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .progressbar{
+        width: 340px;
+        margin: 0 0 0 auto;
+    }
+}

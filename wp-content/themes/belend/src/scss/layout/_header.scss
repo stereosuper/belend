@@ -5,13 +5,14 @@ $header-height: 96px;
     display: flex;
     height: $header-height;
     padding: 0 $gutter * 3;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
     align-items: center;
-    background: $white;
+    &.on{
+        background: rgba($white, 0.9);
+    }
     .container {
         display: flex;
         width: 100%;
@@ -155,6 +156,7 @@ $header-height: 96px;
 
 @media (min-width: $tablet){
     .main-header{
+        position: fixed;
         .logo-wrapper{
             display: flex;
             width: 250px;
