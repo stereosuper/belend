@@ -18,7 +18,7 @@ wp-cli
 
 node_modules/**
 
-*.php
+!*.php
 wp-content/languages
 wp-content/plugins
 wp-content/upgrade
