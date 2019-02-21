@@ -3,6 +3,11 @@
 define( 'BELEND_VERSION', 1.0 );
 
 
+foreach (glob( plugin_dir_path( __FILE__ ) . "/helpers/*.php" ) as $filename){
+    require_once $filename;
+}
+
+
 /*-----------------------------------------------------------------------------------*/
 /* General
 /*-----------------------------------------------------------------------------------*/
@@ -305,11 +310,3 @@ add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 // add_action( 'tgmpa_register', 'belend_register_required_plugins' );
 
 
-
-add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2 );
-
-function belend_send_partial_entry($partial_entry, $form){
-    $vxg_salesforce=new vxg_salesforce();
-    $vxg_salesforce->instance();
-    $vxg_salesforce->push($partial_entry, $form);
-}
