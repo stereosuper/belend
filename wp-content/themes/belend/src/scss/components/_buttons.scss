@@ -1,6 +1,10 @@
 /* Buttons */
 
-.btn, .link, .btn-invert, .has-btn > a, .gform_next_button{
+.btn,
+.link,
+.btn-invert,
+.has-btn > a,
+.gform_next_button {
     font-weight: 700;
     .icon {
         width: 1.4rem;
@@ -9,7 +13,10 @@
     }
 }
 
-.btn, .btn-invert, .has-btn > a, .gform_next_button{
+.btn,
+.btn-invert,
+.has-btn > a,
+.gform_next_button {
     display: inline-flex;
     padding: 20px 20px 19px;
     position: relative;
@@ -17,20 +24,51 @@
     border-radius: 2px;
     color: $white;
 }
-.btn, .has-btn > a, .gform_next_button{
+.btn,
+.has-btn > a,
+.gform_next_button {
     border: 2px solid transparent;
     overflow: hidden;
-    @include fluid-background-btn();
+    z-index: 0;
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &::before {
+        @include fluid-background-btn("emphasis");
+        z-index: -2;
+    }
+    &::after {
+        @include fluid-background-btn("hover");
+        opacity: 0;
+        transition: smooth-operator(
+            (
+                opacity: "#{$comme-dans-du-beurre-duration}"
+            )
+        );
+        z-index: -1;
+    }
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+    }
 }
-.btn-invert{
+.btn-invert {
     border: 2px solid;
 }
-.has-btn > a, .gform_next_button{
+.has-btn > a,
+.gform_next_button {
     padding: 10px 20px 11px;
 }
 
-.link{
-    > span{
+.link {
+    > span {
         border-bottom: solid 1px;
     }
 }

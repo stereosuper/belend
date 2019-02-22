@@ -1,7 +1,7 @@
 import 'intersection-observer';
 import { forEach } from './utils';
 
-function IntersectionObserver() {
+function Io() {
     this.resized = true;
 
     this.init = () => {
@@ -34,6 +34,15 @@ function IntersectionObserver() {
             }
         });
     };
+
+    // Reveal comme dans du beurre
+    this.revealCDDBIn = entry => {
+        entry.classList.add('reveal');
+    };
+
+    this.revealCDDBOut = entry => {
+        entry.classList.remove('reveal');
+    };
 }
 
-export default new IntersectionObserver();
+export default new Io();

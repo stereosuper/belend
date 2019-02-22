@@ -8,6 +8,7 @@ import fallback from './Fallback';
 import burger from './burger';
 import headerScroll from './headerScroll';
 import homeSprite from './homeSprite';
+import mapParallax from './mapParallax';
 import form from './form';
 
 const loadHandler = () => {
@@ -23,6 +24,7 @@ const loadHandler = () => {
     burger(win);
     headerScroll();
     homeSprite();
+    mapParallax();
     form();
 };
 

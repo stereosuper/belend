@@ -4,11 +4,11 @@
 
         <header class='hero'>
             <div class='container-desk-big'>
-                <div class='banner-img js-banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)' data-src="<?php echo get_template_directory_uri() . '/img/water-sprite.png' ?>">
+                <div class='banner-img js-banner-img' style='background-image: url(<?php echo get_the_post_thumbnail_url($post, 'full'); ?>)' data-src="<?php echo get_template_directory_uri() . '/img/water-sprite.png' ?>" data-io="revealCDDB">
                     <div class="water js-water"></div>
                 </div>
 
-                <div class='intro'>
+                <div class='intro' data-io="revealCDDB">
                     <div class='text'>
                         <h1>
                             <?php
@@ -75,7 +75,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <?php echo wp_get_attachment_image($loc['img'], 'full'); ?>
+                <?php echo wp_get_attachment_image($loc['img'], 'full', false, ['class'=> 'js-map']); ?>
             </section>
         <?php endif; ?>
 

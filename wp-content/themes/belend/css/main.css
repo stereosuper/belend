@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /* Functions */
 /* Animations */
-@-webkit-keyframes animated-gradient {
-  50% {
-    background-position: 0% 0%; }
+@-webkit-keyframes animated-gradient-emphasis {
   0% {
+    background-position: 0% 0%; }
+  50% {
     background-position: 0% 0%; }
   60% {
     background-position: 100% 100%; }
@@ -12,15 +12,31 @@
     background-position: 0% 0%; }
   100% {
     background-position: 0% 0%; } }
-@keyframes animated-gradient {
-  50% {
-    background-position: 0% 0%; }
+@keyframes animated-gradient-emphasis {
   0% {
+    background-position: 0% 0%; }
+  50% {
     background-position: 0% 0%; }
   60% {
     background-position: 100% 100%; }
   65% {
     background-position: 0% 0%; }
+  100% {
+    background-position: 0% 0%; } }
+
+@-webkit-keyframes animated-gradient-hover {
+  0% {
+    background-position: 0% 0%; }
+  50% {
+    background-position: 100% 100%; }
+  100% {
+    background-position: 0% 0%; } }
+
+@keyframes animated-gradient-hover {
+  0% {
+    background-position: 0% 0%; }
+  50% {
+    background-position: 100% 100%; }
   100% {
     background-position: 0% 0%; } }
 
@@ -741,7 +757,9 @@ button {
 
 @media (min-width: 960px) {
   .main-header {
-    background-color: transparent; }
+    background-color: transparent;
+    -webkit-transition:  background-color 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+    transition:  background-color 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .main-header.scrolled {
       background-color: rgba(255, 255, 255, 0.9); }
     .main-header .logo-wrapper {
@@ -1169,14 +1187,25 @@ button {
     border-top: 1px solid #E0E0E0; } }
 
 /* Buttons */
-.btn, .page-template-contact .gform_wrapper .gform_footer .button, .link, .btn-invert, .has-btn > a, .gform_next_button {
+.btn, .page-template-contact .gform_wrapper .gform_footer .button,
+.link,
+.btn-invert,
+.has-btn > a,
+.gform_next_button {
   font-weight: 700; }
-  .btn .icon, .page-template-contact .gform_wrapper .gform_footer .button .icon, .link .icon, .btn-invert .icon, .has-btn > a .icon, .gform_next_button .icon {
+  .btn .icon, .page-template-contact .gform_wrapper .gform_footer .button .icon,
+  .link .icon,
+  .btn-invert .icon,
+  .has-btn > a .icon,
+  .gform_next_button .icon {
     width: 1.4rem;
     height: 1.1rem;
     margin: 0 0 0 15px; }
 
-.btn, .page-template-contact .gform_wrapper .gform_footer .button, .btn-invert, .has-btn > a, .gform_next_button {
+.btn, .page-template-contact .gform_wrapper .gform_footer .button,
+.btn-invert,
+.has-btn > a,
+.gform_next_button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -1188,19 +1217,54 @@ button {
   border-radius: 2px;
   color: #fff; }
 
-.btn, .page-template-contact .gform_wrapper .gform_footer .button, .has-btn > a, .gform_next_button {
+.btn, .page-template-contact .gform_wrapper .gform_footer .button,
+.has-btn > a,
+.gform_next_button {
   border: 2px solid transparent;
   overflow: hidden;
-  background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
-  background-size: 1000%;
-  will-change: background-position;
-  -webkit-animation: animated-gradient 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-          animation: animated-gradient 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
+  z-index: 0; }
+  .btn::before, .page-template-contact .gform_wrapper .gform_footer .button::before, .btn::after, .page-template-contact .gform_wrapper .gform_footer .button::after,
+  .has-btn > a::before,
+  .has-btn > a::after,
+  .gform_next_button::before,
+  .gform_next_button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .btn::before, .page-template-contact .gform_wrapper .gform_footer .button::before,
+  .has-btn > a::before,
+  .gform_next_button::before {
+    background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
+    background-size: 1000%;
+    will-change: background-position;
+    -webkit-animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+            animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    z-index: -2; }
+  .btn::after, .page-template-contact .gform_wrapper .gform_footer .button::after,
+  .has-btn > a::after,
+  .gform_next_button::after {
+    background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
+    background-size: 1000%;
+    will-change: background-position;
+    -webkit-animation: animated-gradient-hover 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+            animation: animated-gradient-hover 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    opacity: 0;
+    -webkit-transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    z-index: -1; }
+  .btn:hover::after, .page-template-contact .gform_wrapper .gform_footer .button:hover::after,
+  .has-btn > a:hover::after,
+  .gform_next_button:hover::after {
+    opacity: 1; }
 
 .btn-invert {
   border: 2px solid; }
 
-.has-btn > a, .gform_next_button {
+.has-btn > a,
+.gform_next_button {
   padding: 10px 20px 11px; }
 
 .link > span {
@@ -1232,12 +1296,27 @@ button {
 .intro {
   position: relative;
   text-align: center; }
+  .intro.reveal .text {
+    -webkit-transform: translate3d(-100%, 0, 0) scale(1);
+            transform: translate3d(-100%, 0, 0) scale(1);
+    opacity: 1; }
   .intro .text {
+    position: relative;
     max-width: 240px;
     padding: 35px 25px;
-    margin: 0 0 0 auto;
+    margin: 0;
+    left: 100%;
     text-align: left;
-    background: #fff; }
+    background: #fff;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+            transform: translate3d(0, 0, 0) scale(0.8);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 0;
+    -webkit-transition:  opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
   .intro .container {
     padding: 25px 15px;
     background: #fff; }
@@ -1369,13 +1448,38 @@ button {
   .intro {
     width: 500px;
     padding: 45px 30px 70px 50px;
-    margin-top: 230px;
-    margin-left: 30px;
+    margin-top: 200px;
+    margin-left: 0;
     text-align: left;
-    background: #fff; }
+    background: #fff;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.8);
+            transform: translate3d(0, 0, 0) scale(0.8);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+    opacity: 0;
+    -webkit-transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+    .intro.reveal {
+      opacity: 1;
+      -webkit-transform: translate3d(30px, 30px, 0) scale(1);
+              transform: translate3d(30px, 30px, 0) scale(1);
+      -webkit-transition:  opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+      .intro.reveal .text {
+        -webkit-transform: none;
+                transform: none;
+        opacity: 1; }
     .intro > .text {
       padding: 0;
-      margin: 0; }
+      margin: 0;
+      left: 0;
+      -webkit-transform: none;
+              transform: none;
+      opacity: 1; }
     .intro > .container {
       padding: 0; }
   .hero {
@@ -1384,8 +1488,17 @@ button {
     width: 400px;
     height: 560px;
     left: 55%;
-    top: 150px;
-    background-size: auto 110%; }
+    top: 100px;
+    background-size: auto 110%;
+    opacity: 0;
+    -webkit-transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+    .banner-img.reveal {
+      -webkit-transform: translate3d(0, 50px, 0);
+              transform: translate3d(0, 50px, 0);
+      opacity: 1; }
     .banner-img .water {
       top: 66px;
       left: 141px;
@@ -1491,8 +1604,8 @@ button {
     .home-benefits img {
       margin-right: 7.5px; }
   .intro {
-    margin-top: 200px;
-    margin-left: 150px; }
+    margin-top: 170px;
+    margin-left: 120px; }
   .banner-img {
     width: 575px;
     height: 800px;

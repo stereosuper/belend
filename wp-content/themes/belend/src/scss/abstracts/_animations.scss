@@ -1,5 +1,10 @@
 /* Animations */
 
+// Durations
+$comme-dans-du-beurre-duration: 0.23s;
+$plop-duration: 0.4s;
+$smooth-operator-duration: 0.8s;
+
 // Transition timing functions
 $comme-dans-du-beurre-timing: cubic-bezier(0.25, 0.46, 0.25, 1);
 $plop-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -40,11 +45,11 @@ $smooth-operator-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 // Keyframes
 
-@keyframes animated-gradient {
-    50% {
+@keyframes animated-gradient-emphasis {
+    0% {
         background-position: 0% 0%;
     }
-    0% {
+    50% {
         background-position: 0% 0%;
     }
     60% {
@@ -58,9 +63,28 @@ $smooth-operator-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
     }
 }
 
-@mixin fluid-background-btn() {
+@keyframes animated-gradient-hover {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@mixin fluid-background-btn($type: "emphasis") {
     @include btn-gradient();
     background-size: 1000%;
     will-change: background-position;
-    animation: animated-gradient 15s $smooth-operator-timing infinite;
+    @if ($type == "emphasis") {
+        animation: animated-gradient-emphasis
+            15s
+            $smooth-operator-timing
+            infinite;
+    } @else if ($type == "hover") {
+        animation: animated-gradient-hover 2s $smooth-operator-timing infinite;
+    }
 }

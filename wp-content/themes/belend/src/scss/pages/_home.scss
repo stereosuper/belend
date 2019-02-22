@@ -31,12 +31,29 @@
 .intro {
     position: relative;
     text-align: center;
+    &.reveal {
+        .text {
+            transform: translate3d(-100%, 0, 0) scale(1);
+            opacity: 1;
+        }
+    }
     .text {
+        position: relative;
         max-width: 240px;
         padding: 35px 25px;
-        margin: 0 0 0 auto;
+        margin: 0;
+        left: 100%;
         text-align: left;
         background: #fff;
+        transform: translate3d(0, 0, 0) scale(0.8);
+        transform-origin: 100% 100%;
+        opacity: 0;
+        transition: plop(
+            (
+                transform: "#{$plop-duration}",
+                opacity: "#{$plop-duration} 0.1s"
+            )
+        );
     }
     .container {
         padding: $line-height $gutter;
@@ -188,13 +205,41 @@
     .intro {
         width: 500px;
         padding: 45px 30px 70px 50px;
-        margin-top: 230px;
-        margin-left: $gutter * 2;
+        margin-top: #{230px - $gutter * 2};
+        margin-left: 0;
         text-align: left;
         background: #fff;
+        transform: translate3d(0, 0, 0) scale(0.8);
+        transform-origin: 0% 0%;
+        opacity: 0;
+        transition: smooth-operator(
+            (
+                transform: "#{$smooth-operator-duration}",
+                opacity: "#{$smooth-operator-duration}"
+            )
+        );
+        &.reveal {
+            opacity: 1;
+            transform: translate3d(#{$gutter * 2}, #{$gutter * 2}, 0) scale(1);
+            transition: smooth-operator(
+                (
+                    transform:
+                        "#{$smooth-operator-duration} #{$comme-dans-du-beurre-duration}",
+                    opacity:
+                        "#{$smooth-operator-duration} #{$comme-dans-du-beurre-duration}"
+                )
+            );
+            .text {
+                transform: none;
+                opacity: 1;
+            }
+        }
         > .text {
             padding: 0;
             margin: 0;
+            left: 0;
+            transform: none;
+            opacity: 1;
         }
         > .container {
             padding: 0;
@@ -209,8 +254,19 @@
         width: 400px;
         height: 560px;
         left: 55%;
-        top: 150px;
+        top: #{150px - $line-height * 2};
         background-size: auto 110%;
+        opacity: 0;
+        transition: smooth-operator(
+            (
+                transform: "#{$smooth-operator-duration}",
+                opacity: "#{$smooth-operator-duration}"
+            )
+        );
+        &.reveal {
+            transform: translate3d(0, #{$line-height * 2}, 0);
+            opacity: 1;
+        }
         .water {
             top: 66px;
             left: 141px;
@@ -346,8 +402,8 @@
     }
 
     .intro {
-        margin-top: 200px;
-        margin-left: 150px;
+        margin-top: #{200px - $gutter * 2};
+        margin-left: #{150px - $gutter * 2};
     }
 
     .banner-img {

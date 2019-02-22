@@ -9390,7 +9390,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function IntersectionObserver() {
+function Io() {
   var _this = this;
 
   this.resized = true;
@@ -9417,10 +9417,19 @@ function IntersectionObserver() {
         obj.setAttribute('data-io-observed', '');
       }
     });
+  }; // Reveal comme dans du beurre
+
+
+  this.revealCDDBIn = function (entry) {
+    entry.classList.add('reveal');
+  };
+
+  this.revealCDDBOut = function (entry) {
+    entry.classList.remove('reveal');
   };
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (new IntersectionObserver());
+/* harmony default export */ __webpack_exports__["default"] = (new Io());
 
 /***/ }),
 
@@ -10016,7 +10025,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _burger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./burger */ "./wp-content/themes/belend/src/js/burger.js");
 /* harmony import */ var _headerScroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./headerScroll */ "./wp-content/themes/belend/src/js/headerScroll.js");
 /* harmony import */ var _homeSprite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./homeSprite */ "./wp-content/themes/belend/src/js/homeSprite.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+/* harmony import */ var _mapParallax__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapParallax */ "./wp-content/themes/belend/src/js/mapParallax.js");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+
 
 
 
@@ -10037,7 +10048,8 @@ var loadHandler = function loadHandler() {
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
   Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_form__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  Object(_form__WEBPACK_IMPORTED_MODULE_9__["default"])();
 };
 
 document.addEventListener('readystatechange', function () {
@@ -10045,6 +10057,68 @@ document.addEventListener('readystatechange', function () {
     loadHandler();
   }
 }, false);
+
+/***/ }),
+
+/***/ "./wp-content/themes/belend/src/js/mapParallax.js":
+/*!********************************************************!*\
+  !*** ./wp-content/themes/belend/src/js/mapParallax.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var MULT = 4;
+
+var simpleParallax = function simpleParallax(_ref) {
+  var intensity = _ref.intensity,
+      element = _ref.element,
+      boundings = _ref.boundings;
+  var scrollTop = _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop;
+  var velocity = intensity * MULT;
+  var imgPos = "".concat((scrollTop - boundings.top) / velocity, "px");
+  gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(element, 0.1, {
+    y: imgPos,
+    force3D: true
+  });
+};
+
+var mapParallax = function mapParallax() {
+  var _document$getElements = document.getElementsByClassName('js-map'),
+      _document$getElements2 = _slicedToArray(_document$getElements, 1),
+      map = _document$getElements2[0];
+
+  if (!map) return;
+  var boundings = map.getBoundingClientRect();
+
+  var launchParallax = function launchParallax() {
+    simpleParallax({
+      intensity: -2,
+      element: map,
+      boundings: boundings
+    });
+  };
+
+  launchParallax();
+  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(function () {
+    launchParallax();
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (mapParallax);
 
 /***/ }),
 

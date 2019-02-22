@@ -42,7 +42,7 @@ $header-height: 96px;
     background: $white;
     transition: comme-dans-du-beurre(
         (
-            transform: "0.23s"
+            transform: "#{$comme-dans-du-beurre-duration}"
         )
     );
     z-index: 2;
@@ -100,7 +100,8 @@ $header-height: 96px;
         background: $primary-color;
         transition: comme-dans-du-beurre(
             (
-                background-color: "0.23s 0.23s"
+                background-color:
+                    "#{$comme-dans-du-beurre-duration} #{$comme-dans-du-beurre-duration}"
             )
         );
         &:before,
@@ -116,7 +117,7 @@ $header-height: 96px;
             transform-origin: 50% 50%;
             transition: comme-dans-du-beurre(
                 (
-                    transform: "0.23s"
+                    transform: "#{$comme-dans-du-beurre-duration}"
                 )
             );
         }
@@ -132,14 +133,15 @@ $header-height: 96px;
             background: transparent;
             transition: comme-dans-du-beurre(
                 (
-                    background-color: "0.23s"
+                    background-color: "#{$comme-dans-du-beurre-duration}"
                 )
             );
             &:before,
             &:after {
                 transition: comme-dans-du-beurre(
                     (
-                        transform: "0.23s 0.23s"
+                        transform:
+                            "#{$comme-dans-du-beurre-duration} #{$comme-dans-du-beurre-duration}"
                     )
                 );
             }
@@ -168,6 +170,11 @@ $header-height: 96px;
 @media (min-width: $desktop-small) {
     .main-header {
         background-color: transparent;
+        transition: comme-dans-du-beurre(
+            (
+                background-color: "#{$comme-dans-du-beurre-duration}"
+            )
+        );
         &.scrolled {
             background-color: rgba($white, 0.9);
         }
