@@ -9686,6 +9686,14 @@ Sprite.prototype.checkShouldStop = function checkShouldStop() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./wp-content/themes/belend/src/js/utils.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -9704,6 +9712,15 @@ function Window() {
   this.timeoutWindow = false;
   this.delta = 200;
   this.noTransitionElts = [];
+  this.breakpoints = {
+    xs: 0,
+    s: 400,
+    m: 580,
+    l: 780,
+    xl: 960,
+    xxl: 1260
+  };
+  this.currentBreakpoint = '';
 }
 
 Window.prototype.setNoTransitionElts = function setNoTransitionElts(elements) {
@@ -9745,15 +9762,49 @@ Window.prototype.noTransition = function noTransition() {
   }
 };
 
+Window.prototype.setBreakpoints = function setBreakpoints() {
+  var _this3 = this;
+
+  var currentBreakpoint = '';
+  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(Object.entries(this.breakpoints), function (breakpoint) {
+    var _breakpoint = _slicedToArray(breakpoint, 2),
+        name = _breakpoint[0],
+        value = _breakpoint[1];
+
+    if (_this3.w > value) {
+      currentBreakpoint = name;
+    }
+  });
+
+  if (this.currentBreakpoint !== currentBreakpoint) {
+    Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(Object.entries(this.breakpoints), function (_ref) {
+      var _ref2 = _slicedToArray(_ref, 1),
+          name = _ref2[0];
+
+      document.documentElement.classList.remove("breakpoint-".concat(name));
+    });
+    this.currentBreakpoint = currentBreakpoint;
+    document.documentElement.classList.add("breakpoint-".concat(this.currentBreakpoint));
+  }
+};
+
 Window.prototype.resizeHandler = function resizeHandler() {
   this.w = window.innerWidth;
   this.h = window.innerHeight;
+  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(this.resizeFunctions, function (f) {
+    f();
+  });
+  this.setBreakpoints();
   this.noTransition();
 };
 
-Window.prototype.toggleNoScroll = function toggleNoScroll(_ref) {
-  var transitionElement = _ref.transitionElement,
-      noScroll = _ref.noScroll;
+Window.prototype.addResizeFunction = function addResizeFunction(f) {
+  this.resizeFunctions.push(f);
+};
+
+Window.prototype.toggleNoScroll = function toggleNoScroll(_ref3) {
+  var transitionElement = _ref3.transitionElement,
+      noScroll = _ref3.noScroll;
 
   var removeScroll = function removeScroll() {
     document.documentElement.style.top = "".concat(-window.scrollY, "px");
@@ -9774,27 +9825,27 @@ Window.prototype.toggleNoScroll = function toggleNoScroll(_ref) {
 };
 
 Window.prototype.launchWindow = function launchWindow() {
-  var _this3 = this;
+  var _this4 = this;
 
   Object(_utils__WEBPACK_IMPORTED_MODULE_0__["requestAnimFrame"])(function () {
-    _this3.resizeHandler();
+    _this4.resizeHandler();
   });
 };
 
 Window.prototype.init = function initWindow() {
-  var _this4 = this;
+  var _this5 = this;
 
   this.resizeHandler();
   window.addEventListener('resize', function () {
-    _this4.launchWindow();
+    _this5.launchWindow();
   }, false);
 };
 
 Window.prototype.destroyWindow = function destroyWindow() {
-  var _this5 = this;
+  var _this6 = this;
 
   window.removeEventListener('resize', function () {
-    _this5.launchWindow();
+    _this6.launchWindow();
   }, false);
 };
 
@@ -9811,6 +9862,7 @@ Window.prototype.destroyWindow = function destroyWindow() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Window */ "./wp-content/themes/belend/src/js/Window.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -9818,6 +9870,8 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 var burgerHandler = function burgerHandler(windowHandler) {
   var state = {
@@ -9833,7 +9887,8 @@ var burgerHandler = function burgerHandler(windowHandler) {
       mainNav = _document$getElements4[0];
 
   if (!burger) return;
-  burger.addEventListener('click', function () {
+
+  var navigationToggle = function navigationToggle() {
     state.burgerActivated = !state.burgerActivated;
     burger.classList.toggle('activated');
     mainNav.classList.toggle('activated');
@@ -9842,7 +9897,17 @@ var burgerHandler = function burgerHandler(windowHandler) {
       transitionElement: mainNav,
       noScroll: state.burgerActivated
     });
-  }, false);
+  };
+
+  burger.addEventListener('click', navigationToggle, false);
+
+  var resizeHandler = function resizeHandler() {
+    if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint === 'xl' && state.burgerActivated) {
+      navigationToggle();
+    }
+  };
+
+  _Window__WEBPACK_IMPORTED_MODULE_0__["default"].addResizeFunction(resizeHandler);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (burgerHandler);

@@ -135,7 +135,7 @@ blockquote {
     p {
         padding: 0 $gutter * 2 20px;
         position: relative;
-        z-index: 10;
+        z-index: 1;
         margin: 20px $gutter * -2;
         background: #fff;
         &:after {

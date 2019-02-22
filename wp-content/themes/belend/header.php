@@ -28,6 +28,18 @@
 				<nav class="main-navigation js-main-navigation" aria-expanded="false">
 					<div class="main-navigation-container">
 						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu')); ?>
+						<?php
+							if ($link = get_field('header_cta', 'options')): 
+								$url = $link['url'];
+								$title = $link['title'];
+								$target = 'target="'. $link['target'] . '"';
+								$is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
+						?>
+							<a class="btn" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+								<span><?php echo $title ?></span>
+								<svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+							</a>
+						<?php endif; ?>
 					</div>
 				</nav>
 			</div>

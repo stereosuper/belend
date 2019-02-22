@@ -1,3 +1,5 @@
+import win from './Window';
+
 const burgerHandler = windowHandler => {
     const state = {
         burgerActivated: false,
@@ -8,21 +10,26 @@ const burgerHandler = windowHandler => {
 
     if (!burger) return;
 
-    burger.addEventListener(
-        'click',
-        () => {
-            state.burgerActivated = !state.burgerActivated;
-            burger.classList.toggle('activated');
-            mainNav.classList.toggle('activated');
+    const navigationToggle = () => {
+        state.burgerActivated = !state.burgerActivated;
+        burger.classList.toggle('activated');
+        mainNav.classList.toggle('activated');
 
-            mainNav.setAttribute('aria-expanded', state.burgerActivated);
-            windowHandler.toggleNoScroll({
-                transitionElement: mainNav,
-                noScroll: state.burgerActivated,
-            });
-        },
-        false
-    );
+        mainNav.setAttribute('aria-expanded', state.burgerActivated);
+        windowHandler.toggleNoScroll({
+            transitionElement: mainNav,
+            noScroll: state.burgerActivated,
+        });
+    };
+    burger.addEventListener('click', navigationToggle, false);
+
+    const resizeHandler = () => {
+        if (win.currentBreakpoint === 'xl' && state.burgerActivated) {
+            navigationToggle();
+        }
+    };
+
+    win.addResizeFunction(resizeHandler);
 };
 
 export default burgerHandler;

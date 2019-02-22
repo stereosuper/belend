@@ -46,7 +46,24 @@ $header-height: 96px;
         )
     );
     z-index: 2;
+    &.activated {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.main-navigation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $header-height $gutter * 3 $line-height;
     .menu {
+        margin: auto 0 auto;
         font-weight: 700;
         text-align: center;
         > li {
@@ -66,21 +83,9 @@ $header-height: 96px;
             }
         }
     }
-    &.activated {
-        transform: translate3d(-100%, 0, 0);
+    .btn {
+        margin: auto 0 0;
     }
-}
-
-.main-navigation-container {
-    display: flex;
-    padding: $header-height $gutter * 3;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
 }
 
 .burger {
@@ -178,6 +183,9 @@ $header-height: 96px;
         &.scrolled {
             background-color: rgba($white, 0.9);
         }
+        .container {
+            align-items: center;
+        }
         .logo-wrapper {
             width: 335px;
         }
@@ -191,31 +199,41 @@ $header-height: 96px;
             }
         }
     }
-
     .burger {
         display: none;
     }
-
     .main-navigation {
-        position: static;
+        position: relative;
         background: none;
+        left: auto;
+        right: auto;
+        &.activated {
+            transform: none;
+        }
     }
-
     .main-navigation-container {
-        display: block;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
         padding: 0;
-        position: static;
         .menu {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
             margin: 0;
-            > li {
-                padding: 0 0 0 35px;
-                margin: 0;
-                &.has-btn {
-                    position: static;
-                }
+            li {
+                margin: 0 $gutter 0 0;
+            }
+        }
+        .btn {
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .main-navigation-container {
+        .menu {
+            li {
+                margin: 0 $gutter * 2 0 0;
             }
         }
     }

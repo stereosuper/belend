@@ -1,4 +1,4 @@
-import { requestAnimFrame } from './utils';
+import { requestAnimFrame, forEach } from './utils';
 
 function Window() {
     this.w = null;
@@ -8,6 +8,15 @@ function Window() {
     this.timeoutWindow = false;
     this.delta = 200;
     this.noTransitionElts = [];
+    this.breakpoints = {
+        xs: 0,
+        s: 400,
+        m: 580,
+        l: 780,
+        xl: 960,
+        xxl: 1260,
+    };
+    this.currentBreakpoint = '';
 }
 
 Window.prototype.setNoTransitionElts = function setNoTransitionElts(elements) {
@@ -44,11 +53,41 @@ Window.prototype.noTransition = function noTransition() {
     }
 };
 
+Window.prototype.setBreakpoints = function setBreakpoints() {
+    let currentBreakpoint = '';
+    forEach(Object.entries(this.breakpoints), breakpoint => {
+        const [name, value] = breakpoint;
+        if (this.w > value) {
+            currentBreakpoint = name;
+        }
+    });
+
+    if (this.currentBreakpoint !== currentBreakpoint) {
+        forEach(Object.entries(this.breakpoints), ([name]) => {
+            document.documentElement.classList.remove(`breakpoint-${name}`);
+        });
+        this.currentBreakpoint = currentBreakpoint;
+        document.documentElement.classList.add(
+            `breakpoint-${this.currentBreakpoint}`
+        );
+    }
+};
+
 Window.prototype.resizeHandler = function resizeHandler() {
     this.w = window.innerWidth;
     this.h = window.innerHeight;
 
+    forEach(this.resizeFunctions, f => {
+        f();
+    });
+
+    this.setBreakpoints();
+
     this.noTransition();
+};
+
+Window.prototype.addResizeFunction = function addResizeFunction(f) {
+    this.resizeFunctions.push(f);
 };
 
 Window.prototype.toggleNoScroll = function toggleNoScroll({
