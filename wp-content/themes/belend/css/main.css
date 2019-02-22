@@ -518,7 +518,7 @@ a {
   .h1 {
     margin: 2.8em 0 2em; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   h1,
   .h1 {
     font-size: 6.4rem;
@@ -534,21 +534,21 @@ a {
 
 .container,
 .gform_body {
-  max-width: 1360px; }
+  max-width: 1320px; }
 
 .container-small {
-  max-width: 1360px; }
+  max-width: 1320px; }
 
 @media (min-width: 960px) {
   .container-desk {
-    max-width: 1360px;
+    max-width: 1320px;
     padding: 5px 30px;
     margin: 0 auto;
     overflow: hidden; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   .container-desk-big {
-    max-width: 1360px;
+    max-width: 1320px;
     padding: 5px 30px;
     margin: 0 auto; } }
 
@@ -899,7 +899,7 @@ button {
     overflow: hidden;
     background: #f2f2f2; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   .benefits h3, .benefits p {
     padding: 0 0 0 80px; } }
 
@@ -1116,7 +1116,7 @@ button {
       color: #fff;
       background: linear-gradient(61deg, #F12525 32%, #FF6308 68%); } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   .form-progress {
     padding-bottom: 10px; }
     .form-progress .container {
@@ -1410,7 +1410,7 @@ button {
   .home-benefits-wrapper {
     margin-top: 100px; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   .home-quotes-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1562,11 +1562,11 @@ button {
     .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea {
       height: 175px; }
     .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
-      max-width: 313.75px; }
+      max-width: 303.75px; }
     .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
-      max-width: 423.33333px; }
+      max-width: 410px; }
     .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
-      max-width: 204.16667px; }
+      max-width: 197.5px; }
     .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
       position: relative; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select::after {
@@ -1633,7 +1633,7 @@ button {
 
 @media (min-width: 780px) {
   .page-template-contact .gform_wrapper {
-    width: 642.5px;
+    width: 622.5px;
     margin: 100px auto 75px; }
     .page-template-contact .gform_wrapper .gform_body ul {
       display: -webkit-box;
@@ -1649,11 +1649,11 @@ button {
           -ms-flex: 1 0 auto;
               flex: 1 0 auto; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
-        min-width: 313.75px; }
+        min-width: 303.75px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
-        min-width: 423.33333px; }
+        min-width: 410px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
-        min-width: 204.16667px; }
+        min-width: 197.5px; }
   .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-title {
     font-size: 2.6rem;
     margin-bottom: 25px; }
@@ -1682,18 +1682,18 @@ button {
     padding: 0;
     margin: 70px 0 50px; } }
 
-@media (min-width: 1300px) {
+@media (min-width: 1260px) {
   .page-template-contact .offer {
     padding: 50px 0; }
     .page-template-contact .offer:first-child {
-      padding-right: 102.08333px; }
+      padding-right: 98.75px; }
       .page-template-contact .offer:first-child .offer-content-wrapper {
         margin-left: auto;
         margin-right: 0; }
     .page-template-contact .offer:last-child {
-      padding-left: 102.08333px; }
+      padding-left: 98.75px; }
     .page-template-contact .offer .offer-content-wrapper {
-      max-width: 423.33333px; } }
+      max-width: 410px; } }
 
 /******* PRINT *******/
 @media print {
