@@ -20,6 +20,9 @@
     margin: 0 $gutter*-2;
     padding: 0 $gutter*2 1px;
     background: $grey-light;
+    ul{
+        margin: 0;
+    }
     h2{
         margin: 0;
         font-size: 2.6rem;
@@ -141,6 +144,8 @@
 }
 
 .field-help{
+    display: none;
+    position: absolute;
     font-size: 1.6rem;
     line-height: 1.35;
 }

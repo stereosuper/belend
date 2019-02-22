@@ -960,6 +960,8 @@ button {
   margin: 0 -30px;
   padding: 0 30px 1px;
   background: #e9e8e1; }
+  .sidebar ul {
+    margin: 0; }
   .sidebar h2 {
     margin: 0;
     font-size: 2.6rem;
@@ -1061,6 +1063,8 @@ button {
     font-size: 1.8rem; }
 
 .field-help {
+  display: none;
+  position: absolute;
   font-size: 1.6rem;
   line-height: 1.35; }
 
