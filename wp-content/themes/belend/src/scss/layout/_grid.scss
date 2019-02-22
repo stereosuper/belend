@@ -1,31 +1,33 @@
 /* Grid */
 
-.container, .container-small, .gform_body{
+.container,
+.container-small,
+.gform_body {
     padding: 0 $gutter * 2;
     margin: 0 auto;
 }
 
-.container, .gform_body{
-    max-width: #{1200px + $gutter * 4};
+.container,
+.gform_body {
+    max-width: #{$desktop + $gutter * 4};
 }
 
 .container-small {
     max-width: #{$desktop + $gutter * 4};
 }
 
-
-@media (min-width: $desktop-small){
-    .container-desk{
-        max-width: #{1200px + $gutter * 4};
+@media (min-width: $desktop-small) {
+    .container-desk {
+        max-width: #{$desktop + $gutter * 4};
         padding: 5px $gutter * 2;
         margin: 0 auto;
         overflow: hidden;
     }
 }
 
-@media (min-width: $desktop){
-    .container-desk-big{
-        max-width: #{1200px + $gutter * 4};
+@media (min-width: $desktop) {
+    .container-desk-big {
+        max-width: #{$desktop + $gutter * 4};
         padding: 5px $gutter * 2;
         margin: 0 auto;
     }

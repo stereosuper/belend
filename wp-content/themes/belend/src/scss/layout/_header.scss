@@ -168,10 +168,9 @@ $header-height: 96px;
 
 @media (min-width: $desktop-small) {
     .main-header {
-        background: none;
-        background: transparent;
+        background-color: transparent;
         &.scrolled {
-            background: rgba($white, 0.9);
+            background-color: rgba($white, 0.9);
         }
         .logo-wrapper {
             width: 335px;

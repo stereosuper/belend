@@ -9953,11 +9953,11 @@ var homeSprite = function homeSprite() {
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       bannerImage = _document$getElements2[0];
 
-  var _bannerImage$getEleme = bannerImage.getElementsByClassName('js-water'),
-      _bannerImage$getEleme2 = _slicedToArray(_bannerImage$getEleme, 1),
-      waterElement = _bannerImage$getEleme2[0];
+  if (body.classList.contains('home') && bannerImage) {
+    var _bannerImage$getEleme = bannerImage.getElementsByClassName('js-water'),
+        _bannerImage$getEleme2 = _slicedToArray(_bannerImage$getEleme, 1),
+        waterElement = _bannerImage$getEleme2[0];
 
-  if (body.classList.contains('home') && bannerImage && waterElement) {
     var columns = 9;
     var rows = 11; // const spriteHandler = new Sprite();
 
@@ -9969,26 +9969,28 @@ var homeSprite = function homeSprite() {
       waterElement.style.backgroundImage = "url(".concat(spImage.src, ")");
     };
 
-    if (Image.prototype.decode) {
-      spImage.decode().then(function () {
-        waterElement.style.backgroundImage = "url(".concat(spImage.src, ")");
-      }).catch(function () {
+    if (waterElement) {
+      if (Image.prototype.decode) {
+        spImage.decode().then(function () {
+          waterElement.style.backgroundImage = "url(".concat(spImage.src, ")");
+        }).catch(function () {
+          noDecodeApi();
+        });
+      } else {
         noDecodeApi();
-      });
-    } else {
-      noDecodeApi();
-    }
+      }
 
-    var spriteAnimation = new _Sprite__WEBPACK_IMPORTED_MODULE_0__["default"]({
-      image: waterElement,
-      columns: columns,
-      rows: rows,
-      interval: 0.05,
-      parent: bannerImage,
-      loop: true,
-      numberEmpty: 0
-    });
-    spriteAnimation.play();
+      var spriteAnimation = new _Sprite__WEBPACK_IMPORTED_MODULE_0__["default"]({
+        image: waterElement,
+        columns: columns,
+        rows: rows,
+        interval: 0.05,
+        parent: bannerImage,
+        loop: true,
+        numberEmpty: 0
+      });
+      spriteAnimation.play();
+    }
   }
 };
 

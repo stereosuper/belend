@@ -526,26 +526,29 @@ a {
 
 /* Placeholders */
 /* Grid */
-.container, .container-small, .gform_body {
+.container,
+.container-small,
+.gform_body {
   padding: 0 30px;
   margin: 0 auto; }
 
-.container, .gform_body {
-  max-width: 1260px; }
+.container,
+.gform_body {
+  max-width: 1360px; }
 
 .container-small {
   max-width: 1360px; }
 
 @media (min-width: 960px) {
   .container-desk {
-    max-width: 1260px;
+    max-width: 1360px;
     padding: 5px 30px;
     margin: 0 auto;
     overflow: hidden; } }
 
 @media (min-width: 1300px) {
   .container-desk-big {
-    max-width: 1260px;
+    max-width: 1360px;
     padding: 5px 30px;
     margin: 0 auto; } }
 
@@ -739,10 +742,9 @@ button {
 
 @media (min-width: 960px) {
   .main-header {
-    background: none;
-    background: transparent; }
+    background-color: transparent; }
     .main-header.scrolled {
-      background: rgba(255, 255, 255, 0.9); }
+      background-color: rgba(255, 255, 255, 0.9); }
     .main-header .logo-wrapper {
       width: 335px; }
     .main-header .logo > img {
