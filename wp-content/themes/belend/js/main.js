@@ -9849,8 +9849,6 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _this = undefined;
-
 var progress = function progress() {
   var progressbar = jQuery('#progressbar');
   var pages = jQuery('.gform_page');
@@ -9862,14 +9860,16 @@ var progress = function progress() {
   progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
-var layout = function layout(firstPage) {
-  var page = firstPage ? firstPage : jQuery(_this);
+var layout = function layout() {
+  jQuery('.gform_page').each(function () {
+    var page = jQuery(this);
 
-  if (page.find('.gform_page_fields > ul').length > 1) {
-    page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
-    page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
-    page.find('.gform_page_footer').appendTo(jQuery(_this).find('.page-nav'));
-  }
+    if (page.find('.gform_page_fields > ul').length > 1) {
+      page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+      page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+      page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
+    }
+  });
 };
 
 var formHandler = function formHandler() {
@@ -9882,7 +9882,7 @@ var formHandler = function formHandler() {
   // });
   jQuery(document).ready(function () {
     progress();
-    layout(jQuery('.gform_page').eq(0));
+    layout();
     jQuery(document).on('gform_post_render', function () {
       progress();
       layout();

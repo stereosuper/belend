@@ -12,16 +12,18 @@ const progress = () => {
     progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
-const layout = ( firstPage ) => {
-    const page = firstPage ? firstPage : jQuery(this);
+const layout = () => {
+    jQuery('.gform_page').each(function(){
+        const page = jQuery(this);
 
-    if(page.find('.gform_page_fields > ul').length > 1){
-        page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+        if(page.find('.gform_page_fields > ul').length > 1){
+            page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
 
-        page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+            page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
 
-        page.find('.gform_page_footer').appendTo(jQuery(this).find('.page-nav'))
-    }
+            page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
+        }
+    });
 }
 
 const formHandler = () => {
@@ -38,7 +40,7 @@ const formHandler = () => {
     jQuery(document).ready(function(){
 
         progress();
-        layout( jQuery('.gform_page').eq(0) );
+        layout();
 
         jQuery(document).on('gform_post_render', function(){
             progress();
