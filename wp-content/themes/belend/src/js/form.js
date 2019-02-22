@@ -12,9 +12,19 @@ const progress = () => {
     progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
-const formHandler = () => {
-    progress();
+const layout = ( firstPage ) => {
+    const page = firstPage ? firstPage : jQuery(this);
 
+    if(page.find('.gform_page_fields > ul').length > 1){
+        page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+
+        page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+
+        page.find('.gform_page_footer').appendTo(jQuery(this).find('.page-nav'))
+    }
+}
+
+const formHandler = () => {
     // const buttons = document.getElementsByClassName('button');
 
     // if(!buttons) return;
@@ -27,11 +37,16 @@ const formHandler = () => {
 
     jQuery(document).ready(function(){
 
+        progress();
+        layout( jQuery('.gform_page').eq(0) );
+
         jQuery(document).on('gform_post_render', function(){
             progress();
+            layout();
         });
 
     });
+    
 };
 
 export default formHandler;

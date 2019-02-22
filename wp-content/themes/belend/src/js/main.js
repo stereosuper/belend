@@ -22,7 +22,7 @@ const loadHandler = () => {
 
     burger(win);
     headerScroll();
-    homeSprite();
+    //homeSprite();
     form();
 };
 

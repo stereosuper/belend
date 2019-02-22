@@ -9849,6 +9849,8 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var _this = undefined;
+
 var progress = function progress() {
   var progressbar = jQuery('#progressbar');
   var pages = jQuery('.gform_page');
@@ -9860,18 +9862,30 @@ var progress = function progress() {
   progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
+var layout = function layout(firstPage) {
+  var page = firstPage ? firstPage : jQuery(_this);
+
+  if (page.find('.gform_page_fields > ul').length > 1) {
+    page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+    page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+    page.find('.gform_page_footer').appendTo(jQuery(_this).find('.page-nav'));
+  }
+};
+
 var formHandler = function formHandler() {
-  progress(); // const buttons = document.getElementsByClassName('button');
+  // const buttons = document.getElementsByClassName('button');
   // if(!buttons) return;
   // Array.from(buttons).forEach(e => {
   //     e.addEventListener('click', () => {
   //         moveProgessBar();
   //     }, false);
   // });
-
   jQuery(document).ready(function () {
+    progress();
+    layout(jQuery('.gform_page').eq(0));
     jQuery(document).on('gform_post_render', function () {
       progress();
+      layout();
     });
   });
 };
@@ -10014,8 +10028,8 @@ var loadHandler = function loadHandler() {
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
-  Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
+  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])(); //homeSprite();
+
   Object(_form__WEBPACK_IMPORTED_MODULE_8__["default"])();
 };
 
@@ -10099,23 +10113,3 @@ var throttle = function throttle(callback, delay) {
 
 /******/ });
 //# sourceMappingURL=main.js.map
-
-jQuery(document).on('gform_post_render', function(){
-
-	jQuery('.gform_page').each(function(){
-		var page = jQuery(this);
-		if(page.find('.gform_page_fields > ul').length>1){
-			page.prepend('<div class="sidebar"></div>');
-			page.find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
-
-			if(page.find('.field-help').length > 0){
-				page.find('.field-help').before('<li class="page-nav"></li>');
-			}else{
-				page.find('.main-fields').append('<li class="page-nav"></li>');
-			}
-			page.find('.gform_page_footer').appendTo(jQuery(this).find('.page-nav'))
-		}
-
-	});
-
-});
