@@ -10,7 +10,7 @@
 .hero {
     position: relative;
     padding: $line-height * 7 0 0;
-    z-index: 10;
+    z-index: 1;
 }
 
 .banner-img {
@@ -264,7 +264,7 @@
         &:before {
             top: 5px;
             left: 10px;
-            z-index: 20;
+            z-index: 1;
         }
         &:after {
             left: -20px;

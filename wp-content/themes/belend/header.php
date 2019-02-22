@@ -14,7 +14,7 @@
 	</head>
 
 	<body <?php body_class(); ?>>
-		<header class='main-header' id='header'>
+		<header class='main-header' id='main-header'>
 			<div class='container'>
 				<div class='logo-wrapper'>
 					<a class='logo' href='<?php echo home_url('/'); ?>' title='<?php bloginfo( 'name' ); ?>' rel='home'>

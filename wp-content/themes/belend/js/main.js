@@ -9907,9 +9907,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var addClassOnScroll = function addClassOnScroll() {
-  var header = document.getElementById('header');
+  var header = document.getElementById('main-header');
   if (!header) return;
-  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 40 ? header.classList.add('on') : header.classList.remove('on');
+
+  if (_Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 40) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
 };
 
 var headerScrollHandler = function headerScrollHandler() {
@@ -10028,8 +10033,8 @@ var loadHandler = function loadHandler() {
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])(); //homeSprite();
-
+  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
   Object(_form__WEBPACK_IMPORTED_MODULE_8__["default"])();
 };
 

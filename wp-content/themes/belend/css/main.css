@@ -586,17 +586,17 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
   height: 96px;
-  padding: 0 45px;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  .main-header.on {
-    background: rgba(255, 255, 255, 0.9); }
+  padding: 0 45px;
+  background-color: #fff;
+  z-index: 100; }
   .main-header .container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -630,7 +630,8 @@ button {
   -webkit-transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
   transition:  -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
   transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
-  transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
+  transition:  transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1), -webkit-transform 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
+  z-index: 2; }
   .main-navigation .menu {
     font-weight: 700;
     text-align: center; }
@@ -685,7 +686,7 @@ button {
     -webkit-transition:  background-color 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1);
     transition:  background-color 0.23s 0.23s cubic-bezier(0.25, 0.46, 0.25, 1); }
     .burger > span:before, .burger > span:after {
-      content: '';
+      content: "";
       width: 100%;
       height: 100%;
       position: absolute;
@@ -738,7 +739,10 @@ button {
 
 @media (min-width: 960px) {
   .main-header {
-    background: none; }
+    background: none;
+    background: transparent; }
+    .main-header.scrolled {
+      background: rgba(255, 255, 255, 0.9); }
     .main-header .logo-wrapper {
       width: 335px; }
     .main-header .logo > img {
@@ -1205,7 +1209,7 @@ button {
 .hero {
   position: relative;
   padding: 175px 0 0;
-  z-index: 10; }
+  z-index: 1; }
 
 .banner-img {
   height: 480px;
@@ -1423,7 +1427,7 @@ button {
     .home-quote:before {
       top: 5px;
       left: 10px;
-      z-index: 20; }
+      z-index: 1; }
     .home-quote:after {
       left: -20px;
       right: -20px;
