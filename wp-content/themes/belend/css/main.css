@@ -1213,9 +1213,12 @@ button {
   top: 0;
   right: 0;
   left: 0;
-  background-position: -225px 50%;
+  background-position: -236px 43%;
   background-repeat: no-repeat;
-  background-size: auto 145%; }
+  background-size: auto 153%; }
+  .banner-img .water {
+    width: 84px;
+    height: 473px; }
 
 .intro {
   position: relative;
@@ -1290,6 +1293,14 @@ button {
     background-position: -225px 50%;
     background-repeat: no-repeat;
     background-size: auto 145%; }
+    .banner-img .water {
+      position: absolute;
+      top: 0;
+      left: 65px;
+      -webkit-transform-origin: 50% 0;
+              transform-origin: 50% 0;
+      -webkit-transform: scaleY(1.17);
+              transform: scaleY(1.17); }
   .intro .container .btn, .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .intro .container .button {
     font-size: 1.8rem; } }
 
@@ -1302,7 +1313,9 @@ button {
     left: 0;
     background-position: -50px 50%;
     background-repeat: no-repeat;
-    background-size: auto 145%; } }
+    background-size: auto 145%; }
+    .banner-img .water {
+      left: 238px; } }
 
 @media (min-width: 780px) {
   .home-quotes-wrapper {
@@ -1363,8 +1376,12 @@ button {
     height: 560px;
     left: 55%;
     top: 150px;
-    -webkit-box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
-            box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25); }
+    background-size: auto 110%; }
+    .banner-img .water {
+      top: 66px;
+      left: 141px;
+      -webkit-transform: scaleY(0.83);
+              transform: scaleY(0.83); }
   .home-benefits-wrapper {
     margin-top: 40px; } }
 
@@ -1375,6 +1392,11 @@ button {
     width: 450px;
     height: 625px;
     top: 120px; }
+    .banner-img .water {
+      top: 73px;
+      left: 168px;
+      -webkit-transform: scaleY(0.93);
+              transform: scaleY(0.93); }
   .home-benefits-wrapper {
     margin-top: 100px; } }
 
@@ -1465,7 +1487,13 @@ button {
   .banner-img {
     width: 575px;
     height: 800px;
-    left: 52%; } }
+    left: 52%;
+    background-size: auto 100%; }
+    .banner-img .water {
+      top: 123px;
+      left: 212px;
+      -webkit-transform: scaleY(1.075);
+              transform: scaleY(1.075); } }
 
 .page-template-contact .contact-container header {
   margin: 0 0 25px; }
