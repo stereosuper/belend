@@ -4,7 +4,6 @@ $header-height: 96px;
 .main-header {
     display: flex;
     align-items: center;
-    position: fixed;
     height: $header-height;
     top: 0;
     left: 0;
@@ -22,7 +21,7 @@ $header-height: 96px;
     .logo-wrapper {
         width: 118px;
         text-align: center;
-        z-index: 1;
+        z-index: 3;
     }
     .logo {
         display: block;
@@ -88,7 +87,7 @@ $header-height: 96px;
     width: 30px;
     height: 30px;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     > span {
         width: 25px;
         height: 2px;
