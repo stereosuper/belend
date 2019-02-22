@@ -172,13 +172,15 @@ function add_page_steps($form)
     foreach ($form['fields'] as $field) {
         if ($field->cssClass === 'page-bar') {
             $content = $field->content;
-            $field->content = '';
-            foreach ($page_list as $page) {
-                if ($pages[($field->pageNumber - 1)] === $page) {
-                    $field->content .= '<h2 class="active-page">' . $page . '</h2>';
-                    $field->content .= $content;
-                } else {
-                    $field->content .= '<p class="inactive-page">' . $page . '</p>';
+            if (!strpos($field->content, 'active-page')) {
+                $field->content = '';
+                foreach ($page_list as $page) {
+                    if ($pages[($field->pageNumber - 1)] === $page) {
+                        $field->content .= '<h2 class="active-page">' . $page . '</h2>';
+                        $field->content .= $content;
+                    } else {
+                        $field->content .= '<p class="inactive-page">' . $page . '</p>';
+                    }
                 }
             }
         }
