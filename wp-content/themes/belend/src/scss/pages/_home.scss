@@ -19,9 +19,13 @@
     top: 0;
     right: 0;
     left: 0;
-    background-position: -225px 50%;
+    background-position: -236px 43%;
     background-repeat: no-repeat;
-    background-size: auto 145%;
+    background-size: auto 153%;
+    .water {
+        width: 84px;
+        height: 473px;
+    }
 }
 
 .intro {
@@ -100,6 +104,13 @@
         background-position: -225px 50%;
         background-repeat: no-repeat;
         background-size: auto 145%;
+        .water {
+            position: absolute;
+            top: 0;
+            left: 65px;
+            transform-origin: 50% 0;
+            transform: scaleY(1.17);
+        }
     }
     .intro {
         .container {
@@ -120,6 +131,9 @@
         background-position: -50px 50%;
         background-repeat: no-repeat;
         background-size: auto 145%;
+        .water {
+            left: 238px;
+        }
     }
 }
 
@@ -196,7 +210,12 @@
         height: 560px;
         left: 55%;
         top: 150px;
-        box-shadow: 0 4px 94px rgba(0, 0, 0, 0.25);
+        background-size: auto 110%;
+        .water {
+            top: 66px;
+            left: 141px;
+            transform: scaleY(0.83);
+        }
     }
 
     .home-benefits-wrapper {
@@ -208,13 +227,16 @@
     .intro {
         width: 650px;
     }
-
     .banner-img {
         width: 450px;
         height: 625px;
         top: 120px;
+        .water {
+            top: 73px;
+            left: 168px;
+            transform: scaleY(0.93);
+        }
     }
-
     .home-benefits-wrapper {
         margin-top: 100px;
     }
@@ -332,5 +354,11 @@
         width: 575px;
         height: 800px;
         left: 52%;
+        background-size: auto 100%;
+        .water {
+            top: 123px;
+            left: 212px;
+            transform: scaleY(1.075);
+        }
     }
 }

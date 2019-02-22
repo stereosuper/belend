@@ -9594,18 +9594,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 
 
-function Sprite(image, cols, rows, interval, p, _ref) {
-  var _ref$loop = _ref.loop,
+function Sprite(_ref) {
+  var image = _ref.image,
+      columns = _ref.columns,
+      rows = _ref.rows,
+      interval = _ref.interval,
+      parent = _ref.parent,
+      _ref$loop = _ref.loop,
       loop = _ref$loop === void 0 ? false : _ref$loop,
       _ref$numberEmpty = _ref.numberEmpty,
       numberEmpty = _ref$numberEmpty === void 0 ? 0 : _ref$numberEmpty;
-  this.parent = p;
+  this.parent = parent;
   this.image = image;
   this.looped = loop;
-  this.cols = cols;
+  this.cols = columns;
   this.rows = rows;
-  this.gridWidth = 100 / (cols - 1);
-  this.gridHeight = 100 / (rows - 1);
+  this.gridWidth = 100 / (this.cols - 1);
+  this.gridHeight = 100 / (this.rows - 1);
   this.interval = interval;
   this.numberEmpty = numberEmpty;
   this.shouldStop = false;
@@ -9620,9 +9625,9 @@ function Sprite(image, cols, rows, interval, p, _ref) {
   var ypos;
 
   for (var r = 0; r < this.rows; r += 1) {
-    var columns = r === this.rows - 1 ? this.cols - this.numberEmpty : this.cols;
+    var _columns = r === this.rows - 1 ? this.cols - this.numberEmpty : this.cols;
 
-    for (var c = 0; c < columns; c += 1) {
+    for (var c = 0; c < _columns; c += 1) {
       xpos = c * this.gridWidth;
       ypos = r * this.gridHeight;
       this.tl.set(this.image, {
@@ -9929,18 +9934,42 @@ var homeSprite = function homeSprite() {
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       bannerImage = _document$getElements2[0];
 
-  if (body.classList.contains('home') && bannerImage) {
-    // const spriteHandler = new Sprite();
+  var _bannerImage$getEleme = bannerImage.getElementsByClassName('js-water'),
+      _bannerImage$getEleme2 = _slicedToArray(_bannerImage$getEleme, 1),
+      waterElement = _bannerImage$getEleme2[0];
+
+  if (body.classList.contains('home') && bannerImage && waterElement) {
+    var columns = 9;
+    var rows = 11; // const spriteHandler = new Sprite();
+
     var spUrl = bannerImage.getAttribute('data-src');
     var spImage = new Image();
     spImage.src = spUrl;
 
+    var noDecodeApi = function noDecodeApi() {
+      waterElement.style.backgroundImage = "url(".concat(spImage.src, ")");
+    };
+
     if (Image.prototype.decode) {
-      spImage.decode().then(function () {// dom.css('background-image', `url(${spImage.src})`);
-      }).catch(function (error) {// noDecodeApi();
+      spImage.decode().then(function () {
+        waterElement.style.backgroundImage = "url(".concat(spImage.src, ")");
+      }).catch(function () {
+        noDecodeApi();
       });
-    } else {// noDecodeApi();
+    } else {
+      noDecodeApi();
     }
+
+    var spriteAnimation = new _Sprite__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      image: waterElement,
+      columns: columns,
+      rows: rows,
+      interval: 0.05,
+      parent: bannerImage,
+      loop: true,
+      numberEmpty: 0
+    });
+    spriteAnimation.play();
   }
 };
 

@@ -1,20 +1,21 @@
 import { TimelineMax } from 'gsap';
 
-function Sprite(
+function Sprite({
     image,
-    cols,
+    columns,
     rows,
     interval,
-    p,
-    { loop = false, numberEmpty = 0 }
-) {
-    this.parent = p;
+    parent,
+    loop = false,
+    numberEmpty = 0,
+}) {
+    this.parent = parent;
     this.image = image;
     this.looped = loop;
-    this.cols = cols;
+    this.cols = columns;
     this.rows = rows;
-    this.gridWidth = 100 / (cols - 1);
-    this.gridHeight = 100 / (rows - 1);
+    this.gridWidth = 100 / (this.cols - 1);
+    this.gridHeight = 100 / (this.rows - 1);
     this.interval = interval;
 
     this.numberEmpty = numberEmpty;
