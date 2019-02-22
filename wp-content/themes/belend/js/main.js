@@ -10070,3 +10070,23 @@ var throttle = function throttle(callback, delay) {
 
 /******/ });
 //# sourceMappingURL=main.js.map
+
+jQuery(document).on('gform_post_render', function(){
+
+	jQuery('.gform_page').each(function(){
+		var page = jQuery(this);
+		if(page.find('.gform_page_fields > ul').length>1){
+			page.prepend('<div class="sidebar"></div>');
+			page.find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+
+			if(page.find('.field-help').length > 0){
+				page.find('.field-help').before('<li class="page-nav"></li>');
+			}else{
+				page.find('.main-fields').append('<li class="page-nav"></li>');
+			}
+			page.find('.gform_page_footer').appendTo(jQuery(this).find('.page-nav'))
+		}
+
+	});
+
+});
