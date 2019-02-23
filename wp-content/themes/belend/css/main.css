@@ -1092,6 +1092,9 @@ button {
 .gform_previous_button {
   color: #000; }
 
+.ginput_container {
+  position: relative; }
+
 .ginput_container_number {
   margin: 0 5px 0 10px; }
 
@@ -1182,7 +1185,19 @@ button {
   display: none; }
 
 .instruction {
-  display: none; }
+  display: none;
+  position: absolute;
+  top: -30px;
+  border: 1px solid;
+  border-radius: 2px;
+  line-height: 1.2;
+  padding: 5px 8px;
+  font-size: 1.4rem;
+  color: #ff6308;
+  background: #fff; }
+
+input:focus + .instruction {
+  display: block; }
 
 .hidden-title > .gfield_label {
   display: none; }

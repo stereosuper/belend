@@ -105,6 +105,9 @@
     color: $black;
 }
 
+.ginput_container{
+    position: relative;
+}
 .ginput_container_number{
     margin: 0 5px 0 10px;
 }
@@ -213,7 +216,20 @@
 
 .instruction{
     display: none;
-    // TO DO : infobulle
+    position: absolute;
+    top: -30px;
+    border: 1px solid;
+    border-radius: 2px;
+    line-height: 1.2;
+    padding: 5px 8px;
+    font-size: 1.4rem;
+    color: $primary-color;
+    background: #fff;
+}
+input:focus{
+    + .instruction{
+        display: block;
+    }
 }
 
 .hidden-title{
