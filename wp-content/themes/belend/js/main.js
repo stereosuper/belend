@@ -9923,6 +9923,9 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+
+
 var progress = function progress() {
   var progressbar = jQuery('#progressbar');
   var pages = jQuery('.gform_page');
@@ -9934,20 +9937,33 @@ var progress = function progress() {
   progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
+var displayHelpOnScroll = function displayHelpOnScroll() {
+  var btn = jQuery('#help');
+  var sidebar = jQuery('#sidebar');
+  if (!btn.length || !sidebar.length) return;
+
+  if (_Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop >= sidebar.offset().top) {
+    btn.removeClass('hidden');
+  } else {
+    btn.addClass('hidden');
+  }
+};
+
 var layout = function layout() {
   jQuery('.gform_page').each(function () {
     var page = jQuery(this);
 
     if (page.find('.gform_page_fields > ul').length > 1) {
-      page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+      page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
 
       if (page.find('.field-help').length) {
         page.find('.field-help').before('<li class="page-nav"></li>');
-        page.find('.sidebar').append('<button type="button" class="btn-help"></button>');
+        page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
         page.find('.sidebar').find('.btn-help').on('click', function () {
           page.find('.field-help').toggleClass('on');
           jQuery(this).toggleClass('on');
         });
+        _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
       } else {
         page.find('.main-fields').append('<li class="page-nav"></li>');
       }
@@ -10117,10 +10133,10 @@ var loadHandler = function loadHandler() {
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
   Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
   Object(_form__WEBPACK_IMPORTED_MODULE_9__["default"])();
+  Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
 };
 
 document.addEventListener('readystatechange', function () {

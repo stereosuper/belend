@@ -1,3 +1,5 @@
+import scroll from './Scroll';
+
 const progress = () => {
     const progressbar = jQuery('#progressbar');
     const pages = jQuery('.gform_page');
@@ -12,20 +14,35 @@ const progress = () => {
     progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
 };
 
+const displayHelpOnScroll = () => {
+    const btn = jQuery('#help');
+    const sidebar = jQuery('#sidebar');
+
+    if ( !btn.length || !sidebar.length ) return;
+
+    if( scroll.scrollTop >= sidebar.offset().top){
+        btn.removeClass('hidden');
+    }else{
+        btn.addClass('hidden');
+    }
+};
+
 const layout = () => {
     jQuery('.gform_page').each(function(){
         const page = jQuery(this);
 
         if(page.find('.gform_page_fields > ul').length > 1){
-            page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+            page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
 
             if( page.find('.field-help').length ){
                 page.find('.field-help').before('<li class="page-nav"></li>');
-                page.find('.sidebar').append('<button type="button" class="btn-help"></button>');
+                page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
                 page.find('.sidebar').find('.btn-help').on('click', function(){
                     page.find('.field-help').toggleClass('on');
                     jQuery(this).toggleClass('on');
                 });
+
+                scroll.addScrollFunction(displayHelpOnScroll);
             }else{
                 page.find('.main-fields').append('<li class="page-nav"></li>');
             }

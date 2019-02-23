@@ -806,11 +806,14 @@ button {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       margin: 0; }
       .main-navigation-container .menu li {
         margin: 0 15px 0 0; }
-    .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
-      margin: 0; } }
+        .main-navigation-container .menu li.has-btn {
+          position: static; } }
 
 @media (min-width: 1260px) {
   .main-navigation-container .menu li {
@@ -1321,29 +1324,29 @@ button {
   border: 2px solid transparent;
   overflow: hidden;
   z-index: 0; }
-  .btn::before, .page-template-contact .gform_wrapper .gform_footer .button::before, .btn::after, .page-template-contact .gform_wrapper .gform_footer .button::after,
-  .has-btn > a::before,
-  .has-btn > a::after,
-  .gform_next_button::before,
-  .gform_next_button::after {
+  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before, .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
+  .has-btn > a:before,
+  .has-btn > a:after,
+  .gform_next_button:before,
+  .gform_next_button:after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
-  .btn::before, .page-template-contact .gform_wrapper .gform_footer .button::before,
-  .has-btn > a::before,
-  .gform_next_button::before {
+  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before,
+  .has-btn > a:before,
+  .gform_next_button:before {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
     -webkit-animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
             animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     z-index: -2; }
-  .btn::after, .page-template-contact .gform_wrapper .gform_footer .button::after,
-  .has-btn > a::after,
-  .gform_next_button::after {
+  .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
+  .has-btn > a:after,
+  .gform_next_button:after {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
@@ -1353,10 +1356,17 @@ button {
     -webkit-transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     z-index: -1; }
-  .btn:hover::after, .page-template-contact .gform_wrapper .gform_footer .button:hover::after,
-  .has-btn > a:hover::after,
-  .gform_next_button:hover::after {
+  .btn:hover:after, .page-template-contact .gform_wrapper .gform_footer .button:hover:after,
+  .has-btn > a:hover:after,
+  .gform_next_button:hover:after {
     opacity: 1; }
+
+.gform_next_button {
+  background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
+  background-size: 1000%;
+  will-change: background-position;
+  -webkit-animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+          animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
 
 .btn-invert {
   border: 2px solid; }

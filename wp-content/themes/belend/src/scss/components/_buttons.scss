@@ -31,8 +31,8 @@
     border: 2px solid transparent;
     overflow: hidden;
     z-index: 0;
-    &::before,
-    &::after {
+    &:before,
+    &:after {
         content: "";
         position: absolute;
         top: 0;
@@ -40,11 +40,11 @@
         right: 0;
         bottom: 0;
     }
-    &::before {
+    &:before {
         @include fluid-background-btn("emphasis");
         z-index: -2;
     }
-    &::after {
+    &:after {
         @include fluid-background-btn("hover");
         opacity: 0;
         transition: smooth-operator(
@@ -55,10 +55,13 @@
         z-index: -1;
     }
     &:hover {
-        &::after {
+        &:after {
             opacity: 1;
         }
     }
+}
+.gform_next_button{
+    @include fluid-background-btn("emphasis");
 }
 .btn-invert {
     border: 2px solid;

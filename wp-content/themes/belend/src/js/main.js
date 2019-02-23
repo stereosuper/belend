@@ -22,10 +22,10 @@ const loadHandler = () => {
     fallback.init();
 
     burger(win);
-    headerScroll();
     homeSprite();
     mapParallax();
     form();
+    headerScroll();
 };
 
 document.addEventListener(

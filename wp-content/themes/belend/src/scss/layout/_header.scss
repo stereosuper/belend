@@ -218,13 +218,14 @@ $header-height: 96px;
         padding: 0;
         .menu {
             display: flex;
+            align-items: center;
             margin: 0;
-            li {
+            li{
                 margin: 0 $gutter 0 0;
+                &.has-btn{
+                    position: static;
+                }
             }
-        }
-        .btn {
-            margin: 0;
         }
     }
 }
