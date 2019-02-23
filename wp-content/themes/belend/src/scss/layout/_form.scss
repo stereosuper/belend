@@ -19,6 +19,7 @@
 .sidebar{
     margin: 0 $gutter*-2;
     padding: 0 $gutter*2 1px;
+    position: relative;
     background: $grey-light;
     ul{
         margin: 0;
@@ -46,6 +47,19 @@
     }
 }
 
+.btn-help{
+    width: 38px;
+    height: 38px;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 110;
+    border-radius: 50%;
+    color: #fff;
+    background: #312f2f url(../../img/question.svg) no-repeat 50% 50%;
+    background-size: 6px 12px;
+}
+
 .gform_wrapper{
     ul{
         padding: 0;
@@ -54,6 +68,12 @@
             &:before{
                 content: none;
             }
+        }
+    }
+    .field-help{
+        padding: $gutter*5 $gutter*2;
+        &:before{
+            content: '';
         }
     }
 }
@@ -145,9 +165,39 @@
 
 .field-help{
     display: none;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
     font-size: 1.6rem;
     line-height: 1.35;
+    background: #fff;
+    &.on{
+        display: block;
+    }
+    &:before{
+        width: auto;
+        height: 1px;
+        position: absolute;
+        top: $gutter*3;
+        left: 80px;
+        right: 80px;
+        background: #E0E0E0;
+    }
+    &:after{
+        content: '';
+        width: 38px;
+        height: 38px;
+        position: absolute;
+        top: 25px;
+        left: 30px;
+        border-radius: 50%;
+        border: 1px solid #828282;
+        background: url(../../img/question.svg) no-repeat 50% 50%;
+        background-size: 6px 12px;
+    }
 }
 
 .gfield_required{
@@ -218,6 +268,13 @@
             }
         }
     }
+
+    .btn-help{
+        top: 115px;
+        &.on{
+            top: 25px;
+        }
+    }
 }
 
 @media (min-width: $desktop){
@@ -244,7 +301,21 @@
 
     .sidebar{
         width: 35%;
+        padding-bottom: 220px;
         margin: 0 5% 0 0;
+        background-image: url(../../img/lightbulb.svg);
+        background-repeat: no-repeat;
+        background-position: 0 100%;
+        background-size: 174px 192px;
+        &:before{
+            content: '';
+            width: 50vw;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -50vw;
+            background: $grey-light;
+        }
         h2{
             font-size: 3.6rem;
             &:after{
@@ -285,7 +356,25 @@
     .gform_wrapper{
         .field-help{
             padding: 35px 0 0;
-            border-top: 1px solid #E0E0E0;
         }
+    }
+
+    .field-help{
+        display: block;
+        margin: 50px 0;
+        position: relative;
+        &:before{
+            top: 0;
+            right: 0;
+            left: 50px;
+        }
+        &:after{
+            top: -19px;
+            left: 0;
+        }
+    }
+
+    .btn-help{
+        display: none;
     }
 }

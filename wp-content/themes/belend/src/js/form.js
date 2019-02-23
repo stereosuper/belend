@@ -19,7 +19,16 @@ const layout = () => {
         if(page.find('.gform_page_fields > ul').length > 1){
             page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
 
-            page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+            if( page.find('.field-help').length ){
+                page.find('.field-help').before('<li class="page-nav"></li>');
+                page.find('.sidebar').append('<button type="button" class="btn-help"></button>');
+                page.find('.sidebar').find('.btn-help').on('click', function(){
+                    page.find('.field-help').toggleClass('on');
+                    jQuery(this).toggleClass('on');
+                });
+            }else{
+                page.find('.main-fields').append('<li class="page-nav"></li>');
+            }
 
             page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
         }

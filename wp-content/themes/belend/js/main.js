@@ -9940,7 +9940,18 @@ var layout = function layout() {
 
     if (page.find('.gform_page_fields > ul').length > 1) {
       page.prepend('<div class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
-      page.find('.field-help').length ? page.find('.field-help').before('<li class="page-nav"></li>') : page.find('.main-fields').append('<li class="page-nav"></li>');
+
+      if (page.find('.field-help').length) {
+        page.find('.field-help').before('<li class="page-nav"></li>');
+        page.find('.sidebar').append('<button type="button" class="btn-help"></button>');
+        page.find('.sidebar').find('.btn-help').on('click', function () {
+          page.find('.field-help').toggleClass('on');
+          jQuery(this).toggleClass('on');
+        });
+      } else {
+        page.find('.main-fields').append('<li class="page-nav"></li>');
+      }
+
       page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
     }
   });
@@ -9983,12 +9994,7 @@ __webpack_require__.r(__webpack_exports__);
 var addClassOnScroll = function addClassOnScroll() {
   var header = document.getElementById('main-header');
   if (!header) return;
-
-  if (_Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 40) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop > 10 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
 };
 
 var headerScrollHandler = function headerScrollHandler() {

@@ -94,6 +94,9 @@ h6 {
 
 p {
     margin: 1.5em 0;
+    &:empty{
+        margin: 0;
+    }
 }
 
 b,
