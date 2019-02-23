@@ -10,7 +10,7 @@
         transform-origin: 50% 50%;
     }
     &:before{
-        top: -150px;
+        top: -100px;
         right: 30px;
         transform: rotate(-30deg) scale(0.8);
     }
@@ -25,7 +25,6 @@
     margin: 0 $gutter*-2;
     padding: 0 $gutter*2 1px;
     position: relative;
-    z-index: 10;
     background: $grey-light;
     ul{
         margin: 0;
@@ -283,6 +282,16 @@
             top: 25px;
         }
     }
+
+    .gform_page_fields{
+        overflow: hidden;
+        &:before{
+            top: -150px;
+        }
+        &:after{
+            left: 0;
+        }
+    }
 }
 
 @media (min-width: $desktop){
@@ -306,11 +315,11 @@
     .gform_page_fields{
         width: 65%;
         padding: 0 0 0 10%;
-        overflow: hidden;
         &:before{
             transform: rotate(-30deg) scale(1);
         }
         &:after{
+            left: -100px;
             transform: scale(1);
         }
     }
@@ -318,6 +327,7 @@
     .sidebar{
         width: 35%;
         padding-bottom: 220px;
+        z-index: 10;
         background-image: url(../../img/lightbulb.svg);
         background-repeat: no-repeat;
         background-position: 0 100%;
