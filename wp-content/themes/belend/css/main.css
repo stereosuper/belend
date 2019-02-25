@@ -1370,6 +1370,7 @@ input:focus + .instruction {
     display: block;
     margin: 50px 0;
     position: relative;
+    top: 0;
     background: none; }
     .field-help:before {
       top: 0;
