@@ -265,7 +265,8 @@ input:focus{
         margin: 95px 0 0;
         text-align: left;
         h1{
-            display: inline;
+            display: inline-block;
+            margin: 0 5px;
             &:before, &:after{
                 content: ' - ';
             }

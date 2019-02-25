@@ -248,21 +248,11 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 /*-----------------------------------------------------------------------------------*/
 /* Gravity
 /*-----------------------------------------------------------------------------------*/
-function my_custom_function( $progress_bar, $form, $confirmation_message ) {
-    
-    $progress_bar .= '<div class="nav">';
 
-    var_dump($form['fields']);
-
-    foreach($form['pagination']['pages'] as $page){
-        $progress_bar .= '<div class="page">' . $page . '</div>';
-    }
-
-    $progress_bar .= '</div>';
- 
-    return $progress_bar;
+function belend_form_next_button( $button, $form ) {
+    return "<button class='btn gform_next_button' id='gform_next_button_{$form['id']}'>Next</button>";
 }
-//add_filter( 'gform_progress_bar', 'my_custom_function', 10, 3 );
+add_filter( 'gform_next_button', 'belend_form_next_button', 10, 2 );
 
 
 /*-----------------------------------------------------------------------------------*/

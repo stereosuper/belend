@@ -3,8 +3,8 @@
 .btn,
 .link,
 .btn-invert,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
+    line-height: 1.35;
     font-weight: 700;
     .icon {
         width: 1.4rem;
@@ -15,8 +15,7 @@
 
 .btn,
 .btn-invert,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
     display: inline-flex;
     padding: 20px 20px 19px;
     position: relative;
@@ -26,8 +25,7 @@
     color: $white;
 }
 .btn,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
     border: 2px solid transparent;
     overflow: hidden;
     z-index: 0;
@@ -59,9 +57,6 @@
             opacity: 1;
         }
     }
-}
-.gform_next_button{
-    @include fluid-background-btn("emphasis");
 }
 .btn-invert {
     border: 2px solid;

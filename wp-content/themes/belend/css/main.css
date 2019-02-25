@@ -1226,7 +1226,8 @@ input:focus + .instruction {
     margin: 95px 0 0;
     text-align: left; }
     .form-progress h1 {
-      display: inline; }
+      display: inline-block;
+      margin: 0 5px; }
       .form-progress h1:before, .form-progress h1:after {
         content: ' - '; }
   .gfield_radio {
@@ -1342,22 +1343,20 @@ input:focus + .instruction {
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
 .link,
 .btn-invert,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
+  line-height: 1.35;
   font-weight: 700; }
   .btn .icon, .page-template-contact .gform_wrapper .gform_footer .button .icon,
   .link .icon,
   .btn-invert .icon,
-  .has-btn > a .icon,
-  .gform_next_button .icon {
+  .has-btn > a .icon {
     width: 1.4rem;
     height: 1.1rem;
     margin: 0 0 0 15px; }
 
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
 .btn-invert,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -1373,16 +1372,13 @@ input:focus + .instruction {
   color: #fff; }
 
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
-.has-btn > a,
-.gform_next_button {
+.has-btn > a {
   border: 2px solid transparent;
   overflow: hidden;
   z-index: 0; }
   .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before, .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
   .has-btn > a:before,
-  .has-btn > a:after,
-  .gform_next_button:before,
-  .gform_next_button:after {
+  .has-btn > a:after {
     content: "";
     position: absolute;
     top: 0;
@@ -1390,8 +1386,7 @@ input:focus + .instruction {
     right: 0;
     bottom: 0; }
   .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before,
-  .has-btn > a:before,
-  .gform_next_button:before {
+  .has-btn > a:before {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
@@ -1399,8 +1394,7 @@ input:focus + .instruction {
             animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     z-index: -2; }
   .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
-  .has-btn > a:after,
-  .gform_next_button:after {
+  .has-btn > a:after {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
@@ -1411,16 +1405,8 @@ input:focus + .instruction {
     transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     z-index: -1; }
   .btn:hover:after, .page-template-contact .gform_wrapper .gform_footer .button:hover:after,
-  .has-btn > a:hover:after,
-  .gform_next_button:hover:after {
+  .has-btn > a:hover:after {
     opacity: 1; }
-
-.gform_next_button {
-  background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
-  background-size: 1000%;
-  will-change: background-position;
-  -webkit-animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-          animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; }
 
 .btn-invert {
   border: 2px solid; }
