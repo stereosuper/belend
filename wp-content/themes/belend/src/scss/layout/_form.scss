@@ -105,7 +105,34 @@
 .gform_previous_button {
     color: $black;
 }
-
+.gfield {
+    &.gfield_error {
+        .ginput_container {
+            input,
+            textarea,
+            .gfield_select {
+                border-color: $form-error-color;
+            }
+        }
+        .validation_message {
+            margin-top: 0.5rem;
+            color: $form-error-color;
+            font-size: 1.4rem;
+        }
+    }
+    .gfield_label {
+        display: block;
+        margin-left: $gutter;
+        margin-bottom: $line-height * 0.5;
+        font-weight: 700;
+        .gfield_required {
+            margin-left: $gutter * 0.5;
+            color: $primary-color;
+            font-size: 0.75em;
+            font-weight: 400;
+        }
+    }
+}
 .ginput_container {
     position: relative;
 }

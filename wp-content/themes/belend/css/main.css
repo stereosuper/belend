@@ -1097,6 +1097,27 @@ button {
 .gform_previous_button {
   color: #000; }
 
+.gfield.gfield_error .ginput_container input,
+.gfield.gfield_error .ginput_container textarea,
+.gfield.gfield_error .ginput_container .gfield_select {
+  border-color: #f12525; }
+
+.gfield.gfield_error .validation_message {
+  margin-top: 0.5rem;
+  color: #f12525;
+  font-size: 1.4rem; }
+
+.gfield .gfield_label {
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 12.5px;
+  font-weight: 700; }
+  .gfield .gfield_label .gfield_required {
+    margin-left: 7.5px;
+    color: #ff6308;
+    font-size: 0.75em;
+    font-weight: 400; }
+
 .ginput_container {
   position: relative; }
 
@@ -1853,8 +1874,6 @@ input:focus + .instruction {
     display: -ms-inline-flexbox;
     display: inline-flex;
     position: relative; }
-    .page-template-contact .gform_wrapper .gform_footer img.gform_ajax_spinner {
-      display: none; }
 
 .page-template-contact .gform_confirmation_wrapper {
   margin-bottom: 125px; }
