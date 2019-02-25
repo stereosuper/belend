@@ -315,10 +315,11 @@ input:focus {
     }
 
     .btn-help {
-        top: 115px;
-        &.on {
-            top: 25px;
-        }
+        top: 120px;
+    }
+
+    .field-help{
+        top: 95px;
     }
 
     .gform_page_fields {
