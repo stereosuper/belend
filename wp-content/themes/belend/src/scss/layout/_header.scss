@@ -75,12 +75,6 @@ $header-height: 96px;
             &:first-child {
                 margin-top: 0;
             }
-            &.has-btn {
-                position: absolute;
-                bottom: 30px;
-                left: 0;
-                right: 0;
-            }
         }
     }
     .btn {
@@ -160,6 +154,15 @@ $header-height: 96px;
     }
 }
 
+@media (min-width: $phone) {
+    .main-navigation-container {
+        align-items: center;
+        .btn {
+            min-width: #{$phone-small/3 * 2};
+        }
+    }
+}
+
 @media (min-width: $tablet) {
     .main-header {
         position: fixed;
@@ -175,6 +178,9 @@ $header-height: 96px;
             li {
                 font-size: 2.2rem;
             }
+        }
+        .btn {
+            min-width: $phone-small;
         }
     }
 }
@@ -228,15 +234,13 @@ $header-height: 96px;
             align-items: center;
             margin: 0;
             li {
-                margin: 0 $gutter 0 0;
+                margin: 0 2vw 0 0;
                 font-size: inherit;
-                &.has-btn {
-                    position: static;
-                }
             }
         }
         .btn {
             padding: 15px 20px 14px;
+            min-width: auto;
         }
     }
 }

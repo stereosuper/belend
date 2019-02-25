@@ -687,11 +687,6 @@ button {
         content: none; }
       .main-navigation-container .menu > li:first-child {
         margin-top: 0; }
-      .main-navigation-container .menu > li.has-btn {
-        position: absolute;
-        bottom: 30px;
-        left: 0;
-        right: 0; }
   .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
     margin: auto 0 0; }
 
@@ -749,6 +744,14 @@ button {
       -webkit-transform: translate(0, 0) rotateZ(45deg);
               transform: translate(0, 0) rotateZ(45deg); }
 
+@media (min-width: 580px) {
+  .main-navigation-container {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
+      min-width: 266.66667px; } }
+
 @media (min-width: 780px) {
   .main-header {
     position: fixed; }
@@ -764,7 +767,9 @@ button {
           -ms-flex-pack: justify;
               justify-content: space-between; }
   .main-navigation-container .menu li {
-    font-size: 2.2rem; } }
+    font-size: 2.2rem; }
+  .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
+    min-width: 400px; } }
 
 @media (min-width: 960px) {
   .main-header {
@@ -813,12 +818,11 @@ button {
               align-items: center;
       margin: 0; }
       .main-navigation-container .menu li {
-        margin: 0 15px 0 0;
+        margin: 0 2vw 0 0;
         font-size: inherit; }
-        .main-navigation-container .menu li.has-btn {
-          position: static; }
     .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
-      padding: 15px 20px 14px; } }
+      padding: 15px 20px 14px;
+      min-width: auto; } }
 
 @media (min-width: 1260px) {
   .main-navigation-container .menu li {
@@ -1357,21 +1361,18 @@ input:focus + .instruction {
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
 .link,
-.btn-invert,
-.has-btn > a {
+.btn-invert {
   line-height: 1.35;
   font-weight: 700; }
   .btn .icon, .page-template-contact .gform_wrapper .gform_footer .button .icon,
   .link .icon,
-  .btn-invert .icon,
-  .has-btn > a .icon {
+  .btn-invert .icon {
     width: 1.4rem;
     height: 1.1rem;
     margin: 0 0 0 15px; }
 
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
-.btn-invert,
-.has-btn > a {
+.btn-invert {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -1386,30 +1387,25 @@ input:focus + .instruction {
   border-radius: 2px;
   color: #fff; }
 
-.btn, .page-template-contact .gform_wrapper .gform_footer .button,
-.has-btn > a {
+.btn, .page-template-contact .gform_wrapper .gform_footer .button {
   border: 2px solid transparent;
   overflow: hidden;
   z-index: 0; }
-  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before, .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
-  .has-btn > a:before,
-  .has-btn > a:after {
+  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before, .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0; }
-  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before,
-  .has-btn > a:before {
+  .btn:before, .page-template-contact .gform_wrapper .gform_footer .button:before {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
     -webkit-animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
             animation: animated-gradient-emphasis 15s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
     z-index: -2; }
-  .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after,
-  .has-btn > a:after {
+  .btn:after, .page-template-contact .gform_wrapper .gform_footer .button:after {
     background: linear-gradient(27.6deg, #f12525 0%, #ff6308 25%, #f12525 50%, #ff6308 75%, #f12525 100%);
     background-size: 1000%;
     will-change: background-position;
@@ -1419,14 +1415,12 @@ input:focus + .instruction {
     -webkit-transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition:  opacity 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     z-index: -1; }
-  .btn:hover:after, .page-template-contact .gform_wrapper .gform_footer .button:hover:after,
-  .has-btn > a:hover:after {
+  .btn:hover:after, .page-template-contact .gform_wrapper .gform_footer .button:hover:after {
     opacity: 1; }
 
 .btn-invert {
   border: 2px solid; }
 
-.has-btn > a,
 .gform_next_button {
   padding: 10px 20px 11px; }
 
@@ -1434,7 +1428,7 @@ input:focus + .instruction {
   border-bottom: solid 1px; }
 
 .btn[disabled]:before, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:before, .btn[disabled]:after, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:after {
-  background: #BDBDBD; }
+  background: #bdbdbd; }
 
 /* Home specific style */
 .home h1 {

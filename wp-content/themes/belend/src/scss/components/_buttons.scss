@@ -2,8 +2,7 @@
 
 .btn,
 .link,
-.btn-invert,
-.has-btn > a {
+.btn-invert {
     line-height: 1.35;
     font-weight: 700;
     .icon {
@@ -14,8 +13,7 @@
 }
 
 .btn,
-.btn-invert,
-.has-btn > a {
+.btn-invert {
     display: inline-flex;
     padding: 20px 20px 19px;
     position: relative;
@@ -24,8 +22,7 @@
     border-radius: 2px;
     color: $white;
 }
-.btn,
-.has-btn > a {
+.btn {
     border: 2px solid transparent;
     overflow: hidden;
     z-index: 0;
@@ -61,7 +58,6 @@
 .btn-invert {
     border: 2px solid;
 }
-.has-btn > a,
 .gform_next_button {
     padding: 10px 20px 11px;
 }
@@ -72,10 +68,11 @@
     }
 }
 
-.btn{
-    &[disabled]{
-        &:before, &:after{
-            background: #BDBDBD;
+.btn {
+    &[disabled] {
+        &:before,
+        &:after {
+            background: #bdbdbd;
         }
     }
 }
