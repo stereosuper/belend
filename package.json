@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "main": "index.js",
     "dependencies": {
+        "flatpickr": "^4.5.4",
         "gsap": "^2.0.2",
         "intersection-observer": "^0.5.1"
     },

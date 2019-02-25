@@ -2,13 +2,13 @@
 
 .container,
 .container-small,
-.gform_body {
+.gform_wrapper {
     padding: 0 $gutter * 2;
     margin: 0 auto;
 }
 
 .container,
-.gform_body {
+.gform_wrapper {
     max-width: #{$desktop + $gutter * 4};
 }
 

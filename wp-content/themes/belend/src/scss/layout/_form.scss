@@ -2,7 +2,7 @@
     position: relative;
     &:before,
     &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 405px;
         height: 415px;
@@ -81,7 +81,7 @@
     .field-help {
         padding: $gutter * 5 $gutter * 2;
         &:before {
-            content: "";
+            content: '';
         }
     }
 }
@@ -114,12 +114,12 @@
                 border-color: $form-error-color;
             }
         }
-        .validation_message {
-            margin-top: 0.5rem;
-            color: $form-error-color;
-            font-size: 1.4rem;
-        }
     }
+}
+.gfield_error .validation_message, .validation_error {
+    margin-top: 0.5rem;
+    color: $form-error-color;
+    font-size: 1.4rem;
 }
 .ginput_container {
     position: relative;
@@ -137,7 +137,7 @@
 
 .field-price {
     &:after {
-        content: " €";
+        content: ' €';
         display: inline-block;
         margin: 0 10px 0 0;
     }
@@ -213,7 +213,7 @@
         background: #e0e0e0;
     }
     &:after {
-        content: "";
+        content: '';
         width: 38px;
         height: 38px;
         position: absolute;
@@ -365,12 +365,10 @@ input:focus {
         width: 35%;
         padding-bottom: 220px;
         z-index: 10;
-        background-image: url(../../img/lightbulb.svg);
-        background-repeat: no-repeat;
-        background-position: 0 100%;
+        background: url(../../img/lightbulb.svg) no-repeat 0 100%;
         background-size: 174px 192px;
         &:before {
-            content: "";
+            content: '';
             width: 50vw;
             position: absolute;
             top: 0;
@@ -381,7 +379,7 @@ input:focus {
         h2 {
             font-size: 3.6rem;
             &:after {
-                content: "";
+                content: '';
                 display: block;
                 width: 1px;
                 height: 40px;
@@ -396,11 +394,11 @@ input:focus {
         .inactive-page {
             display: block;
             margin: 0 0 3px;
-            font-family: "upgrade-lights";
+            font-family: 'upgrade-lights';
             font-size: 2.2rem;
             color: #bdbdbd;
             &:before {
-                content: "";
+                content: '';
                 display: block;
                 width: 1px;
                 height: 40px;

@@ -12,10 +12,11 @@ import mapParallax from './mapParallax';
 import form from './form';
 
 const loadHandler = () => {
-    scroll.init();
     const noTransElem = [].slice.call(
         document.getElementsByClassName('element-without-transition-on-resize')
     );
+
+    scroll.init();
     win.setNoTransitionElts(noTransElem);
     win.init();
     io.init();

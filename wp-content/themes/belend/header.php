@@ -8,6 +8,8 @@
 
 		<link rel='alternate' type='application/rss+xml' title='<?php echo get_bloginfo('sitename') ?> Feed' href='<?php echo get_bloginfo('rss2_url') ?>'>
 
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 		<?php wp_head(); ?>
 
 		<script>document.getElementsByTagName('html')[0].className = 'js';</script>

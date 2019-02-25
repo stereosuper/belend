@@ -9948,48 +9948,41 @@ var layout = function layout() {
   jQuery('.gform_page').each(function () {
     var page = jQuery(this);
     var emptyInputs;
+    if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
 
-    if (page.find('.gform_page_fields > ul').length > 1) {
-      page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
+    page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar')); // help
 
-      if (page.find('.field-help').length) {
-        page.find('.field-help').before('<li class="page-nav"></li>');
-        page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
-        page.find('.sidebar').find('.btn-help').on('click', function () {
-          page.find('.field-help').toggleClass('on');
-          jQuery(this).toggleClass('on');
+    if (page.find('.field-help').length) {
+      page.find('.field-help').before('<li class="page-nav"></li>');
+      page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
+      page.find('.sidebar').find('.btn-help').on('click', function () {
+        page.find('.field-help').toggleClass('on');
+        jQuery(this).toggleClass('on');
+      });
+      _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
+    } else {
+      page.find('.main-fields').append('<li class="page-nav"></li>');
+    } // nav
+
+
+    page.find('.gform_page_footer').appendTo(page.find('.page-nav')); // button next step disabled
+
+    if (page.find('.gfield_contains_required').length) {
+      page.find('.gform_next_button').attr('disabled', true);
+      page.find('.gfield_contains_required input').on('change input', function () {
+        emptyInputs = page.find('.gfield_contains_required input').filter(function () {
+          return jQuery(this).val() == '';
         });
-        _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
-      } else {
-        page.find('.main-fields').append('<li class="page-nav"></li>');
-      }
 
-      page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
-
-      if (page.find('.gfield_contains_required').length) {
-        page.find('.gform_next_button').attr('disabled', true);
-        page.find('.gfield_contains_required input').on('change input', function () {
-          emptyInputs = page.find('.gfield_contains_required input').filter(function () {
-            return jQuery(this).val() == "";
-          });
-
-          if (!emptyInputs.length) {
-            page.find('.gform_next_button').attr('disabled', false);
-          }
-        });
-      }
+        if (!emptyInputs.length) {
+          page.find('.gform_next_button').attr('disabled', false);
+        }
+      });
     }
   });
 };
 
 var formHandler = function formHandler() {
-  // const buttons = document.getElementsByClassName('button');
-  // if(!buttons) return;
-  // Array.from(buttons).forEach(e => {
-  //     e.addEventListener('click', () => {
-  //         moveProgessBar();
-  //     }, false);
-  // });
   jQuery(document).ready(function () {
     progress();
     layout();
@@ -10135,8 +10128,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var loadHandler = function loadHandler() {
-  _Scroll__WEBPACK_IMPORTED_MODULE_3__["default"].init();
   var noTransElem = [].slice.call(document.getElementsByClassName('element-without-transition-on-resize'));
+  _Scroll__WEBPACK_IMPORTED_MODULE_3__["default"].init();
   _Window__WEBPACK_IMPORTED_MODULE_1__["default"].setNoTransitionElts(noTransElem);
   _Window__WEBPACK_IMPORTED_MODULE_1__["default"].init();
   _Io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
