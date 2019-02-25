@@ -254,6 +254,11 @@ function belend_form_next_button( $button, $form ) {
 }
 add_filter( 'gform_next_button', 'belend_form_next_button', 10, 2 );
 
+function form_submit_button( $button, $form ) {
+    return "<button class='btn gform_next_button' id='gform_submit_button_{$form['id']}'>Submit</button>";
+}
+add_filter( 'gform_submit_button', 'form_submit_button', 10, 2 );
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Enqueue Styles and Scripts
