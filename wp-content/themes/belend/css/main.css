@@ -577,12 +577,12 @@ input, textarea, select, button {
   input:focus, textarea:focus, select:focus, button:focus {
     outline: 0; }
 
-input, textarea {
+input, textarea, select {
   line-height: 1.35; }
-  input:-webkit-autofill, textarea:-webkit-autofill {
+  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #fff inset;
             box-shadow: 0 0 0 1000px #fff inset; }
-  input:invalid, textarea:invalid {
+  input:invalid, textarea:invalid, select:invalid {
     -webkit-box-shadow: none;
             box-shadow: none; }
 
@@ -598,6 +598,28 @@ input {
 
 select::-ms-expand {
   display: none; }
+
+.ginput_container_select {
+  position: relative; }
+  .ginput_container_select:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 5px 0 5px;
+    border-color: #000 transparent transparent transparent;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    margin: auto;
+    pointer-events: none; }
+  .ginput_container_select > select {
+    padding: 0 30px 0 0;
+    border: 0;
+    border-bottom: 1px solid;
+    -moz-appearance: none;
+    -webkit-appearance: none; }
 
 button {
   border: 0; }
@@ -1120,7 +1142,8 @@ button {
 .field-inline {
   display: inline-block; }
   .field-inline label + div {
-    display: inline-block; }
+    display: inline-block;
+    margin: 0 10px; }
 
 .field-price:after {
   content: ' €';
@@ -1302,7 +1325,9 @@ input:focus + .instruction {
     width: 35%;
     padding-bottom: 220px;
     z-index: 10;
-    background: url(/wp-content/themes/belend/img/lightbulb.svg) no-repeat 0 100%;
+    background-image: url(/wp-content/themes/belend/img/lightbulb.svg);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
     background-size: 174px 192px; }
     .sidebar:before {
       content: '';
