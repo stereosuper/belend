@@ -1453,6 +1453,68 @@ input:focus + .instruction {
 .btn[disabled]:before, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:before, .btn[disabled]:after, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:after {
   background: #bdbdbd; }
 
+.ui-widget {
+  font-family: 'upgrade'; }
+
+.ui-datepicker {
+  padding: 0;
+  font-size: 1.4rem; }
+
+.ui-widget.ui-widget-content {
+  border: 0; }
+
+.ui-widget-header {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(125, 175, 213, 0.2);
+  background: none; }
+
+.ui-datepicker .ui-datepicker-header {
+  padding: 10px 0; }
+
+.ui-datepicker-month {
+  margin-right: 5px; }
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-icon {
+  width: 10px;
+  height: 18px; }
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  top: 12px;
+  cursor: pointer; }
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-hover .ui-state-hover {
+  top: 12px;
+  border: 0;
+  background: none; }
+  .ui-state-hover.ui-datepicker-next, .ui-widget-content .ui-state-hover.ui-datepicker-next, .ui-widget-hover .ui-state-hover.ui-datepicker-next {
+    right: 2px; }
+  .ui-state-hover.ui-datepicker-prev, .ui-widget-content .ui-state-hover.ui-datepicker-prev, .ui-widget-hover .ui-state-hover.ui-datepicker-prev {
+    left: 2px; }
+
+.ui-datepicker-next .ui-icon {
+  background: url(/wp-content/themes/belend/img/date-arrow-right.svg) 0 0 no-repeat;
+  background-size: 100%; }
+
+.ui-datepicker-prev .ui-icon {
+  background: url(/wp-content/themes/belend/img/date-arrow-left.svg) 0 0 no-repeat;
+  background-size: 100%; }
+
+.ui-datepicker td span, .ui-datepicker td a {
+  text-align: center; }
+
+.ui-datepicker th {
+  font-weight: 500;
+  color: #000; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+  border: 0;
+  background: none;
+  color: #000; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover, .ui-state-default:hover, .ui-widget-content .ui-state-default:hover {
+  background: #4088C5; }
+
 /* Home specific style */
 .home h1 {
   margin: 0 0 0.65em;
