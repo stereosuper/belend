@@ -31,7 +31,7 @@
 .intro {
     position: relative;
     text-align: center;
-    &.reveal {
+    &.reveal-cddb {
         .text {
             transform: translate3d(-100%, 0, 0) scale(1);
             opacity: 1;
@@ -177,16 +177,23 @@
             }
         }
     }
-
     .home-nb {
         width: 420px;
         margin-top: -100px;
+        opacity: 0;
+        &.reveal-plop {
+            opacity: 1;
+            transition: plop(
+                (
+                    opacity: "#{$plop-duration}"
+                )
+            );
+            will-change: opacity;
+        }
     }
-
     .home-map {
         padding-bottom: 160px;
     }
-
     .home-benefits {
         display: inline-flex;
         text-align: left;
@@ -204,7 +211,7 @@
 
     .intro {
         width: 500px;
-        padding: 45px 30px 70px 50px;
+        padding: 45px $gutter * 4 70px $gutter * 4;
         margin-top: #{230px - $gutter * 2};
         margin-left: 0;
         text-align: left;
@@ -218,7 +225,7 @@
                 opacity: "#{$smooth-operator-duration}"
             )
         );
-        &.reveal {
+        &.reveal-cddb {
             opacity: 1;
             transform: translate3d(#{$gutter * 2}, #{$gutter * 2}, 0) scale(1);
             transition: smooth-operator(
@@ -235,6 +242,7 @@
             }
         }
         > .text {
+            max-width: none;
             padding: 0;
             margin: 0;
             left: 0;
@@ -263,7 +271,7 @@
                 opacity: "#{$smooth-operator-duration}"
             )
         );
-        &.reveal {
+        &.reveal-cddb {
             transform: translate3d(0, #{$line-height * 2}, 0);
             opacity: 1;
         }
@@ -295,6 +303,43 @@
     }
     .home-benefits-wrapper {
         margin-top: 100px;
+    }
+    .container-desk {
+        perspective: 100px;
+    }
+    .target {
+        transform: scale3d(0, 0, 1) translateZ(1px);
+        opacity: 0;
+        transition: plop(
+            (
+                transform: "#{$plop-duration}",
+                opacity: "#{$plop-duration}"
+            )
+        );
+        will-change: transform, opacity;
+        z-index: 1;
+        &.reveal-plop {
+            transform: scale3d(1, 1, 1);
+            opacity: 1;
+        }
+        &.hide {
+            opacity: 0.5;
+            z-index: 0;
+        }
+        &.show {
+            transition: plop(
+                (
+                    transform: "#{$plop-duration}",
+                    opacity: "#{$plop-duration} 0.15s"
+                )
+            );
+            &:last-child {
+                transform: scale3d(1, 1, 1) translate3d(#{$gutter * 3}, 0, -1px);
+            }
+            &:first-child {
+                transform: scale3d(1, 1, 1) translate3d(0, #{$gutter * 3}, -1px);
+            }
+        }
     }
 }
 
@@ -366,6 +411,19 @@
         .txt {
             width: 45%;
             padding: 0 $gutter 0 0;
+            margin-left: -$gutter * 2;
+            opacity: 0;
+            will-change: transform, opacity;
+            &.reveal-plop {
+                transform: translate3d($gutter * 2, 0, 0);
+                opacity: 1;
+                transition: plop(
+                    (
+                        transform: "#{$plop-duration}",
+                        opacity: "#{$plop-duration}"
+                    )
+                );
+            }
         }
     }
 

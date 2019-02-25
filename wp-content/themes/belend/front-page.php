@@ -62,7 +62,7 @@
         <?php $loc = get_field('localisation'); if( $loc ) : ?>
             <section class='home-map'>
                 <div class='container'>
-                    <div class='txt'>
+                    <div class='txt' data-io="revealPlop" data-io-single>
                         <h2><?php echo $loc['locTitle']; ?></h2>
                         <?php echo $loc['locText']; ?>
                         <?php
@@ -79,7 +79,7 @@
             </section>
         <?php endif; ?>
 
-        <section class='home-nb align-center'>
+        <section class='home-nb align-center' data-io="revealPlop" data-io-single>
             <div class='container'>
                 <?php if( get_field('nbText') ) : ?>
                     <h3><?php the_field('nbText'); ?></h3>
@@ -115,7 +115,7 @@
 
         <section class='container-desk'>
             <?php $pro = get_field('pro', 'options'); if( $pro ) : ?>
-                <div class='target t-pro'>
+                <div class='target js-target t-pro' data-io="revealPlop">
                     <div class='txt'>
                         <h2><?php echo $pro['title']; ?></h2>
                         <?php echo $pro['text']; ?>
@@ -131,7 +131,7 @@
             <?php endif; ?>
 
             <?php $individual = get_field('individual', 'options'); if( $individual ) : ?>
-                <div class='target t-individual'>
+                <div class='target js-target t-individual' data-io="revealPlop">
                     <div class='txt'>
                         <h2><?php echo $individual['title']; ?></h2>
                         <?php echo $individual['text']; ?>

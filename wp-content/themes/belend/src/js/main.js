@@ -9,6 +9,7 @@ import burger from './burger';
 import headerScroll from './headerScroll';
 import homeSprite from './homeSprite';
 import mapParallax from './mapParallax';
+import hoverTarget from './hoverTarget';
 import form from './form';
 
 const loadHandler = () => {
@@ -27,6 +28,7 @@ const loadHandler = () => {
     mapParallax();
     form();
     headerScroll();
+    hoverTarget();
 };
 
 document.addEventListener(

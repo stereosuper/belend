@@ -9421,11 +9421,20 @@ function Io() {
 
 
   this.revealCDDBIn = function (entry) {
-    entry.classList.add('reveal');
+    entry.classList.add('reveal-cddb');
   };
 
   this.revealCDDBOut = function (entry) {
-    entry.classList.remove('reveal');
+    entry.classList.remove('reveal-cddb');
+  }; // Reveal plop
+
+
+  this.revealPlopIn = function (entry) {
+    entry.classList.add('reveal-plop');
+  };
+
+  this.revealPlopOut = function (entry) {
+    entry.classList.remove('reveal-plop');
   };
 }
 
@@ -10096,6 +10105,43 @@ var homeSprite = function homeSprite() {
 
 /***/ }),
 
+/***/ "./wp-content/themes/belend/src/js/hoverTarget.js":
+/*!********************************************************!*\
+  !*** ./wp-content/themes/belend/src/js/hoverTarget.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./wp-content/themes/belend/src/js/utils.js");
+
+
+var hoverTarget = function hoverTarget() {
+  var targets = document.getElementsByClassName('js-target');
+  if (!targets.length) return;
+  Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(targets, function (target, index) {
+    target.addEventListener('mouseenter', function () {
+      Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(targets, function (t, i) {
+        if (index !== i) {
+          t.classList.add('hide');
+        } else {
+          t.classList.add('show');
+        }
+      });
+    }, false);
+    target.addEventListener('mouseleave', function () {
+      Object(_utils__WEBPACK_IMPORTED_MODULE_0__["forEach"])(targets, function (t) {
+        t.classList.remove('hide', 'show');
+      });
+    }, false);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (hoverTarget);
+
+/***/ }),
+
 /***/ "./wp-content/themes/belend/src/js/main.js":
 /*!*************************************************!*\
   !*** ./wp-content/themes/belend/src/js/main.js ***!
@@ -10115,7 +10161,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _headerScroll__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./headerScroll */ "./wp-content/themes/belend/src/js/headerScroll.js");
 /* harmony import */ var _homeSprite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./homeSprite */ "./wp-content/themes/belend/src/js/homeSprite.js");
 /* harmony import */ var _mapParallax__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapParallax */ "./wp-content/themes/belend/src/js/mapParallax.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+/* harmony import */ var _hoverTarget__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hoverTarget */ "./wp-content/themes/belend/src/js/hoverTarget.js");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+
 
 
 
@@ -10137,8 +10185,9 @@ var loadHandler = function loadHandler() {
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
   Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
   Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
-  Object(_form__WEBPACK_IMPORTED_MODULE_9__["default"])();
+  Object(_form__WEBPACK_IMPORTED_MODULE_10__["default"])();
   Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])();
 };
 
 document.addEventListener('readystatechange', function () {

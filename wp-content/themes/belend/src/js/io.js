@@ -37,11 +37,20 @@ function Io() {
 
     // Reveal comme dans du beurre
     this.revealCDDBIn = entry => {
-        entry.classList.add('reveal');
+        entry.classList.add('reveal-cddb');
     };
 
     this.revealCDDBOut = entry => {
-        entry.classList.remove('reveal');
+        entry.classList.remove('reveal-cddb');
+    };
+
+    // Reveal plop
+    this.revealPlopIn = entry => {
+        entry.classList.add('reveal-plop');
+    };
+
+    this.revealPlopOut = entry => {
+        entry.classList.remove('reveal-plop');
     };
 }
 
