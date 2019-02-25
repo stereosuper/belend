@@ -53,6 +53,7 @@ select{
 }
 
 .ginput_container_select{
+    display: inline-block;
     position: relative;
     &:after {
         content: '';

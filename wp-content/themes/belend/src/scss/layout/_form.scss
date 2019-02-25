@@ -1,4 +1,5 @@
 .gform_page_fields {
+    padding: 30px 0 0;
     position: relative;
     &:before,
     &:after {
@@ -239,6 +240,7 @@
     border-radius: 2px;
     line-height: 1.2;
     padding: 5px 8px;
+    white-space: nowrap;
     font-size: 1.4rem;
     color: $primary-color;
     background: #fff;
@@ -353,7 +355,7 @@ input:focus {
 
     .gform_page_fields {
         width: 65%;
-        padding: 0 0 0 10%;
+        padding: 30px 0 0 10%;
         &:before {
             transform: rotate(-30deg) scale(1);
         }
@@ -382,36 +384,55 @@ input:focus {
         }
         h2 {
             font-size: 3.6rem;
-            &:after {
-                content: '';
-                display: block;
-                width: 1px;
-                height: 40px;
-                margin: -35px 0 0 15px;
-                background: #bdbdbd;
-            }
+            
         }
         h3 {
             line-height: 1.5;
             margin: 0 0 20px;
         }
-        .inactive-page {
-            display: block;
-            margin: 0 0 3px;
-            font-family: 'upgrade-lights';
-            font-size: 2.2rem;
-            color: #bdbdbd;
-            &:before {
-                content: '';
+        
+        .page-bar{
+            .inactive-page {
                 display: block;
-                width: 1px;
-                height: 40px;
-                margin: 0 0 0 15px;
-                background: #bdbdbd;
+                margin: 65px 0 3px;
+                font-family: 'upgrade-lights';
+                font-size: 2.2rem;
+                color: #bdbdbd;
+                + .inactive-page {
+                    &:before {
+                        height: 20px;
+                    }
+                }
             }
-            + .inactive-page {
-                &:before {
-                    height: 20px;
+            > * {
+                &:first-child{
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 40px;
+                        margin: 0 0 0 15px;
+                        background: #bdbdbd;
+                    }
+                }
+                h2{
+                    &:after{
+                        margin-top: -35px;
+                    }
+                }
+                + h2{
+                    line-height: 2;
+                }
+                + .inactive-page{
+                    margin-top: 0;
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 1px;
+                        height: 40px;
+                        margin: 0 0 0 15px;
+                        background: #bdbdbd;
+                    }
                 }
             }
         }

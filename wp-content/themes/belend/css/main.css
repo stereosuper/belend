@@ -600,6 +600,7 @@ select::-ms-expand {
   display: none; }
 
 .ginput_container_select {
+  display: inline-block;
   position: relative; }
   .ginput_container_select:after {
     content: '';
@@ -1029,6 +1030,7 @@ button {
     left: 50px; } }
 
 .gform_page_fields {
+  padding: 30px 0 0;
   position: relative; }
   .gform_page_fields:before, .gform_page_fields:after {
     content: '';
@@ -1234,6 +1236,7 @@ button {
   border-radius: 2px;
   line-height: 1.2;
   padding: 5px 8px;
+  white-space: nowrap;
   font-size: 1.4rem;
   color: #ff6308;
   background: #fff; }
@@ -1313,7 +1316,7 @@ input:focus + .instruction {
     display: flex; }
   .gform_page_fields {
     width: 65%;
-    padding: 0 0 0 10%; }
+    padding: 30px 0 0 10%; }
     .gform_page_fields:before {
       -webkit-transform: rotate(-30deg) scale(1);
               transform: rotate(-30deg) scale(1); }
@@ -1339,31 +1342,37 @@ input:focus + .instruction {
       background: #e9e8e1; }
     .sidebar h2 {
       font-size: 3.6rem; }
-      .sidebar h2:after {
-        content: '';
-        display: block;
-        width: 1px;
-        height: 40px;
-        margin: -35px 0 0 15px;
-        background: #bdbdbd; }
     .sidebar h3 {
       line-height: 1.5;
       margin: 0 0 20px; }
-    .sidebar .inactive-page {
+    .sidebar .page-bar .inactive-page {
       display: block;
-      margin: 0 0 3px;
+      margin: 65px 0 3px;
       font-family: 'upgrade-lights';
       font-size: 2.2rem;
       color: #bdbdbd; }
-      .sidebar .inactive-page:before {
+      .sidebar .page-bar .inactive-page + .inactive-page:before {
+        height: 20px; }
+    .sidebar .page-bar > *:first-child:after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      margin: 0 0 0 15px;
+      background: #bdbdbd; }
+    .sidebar .page-bar > * h2:after {
+      margin-top: -35px; }
+    .sidebar .page-bar > * + h2 {
+      line-height: 2; }
+    .sidebar .page-bar > * + .inactive-page {
+      margin-top: 0; }
+      .sidebar .page-bar > * + .inactive-page:before {
         content: '';
         display: block;
         width: 1px;
         height: 40px;
         margin: 0 0 0 15px;
         background: #bdbdbd; }
-      .sidebar .inactive-page + .inactive-page:before {
-        height: 20px; }
   .gform_wrapper .field-help {
     padding: 35px 0 0; }
   .field-help {
