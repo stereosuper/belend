@@ -20,16 +20,13 @@ const displayHelpOnScroll = () => {
 
     if ( !btn.length || !sidebar.length ) return;
 
-    if( scroll.scrollTop >= sidebar.offset().top){
-        btn.removeClass('hidden');
-    }else{
-        btn.addClass('hidden');
-    }
+    scroll.scrollTop >= sidebar.offset().top ? btn.removeClass('hidden') : btn.addClass('hidden');
 };
 
 const layout = () => {
     jQuery('.gform_page').each(function(){
         const page = jQuery(this);
+        let emptyInputs;
 
         if(page.find('.gform_page_fields > ul').length > 1){
             page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar'));
@@ -48,6 +45,16 @@ const layout = () => {
             }
 
             page.find('.gform_page_footer').appendTo(page.find('.page-nav'));
+
+            if( page.find('.gfield_contains_required').length ){
+                page.find('.gform_next_button').attr('disabled', true);
+                page.find('.gfield_contains_required input').on('change input', function(){
+                    emptyInputs = page.find('.gfield_contains_required input').filter(function() { return jQuery(this).val() == ""; });
+                    if( !emptyInputs.length ){
+                        page.find('.gform_next_button').attr('disabled', false);
+                    }
+                });
+            }
         }
     });
 }

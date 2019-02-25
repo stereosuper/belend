@@ -1444,6 +1444,9 @@ input:focus + .instruction {
 .link > span {
   border-bottom: solid 1px; }
 
+.btn[disabled]:before, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:before, .btn[disabled]:after, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:after {
+  background: #BDBDBD; }
+
 /* Home specific style */
 .home h1 {
   margin: 0 0 0.65em;
