@@ -1040,7 +1040,7 @@ button {
     -webkit-transform-origin: 50% 50%;
             transform-origin: 50% 50%; }
   .gform_page_fields:before {
-    top: -100px;
+    top: -70px;
     right: 30px;
     -webkit-transform: rotate(-30deg) scale(0.8);
             transform: rotate(-30deg) scale(0.8); }
