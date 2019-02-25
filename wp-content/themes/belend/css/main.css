@@ -1803,64 +1803,68 @@ input:focus + .instruction {
   margin: 100px 0 75px; }
   .page-template-contact .gform_wrapper .validation_error {
     display: none; }
-  .page-template-contact .gform_wrapper .gform_body ul {
-    margin: 0; }
-    .page-template-contact .gform_wrapper .gform_body ul li {
-      padding: 0;
-      margin-bottom: 25px; }
-      .page-template-contact .gform_wrapper .gform_body ul li::before {
-        content: none; }
-  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container input,
-  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container textarea,
-  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container .gfield_select {
-    border-color: #f12525; }
-  .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .validation_message {
-    margin-top: 0.5rem;
-    color: #f12525;
-    font-size: 1.4rem; }
-  .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label {
-    display: block;
-    margin-left: 15px;
-    margin-bottom: 12.5px;
-    font-weight: 700; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label .gfield_required {
-      margin-left: 7.5px;
-      color: #ff6308;
-      font-size: 0.75em;
-      font-weight: 400; }
-  .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container {
-    width: 100%; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container input,
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea,
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container .gfield_select {
-      width: 100%;
-      border: 1px solid #bdbdbd;
-      border-radius: 4px;
-      padding: 15px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea {
-      height: 175px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
-      max-width: 303.75px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
-      max-width: 410px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
-      max-width: 197.5px; }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
-      position: relative; }
-      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 9px solid #000;
-        -webkit-transform: translateY(-50%);
-                transform: translateY(-50%); }
-    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container .gfield_select {
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none; }
+  .page-template-contact .gform_wrapper .gform_body {
+    padding: 0; }
+    .page-template-contact .gform_wrapper .gform_body .gform_fields {
+      line-height: 1.35; }
+    .page-template-contact .gform_wrapper .gform_body ul {
+      margin: 0; }
+      .page-template-contact .gform_wrapper .gform_body ul li {
+        padding: 0;
+        margin-bottom: 25px; }
+        .page-template-contact .gform_wrapper .gform_body ul li::before {
+          content: none; }
+    .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container input,
+    .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container textarea,
+    .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .ginput_container .gfield_select {
+      border-color: #f12525; }
+    .page-template-contact .gform_wrapper .gform_body .gfield.gfield_error .validation_message {
+      margin-top: 0.5rem;
+      color: #f12525;
+      font-size: 1.4rem; }
+    .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label {
+      display: block;
+      margin-left: 15px;
+      margin-bottom: 12.5px;
+      font-weight: 700; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .gfield_label .gfield_required {
+        margin-left: 7.5px;
+        color: #ff6308;
+        font-size: 0.75em;
+        font-weight: 400; }
+    .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container {
+      width: 100%; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container input,
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea,
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container .gfield_select {
+        width: 100%;
+        border: 1px solid #bdbdbd;
+        border-radius: 4px;
+        padding: 15px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container textarea {
+        height: 175px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
+        max-width: 303.75px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {
+        max-width: 410px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_phone {
+        max-width: 197.5px; }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
+        position: relative; }
+        .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 9px solid #000;
+          -webkit-transform: translateY(-50%);
+                  transform: translateY(-50%); }
+      .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container .gfield_select {
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none; }
   .page-template-contact .gform_wrapper .gform_footer {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -1924,6 +1928,8 @@ input:focus + .instruction {
       -webkit-box-flex: 1;
           -ms-flex: 1 0 auto;
               flex: 1 0 auto; }
+      .page-template-contact .gform_wrapper .gform_body .gfield:nth-child(odd):not(:last-child) {
+        margin-right: 15px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_text, .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_select {
         min-width: 303.75px; }
       .page-template-contact .gform_wrapper .gform_body .gfield .ginput_container.ginput_container_email {

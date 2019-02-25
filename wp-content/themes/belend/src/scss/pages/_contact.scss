@@ -26,6 +26,10 @@
             display: none;
         }
         .gform_body {
+            padding: 0;
+            .gform_fields {
+                line-height: 1.35;
+            }
             ul {
                 margin: 0;
                 li {
@@ -167,6 +171,9 @@
                 }
                 .gfield {
                     flex: 1 0 auto;
+                    &:nth-child(odd):not(:last-child) {
+                        margin-right: $gutter;
+                    }
                     .ginput_container {
                         &.ginput_container_text,
                         &.ginput_container_select {
