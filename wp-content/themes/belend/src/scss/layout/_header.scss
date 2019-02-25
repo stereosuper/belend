@@ -170,6 +170,13 @@ $header-height: 96px;
             justify-content: space-between;
         }
     }
+    .main-navigation-container {
+        .menu {
+            li {
+                font-size: 2.2rem;
+            }
+        }
+    }
 }
 
 @media (min-width: $desktop-small) {
@@ -220,12 +227,16 @@ $header-height: 96px;
             display: flex;
             align-items: center;
             margin: 0;
-            li{
+            li {
                 margin: 0 $gutter 0 0;
-                &.has-btn{
+                font-size: inherit;
+                &.has-btn {
                     position: static;
                 }
             }
+        }
+        .btn {
+            padding: 15px 20px 14px;
         }
     }
 }

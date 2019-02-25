@@ -762,7 +762,9 @@ button {
               align-items: center;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
-              justify-content: space-between; } }
+              justify-content: space-between; }
+  .main-navigation-container .menu li {
+    font-size: 2.2rem; } }
 
 @media (min-width: 960px) {
   .main-header {
@@ -811,9 +813,12 @@ button {
               align-items: center;
       margin: 0; }
       .main-navigation-container .menu li {
-        margin: 0 15px 0 0; }
+        margin: 0 15px 0 0;
+        font-size: inherit; }
         .main-navigation-container .menu li.has-btn {
-          position: static; } }
+          position: static; }
+    .main-navigation-container .btn, .main-navigation-container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .main-navigation-container .button {
+      padding: 15px 20px 14px; } }
 
 @media (min-width: 1260px) {
   .main-navigation-container .menu li {
@@ -1000,7 +1005,7 @@ button {
 .gform_page_fields {
   position: relative; }
   .gform_page_fields:before, .gform_page_fields:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 405px;
     height: 415px;
@@ -1067,7 +1072,7 @@ button {
 .gform_wrapper .field-help {
   padding: 75px 30px; }
   .gform_wrapper .field-help:before {
-    content: ''; }
+    content: ""; }
 
 .gform_fields {
   line-height: 3; }
@@ -1104,7 +1109,7 @@ button {
     display: inline-block; }
 
 .field-price:after {
-  content: ' €';
+  content: " €";
   display: inline-block;
   margin: 0 10px 0 0; }
 
@@ -1145,7 +1150,7 @@ button {
   color: #fff; }
   .form-progress h1 {
     margin: 0;
-    font-family: 'upgrade';
+    font-family: "upgrade";
     font-size: 1.8rem; }
 
 .field-help {
@@ -1168,9 +1173,9 @@ button {
     top: 45px;
     left: 80px;
     right: 80px;
-    background: #E0E0E0; }
+    background: #e0e0e0; }
   .field-help:after {
-    content: '';
+    content: "";
     width: 38px;
     height: 38px;
     position: absolute;
@@ -1229,7 +1234,7 @@ input:focus + .instruction {
       display: inline-block;
       margin: 0 5px; }
       .form-progress h1:before, .form-progress h1:after {
-        content: ' - '; }
+        content: " - "; }
   .gfield_radio {
     font-size: 1.8rem; }
     .gfield_radio > li {
@@ -1240,7 +1245,7 @@ input:focus + .instruction {
     .gfield_radio input:checked + label {
       font-weight: 400;
       color: #fff;
-      background: linear-gradient(61deg, #F12525 32%, #FF6308 68%); }
+      background: linear-gradient(61deg, #f12525 32%, #ff6308 68%); }
   .btn-help {
     top: 115px; }
     .btn-help.on {
@@ -1288,7 +1293,7 @@ input:focus + .instruction {
     background-position: 0 100%;
     background-size: 174px 192px; }
     .sidebar:before {
-      content: '';
+      content: "";
       width: 50vw;
       position: absolute;
       top: 0;
@@ -1298,28 +1303,28 @@ input:focus + .instruction {
     .sidebar h2 {
       font-size: 3.6rem; }
       .sidebar h2:after {
-        content: '';
+        content: "";
         display: block;
         width: 1px;
         height: 40px;
         margin: -35px 0 0 15px;
-        background: #BDBDBD; }
+        background: #bdbdbd; }
     .sidebar h3 {
       line-height: 1.5;
       margin: 0 0 20px; }
     .sidebar .inactive-page {
       display: block;
       margin: 0 0 3px;
-      font-family: 'upgrade-lights';
+      font-family: "upgrade-lights";
       font-size: 2.2rem;
-      color: #BDBDBD; }
+      color: #bdbdbd; }
       .sidebar .inactive-page:before {
-        content: '';
+        content: "";
         display: block;
         width: 1px;
         height: 40px;
         margin: 0 0 0 15px;
-        background: #BDBDBD; }
+        background: #bdbdbd; }
       .sidebar .inactive-page + .inactive-page:before {
         height: 20px; }
   .gform_wrapper .field-help {
