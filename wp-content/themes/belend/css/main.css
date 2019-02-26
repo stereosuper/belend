@@ -1649,6 +1649,16 @@ input:focus + .instruction {
           -ms-flex-direction: column;
               flex-direction: column;
       overflow: hidden; }
+      .home-nb .number > div:nth-last-child(3n) {
+        margin-left: 15px; }
+      .home-nb .number > div span {
+        width: 3rem;
+        text-align: center;
+        -webkit-transition:  color 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        transition:  color 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        font-variant-numeric: tabular-nums; }
+        .home-nb .number > div span.colored {
+          color: #ff6308; }
 
 @media (min-width: 400px) {
   .banner-img {
@@ -1923,6 +1933,8 @@ input:focus + .instruction {
     text-align: left; }
     .home-nb .number {
       font-size: 7.2rem; }
+      .home-nb .number > div span {
+        width: 4.1rem; }
   .home-benefits-wrapper {
     margin-top: 0;
     text-align: left; }

@@ -1,10 +1,10 @@
-import { TweenMax } from 'gsap';
+import { TweenMax, Power3 } from 'gsap';
 
 const counterAnimation = () => {
     const [counter] = document.getElementsByClassName('js-counter');
 
     if (!counter) return;
-    const animationDuration = 0.5;
+    const animationDuration = 0.3;
     let number = 1781756;
     const stringifiedNumber = number.toString();
 
@@ -39,16 +39,21 @@ const counterAnimation = () => {
         } else {
             TweenMax.to(span1, animationDuration, {
                 y: -height,
+                ease: Power3.easeInOut,
             });
         }
+        span2.classList.add('colored');
         TweenMax.to(span2, animationDuration, {
             y: 0,
+            ease: Power3.easeInOut,
             onComplete: () => {
                 span2.style.position = 'relative';
                 span2.style.top = 0;
                 if (!isNewSpan) {
                     span1.remove();
                 }
+
+                span2.classList.remove('colored');
             },
         });
     };
@@ -65,18 +70,28 @@ const counterAnimation = () => {
     };
 
     const computeNumber = ({ newNumber, oldNumber }) => {
+        let startedMoving = false;
         const deltaLength = newNumber.length - oldNumber.length;
         if (deltaLength) {
             insertDiv(deltaLength);
         }
+
+        const timeoutAnimation = ({ index, newDigit }) => {
+            const timeoutDuration =
+                animationDuration * (index / newNumber.length) * 1000;
+
+            setTimeout(() => {
+                animateDigit({ container: divs[index], digit: newDigit });
+            }, timeoutDuration);
+        };
+
         for (let index = 0; index < newNumber.length; index += 1) {
             const oldDigit = parseInt(oldNumber[index], 10);
             const newDigit = parseInt(newNumber[index], 10);
 
-            if (oldDigit !== newDigit) {
-                setTimeout(() => {
-                    animateDigit({ container: divs[index], digit: newDigit });
-                }, (animationDuration / 2) * index * 1000);
+            if (startedMoving || oldDigit !== newDigit) {
+                timeoutAnimation({ index, newDigit });
+                startedMoving = true;
             }
         }
     };
@@ -95,7 +110,7 @@ const counterAnimation = () => {
         setTimeout(() => {
             simulateNewNumber();
             animate();
-        }, 10000);
+        }, 5000);
     };
 
     simulateNewNumber();

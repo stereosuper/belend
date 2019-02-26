@@ -9949,7 +9949,7 @@ var counterAnimation = function counterAnimation() {
       counter = _document$getElements2[0];
 
   if (!counter) return;
-  var animationDuration = 0.5;
+  var animationDuration = 0.3;
   var number = 1781756;
   var stringifiedNumber = number.toString();
   counter.innerText = '';
@@ -9989,12 +9989,15 @@ var counterAnimation = function counterAnimation() {
       isNewSpan = true;
     } else {
       gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span1, animationDuration, {
-        y: -height
+        y: -height,
+        ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut
       });
     }
 
+    span2.classList.add('colored');
     gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span2, animationDuration, {
       y: 0,
+      ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut,
       onComplete: function onComplete() {
         span2.style.position = 'relative';
         span2.style.top = 0;
@@ -10002,6 +10005,8 @@ var counterAnimation = function counterAnimation() {
         if (!isNewSpan) {
           span1.remove();
         }
+
+        span2.classList.remove('colored');
       }
     });
   };
@@ -10025,28 +10030,36 @@ var counterAnimation = function counterAnimation() {
   var computeNumber = function computeNumber(_ref2) {
     var newNumber = _ref2.newNumber,
         oldNumber = _ref2.oldNumber;
+    var startedMoving = false;
     var deltaLength = newNumber.length - oldNumber.length;
 
     if (deltaLength) {
       insertDiv(deltaLength);
     }
 
-    var _loop = function _loop(_index2) {
-      var oldDigit = parseInt(oldNumber[_index2], 10);
-      var newDigit = parseInt(newNumber[_index2], 10);
-
-      if (oldDigit !== newDigit) {
-        setTimeout(function () {
-          animateDigit({
-            container: divs[_index2],
-            digit: newDigit
-          });
-        }, animationDuration / 2 * _index2 * 1000);
-      }
+    var timeoutAnimation = function timeoutAnimation(_ref3) {
+      var index = _ref3.index,
+          newDigit = _ref3.newDigit;
+      var timeoutDuration = animationDuration * (index / newNumber.length) * 1000;
+      setTimeout(function () {
+        animateDigit({
+          container: divs[index],
+          digit: newDigit
+        });
+      }, timeoutDuration);
     };
 
     for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
-      _loop(_index2);
+      var oldDigit = parseInt(oldNumber[_index2], 10);
+      var newDigit = parseInt(newNumber[_index2], 10);
+
+      if (startedMoving || oldDigit !== newDigit) {
+        timeoutAnimation({
+          index: _index2,
+          newDigit: newDigit
+        });
+        startedMoving = true;
+      }
     }
   };
 
@@ -10063,7 +10076,7 @@ var counterAnimation = function counterAnimation() {
     setTimeout(function () {
       simulateNewNumber();
       animate();
-    }, 10000);
+    }, 5000);
   };
 
   simulateNewNumber();

@@ -115,6 +115,22 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            &:nth-last-child(3n) {
+                margin-left: $gutter;
+            }
+            span {
+                width: 3rem;
+                text-align: center;
+                transition: smooth-operator(
+                    (
+                        color: "#{$smooth-operator-duration}"
+                    )
+                );
+                font-variant-numeric: tabular-nums;
+                &.colored {
+                    color: $primary-color;
+                }
+            }
         }
     }
 }
@@ -451,6 +467,11 @@
         text-align: left;
         .number {
             font-size: 7.2rem;
+            > div {
+                span {
+                    width: 4.1rem;
+                }
+            }
         }
     }
 
