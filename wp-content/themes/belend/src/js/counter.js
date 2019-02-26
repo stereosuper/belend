@@ -74,13 +74,15 @@ const counterAnimation = () => {
             const newDigit = parseInt(newNumber[index], 10);
 
             if (oldDigit !== newDigit) {
-                animateDigit({ container: divs[index], digit: newDigit });
+                setTimeout(() => {
+                    animateDigit({ container: divs[index], digit: newDigit });
+                }, (animationDuration / 2) * index * 1000);
             }
         }
     };
 
     const simulateNewNumber = () => {
-        const newNumber = number + Math.ceil(Math.random() * 100000000);
+        const newNumber = number + Math.ceil(Math.random() * 1000);
 
         computeNumber({
             newNumber: newNumber.toString(),

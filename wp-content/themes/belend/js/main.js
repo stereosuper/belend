@@ -10031,21 +10031,27 @@ var counterAnimation = function counterAnimation() {
       insertDiv(deltaLength);
     }
 
-    for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
+    var _loop = function _loop(_index2) {
       var oldDigit = parseInt(oldNumber[_index2], 10);
       var newDigit = parseInt(newNumber[_index2], 10);
 
       if (oldDigit !== newDigit) {
-        animateDigit({
-          container: divs[_index2],
-          digit: newDigit
-        });
+        setTimeout(function () {
+          animateDigit({
+            container: divs[_index2],
+            digit: newDigit
+          });
+        }, animationDuration / 2 * _index2 * 1000);
       }
+    };
+
+    for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
+      _loop(_index2);
     }
   };
 
   var simulateNewNumber = function simulateNewNumber() {
-    var newNumber = number + Math.ceil(Math.random() * 100000000);
+    var newNumber = number + Math.ceil(Math.random() * 1000);
     computeNumber({
       newNumber: newNumber.toString(),
       oldNumber: number.toString()
