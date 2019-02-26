@@ -83,7 +83,7 @@
             <div class='container'>
                 <?php if( get_field('nbText') ) : ?>
                     <h3><?php the_field('nbText'); ?></h3>
-                    <span class="js-counter"><?php the_field('nb'); ?></span>
+                    <div class="number js-counter"><?php the_field('nb'); ?></div>
                 <?php endif; ?>
             </div>
         </section>

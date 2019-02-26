@@ -9932,6 +9932,7 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -9940,12 +9941,15 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var counter = function counter() {
+
+
+var counterAnimation = function counterAnimation() {
   var _document$getElements = document.getElementsByClassName('js-counter'),
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       counter = _document$getElements2[0];
 
   if (!counter) return;
+  var animationDuration = 0.5;
   var number = 1781756;
   var stringifiedNumber = number.toString();
   counter.innerText = '';
@@ -9959,24 +9963,108 @@ var counter = function counter() {
     counter.appendChild(div);
   }
 
-  var animate = function animate() {
-    setTimeout(function () {
-      var oldNumber = number.toString();
-      number += 13;
-      var divs = counter.getElementsByTagName('div');
+  var animateDigit = function animateDigit(_ref) {
+    var container = _ref.container,
+        digit = _ref.digit;
+    var isNewSpan = false;
+    var span = document.createElement('span');
 
-      for (var _index = 0; _index < oldNumber.length; _index++) {
-        var element = array[_index];
+    var _container$getBoundin = container.getBoundingClientRect(),
+        height = _container$getBoundin.height;
+
+    span.style.position = 'absolute';
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].set(span, {
+      y: height
+    });
+    span.innerText = "".concat(digit);
+    container.appendChild(span);
+
+    var _container$getElement = container.getElementsByTagName('span'),
+        _container$getElement2 = _slicedToArray(_container$getElement, 2),
+        span1 = _container$getElement2[0],
+        span2 = _container$getElement2[1];
+
+    if (!span2) {
+      span2 = span1;
+      isNewSpan = true;
+    } else {
+      gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span1, animationDuration, {
+        y: -height
+      });
+    }
+
+    gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span2, animationDuration, {
+      y: 0,
+      onComplete: function onComplete() {
+        span2.style.position = 'relative';
+        span2.style.top = 0;
+
+        if (!isNewSpan) {
+          span1.remove();
+        }
       }
-
-      animate();
-    }, 1000);
+    });
   };
 
+  var divs = [].slice.call(counter.getElementsByTagName('div'));
+
+  var insertDiv = function insertDiv(divNumber) {
+    var _divs = divs,
+        _divs2 = _slicedToArray(_divs, 1),
+        firstDiv = _divs2[0];
+
+    for (var _index = 0; _index < divNumber; _index += 1) {
+      var _div = document.createElement('div');
+
+      counter.insertBefore(_div, firstDiv);
+    }
+
+    divs = [].slice.call(counter.getElementsByTagName('div'));
+  };
+
+  var computeNumber = function computeNumber(_ref2) {
+    var newNumber = _ref2.newNumber,
+        oldNumber = _ref2.oldNumber;
+    var deltaLength = newNumber.length - oldNumber.length;
+
+    if (deltaLength) {
+      insertDiv(deltaLength);
+    }
+
+    for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
+      var oldDigit = parseInt(oldNumber[_index2], 10);
+      var newDigit = parseInt(newNumber[_index2], 10);
+
+      if (oldDigit !== newDigit) {
+        animateDigit({
+          container: divs[_index2],
+          digit: newDigit
+        });
+      }
+    }
+  };
+
+  var simulateNewNumber = function simulateNewNumber() {
+    var newNumber = number + Math.ceil(Math.random() * 100000000);
+    computeNumber({
+      newNumber: newNumber.toString(),
+      oldNumber: number.toString()
+    });
+    number = newNumber;
+  };
+
+  var animate = function animate() {
+    setTimeout(function () {
+      simulateNewNumber();
+      animate();
+    }, 10000);
+  };
+
+  simulateNewNumber();
   animate();
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (counter);
+/* harmony default export */ __webpack_exports__["default"] = (counterAnimation);
 
 /***/ }),
 
@@ -10246,7 +10334,8 @@ var loadHandler = function loadHandler() {
   Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
   Object(_form__WEBPACK_IMPORTED_MODULE_11__["default"])();
   Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
-  Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])(); // counter();
+  Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])();
+  Object(_counter__WEBPACK_IMPORTED_MODULE_10__["default"])();
 };
 
 document.addEventListener('readystatechange', function () {

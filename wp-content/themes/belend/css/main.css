@@ -1568,10 +1568,10 @@ input:focus + .instruction {
     -webkit-transform-origin: 100% 100%;
             transform-origin: 100% 100%;
     opacity: 0;
-    -webkit-transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
+    -webkit-transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
   .intro .container {
     padding: 25px 15px;
     background: #fff; }
@@ -1622,9 +1622,25 @@ input:focus + .instruction {
   .home-nb h3 {
     margin: 0 0 20px;
     font-size: 1.8rem; }
-  .home-nb span {
+  .home-nb .number {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     font-size: 5.2rem;
     font-family: "upgrade-lights"; }
+    .home-nb .number > div {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      overflow: hidden; }
 
 @media (min-width: 400px) {
   .banner-img {
@@ -1686,8 +1702,8 @@ input:focus + .instruction {
     opacity: 0; }
     .home-nb.reveal-plop {
       opacity: 1;
-      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
       will-change: opacity; }
   .home-map {
     padding-bottom: 160px; }
@@ -1790,10 +1806,10 @@ input:focus + .instruction {
     -webkit-transform: scale3d(0, 0, 1) translateZ(1px);
             transform: scale3d(0, 0, 1) translateZ(1px);
     opacity: 0;
-    -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
     will-change: transform, opacity;
     z-index: 1; }
     .target.reveal-plop {
@@ -1804,16 +1820,16 @@ input:focus + .instruction {
       -webkit-transform: scale3d(1, 1, 1) translate3d(0, 0, -1px);
               transform: scale3d(1, 1, 1) translate3d(0, 0, -1px);
       opacity: 0.5;
-      -webkit-transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      -webkit-transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
       z-index: 0; }
     .target.show {
-      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
+      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
       .target.show:last-child {
         -webkit-transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px);
                 transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px); }
@@ -1886,10 +1902,10 @@ input:focus + .instruction {
         -webkit-transform: translate3d(30px, 0, 0);
                 transform: translate3d(30px, 0, 0);
         opacity: 1;
-        -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-        transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
-        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
+        -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
   .home-nb {
     height: 320px;
     padding-left: 20px;
@@ -1897,7 +1913,7 @@ input:focus + .instruction {
     margin-right: 0;
     margin-left: 10%;
     text-align: left; }
-    .home-nb span {
+    .home-nb .number {
       font-size: 7.2rem; }
   .home-benefits-wrapper {
     margin-top: 0;

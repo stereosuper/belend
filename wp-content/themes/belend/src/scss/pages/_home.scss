@@ -105,9 +105,17 @@
         margin: 0 0 20px;
         font-size: 1.8rem;
     }
-    span {
+    .number {
+        display: flex;
+        justify-content: center;
         font-size: 5.2rem;
         font-family: "upgrade-lights";
+        > div {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
     }
 }
 
@@ -441,7 +449,7 @@
         margin-right: 0;
         margin-left: 10%;
         text-align: left;
-        span {
+        .number {
             font-size: 7.2rem;
         }
     }

@@ -30,7 +30,7 @@ const loadHandler = () => {
     form();
     headerScroll();
     hoverTarget();
-    // counter();
+    counter();
 };
 
 document.addEventListener(
