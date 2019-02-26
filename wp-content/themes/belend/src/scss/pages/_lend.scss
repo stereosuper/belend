@@ -1,0 +1,88 @@
+.page-template-lend {
+    h1 {
+        margin: 0 0 0.65em;
+        text-align: left;
+    }
+    .hero {
+        position: relative;
+        padding: $line-height * 7 0 0;
+        z-index: 1;
+    }
+    .banner-img {
+        position: absolute;
+        height: 480px;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .intro {
+        position: relative;
+        text-align: center;
+        &.reveal-cddb {
+            .text {
+                transform: translate3d(-100%, 0, 0) scale(1);
+                opacity: 1;
+            }
+        }
+        .text {
+            position: relative;
+            max-width: 240px;
+            padding: 35px 25px;
+            margin: 0;
+            left: 100%;
+            text-align: left;
+            background: #fff;
+            transform: translate3d(0, 0, 0) scale(0.8);
+            transform-origin: 100% 100%;
+            opacity: 0;
+            transition: plop(
+                (
+                    transform: "#{$plop-duration}",
+                    opacity: "#{$plop-duration} 0.1s"
+                )
+            );
+        }
+    }
+    .lend-benefits-wrapper {
+        text-align: center;
+    }
+    .lend-benefits {
+        margin: $line-height * 2 0 $line-height * 2;
+        > li {
+            padding: 0 0 20px;
+            &:before {
+                content: none;
+            }
+        }
+        img {
+            display: block;
+            margin: 0 auto 5px;
+        }
+    }
+    .lend-email {
+        padding: 30px 0 80px;
+        position: relative;
+        overflow: hidden;
+        @include background-gradient(117deg, "dark");
+        .txt {
+            text-align: center;
+            margin-bottom: $line-height * 2;
+        }
+        .email {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            input {
+                width: 100%;
+                padding: 10px $gutter;
+                margin-bottom: $line-height;
+                border: 1px solid $light-grey;
+                border-radius: 4px;
+                background-color: $white;
+            }
+        }
+    }
+}
