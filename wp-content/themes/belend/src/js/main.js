@@ -10,6 +10,7 @@ import headerScroll from './headerScroll';
 import homeSprite from './homeSprite';
 import mapParallax from './mapParallax';
 import hoverTarget from './hoverTarget';
+import counter from './counter';
 import form from './form';
 
 const loadHandler = () => {
@@ -29,6 +30,7 @@ const loadHandler = () => {
     form();
     headerScroll();
     hoverTarget();
+    // counter();
 };
 
 document.addEventListener(

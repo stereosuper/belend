@@ -9923,6 +9923,63 @@ var burgerHandler = function burgerHandler(windowHandler) {
 
 /***/ }),
 
+/***/ "./wp-content/themes/belend/src/js/counter.js":
+/*!****************************************************!*\
+  !*** ./wp-content/themes/belend/src/js/counter.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var counter = function counter() {
+  var _document$getElements = document.getElementsByClassName('js-counter'),
+      _document$getElements2 = _slicedToArray(_document$getElements, 1),
+      counter = _document$getElements2[0];
+
+  if (!counter) return;
+  var number = 1781756;
+  var stringifiedNumber = number.toString();
+  counter.innerText = '';
+  var digitsNumber = stringifiedNumber.length;
+
+  for (var index = 0; index < digitsNumber; index += 1) {
+    var div = document.createElement('div');
+    var span = document.createElement('span');
+    span.innerText = stringifiedNumber[index];
+    div.appendChild(span);
+    counter.appendChild(div);
+  }
+
+  var animate = function animate() {
+    setTimeout(function () {
+      var oldNumber = number.toString();
+      number += 13;
+      var divs = counter.getElementsByTagName('div');
+
+      for (var _index = 0; _index < oldNumber.length; _index++) {
+        var element = array[_index];
+      }
+
+      animate();
+    }, 1000);
+  };
+
+  animate();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (counter);
+
+/***/ }),
+
 /***/ "./wp-content/themes/belend/src/js/form.js":
 /*!*************************************************!*\
   !*** ./wp-content/themes/belend/src/js/form.js ***!
@@ -10162,7 +10219,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _homeSprite__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./homeSprite */ "./wp-content/themes/belend/src/js/homeSprite.js");
 /* harmony import */ var _mapParallax__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mapParallax */ "./wp-content/themes/belend/src/js/mapParallax.js");
 /* harmony import */ var _hoverTarget__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hoverTarget */ "./wp-content/themes/belend/src/js/hoverTarget.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+/* harmony import */ var _counter__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./counter */ "./wp-content/themes/belend/src/js/counter.js");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./form */ "./wp-content/themes/belend/src/js/form.js");
+
 
 
 
@@ -10185,9 +10244,9 @@ var loadHandler = function loadHandler() {
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
   Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
   Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
-  Object(_form__WEBPACK_IMPORTED_MODULE_10__["default"])();
+  Object(_form__WEBPACK_IMPORTED_MODULE_11__["default"])();
   Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
-  Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])();
+  Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])(); // counter();
 };
 
 document.addEventListener('readystatechange', function () {
