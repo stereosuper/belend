@@ -7,7 +7,7 @@ const simpleParallax = ({ intensity, element, boundings }) => {
     const { scrollTop } = scroll;
     const velocity = intensity * MULT;
     const imgPos = `${(scrollTop - boundings.top) / velocity}px`;
-    TweenMax.to(element, 0.1, { y: imgPos, force3D: true });
+    TweenMax.to(element, 0.2, { y: imgPos, force3D: true });
 };
 
 const mapParallax = () => {

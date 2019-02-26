@@ -3,11 +3,11 @@
 // Durations
 $comme-dans-du-beurre-duration: 0.23s;
 $plop-duration: 0.4s;
-$smooth-operator-duration: 0.8s;
+$smooth-operator-duration: 0.5s;
 
 // Transition timing functions
 $comme-dans-du-beurre-timing: cubic-bezier(0.25, 0.46, 0.25, 1);
-$plop-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$plop-timing: cubic-bezier(0.6, 0.2, 0.1, 1);
 $smooth-operator-timing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 // Transitions functions

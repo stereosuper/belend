@@ -1568,10 +1568,10 @@ input:focus + .instruction {
     -webkit-transform-origin: 100% 100%;
             transform-origin: 100% 100%;
     opacity: 0;
-    -webkit-transition:  opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.1s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+    -webkit-transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
   .intro .container {
     padding: 25px 15px;
     background: #fff; }
@@ -1686,8 +1686,8 @@ input:focus + .instruction {
     opacity: 0; }
     .home-nb.reveal-plop {
       opacity: 1;
-      -webkit-transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
       will-change: opacity; }
   .home-map {
     padding-bottom: 160px; }
@@ -1709,27 +1709,27 @@ input:focus + .instruction {
   .intro {
     width: 500px;
     padding: 45px 60px 70px 60px;
-    margin-top: 200px;
+    margin-top: 130px;
     margin-left: 0;
     text-align: left;
     background: #fff;
-    -webkit-transform: translate3d(0, 0, 0) scale(0.8);
-            transform: translate3d(0, 0, 0) scale(0.8);
-    -webkit-transform-origin: 0% 0%;
-            transform-origin: 0% 0%;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.9);
+            transform: translate3d(0, 0, 0) scale(0.9);
+    -webkit-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
     opacity: 0;
-    -webkit-transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+    -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
     .intro.reveal-cddb {
       opacity: 1;
-      -webkit-transform: translate3d(30px, 30px, 0) scale(1);
-              transform: translate3d(30px, 30px, 0) scale(1);
-      -webkit-transition:  opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s 0.23s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+      -webkit-transform: translate3d(100px, 0, 0) scale(1);
+              transform: translate3d(100px, 0, 0) scale(1);
+      -webkit-transition:  opacity 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  opacity 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  transform 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+      transition:  transform 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
       .intro.reveal-cddb .text {
         -webkit-transform: none;
                 transform: none;
@@ -1753,10 +1753,10 @@ input:focus + .instruction {
     top: 100px;
     background-size: auto 110%;
     opacity: 0;
-    -webkit-transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+    -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
     .banner-img.reveal-cddb {
       -webkit-transform: translate3d(0, 50px, 0);
               transform: translate3d(0, 50px, 0);
@@ -1790,30 +1790,36 @@ input:focus + .instruction {
     -webkit-transform: scale3d(0, 0, 1) translateZ(1px);
             transform: scale3d(0, 0, 1) translateZ(1px);
     opacity: 0;
-    -webkit-transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+    transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
     will-change: transform, opacity;
     z-index: 1; }
     .target.reveal-plop {
-      -webkit-transform: scale3d(1, 1, 1);
-              transform: scale3d(1, 1, 1);
+      -webkit-transform: scale3d(1, 1, 1) translateZ(1px);
+              transform: scale3d(1, 1, 1) translateZ(1px);
       opacity: 1; }
     .target.hide {
+      -webkit-transform: scale3d(1, 1, 1) translate3d(0, 0, -1px);
+              transform: scale3d(1, 1, 1) translate3d(0, 0, -1px);
       opacity: 0.5;
+      -webkit-transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s 0.15s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
       z-index: 0; }
     .target.show {
-      -webkit-transition:  opacity 0.4s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  opacity 0.4s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-      transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
       .target.show:last-child {
-        -webkit-transform: scale3d(1, 1, 1) translate3d(45px, 0, -1px);
-                transform: scale3d(1, 1, 1) translate3d(45px, 0, -1px); }
+        -webkit-transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px);
+                transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px); }
       .target.show:first-child {
-        -webkit-transform: scale3d(1, 1, 1) translate3d(0, 45px, -1px);
-                transform: scale3d(1, 1, 1) translate3d(0, 45px, -1px); } }
+        -webkit-transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px);
+                transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px); } }
 
 @media (min-width: 1260px) {
   .home-quotes-wrapper {
@@ -1880,10 +1886,10 @@ input:focus + .instruction {
         -webkit-transform: translate3d(30px, 0, 0);
                 transform: translate3d(30px, 0, 0);
         opacity: 1;
-        -webkit-transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        transition:  opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        transition:  transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+        -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+        transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.1, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.1, 1); }
   .home-nb {
     height: 320px;
     padding-left: 20px;

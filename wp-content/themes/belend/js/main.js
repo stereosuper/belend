@@ -10287,7 +10287,7 @@ var simpleParallax = function simpleParallax(_ref) {
   var scrollTop = _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop;
   var velocity = intensity * MULT;
   var imgPos = "".concat((scrollTop - boundings.top) / velocity, "px");
-  gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(element, 0.1, {
+  gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(element, 0.2, {
     y: imgPos,
     force3D: true
   });
