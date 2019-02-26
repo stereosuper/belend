@@ -640,6 +640,8 @@ button {
   padding: 0 45px;
   background-color: #fff;
   z-index: 100; }
+  .main-header.off {
+    display: none; }
   .main-header .container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -778,6 +780,10 @@ button {
 @media (min-width: 780px) {
   .main-header {
     position: fixed; }
+    .main-header.off {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
     .main-header .logo-wrapper {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1087,6 +1093,8 @@ button {
   color: #fff;
   background: #312f2f url(/wp-content/themes/belend/img/question.svg) no-repeat 50% 50%;
   background-size: 6px 12px; }
+  .btn-help.on {
+    display: block !important; }
 
 .gform_wrapper ul {
   padding: 0;

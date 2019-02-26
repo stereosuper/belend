@@ -10118,6 +10118,7 @@ var layout = function layout() {
       page.find('.sidebar').find('.btn-help').on('click', function () {
         page.find('.field-help').toggleClass('on');
         jQuery(this).toggleClass('on');
+        jQuery('#main-header').toggleClass('off');
       });
       _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
     } else {

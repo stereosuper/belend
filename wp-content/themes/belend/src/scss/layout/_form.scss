@@ -65,6 +65,9 @@
     color: #fff;
     background: #312f2f url(../../img/question.svg) no-repeat 50% 50%;
     background-size: 6px 12px;
+    &.on{
+        display: block !important;
+    }
 }
 
 .gform_wrapper {

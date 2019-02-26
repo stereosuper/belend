@@ -41,6 +41,7 @@ const layout = () => {
             page.find('.sidebar').find('.btn-help').on('click', function(){
                 page.find('.field-help').toggleClass('on');
                 jQuery(this).toggleClass('on');
+                jQuery('#main-header').toggleClass('off');
             });
 
             scroll.addScrollFunction(displayHelpOnScroll);
