@@ -83,6 +83,214 @@
                 border-radius: 4px;
                 background-color: $white;
             }
+            .btn {
+                padding: 10px $gutter;
+            }
+        }
+    }
+}
+
+@media (min-width: $phone-small) {
+    .page-template-lend {
+        .banner-img {
+            height: 600px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+        .lend-email {
+            .email {
+                input {
+                    max-width: grid-column-pixels($desktop, $gutter, 3, 12);
+                }
+                .btn {
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $phone) {
+    .page-template-lend {
+        .lend-email {
+            .txt {
+                max-width: grid-column-pixels($desktop, $gutter, 5, 12);
+                margin: 0 auto $line-height * 2;
+            }
+        }
+    }
+}
+
+@media (min-width: $tablet) {
+    .page-template-lend {
+        .hero {
+            background: $grey-light url(../../img/b.svg) 30px -30px no-repeat;
+        }
+        .banner-img {
+            width: 500px;
+            height: 350px;
+            left: 35%;
+            top: #{$line-height * 10 - $line-height * 2};
+            opacity: 0;
+            transition: smooth-operator(
+                (
+                    transform: "#{$smooth-operator-duration}",
+                    opacity: "#{$smooth-operator-duration}"
+                )
+            );
+            &.reveal-cddb {
+                transform: translate3d(0, #{$line-height * 2}, 0);
+                opacity: 1;
+            }
+        }
+        .intro {
+            width: 500px;
+            padding: 45px $gutter * 4 70px $gutter * 4;
+            margin-top: #{$line-height * 4 - 100px};
+            margin-left: 0;
+            margin-bottom: #{$line-height * 6};
+            text-align: left;
+            background: #fff;
+            transform: translate3d(0, 0, 0) scale(0.9);
+            transform-origin: 0% 50%;
+            opacity: 0;
+            transition: smooth-operator(
+                (
+                    transform: "#{$smooth-operator-duration}",
+                    opacity: "#{$smooth-operator-duration}"
+                )
+            );
+            &.reveal-cddb {
+                opacity: 1;
+                transform: translate3d(100px, 0, 0) scale(1);
+                transition: smooth-operator(
+                    (
+                        transform: "#{$smooth-operator-duration} 0.15s",
+                        opacity: "#{$smooth-operator-duration} 0.15s"
+                    )
+                );
+                .text {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+            > .text {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+                left: 0;
+                transform: none;
+                opacity: 1;
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .lend-benefits-wrapper {
+            margin-top: 40px;
+        }
+        .lend-benefits {
+            display: inline-flex;
+            text-align: left;
+            > li {
+                display: flex;
+                max-width: 230px;
+                padding: 0 $gutter;
+            }
+            img {
+                min-width: 45px;
+                height: 45px;
+                margin: 0 $gutter 0 0;
+            }
+        }
+        .lend-email {
+            padding: $line-height * 6 0;
+        }
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .page-template-lend {
+        .banner-img {
+            width: 650px;
+            height: 470px;
+            top: #{$line-height * 6 - $line-height * 2};
+        }
+        .intro {
+            width: 500px;
+        }
+        .lend-benefits-wrapper {
+            margin-top: $line-height * 8;
+        }
+        .lend-email {
+            .txt {
+                position: relative;
+                left: 50%;
+                margin: 0 0 $line-height * 2;
+                transform: translate3d(-60%, 0, 0);
+                opacity: 0;
+                will-change: transform, opacity;
+                &.reveal-plop {
+                    transform: translate3d(-50%, 0, 0);
+                    opacity: 1;
+                    transition: plop(
+                        (
+                            transform: "#{$plop-duration}",
+                            opacity: "#{$plop-duration}"
+                        )
+                    );
+                }
+            }
+            .email {
+                flex-direction: row;
+                justify-content: center;
+                input {
+                    margin-bottom: 0;
+                    margin-right: $gutter;
+                }
+                .btn {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $desktop) {
+    .page-template-lend {
+        .intro {
+            margin-top: #{$line-height * 2 - $gutter * 2};
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+        .banner-img {
+            width: 765px;
+            height: 550px;
+            left: 37%;
+        }
+        .lend-benefits-wrapper {
+            margin-top: 0;
+            text-align: left;
+        }
+        .lend-benefits {
+            width: 50%;
+            margin-left: -$gutter * 0.5;
+            margin-right: -$gutter * 0.5;
+            > li {
+                max-width: 190px;
+                padding: 0 $gutter * 0.5;
+                &:nth-child(2) {
+                    max-width: 210px;
+                }
+            }
+            img {
+                margin-right: $gutter * 0.5;
+            }
+        }
+        .lend-email {
+            padding: $line-height * 8 0;
         }
     }
 }
