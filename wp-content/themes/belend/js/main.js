@@ -10112,36 +10112,33 @@ var progress = function progress() {
   progressbar.html("<span style=\"width: ".concat(width, "px\">").concat(percent, " %</span>"));
 };
 
-var displayHelpOnScroll = function displayHelpOnScroll() {
-  var btn = jQuery('#help');
-  var sidebar = jQuery('#sidebar');
-  if (!btn.length || !sidebar.length) return;
-  _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop >= sidebar.offset().top ? btn.removeClass('hidden') : btn.addClass('hidden');
-};
-
-var fixedPositionOnProgress = function fixedPositionOnProgress() {
+var fixedPositionOnScroll = function fixedPositionOnScroll() {
   var progressBar = document.getElementById('progressbar');
+  var helpButton = document.getElementById('help');
+  var sidebar = document.getElementById('sidebar');
 
-  if (progressBar) {
-    var boundings = progressBar.getBoundingClientRect();
-    var offsetTop = boundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
-    var sidebar = document.getElementById('sidebar');
+  if (progressBar && sidebar && helpButton) {
+    var progressBarBoundings = progressBar.getBoundingClientRect();
+    var progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
 
     var fixOnScroll = function fixOnScroll() {
-      if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > offsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
-        sidebar.style.marginTop = "".concat(boundings.height, "px");
+      // Progress bar
+      if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
+        sidebar.style.marginTop = "".concat(progressBarBoundings.height, "px");
         progressBar.classList.add('fixed-position');
-      } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= offsetTop && progressBar.classList.contains('fixed-position')) {
+        helpButton.classList.add('fixed-position');
+      } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= progressBarOffsetTop && progressBar.classList.contains('fixed-position')) {
         sidebar.style.marginTop = '';
         progressBar.classList.remove('fixed-position');
+        helpButton.classList.remove('fixed-position');
       }
     };
 
     fixOnScroll();
     _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(fixOnScroll);
     _Window__WEBPACK_IMPORTED_MODULE_0__["default"].addResizeFunction(function () {
-      boundings = progressBar.getBoundingClientRect();
-      offsetTop = boundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
+      progressBarBoundings = progressBar.getBoundingClientRect();
+      progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
 
       if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l) {
         progressBar.classList.remove('fixed-position');
@@ -10160,13 +10157,13 @@ var layout = function layout() {
 
     if (page.find('.field-help').length) {
       page.find('.field-help').before('<li class="page-nav"></li>');
-      page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
+      page.find('.sidebar').append('<button type="button" class="btn-help" id="help"></button>');
       page.find('.sidebar').find('.btn-help').on('click', function sidebarHandleClick() {
         page.find('.field-help').toggleClass('on');
         jQuery(this).toggleClass('on');
         jQuery('#main-header').toggleClass('off');
       });
-      _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(displayHelpOnScroll);
+      fixedPositionOnScroll();
     } else {
       page.find('.main-fields').append('<li class="page-nav"></li>');
     } // nav
@@ -10193,7 +10190,7 @@ var formHandler = function formHandler() {
   jQuery(document).ready(function () {
     progress();
     layout();
-    fixedPositionOnProgress();
+    fixedPositionOnScroll();
     jQuery(document).on('gform_post_render', function () {
       progress();
       layout();

@@ -58,15 +58,23 @@
     width: 38px;
     height: 38px;
     position: fixed;
-    top: 25px;
+    top: $line-height * 3;
     right: 25px;
     z-index: 110;
     border-radius: 50%;
     color: #fff;
     background: #312f2f url(../../img/question.svg) no-repeat 50% 50%;
     background-size: 6px 12px;
-    &.on {
-        display: block !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: comme-dans-du-beurre(
+        (
+            opacity: "#{$comme-dans-du-beurre-duration}"
+        )
+    );
+    &.fixed-position {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -369,6 +377,7 @@ input:focus {
 
     .progressbar {
         width: 340px;
+        padding: 0;
         margin: 0 0 0 auto;
     }
 

@@ -18,47 +18,40 @@ const progress = () => {
     progressbar.html(`<span style="width: ${width}px">${percent} %</span>`);
 };
 
-const displayHelpOnScroll = () => {
-    const btn = jQuery('#help');
-    const sidebar = jQuery('#sidebar');
-
-    if (!btn.length || !sidebar.length) return;
-
-    scroll.scrollTop >= sidebar.offset().top
-        ? btn.removeClass('hidden')
-        : btn.addClass('hidden');
-};
-
-const fixedPositionOnProgress = () => {
+const fixedPositionOnScroll = () => {
     const progressBar = document.getElementById('progressbar');
+    const helpButton = document.getElementById('help');
+    const sidebar = document.getElementById('sidebar');
 
-    if (progressBar) {
-        let boundings = progressBar.getBoundingClientRect();
-        let offsetTop = boundings.top + scroll.scrollTop;
-        const sidebar = document.getElementById('sidebar');
+    if (progressBar && sidebar && helpButton) {
+        let progressBarBoundings = progressBar.getBoundingClientRect();
+        let progressBarOffsetTop = progressBarBoundings.top + scroll.scrollTop;
 
         const fixOnScroll = () => {
+            // Progress bar
             if (
-                scroll.scrollTop > offsetTop &&
+                scroll.scrollTop > progressBarOffsetTop &&
                 win.breakpoints[win.currentBreakpoint] < win.breakpoints.l &&
                 !progressBar.classList.contains('fixed-position')
             ) {
-                sidebar.style.marginTop = `${boundings.height}px`;
+                sidebar.style.marginTop = `${progressBarBoundings.height}px`;
                 progressBar.classList.add('fixed-position');
+                helpButton.classList.add('fixed-position');
             } else if (
-                scroll.scrollTop <= offsetTop &&
+                scroll.scrollTop <= progressBarOffsetTop &&
                 progressBar.classList.contains('fixed-position')
             ) {
                 sidebar.style.marginTop = '';
                 progressBar.classList.remove('fixed-position');
+                helpButton.classList.remove('fixed-position');
             }
         };
         fixOnScroll();
         scroll.addScrollFunction(fixOnScroll);
 
         win.addResizeFunction(() => {
-            boundings = progressBar.getBoundingClientRect();
-            offsetTop = boundings.top + scroll.scrollTop;
+            progressBarBoundings = progressBar.getBoundingClientRect();
+            progressBarOffsetTop = progressBarBoundings.top + scroll.scrollTop;
 
             if (win.breakpoints[win.currentBreakpoint] >= win.breakpoints.l) {
                 progressBar.classList.remove('fixed-position');
@@ -83,7 +76,7 @@ const layout = () => {
         if (page.find('.field-help').length) {
             page.find('.field-help').before('<li class="page-nav"></li>');
             page.find('.sidebar').append(
-                '<button type="button" class="btn-help hidden" id="help"></button>'
+                '<button type="button" class="btn-help" id="help"></button>'
             );
             page.find('.sidebar')
                 .find('.btn-help')
@@ -93,7 +86,7 @@ const layout = () => {
                     jQuery('#main-header').toggleClass('off');
                 });
 
-            scroll.addScrollFunction(displayHelpOnScroll);
+            fixedPositionOnScroll();
         } else {
             page.find('.main-fields').append('<li class="page-nav"></li>');
         }
@@ -127,7 +120,7 @@ const formHandler = () => {
     jQuery(document).ready(() => {
         progress();
         layout();
-        fixedPositionOnProgress();
+        fixedPositionOnScroll();
 
         jQuery(document).on('gform_post_render', () => {
             progress();
