@@ -67,6 +67,26 @@
         position: relative;
         overflow: hidden;
         @include background-gradient(117deg, "dark");
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            width: 40%;
+            padding-bottom: 40.703517588%;
+            background: url(../../img/bgform.svg);
+            background-size: cover;
+            transform-origin: 50% 50%;
+            opacity: 0.1;
+        }
+        &::before {
+            top: -10%;
+            right: -3%;
+            transform: rotateZ(180deg);
+        }
+        &::after {
+            left: -3%;
+            bottom: -10%;
+        }
         .txt {
             text-align: center;
             margin-bottom: $line-height * 2;
@@ -100,6 +120,12 @@
             left: 0;
         }
         .lend-email {
+            &::before {
+                top: -15%;
+            }
+            &::after {
+                bottom: -15%;
+            }
             .email {
                 input {
                     max-width: grid-column-pixels($desktop, $gutter, 3, 12);
@@ -115,6 +141,11 @@
 @media (min-width: $phone) {
     .page-template-lend {
         .lend-email {
+            &:before,
+            &:after {
+                width: 30%;
+                padding-bottom: 30.52763819%;
+            }
             .txt {
                 max-width: grid-column-pixels($desktop, $gutter, 5, 12);
                 margin: 0 auto $line-height * 2;
@@ -147,7 +178,7 @@
         }
         .intro {
             width: 500px;
-            padding: 45px $gutter * 4 70px $gutter * 4;
+            padding: $line-height * 2 $gutter * 4 $line-height * 3 $gutter * 4;
             margin-top: #{$line-height * 4 - 100px};
             margin-left: 0;
             margin-bottom: #{$line-height * 6};
@@ -207,6 +238,17 @@
         }
         .lend-email {
             padding: $line-height * 6 0;
+            &:before,
+            &:after {
+                width: 40%;
+                padding-bottom: 40.703517588%;
+            }
+            &::before {
+                right: 5%;
+            }
+            &::after {
+                left: 5%;
+            }
         }
     }
 }
@@ -218,13 +260,16 @@
             height: 470px;
             top: #{$line-height * 6 - $line-height * 2};
         }
-        .intro {
-            width: 500px;
-        }
         .lend-benefits-wrapper {
             margin-top: $line-height * 8;
         }
         .lend-email {
+            padding: $line-height * 8 0;
+            &:before,
+            &:after {
+                width: 35%;
+                padding-bottom: 35.615577889%;
+            }
             .txt {
                 position: relative;
                 left: 50%;
@@ -261,6 +306,8 @@
 @media (min-width: $desktop) {
     .page-template-lend {
         .intro {
+            width: grid-column-pixels($desktop, $gutter, 6, 12);
+            padding: $line-height * 2 $gutter * 4 $line-height * 2 $gutter * 4;
             margin-top: #{$line-height * 2 - $gutter * 2};
             margin-left: 0;
             margin-bottom: 0;
@@ -268,7 +315,7 @@
         .banner-img {
             width: 765px;
             height: 550px;
-            left: 37%;
+            left: 40%;
         }
         .lend-benefits-wrapper {
             margin-top: 0;
@@ -291,6 +338,22 @@
         }
         .lend-email {
             padding: $line-height * 8 0;
+            &:before,
+            &:after {
+                width: 404px;
+                padding-bottom: 397px;
+            }
+            &::before {
+                top: -35%;
+                right: 0;
+                left: 50%;
+                transform: translateX(0%) rotateZ(180deg);
+            }
+            &::after {
+                left: 50%;
+                bottom: -15%;
+                transform: translateX(-125%);
+            }
         }
     }
 }

@@ -2224,6 +2224,24 @@ input:focus + .instruction {
   .page-template-lend .lend-email h3,
   .page-template-lend .lend-email h4 {
     color: inherit; }
+  .page-template-lend .lend-email:before, .page-template-lend .lend-email:after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    padding-bottom: 40.703517588%;
+    background: url(/wp-content/themes/belend/img/bgform.svg);
+    background-size: cover;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    opacity: 0.1; }
+  .page-template-lend .lend-email::before {
+    top: -10%;
+    right: -3%;
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg); }
+  .page-template-lend .lend-email::after {
+    left: -3%;
+    bottom: -10%; }
   .page-template-lend .lend-email .txt {
     text-align: center;
     margin-bottom: 50px; }
@@ -2255,12 +2273,19 @@ input:focus + .instruction {
     top: 0;
     right: 0;
     left: 0; }
+  .page-template-lend .lend-email::before {
+    top: -15%; }
+  .page-template-lend .lend-email::after {
+    bottom: -15%; }
   .page-template-lend .lend-email .email input {
     max-width: 303.75px; }
   .page-template-lend .lend-email .email .btn, .page-template-lend .lend-email .email .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .lend-email .email .button {
     font-size: 1.8rem; } }
 
 @media (min-width: 580px) {
+  .page-template-lend .lend-email:before, .page-template-lend .lend-email:after {
+    width: 30%;
+    padding-bottom: 30.52763819%; }
   .page-template-lend .lend-email .txt {
     max-width: 516.25px;
     margin: 0 auto 50px; } }
@@ -2284,7 +2309,7 @@ input:focus + .instruction {
       opacity: 1; }
   .page-template-lend .intro {
     width: 500px;
-    padding: 45px 60px 70px 60px;
+    padding: 50px 60px 75px 60px;
     margin-top: 0px;
     margin-left: 0;
     margin-bottom: 150px;
@@ -2339,56 +2364,68 @@ input:focus + .instruction {
       height: 45px;
       margin: 0 15px 0 0; }
   .page-template-lend .lend-email {
-    padding: 150px 0; } }
+    padding: 150px 0; }
+    .page-template-lend .lend-email:before, .page-template-lend .lend-email:after {
+      width: 40%;
+      padding-bottom: 40.703517588%; }
+    .page-template-lend .lend-email::before {
+      right: 5%; }
+    .page-template-lend .lend-email::after {
+      left: 5%; } }
 
 @media (min-width: 960px) {
   .page-template-lend .banner-img {
     width: 650px;
     height: 470px;
     top: 100px; }
-  .page-template-lend .intro {
-    width: 500px; }
   .page-template-lend .lend-benefits-wrapper {
     margin-top: 200px; }
-  .page-template-lend .lend-email .txt {
-    position: relative;
-    left: 50%;
-    margin: 0 0 50px;
-    -webkit-transform: translate3d(-60%, 0, 0);
-            transform: translate3d(-60%, 0, 0);
-    opacity: 0;
-    will-change: transform, opacity; }
-    .page-template-lend .lend-email .txt.reveal-plop {
-      -webkit-transform: translate3d(-50%, 0, 0);
-              transform: translate3d(-50%, 0, 0);
-      opacity: 1;
-      -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
-      transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
-      transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
-  .page-template-lend .lend-email .email {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
-    .page-template-lend .lend-email .email input {
-      margin-bottom: 0;
-      margin-right: 15px; }
-    .page-template-lend .lend-email .email .btn, .page-template-lend .lend-email .email .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .lend-email .email .button {
-      margin-top: 0; } }
+  .page-template-lend .lend-email {
+    padding: 200px 0; }
+    .page-template-lend .lend-email:before, .page-template-lend .lend-email:after {
+      width: 35%;
+      padding-bottom: 35.615577889%; }
+    .page-template-lend .lend-email .txt {
+      position: relative;
+      left: 50%;
+      margin: 0 0 50px;
+      -webkit-transform: translate3d(-60%, 0, 0);
+              transform: translate3d(-60%, 0, 0);
+      opacity: 0;
+      will-change: transform, opacity; }
+      .page-template-lend .lend-email .txt.reveal-plop {
+        -webkit-transform: translate3d(-50%, 0, 0);
+                transform: translate3d(-50%, 0, 0);
+        opacity: 1;
+        -webkit-transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+        transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
+    .page-template-lend .lend-email .email {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      .page-template-lend .lend-email .email input {
+        margin-bottom: 0;
+        margin-right: 15px; }
+      .page-template-lend .lend-email .email .btn, .page-template-lend .lend-email .email .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .lend-email .email .button {
+        margin-top: 0; } }
 
 @media (min-width: 1260px) {
   .page-template-lend .intro {
+    width: 622.5px;
+    padding: 50px 60px 50px 60px;
     margin-top: 20px;
     margin-left: 0;
     margin-bottom: 0; }
   .page-template-lend .banner-img {
     width: 765px;
     height: 550px;
-    left: 37%; }
+    left: 40%; }
   .page-template-lend .lend-benefits-wrapper {
     margin-top: 0;
     text-align: left; }
@@ -2404,7 +2441,21 @@ input:focus + .instruction {
     .page-template-lend .lend-benefits img {
       margin-right: 7.5px; }
   .page-template-lend .lend-email {
-    padding: 200px 0; } }
+    padding: 200px 0; }
+    .page-template-lend .lend-email:before, .page-template-lend .lend-email:after {
+      width: 404px;
+      padding-bottom: 397px; }
+    .page-template-lend .lend-email::before {
+      top: -35%;
+      right: 0;
+      left: 50%;
+      -webkit-transform: translateX(0%) rotateZ(180deg);
+              transform: translateX(0%) rotateZ(180deg); }
+    .page-template-lend .lend-email::after {
+      left: 50%;
+      bottom: -15%;
+      -webkit-transform: translateX(-125%);
+              transform: translateX(-125%); } }
 
 /******* PRINT *******/
 @media print {
