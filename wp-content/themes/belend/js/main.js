@@ -10096,7 +10096,9 @@ var counterAnimation = function counterAnimation() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+/* harmony import */ var _Window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Window */ "./wp-content/themes/belend/src/js/Window.js");
+/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+
 
 
 var progress = function progress() {
@@ -10107,18 +10109,49 @@ var progress = function progress() {
   var currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
   var percent = Math.round(currentPage * 100 / pagesLength);
   var width = progressbar.width() / 100 * percent > 35 ? Math.round(progressbar.width() / 100 * percent) : 35;
-  progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
+  progressbar.html("<span style=\"width: ".concat(width, "px\">").concat(percent, " %</span>"));
 };
 
 var displayHelpOnScroll = function displayHelpOnScroll() {
   var btn = jQuery('#help');
   var sidebar = jQuery('#sidebar');
   if (!btn.length || !sidebar.length) return;
-  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop >= sidebar.offset().top ? btn.removeClass('hidden') : btn.addClass('hidden');
+  _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop >= sidebar.offset().top ? btn.removeClass('hidden') : btn.addClass('hidden');
+};
+
+var fixedPositionOnProgress = function fixedPositionOnProgress() {
+  var progressBar = document.getElementById('progressbar');
+
+  if (progressBar) {
+    var boundings = progressBar.getBoundingClientRect();
+    var offsetTop = boundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
+    var sidebar = document.getElementById('sidebar');
+
+    var fixOnScroll = function fixOnScroll() {
+      if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > offsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
+        sidebar.style.marginTop = "".concat(boundings.height, "px");
+        progressBar.classList.add('fixed-position');
+      } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= offsetTop && progressBar.classList.contains('fixed-position')) {
+        sidebar.style.marginTop = '';
+        progressBar.classList.remove('fixed-position');
+      }
+    };
+
+    fixOnScroll();
+    _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(fixOnScroll);
+    _Window__WEBPACK_IMPORTED_MODULE_0__["default"].addResizeFunction(function () {
+      boundings = progress.getBoundingClientRect();
+      offsetTop = boundings.top;
+
+      if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l) {
+        progress.classList.remove('fixed-position');
+      }
+    });
+  }
 };
 
 var layout = function layout() {
-  jQuery('.gform_page').each(function () {
+  jQuery('.gform_page').each(function pageLogic() {
     var page = jQuery(this);
     var emptyInputs;
     if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
@@ -10128,12 +10161,12 @@ var layout = function layout() {
     if (page.find('.field-help').length) {
       page.find('.field-help').before('<li class="page-nav"></li>');
       page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
-      page.find('.sidebar').find('.btn-help').on('click', function () {
+      page.find('.sidebar').find('.btn-help').on('click', function sidebarHandleClick() {
         page.find('.field-help').toggleClass('on');
         jQuery(this).toggleClass('on');
         jQuery('#main-header').toggleClass('off');
       });
-      _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
+      _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(displayHelpOnScroll);
     } else {
       page.find('.main-fields').append('<li class="page-nav"></li>');
     } // nav
@@ -10144,7 +10177,7 @@ var layout = function layout() {
     if (page.find('.gfield_contains_required').length) {
       page.find('.gform_next_button').attr('disabled', true);
       page.find('.gfield_contains_required input').on('change input', function () {
-        emptyInputs = page.find('.gfield_contains_required input').filter(function () {
+        emptyInputs = page.find('.gfield_contains_required input').filter(function filterRequired() {
           return jQuery(this).val() == '';
         });
 
@@ -10160,6 +10193,7 @@ var formHandler = function formHandler() {
   jQuery(document).ready(function () {
     progress();
     layout();
+    fixedPositionOnProgress();
     jQuery(document).on('gform_post_render', function () {
       progress();
       layout();

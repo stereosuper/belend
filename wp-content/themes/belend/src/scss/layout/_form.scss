@@ -3,7 +3,7 @@
     position: relative;
     &:before,
     &:after {
-        content: '';
+        content: "";
         position: absolute;
         width: 405px;
         height: 415px;
@@ -65,7 +65,7 @@
     color: #fff;
     background: #312f2f url(../../img/question.svg) no-repeat 50% 50%;
     background-size: 6px 12px;
-    &.on{
+    &.on {
         display: block !important;
     }
 }
@@ -85,7 +85,7 @@
     .field-help {
         padding: $gutter * 5 $gutter * 2;
         &:before {
-            content: '';
+            content: "";
         }
     }
 }
@@ -120,7 +120,8 @@
         }
     }
 }
-.gfield_error .validation_message, .validation_error {
+.gfield_error .validation_message,
+.validation_error {
     margin-top: 0.5rem;
     color: $form-error-color;
     font-size: 1.4rem;
@@ -142,13 +143,14 @@
 
 .field-price {
     &:after {
-        content: ' €';
+        content: " €";
         display: inline-block;
         margin: 0 10px 0 0;
     }
 }
 
-.gfield_radio, .gfield_checkbox{
+.gfield_radio,
+.gfield_checkbox {
     display: flex;
     flex-wrap: wrap;
     margin: 50px -12px;
@@ -162,7 +164,9 @@
         margin: 0 12px 24px;
     }
     label {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
         padding: 15px 20px;
         border: 1px solid $grey;
@@ -218,7 +222,7 @@
         background: #e0e0e0;
     }
     &:after {
-        content: '';
+        content: "";
         width: 38px;
         height: 38px;
         position: absolute;
@@ -260,21 +264,40 @@ input:focus {
     }
 }
 
+.subtitle {
+    margin-bottom: 20px;
+}
+
 .progressbar {
-    height: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    margin: 20px 0 0;
+    min-height: 21px;
+    color: $primary-color;
     font-size: 1.4rem;
     line-height: 21px;
     text-align: center;
-    background: rgba(#fff, 0.4);
-    color: $primary-color;
+    &.fixed-position {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 15px $gutter * 2;
+        background-color: $black-grey;
+        z-index: 2;
+    }
+    &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: rgba(#fff, 0.4);
+    }
     > span {
         width: 35px;
-        height: 21px;
-        position: absolute;
-        top: -10px;
-        left: 0;
+        height: 100%;
+        margin-right: auto;
         border-radius: 50px;
         background: #fff;
     }
@@ -323,7 +346,7 @@ input:focus {
         top: 120px;
     }
 
-    .field-help{
+    .field-help {
         top: 95px;
     }
 
@@ -377,7 +400,7 @@ input:focus {
         background-position: 0 100%;
         background-size: 174px 192px;
         &:before {
-            content: '';
+            content: "";
             width: 50vw;
             position: absolute;
             top: 0;
@@ -387,18 +410,17 @@ input:focus {
         }
         h2 {
             font-size: 3.6rem;
-            
         }
         h3 {
             line-height: 1.5;
             margin: 0 0 20px;
         }
-        
-        .page-bar{
+
+        .page-bar {
             .inactive-page {
                 display: block;
                 margin: 65px 0 3px;
-                font-family: 'upgrade-lights';
+                font-family: "upgrade-lights";
                 font-size: 2.2rem;
                 color: #bdbdbd;
                 + .inactive-page {
@@ -408,9 +430,9 @@ input:focus {
                 }
             }
             > * {
-                &:first-child{
+                &:first-child {
                     &:after {
-                        content: '';
+                        content: "";
                         display: block;
                         width: 1px;
                         height: 40px;
@@ -418,18 +440,18 @@ input:focus {
                         background: #bdbdbd;
                     }
                 }
-                h2{
-                    &:after{
+                h2 {
+                    &:after {
                         margin-top: -35px;
                     }
                 }
-                + h2{
+                + h2 {
                     line-height: 2;
                 }
-                + .inactive-page{
+                + .inactive-page {
                     margin-top: 0;
                     &:before {
-                        content: '';
+                        content: "";
                         display: block;
                         width: 1px;
                         height: 40px;

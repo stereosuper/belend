@@ -1039,7 +1039,7 @@ button {
   padding: 30px 0 0;
   position: relative; }
   .gform_page_fields:before, .gform_page_fields:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 405px;
     height: 415px;
@@ -1108,7 +1108,7 @@ button {
 .gform_wrapper .field-help {
   padding: 75px 30px; }
   .gform_wrapper .field-help:before {
-    content: ''; }
+    content: ""; }
 
 .gform_fields {
   line-height: 3; }
@@ -1138,7 +1138,8 @@ button {
 .gfield.gfield_error .ginput_container .gfield_select {
   border-color: #f12525; }
 
-.gfield_error .validation_message, .validation_error {
+.gfield_error .validation_message,
+.validation_error {
   margin-top: 0.5rem;
   color: #f12525;
   font-size: 1.4rem; }
@@ -1156,11 +1157,12 @@ button {
     margin: 0 10px; }
 
 .field-price:after {
-  content: ' €';
+  content: " €";
   display: inline-block;
   margin: 0 10px 0 0; }
 
-.gfield_radio, .gfield_checkbox {
+.gfield_radio,
+.gfield_checkbox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1170,23 +1172,35 @@ button {
   font-size: 1.4rem;
   line-height: 1.7;
   text-align: center; }
-  .gfield_radio > li, .gfield_checkbox > li {
+  .gfield_radio > li,
+  .gfield_checkbox > li {
     width: calc(50% - 24px);
     min-height: 95px;
     position: relative;
     margin: 0 12px 24px; }
-  .gfield_radio label, .gfield_checkbox label {
-    display: block;
+  .gfield_radio label,
+  .gfield_checkbox label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     height: 100%;
     padding: 15px 20px;
     border: 1px solid #828282;
     border-radius: 4px;
     cursor: pointer; }
-  .gfield_radio input, .gfield_checkbox input {
+  .gfield_radio input,
+  .gfield_checkbox input {
     position: absolute;
     top: 0;
     left: -99em; }
-    .gfield_radio input:checked + label, .gfield_checkbox input:checked + label {
+    .gfield_radio input:checked + label,
+    .gfield_checkbox input:checked + label {
       color: #ff6308;
       border-color: #ff6308; }
 
@@ -1222,7 +1236,7 @@ button {
     right: 80px;
     background: #e0e0e0; }
   .field-help:after {
-    content: '';
+    content: "";
     width: 38px;
     height: 38px;
     position: absolute;
@@ -1255,21 +1269,43 @@ input:focus + .instruction {
 .hidden-title > .gfield_label {
   display: none; }
 
+.subtitle {
+  margin-bottom: 20px; }
+
 .progressbar {
-  height: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
-  margin: 20px 0 0;
+  min-height: 21px;
+  color: #ff6308;
   font-size: 1.4rem;
   line-height: 21px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.4);
-  color: #ff6308; }
+  text-align: center; }
+  .progressbar.fixed-position {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 30px;
+    background-color: #312f2f;
+    z-index: 2; }
+  .progressbar::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.4); }
   .progressbar > span {
     width: 35px;
-    height: 21px;
-    position: absolute;
-    top: -10px;
-    left: 0;
+    height: 100%;
+    margin-right: auto;
     border-radius: 50px;
     background: #fff; }
 
@@ -1341,7 +1377,7 @@ input:focus + .instruction {
     background-position: 0 100%;
     background-size: 174px 192px; }
     .sidebar:before {
-      content: '';
+      content: "";
       width: 50vw;
       position: absolute;
       top: 0;
@@ -1356,13 +1392,13 @@ input:focus + .instruction {
     .sidebar .page-bar .inactive-page {
       display: block;
       margin: 65px 0 3px;
-      font-family: 'upgrade-lights';
+      font-family: "upgrade-lights";
       font-size: 2.2rem;
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
         height: 20px; }
     .sidebar .page-bar > *:first-child:after {
-      content: '';
+      content: "";
       display: block;
       width: 1px;
       height: 40px;
@@ -1375,7 +1411,7 @@ input:focus + .instruction {
     .sidebar .page-bar > * + .inactive-page {
       margin-top: 0; }
       .sidebar .page-bar > * + .inactive-page:before {
-        content: '';
+        content: "";
         display: block;
         width: 1px;
         height: 40px;
