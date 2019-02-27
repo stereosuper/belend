@@ -11,7 +11,7 @@ get_header(); ?>
 		<div class='container'>
 			<span><?php the_field('uptitle'); ?></span>
 			<h1><?php the_title(); ?></h1>
-			<span class="subtitle"><?php the_field('subtitle'); ?></span>
+			<span><?php the_field('subtitle'); ?></span>
 			<div id='progressbar' class='progressbar'></div>
 		</div>
 	</section>

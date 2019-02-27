@@ -10140,11 +10140,11 @@ var fixedPositionOnProgress = function fixedPositionOnProgress() {
     fixOnScroll();
     _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(fixOnScroll);
     _Window__WEBPACK_IMPORTED_MODULE_0__["default"].addResizeFunction(function () {
-      boundings = progress.getBoundingClientRect();
-      offsetTop = boundings.top;
+      boundings = progressBar.getBoundingClientRect();
+      offsetTop = boundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
 
       if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l) {
-        progress.classList.remove('fixed-position');
+        progressBar.classList.remove('fixed-position');
       }
     });
   }

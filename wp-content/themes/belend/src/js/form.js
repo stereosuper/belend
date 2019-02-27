@@ -57,11 +57,11 @@ const fixedPositionOnProgress = () => {
         scroll.addScrollFunction(fixOnScroll);
 
         win.addResizeFunction(() => {
-            boundings = progress.getBoundingClientRect();
-            offsetTop = boundings.top;
+            boundings = progressBar.getBoundingClientRect();
+            offsetTop = boundings.top + scroll.scrollTop;
 
             if (win.breakpoints[win.currentBreakpoint] >= win.breakpoints.l) {
-                progress.classList.remove('fixed-position');
+                progressBar.classList.remove('fixed-position');
             }
         });
     }

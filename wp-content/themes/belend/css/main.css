@@ -1269,9 +1269,6 @@ input:focus + .instruction {
 .hidden-title > .gfield_label {
   display: none; }
 
-.subtitle {
-  margin-bottom: 20px; }
-
 .progressbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1284,6 +1281,7 @@ input:focus + .instruction {
           align-items: center;
   position: relative;
   min-height: 21px;
+  padding: 15px 0 0;
   color: #ff6308;
   font-size: 1.4rem;
   line-height: 21px;
