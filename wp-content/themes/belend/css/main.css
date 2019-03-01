@@ -1467,6 +1467,53 @@ input:focus + .instruction {
         margin: 0 0 0 15px;
         background: #bdbdbd; } }
 
+.field-banks input + label {
+  color: transparent;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain; }
+
+input[value="cic"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
+
+input[value="credit-mutuel"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
+
+input[value="caisse-d-epargne"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
+
+input[value="banque-populaire"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
+
+input[value="credit-agricole"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
+
+input[value="société-generale"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
+
+input[value="bnp-paribas"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
+
+input[value="lcl"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
+
+input[value="hsbc"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
+
+input[value="credit-du-nord"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
+
+input[value="banque-palatine"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
+
+input[value="credit-cooperatif"] + label {
+  background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
+
+input[value="autre-banque"] + label {
+  color: #000;
+  background: none; }
+
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
 .link,
