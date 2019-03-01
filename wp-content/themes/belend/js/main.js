@@ -10150,7 +10150,8 @@ var fixedPositionOnScroll = function fixedPositionOnScroll() {
       progressBarBoundings = progressBar.getBoundingClientRect();
       progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
 
-      if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l) {
+      if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.xl) {
+        sidebar.style.marginTop = '';
         progressBar.classList.remove('fixed-position');
       }
     });

@@ -58,7 +58,8 @@ const fixedPositionOnScroll = () => {
             progressBarBoundings = progressBar.getBoundingClientRect();
             progressBarOffsetTop = progressBarBoundings.top + scroll.scrollTop;
 
-            if (win.breakpoints[win.currentBreakpoint] >= win.breakpoints.l) {
+            if (win.breakpoints[win.currentBreakpoint] >= win.breakpoints.xl) {
+                sidebar.style.marginTop = '';
                 progressBar.classList.remove('fixed-position');
             }
         });

@@ -185,9 +185,10 @@
         justify-content: center;
         align-items: center;
         height: 100%;
-        padding: 15px 20px;
+        padding: 5px 10px;
         border: 1px solid $grey;
         border-radius: 4px;
+        word-break: break-word;
         cursor: pointer;
     }
     input {
@@ -332,6 +333,16 @@ input:focus {
     }
 }
 
+@media (min-width: $phone-small) {
+    .gfield_radio,
+    .gfield_checkbox {
+        label {
+            padding: $gutter 20px;
+            word-break: normal;
+        }
+    }
+}
+
 @media (min-width: $tablet) {
     .form-progress {
         padding-top: 10px;
@@ -398,6 +409,30 @@ input:focus {
 @media (min-width: $desktop-small) {
     .btn-help {
         display: none;
+    }
+    .gform_wrapper {
+        .field-help {
+            padding: 35px 0 0;
+        }
+    }
+    .field-help {
+        display: block;
+        position: relative;
+        max-width: grid-column-pixels($desktop, $gutter, 6, 12);
+        top: 0;
+        margin: $line-height * 2 0 $line-height * 2 auto;
+        background: none;
+        opacity: 1;
+        visibility: visible;
+        &:before {
+            top: 0;
+            right: 0;
+            left: 50px;
+        }
+        &:after {
+            top: -19px;
+            left: 0;
+        }
     }
 }
 
@@ -501,29 +536,6 @@ input:focus {
                     }
                 }
             }
-        }
-    }
-
-    .gform_wrapper {
-        .field-help {
-            padding: 35px 0 0;
-        }
-    }
-
-    .field-help {
-        display: block;
-        margin: 50px 0;
-        position: relative;
-        top: 0;
-        background: none;
-        &:before {
-            top: 0;
-            right: 0;
-            left: 50px;
-        }
-        &:after {
-            top: -19px;
-            left: 0;
         }
     }
 }

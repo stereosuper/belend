@@ -1202,9 +1202,10 @@ button {
         -ms-flex-align: center;
             align-items: center;
     height: 100%;
-    padding: 15px 20px;
+    padding: 5px 10px;
     border: 1px solid #828282;
     border-radius: 4px;
+    word-break: break-word;
     cursor: pointer; }
   .gfield_radio input,
   .gfield_checkbox input {
@@ -1326,6 +1327,12 @@ input:focus + .instruction {
     border-radius: 50px;
     background: #fff; }
 
+@media (min-width: 400px) {
+  .gfield_radio label,
+  .gfield_checkbox label {
+    padding: 15px 20px;
+    word-break: normal; } }
+
 @media (min-width: 780px) {
   .form-progress {
     padding-top: 10px;
@@ -1362,7 +1369,25 @@ input:focus + .instruction {
 
 @media (min-width: 960px) {
   .btn-help {
-    display: none; } }
+    display: none; }
+  .gform_wrapper .field-help {
+    padding: 35px 0 0; }
+  .field-help {
+    display: block;
+    position: relative;
+    max-width: 622.5px;
+    top: 0;
+    margin: 50px 0 50px auto;
+    background: none;
+    opacity: 1;
+    visibility: visible; }
+    .field-help:before {
+      top: 0;
+      right: 0;
+      left: 50px; }
+    .field-help:after {
+      top: -19px;
+      left: 0; } }
 
 @media (min-width: 1260px) {
   .form-progress {
@@ -1440,22 +1465,7 @@ input:focus + .instruction {
         width: 1px;
         height: 40px;
         margin: 0 0 0 15px;
-        background: #bdbdbd; }
-  .gform_wrapper .field-help {
-    padding: 35px 0 0; }
-  .field-help {
-    display: block;
-    margin: 50px 0;
-    position: relative;
-    top: 0;
-    background: none; }
-    .field-help:before {
-      top: 0;
-      right: 0;
-      left: 50px; }
-    .field-help:after {
-      top: -19px;
-      left: 0; } }
+        background: #bdbdbd; } }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
