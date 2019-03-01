@@ -33,7 +33,7 @@ const fixedPositionOnScroll = () => {
                 if (
                     scroll.scrollTop > progressBarOffsetTop &&
                     win.breakpoints[win.currentBreakpoint] <
-                        win.breakpoints.l &&
+                        win.breakpoints.xl &&
                     !progressBar.classList.contains('fixed-position')
                 ) {
                     sidebar.style.marginTop = `${

@@ -10132,7 +10132,7 @@ var fixedPositionOnScroll = function fixedPositionOnScroll() {
     var fixOnScroll = function fixOnScroll() {
       if (!helpButton.classList.contains('on')) {
         // Progress bar
-        if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
+        if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.xl && !progressBar.classList.contains('fixed-position')) {
           sidebar.style.marginTop = "".concat(progressBarBoundings.height, "px");
           progressBar.classList.add('fixed-position');
           helpButton.classList.add('fixed-position');

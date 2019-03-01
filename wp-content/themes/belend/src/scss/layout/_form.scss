@@ -372,11 +372,16 @@ input:focus {
     }
 
     .btn-help {
-        top: 120px;
+        top: #{$line-height * 3 + $header-height};
     }
 
     .field-help {
-        top: 95px;
+        top: $header-height;
+    }
+    .progressbar {
+        &.fixed-position {
+            top: $header-height;
+        }
     }
 
     .gform_page_fields {
@@ -387,6 +392,12 @@ input:focus {
         &:after {
             left: 0;
         }
+    }
+}
+
+@media (min-width: $desktop-small) {
+    .btn-help {
+        display: none;
     }
 }
 
@@ -514,9 +525,5 @@ input:focus {
             top: -19px;
             left: 0;
         }
-    }
-
-    .btn-help {
-        display: none;
     }
 }

@@ -1348,15 +1348,21 @@ input:focus + .instruction {
       color: #fff;
       background: linear-gradient(61deg, #f12525 32%, #ff6308 68%); }
   .btn-help {
-    top: 120px; }
+    top: 171px; }
   .field-help {
-    top: 95px; }
+    top: 96px; }
+  .progressbar.fixed-position {
+    top: 96px; }
   .gform_page_fields {
     overflow: hidden; }
     .gform_page_fields:before {
       top: -150px; }
     .gform_page_fields:after {
       left: 0; } }
+
+@media (min-width: 960px) {
+  .btn-help {
+    display: none; } }
 
 @media (min-width: 1260px) {
   .form-progress {
@@ -1449,9 +1455,7 @@ input:focus + .instruction {
       left: 50px; }
     .field-help:after {
       top: -19px;
-      left: 0; }
-  .btn-help {
-    display: none; } }
+      left: 0; } }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
