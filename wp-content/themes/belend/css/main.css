@@ -1103,6 +1103,8 @@ button {
   .btn-help.fixed-position {
     opacity: 1;
     visibility: visible; }
+  .btn-help.on {
+    background: #312f2f url(/wp-content/themes/belend/img/cross.svg) no-repeat 50% 50%; }
 
 .gform_wrapper ul {
   padding: 0;
@@ -1114,7 +1116,7 @@ button {
       content: none; }
 
 .gform_wrapper .field-help {
-  padding: 75px 30px; }
+  padding: 125px 30px 75px; }
   .gform_wrapper .field-help:before {
     content: ""; }
 
@@ -1239,7 +1241,7 @@ button {
     width: auto;
     height: 1px;
     position: absolute;
-    top: 45px;
+    top: 92px;
     left: 80px;
     right: 80px;
     background: #e0e0e0; }
@@ -1248,7 +1250,7 @@ button {
     width: 38px;
     height: 38px;
     position: absolute;
-    top: 25px;
+    top: 75px;
     left: 30px;
     border-radius: 50%;
     border: 1px solid #828282;
