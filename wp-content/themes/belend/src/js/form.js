@@ -28,22 +28,27 @@ const fixedPositionOnScroll = () => {
         let progressBarOffsetTop = progressBarBoundings.top + scroll.scrollTop;
 
         const fixOnScroll = () => {
-            // Progress bar
-            if (
-                scroll.scrollTop > progressBarOffsetTop &&
-                win.breakpoints[win.currentBreakpoint] < win.breakpoints.l &&
-                !progressBar.classList.contains('fixed-position')
-            ) {
-                sidebar.style.marginTop = `${progressBarBoundings.height}px`;
-                progressBar.classList.add('fixed-position');
-                helpButton.classList.add('fixed-position');
-            } else if (
-                scroll.scrollTop <= progressBarOffsetTop &&
-                progressBar.classList.contains('fixed-position')
-            ) {
-                sidebar.style.marginTop = '';
-                progressBar.classList.remove('fixed-position');
-                helpButton.classList.remove('fixed-position');
+            if (!helpButton.classList.contains('on')) {
+                // Progress bar
+                if (
+                    scroll.scrollTop > progressBarOffsetTop &&
+                    win.breakpoints[win.currentBreakpoint] <
+                        win.breakpoints.l &&
+                    !progressBar.classList.contains('fixed-position')
+                ) {
+                    sidebar.style.marginTop = `${
+                        progressBarBoundings.height
+                    }px`;
+                    progressBar.classList.add('fixed-position');
+                    helpButton.classList.add('fixed-position');
+                } else if (
+                    scroll.scrollTop <= progressBarOffsetTop &&
+                    progressBar.classList.contains('fixed-position')
+                ) {
+                    sidebar.style.marginTop = '';
+                    progressBar.classList.remove('fixed-position');
+                    helpButton.classList.remove('fixed-position');
+                }
             }
         };
         fixOnScroll();
@@ -62,6 +67,7 @@ const fixedPositionOnScroll = () => {
 
 const layout = () => {
     jQuery('.gform_page').each(function pageLogic() {
+        const pageVanilla = this;
         const page = jQuery(this);
         let emptyInputs;
 
@@ -81,9 +87,20 @@ const layout = () => {
             page.find('.sidebar')
                 .find('.btn-help')
                 .on('click', function sidebarHandleClick() {
-                    page.find('.field-help').toggleClass('on');
+                    const [helpField] = pageVanilla.getElementsByClassName(
+                        'field-help'
+                    );
+                    helpField.classList.toggle('on');
                     jQuery(this).toggleClass('on');
                     jQuery('#main-header').toggleClass('off');
+
+                    const noScroll = helpField.classList.contains('on');
+
+                    // mainNav.setAttribute('aria-expanded', state.burgerActivated);
+                    win.toggleNoScroll({
+                        transitionElement: helpField,
+                        noScroll,
+                    });
                 });
 
             fixedPositionOnScroll();

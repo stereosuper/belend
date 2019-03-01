@@ -10098,6 +10098,14 @@ var counterAnimation = function counterAnimation() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Window */ "./wp-content/themes/belend/src/js/Window.js");
 /* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -10122,15 +10130,17 @@ var fixedPositionOnScroll = function fixedPositionOnScroll() {
     var progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
 
     var fixOnScroll = function fixOnScroll() {
-      // Progress bar
-      if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
-        sidebar.style.marginTop = "".concat(progressBarBoundings.height, "px");
-        progressBar.classList.add('fixed-position');
-        helpButton.classList.add('fixed-position');
-      } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= progressBarOffsetTop && progressBar.classList.contains('fixed-position')) {
-        sidebar.style.marginTop = '';
-        progressBar.classList.remove('fixed-position');
-        helpButton.classList.remove('fixed-position');
+      if (!helpButton.classList.contains('on')) {
+        // Progress bar
+        if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.l && !progressBar.classList.contains('fixed-position')) {
+          sidebar.style.marginTop = "".concat(progressBarBoundings.height, "px");
+          progressBar.classList.add('fixed-position');
+          helpButton.classList.add('fixed-position');
+        } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= progressBarOffsetTop && progressBar.classList.contains('fixed-position')) {
+          sidebar.style.marginTop = '';
+          progressBar.classList.remove('fixed-position');
+          helpButton.classList.remove('fixed-position');
+        }
       }
     };
 
@@ -10149,6 +10159,7 @@ var fixedPositionOnScroll = function fixedPositionOnScroll() {
 
 var layout = function layout() {
   jQuery('.gform_page').each(function pageLogic() {
+    var pageVanilla = this;
     var page = jQuery(this);
     var emptyInputs;
     if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
@@ -10159,9 +10170,19 @@ var layout = function layout() {
       page.find('.field-help').before('<li class="page-nav"></li>');
       page.find('.sidebar').append('<button type="button" class="btn-help" id="help"></button>');
       page.find('.sidebar').find('.btn-help').on('click', function sidebarHandleClick() {
-        page.find('.field-help').toggleClass('on');
+        var _pageVanilla$getEleme = pageVanilla.getElementsByClassName('field-help'),
+            _pageVanilla$getEleme2 = _slicedToArray(_pageVanilla$getEleme, 1),
+            helpField = _pageVanilla$getEleme2[0];
+
+        helpField.classList.toggle('on');
         jQuery(this).toggleClass('on');
         jQuery('#main-header').toggleClass('off');
+        var noScroll = helpField.classList.contains('on'); // mainNav.setAttribute('aria-expanded', state.burgerActivated);
+
+        _Window__WEBPACK_IMPORTED_MODULE_0__["default"].toggleNoScroll({
+          transitionElement: helpField,
+          noScroll: noScroll
+        });
       });
       fixedPositionOnScroll();
     } else {

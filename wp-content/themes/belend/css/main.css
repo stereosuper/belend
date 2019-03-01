@@ -1091,7 +1091,7 @@ button {
   position: fixed;
   top: 75px;
   right: 25px;
-  z-index: 110;
+  z-index: 3;
   border-radius: 50%;
   color: #fff;
   background: #312f2f url(/wp-content/themes/belend/img/question.svg) no-repeat 50% 50%;
@@ -1104,7 +1104,9 @@ button {
     opacity: 1;
     visibility: visible; }
   .btn-help.on {
-    background: #312f2f url(/wp-content/themes/belend/img/cross.svg) no-repeat 50% 50%; }
+    background: #312f2f url(/wp-content/themes/belend/img/cross.svg) no-repeat 50% 50%;
+    opacity: 1;
+    visibility: visible; }
 
 .gform_wrapper ul {
   padding: 0;
@@ -1225,18 +1227,25 @@ button {
     font-size: 1.8rem; }
 
 .field-help {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 2;
   font-size: 1.6rem;
   line-height: 1.35;
-  background: #fff; }
+  background: #fff;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
   .field-help.on {
-    display: block; }
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
   .field-help:before {
     width: auto;
     height: 1px;
