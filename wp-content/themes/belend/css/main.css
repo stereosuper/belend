@@ -2048,6 +2048,7 @@ input:focus + .instruction {
   text-align: center; }
 
 .page-template-contact .gform_wrapper {
+  padding: 0;
   margin: 100px 0 75px; }
   .page-template-contact .gform_wrapper .validation_error {
     display: none; }
