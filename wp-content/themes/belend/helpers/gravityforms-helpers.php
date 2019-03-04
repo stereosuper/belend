@@ -3,9 +3,13 @@ add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry",
 
 function belend_send_partial_entry($partial_entry, $form)
 {
-    $vxg_salesforce = new vxg_salesforce();
-    $vxg_salesforce->instance();
-    $vxg_salesforce->push($partial_entry, $form);
+
+    if(class_exists('vxg_salesforce')){
+        $vxg_salesforce = new vxg_salesforce();
+        $vxg_salesforce->instance();
+        $vxg_salesforce->push($partial_entry, $form);
+    }
+
 }
 
 
@@ -72,17 +76,19 @@ if (!class_exists('GF_Multi_Column')) {
         {
             $column_count = 0;
             $prev_page_field = null;
-            foreach ($form['fields'] as $field) {
-                if ($field['type'] == 'column') {
-                    $column_count++;
-                } else if ($field['type'] == 'page') {
-                    if ($column_count > 0 && empty($prev_page_field)) {
-                        $form['firstPageCssClass'] = trim((isset($field['firstPageCssClass']) ? $field['firstPageCssClass'] : '') . ' gform_page_multi_column gform_page_column_count_' . ($column_count + 1));
-                    } else if ($column_count > 0) {
-                        $prev_page_field['cssClass'] = trim((isset($prev_page_field['cssClass']) ? $prev_page_field['cssClass'] : '') . ' gform_page_multi_column gform_page_column_count_' . ($column_count + 1));
+            if(isset($form['fields']) && !empty($form['fields'])){
+                foreach ($form['fields'] as $field) {
+                    if ($field['type'] == 'column') {
+                        $column_count++;
+                    } else if ($field['type'] == 'page') {
+                        if ($column_count > 0 && empty($prev_page_field)) {
+                            $form['firstPageCssClass'] = trim((isset($field['firstPageCssClass']) ? $field['firstPageCssClass'] : '') . ' gform_page_multi_column gform_page_column_count_' . ($column_count + 1));
+                        } else if ($column_count > 0) {
+                            $prev_page_field['cssClass'] = trim((isset($prev_page_field['cssClass']) ? $prev_page_field['cssClass'] : '') . ' gform_page_multi_column gform_page_column_count_' . ($column_count + 1));
+                        }
+                        $prev_page_field = $field;
+                        $column_count = 0;
                     }
-                    $prev_page_field = $field;
-                    $column_count = 0;
                 }
             }
             if ($column_count > 0 && empty($prev_page_field)) {
@@ -169,17 +175,19 @@ function add_page_steps($form)
 
     $page_list = array_unique($pages);
 
-    foreach ($form['fields'] as $field) {
-        if ($field->cssClass === 'page-bar') {
-            $content = $field->content;
-            if (!strpos($field->content, 'active-page')) {
-                $field->content = '';
-                foreach ($page_list as $page) {
-                    if ($pages[($field->pageNumber - 1)] === $page) {
-                        $field->content .= '<h2 class="active-page">' . $page . '</h2>';
-                        $field->content .= $content;
-                    } else {
-                        $field->content .= '<p class="inactive-page">' . $page . '</p>';
+    if(isset($form['fields']) && !empty($form['fields'])){
+        foreach ($form['fields'] as $field) {
+            if ($field->cssClass === 'page-bar') {
+                $content = $field->content;
+                if (!strpos($field->content, 'active-page')) {
+                    $field->content = '';
+                    foreach ($page_list as $page) {
+                        if ($pages[($field->pageNumber - 1)] === $page) {
+                            $field->content .= '<h2 class="active-page">' . $page . '</h2>';
+                            $field->content .= $content;
+                        } else {
+                            $field->content .= '<p class="inactive-page">' . $page . '</p>';
+                        }
                     }
                 }
             }
@@ -189,3 +197,66 @@ function add_page_steps($form)
     return $form;
 }
 
+add_filter('gform_pre_render', 'belend_populate', 20);
+
+function belend_populate($form){
+
+    if(isset($_COOKIE['gformPartialID'])){
+        $search_criteria = array(
+            'status'        => 'active',
+            'field_filters' => array(
+                array( 'key' => 'partial_entry_id', 'value' => $_COOKIE['gformPartialID'] ),
+            ),
+        );
+
+        $entries = GFAPI::get_entries( $form['fields'][0]['formId'], $search_criteria );
+    }
+
+    foreach($form['fields'] as $field){
+        if (isset($entries[0][$field['id']]) && $entries[0][$field['id']]) {
+            //var_dump($entries[0][$field['id']]);
+            $field['defaultValue'] = $entries[0][$field['id']];
+
+            foreach ($form['fields'] as $field2){
+             if($field2['pageNumber'] == $field['pageNumber']){
+                 $field2['isRequired'] =  false;
+             }
+            }
+        }
+    }
+
+    //var_dump($_COOKIE);
+
+    return $form;
+}
+
+
+add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax ) {
+
+    var_dump( $confirmation);
+    //var_dump( $form);
+    //var_dump($entry);
+    //var_dump($ajax);
+
+
+
+    if( isset( $confirmation['redirect'] ) ) {
+        $url          = esc_url_raw( $confirmation['redirect'] );
+        $confirmation = 'Thanks for contacting us! We will get in touch with you shortly.';
+        $confirmation .= "<script type=\"text/javascript\">window.open('$url', '_blank');</script>";
+    }
+
+    return $confirmation;
+}, 10, 4 );
+
+
+
+function belend_get_value_by_class( $form, $entry, $class ) {
+    foreach ( $form['fields'] as $field ) {
+        $lead_key = $field->cssClass;
+        if ( strToLower( $lead_key ) == strToLower($class) ) {
+            return $entry[ $field->id ];
+        }
+    }
+    return false;
+}
