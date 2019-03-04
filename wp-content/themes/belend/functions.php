@@ -279,10 +279,11 @@ function belend_scripts(){
     
     wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
-    wp_enqueue_script('jquery', false, array(), false, false);
-
 	// footer
-	wp_enqueue_script( 'belend-scripts', get_template_directory_uri() . '/js/main.js', array(), BELEND_VERSION, true );
+	wp_enqueue_script( 'belend-scripts', get_template_directory_uri() . '/js/main.js', array('jquery', 'jquery-ui-autocomplete'), BELEND_VERSION, true );
+
+    // localize
+    wp_localize_script( 'belend-scripts', 'scripts_l10n', belend_localize_scripts() );
 
     wp_deregister_script( 'wp-embed' );
 
@@ -340,3 +341,58 @@ add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 // add_action( 'tgmpa_register', 'belend_register_required_plugins' );
 
 
+// Permet de localiser les scripts JS
+function belend_localize_scripts() {
+    return array(
+        'adminAjax' => admin_url( 'admin-ajax.php' ),
+    );
+
+}
+
+add_action( 'wp_ajax_getSiren', 'belend_get_siren' );
+add_action( 'wp_ajax_nopriv_getSiren', 'belend_get_siren' );
+
+function belend_get_siren(){
+
+    $name = $_GET['name_startsWith'];
+
+    $response = wp_remote_get( 'https://api.insee.fr/entreprises/sirene/V3/siret?q=denominationUniteLegale:"'.$name.'"', array('headers' => array(
+        'Authorization' => 'Bearer 16d2a0e6-ef0e-36a0-b298-7f878145ade3'
+    )) );
+    if ( is_array( $response ) ) {
+        $header = $response["headers"]; // array of http header lines
+        $body = $response['body']; // use the content
+    }
+
+    $infos = json_decode($body, true);
+
+
+    $response_array=[];
+
+    foreach ($infos['etablissements'] as $etablissement){
+
+        $address_array =  $etablissement['adresseEtablissement'];
+        $address = '';
+
+        $address .= $address_array['numeroVoieEtablissement']? $address_array['numeroVoieEtablissement'].', ': '';
+        $address .= $address_array['typeVoieEtablissement']? $address_array['typeVoieEtablissement'].' ': '';
+        $address .= $address_array['libelleVoieEtablissement']? $address_array['libelleVoieEtablissement'].', ': '';
+        $address .= $address_array['codePostalEtablissement']? $address_array['codePostalEtablissement'].', ': '';
+        $address .= $address_array['libelleCommuneEtablissement']? $address_array['libelleCommuneEtablissement']: '';
+
+
+
+        $response_array[]=array(
+            'siren' => $etablissement['siren'],
+            'name' => $etablissement['uniteLegale']['denominationUniteLegale'],
+            'codeNaf' => $etablissement['uniteLegale']['activitePrincipaleUniteLegale'],
+            'address' => $address
+        );
+    }
+
+    //echo var_dump($infos['etablissements']);
+
+    echo json_encode($response_array);
+
+    die();
+}
