@@ -16,21 +16,21 @@ return [
                     [
                         "method" => "NOT_EQ",
                         "clauses" => [
-                            "key" => "type_projet",
+                            "key" => "type_de_projet",
                             "value" => "Murs commerciaux"
                         ]
                     ],
                     [
                         "method" => "NOT_EQ",
                         "clauses" => [
-                            "key" => "type_projet",
+                            "key" => "type_de_projet",
                             "value" => "Véhicule professionnel"
                         ]
                     ],
                     [
                         "method" => "NOT_EQ",
                         "clauses" => [
-                            "key" => "projet_treso",
+                            "key" => "projet_tresorerie",
                             "value" => "Affacturage"
                         ]
                     ],

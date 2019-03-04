@@ -3,48 +3,6 @@
 Template Name: Form Confirmation
 */
 
-get_header(); ?>
-
-<?php
-
-/*$conditions = [
-    [
-        "condition" => [
-            "relation" => "AND",
-            "clauses" => [
-                [
-                    "key" => "montant_du_pret",
-                    "compare" => ">=",
-                    "value" => 100000
-                ],
-                [
-                    "relation" => "AND",
-                    "clauses" => [
-                        [
-                            "key" => "montant_du_pret",
-                            "compare" => ">=",
-                            "value" => 150000
-                        ],
-                        [
-                            "key" => "code_postal",
-                            "transform" => function ($value) {
-                                return in_array(substr($value, 0, 2);
-                            },
-                            "operator" => "IN",
-                            "operand" => ["79", "92", "..."]
-                        ],
-                    ]
-                ]
-
-            ]
-
-        ],
-        "ouptut" => [
-            "partner" => "external service",
-        ]
-    ]
-];*/
-
 $rows = [];
 
 foreach ( glob( get_template_directory( __FILE__ ) . "/tunnel_criteria/*.php" ) as $filename ) {
@@ -75,32 +33,28 @@ $entry['avancement'] = isset($_GET['deal_search'])?$_GET['deal_search']: '';
 $entry['secteur_activite'] = isset($_GET['business_segment'])?$_GET['business_segment']: '';
 
 $compare = new compare();
-echo('<br/>');
-echo('<br/>');
-echo('<br/>');
-echo('<br/>');
-echo('<br/>');
-echo('<br/>');
-
 
 $results = [];
 
 foreach ($rows as $row){
-    echo 'output tested: ';
-    var_dump($row['output']);
-    echo('<br/>');
-
-    $results[] = $compare->model_applies($entry5, $row );
-
+    $results[] = $compare->model_applies($entry, $row);
 }
 
-//$results[] = $compare->model_applies($entry5, $rows[5] );
+var_dump($results);
 
-echo('<br/>');
-echo('RESULTS :');
-var_dump( $results);
-echo('<br/>');
-echo $content;
+$output = get_output($results);
+
+
+function get_output($results){
+    foreach ($results as $result){
+        if ($result !== false){
+            return $result;
+        }
+    }
+
+    return 'Désolé, aucune de nos offres ne correspond à vos critères.';
+}
+
 
 class Compare
 {
@@ -125,11 +79,6 @@ class Compare
                 $arguments = $items['clauses'];
                 $results[] = $this->$method($arguments, $entry);
             }
-            echo'AND :';
-            var_dump($results);
-            echo "<br/>";
-            echo"<br/>";
-
 
             foreach ($results as $result){
                     if(!$result) return false;
@@ -146,9 +95,6 @@ class Compare
                 $arguments = $items['clauses'];
                 $results[] = $this->$method($arguments, $entry );
             }
-            echo'OR :';
-            var_dump($results);
-            echo('<br/>');
 
             return( in_array(true, $results));
     }
@@ -161,12 +107,6 @@ class Compare
     function GTE($args, $entry)
     {
         if (isset($entry[$args['key']])) {
-            echo 'GTE: ';
-            var_dump($entry[$args['key']] >= $args['value']);
-            echo('<br/>');
-            echo 'tested value: ';
-            var_dump($entry[$args['key']]);
-            echo('<br/>');
             return $entry[$args['key']] >= $args['value'];
         }else{
             return false;
@@ -180,11 +120,6 @@ class Compare
     function EQ($args, $entry){
         if (isset($entry[$args['key']])){
 
-            echo 'EQ: ';
-            var_dump($entry[$args['key']] === $args['value']);
-            echo('<br/>');
-            echo('<br/>');
-
             return $entry[$args['key']] === $args['value'];
         }
         else{
@@ -194,11 +129,6 @@ class Compare
     }
 
     function NOT_EQ($args, $entry){
-
-            echo 'NOT_EQ: ';
-            var_dump($entry[$args['key']] !== $args['value']);
-            echo('<br/>');
-            echo('<br/>');
             return $entry[$args['key']] !== $args['value'];
     }
 
@@ -210,29 +140,31 @@ class Compare
             $date = strtotime($entry[$args['key']]);
             $ref_date = strtotime("- " . $args['value']);
 
-            echo "DATE: ";
-            var_dump($date);
-            echo "<br/>";
-            echo "REF DATE: ";
-            var_dump($ref_date);
-            echo "<br/>";
-            echo "DATE-RESULT: ";
-            var_dump($date > $ref_date);
-            echo "<br/>";
-            echo "<br/>";
-
             return $date > $ref_date;
     }
 
     function COUNT_LESS_OR_EQ($args, $entry){
-
-            echo "LESS OR EQ: ";
-            var_dump(count($entry[$args['key']])  <=  $args['value']);
-            echo "<br/>";
-            echo"<br/>";
            return count($entry[$args['key']])  <=  $args['value'];
     }
 }
 
 ?>
-<?php get_footer();
+
+<?php get_header(); ?>
+
+    <div class='container'>
+
+        <?php if ( have_posts() ) : the_post(); ?>
+
+            <h1><?php the_title(); ?></h1>
+            <?php echo $output; ?>
+
+        <?php else : ?>
+
+            <h1>404</h1>
+
+        <?php endif; ?>
+
+    </div>
+
+<?php get_footer(); ?>
