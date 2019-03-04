@@ -1,0 +1,78 @@
+.field-banks {
+    input {
+        & + label {
+            color: transparent;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: contain;
+        }
+    }
+}
+
+input[value="cic"] {
+    & + label {
+        background-image: url("../../img/banks/cic.png");
+    }
+}
+input[value="credit-mutuel"] {
+    & + label {
+        background-image: url("../../img/banks/credit-mutuel.png");
+    }
+}
+input[value="caisse-d-epargne"] {
+    & + label {
+        background-image: url("../../img/banks/caisse-d-epargne.png");
+    }
+}
+input[value="banque-populaire"] {
+    & + label {
+        background-image: url("../../img/banks/banque-populaire.png");
+    }
+}
+input[value="credit-agricole"] {
+    & + label {
+        background-image: url("../../img/banks/credit-agricole.png");
+    }
+}
+input[value="société-generale"] {
+    & + label {
+        background-image: url("../../img/banks/société-generale.png");
+    }
+}
+input[value="bnp-paribas"] {
+    & + label {
+        background-image: url("../../img/banks/bnp-paribas.png");
+    }
+}
+input[value="lcl"] {
+    & + label {
+        background-image: url("../../img/banks/lcl.png");
+    }
+}
+input[value="hsbc"] {
+    & + label {
+        background-image: url("../../img/banks/hsbc.png");
+    }
+}
+input[value="credit-du-nord"] {
+    & + label {
+        background-image: url("../../img/banks/credit-du-nord.png");
+    }
+}
+input[value="banque-palatine"] {
+    & + label {
+        background-image: url("../../img/banks/banque-palatine.png");
+    }
+}
+input[value="credit-cooperatif"] {
+    & + label {
+        background-image: url("../../img/banks/credit-cooperatif.png");
+    }
+}
+input[value="autre-banque"] {
+    & + label {
+        color: $black;
+        background: none;
+    }
+}

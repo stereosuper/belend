@@ -9949,7 +9949,7 @@ var counterAnimation = function counterAnimation() {
       counter = _document$getElements2[0];
 
   if (!counter) return;
-  var animationDuration = 0.5;
+  var animationDuration = 0.3;
   var number = 1781756;
   var stringifiedNumber = number.toString();
   counter.innerText = '';
@@ -9989,12 +9989,15 @@ var counterAnimation = function counterAnimation() {
       isNewSpan = true;
     } else {
       gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span1, animationDuration, {
-        y: -height
+        y: -height,
+        ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut
       });
     }
 
+    span2.classList.add('colored');
     gsap__WEBPACK_IMPORTED_MODULE_0__["TweenMax"].to(span2, animationDuration, {
       y: 0,
+      ease: gsap__WEBPACK_IMPORTED_MODULE_0__["Power3"].easeInOut,
       onComplete: function onComplete() {
         span2.style.position = 'relative';
         span2.style.top = 0;
@@ -10002,6 +10005,8 @@ var counterAnimation = function counterAnimation() {
         if (!isNewSpan) {
           span1.remove();
         }
+
+        span2.classList.remove('colored');
       }
     });
   };
@@ -10025,28 +10030,36 @@ var counterAnimation = function counterAnimation() {
   var computeNumber = function computeNumber(_ref2) {
     var newNumber = _ref2.newNumber,
         oldNumber = _ref2.oldNumber;
+    var startedMoving = false;
     var deltaLength = newNumber.length - oldNumber.length;
 
     if (deltaLength) {
       insertDiv(deltaLength);
     }
 
-    var _loop = function _loop(_index2) {
-      var oldDigit = parseInt(oldNumber[_index2], 10);
-      var newDigit = parseInt(newNumber[_index2], 10);
-
-      if (oldDigit !== newDigit) {
-        setTimeout(function () {
-          animateDigit({
-            container: divs[_index2],
-            digit: newDigit
-          });
-        }, animationDuration / 2 * _index2 * 1000);
-      }
+    var timeoutAnimation = function timeoutAnimation(_ref3) {
+      var index = _ref3.index,
+          newDigit = _ref3.newDigit;
+      var timeoutDuration = animationDuration * (index / newNumber.length) * 1000;
+      setTimeout(function () {
+        animateDigit({
+          container: divs[index],
+          digit: newDigit
+        });
+      }, timeoutDuration);
     };
 
     for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
-      _loop(_index2);
+      var oldDigit = parseInt(oldNumber[_index2], 10);
+      var newDigit = parseInt(newNumber[_index2], 10);
+
+      if (startedMoving || oldDigit !== newDigit) {
+        timeoutAnimation({
+          index: _index2,
+          newDigit: newDigit
+        });
+        startedMoving = true;
+      }
     }
   };
 
@@ -10063,7 +10076,7 @@ var counterAnimation = function counterAnimation() {
     setTimeout(function () {
       simulateNewNumber();
       animate();
-    }, 10000);
+    }, 5000);
   };
 
   simulateNewNumber();
@@ -10083,7 +10096,17 @@ var counterAnimation = function counterAnimation() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+/* harmony import */ var _Window__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Window */ "./wp-content/themes/belend/src/js/Window.js");
+/* harmony import */ var _Scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Scroll */ "./wp-content/themes/belend/src/js/Scroll.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 var progress = function progress() {
@@ -10094,18 +10117,50 @@ var progress = function progress() {
   var currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
   var percent = Math.round(currentPage * 100 / pagesLength);
   var width = progressbar.width() / 100 * percent > 35 ? Math.round(progressbar.width() / 100 * percent) : 35;
-  progressbar.html('<span style="width: ' + width + 'px">' + percent + ' %</span>');
+  progressbar.html("<span style=\"width: ".concat(width, "px\">").concat(percent, " %</span>"));
 };
 
-var displayHelpOnScroll = function displayHelpOnScroll() {
-  var btn = jQuery('#help');
-  var sidebar = jQuery('#sidebar');
-  if (!btn.length || !sidebar.length) return;
-  _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].scrollTop >= sidebar.offset().top ? btn.removeClass('hidden') : btn.addClass('hidden');
+var fixedPositionOnScroll = function fixedPositionOnScroll() {
+  var progressBar = document.getElementById('progressbar');
+  var helpButton = document.getElementById('help');
+  var sidebar = document.getElementById('sidebar');
+
+  if (progressBar && sidebar && helpButton) {
+    var progressBarBoundings = progressBar.getBoundingClientRect();
+    var progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
+
+    var fixOnScroll = function fixOnScroll() {
+      if (!helpButton.classList.contains('on')) {
+        // Progress bar
+        if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop > progressBarOffsetTop && _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] < _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.xl && !progressBar.classList.contains('fixed-position')) {
+          sidebar.style.marginTop = "".concat(progressBarBoundings.height, "px");
+          progressBar.classList.add('fixed-position');
+          helpButton.classList.add('fixed-position');
+        } else if (_Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop <= progressBarOffsetTop && progressBar.classList.contains('fixed-position')) {
+          sidebar.style.marginTop = '';
+          progressBar.classList.remove('fixed-position');
+          helpButton.classList.remove('fixed-position');
+        }
+      }
+    };
+
+    fixOnScroll();
+    _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].addScrollFunction(fixOnScroll);
+    _Window__WEBPACK_IMPORTED_MODULE_0__["default"].addResizeFunction(function () {
+      progressBarBoundings = progressBar.getBoundingClientRect();
+      progressBarOffsetTop = progressBarBoundings.top + _Scroll__WEBPACK_IMPORTED_MODULE_1__["default"].scrollTop;
+
+      if (_Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints[_Window__WEBPACK_IMPORTED_MODULE_0__["default"].currentBreakpoint] >= _Window__WEBPACK_IMPORTED_MODULE_0__["default"].breakpoints.xl) {
+        sidebar.style.marginTop = '';
+        progressBar.classList.remove('fixed-position');
+      }
+    });
+  }
 };
 
 var layout = function layout() {
-  jQuery('.gform_page').each(function () {
+  jQuery('.gform_page').each(function pageLogic() {
+    var pageVanilla = this;
     var page = jQuery(this);
     var emptyInputs;
     if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
@@ -10114,13 +10169,23 @@ var layout = function layout() {
 
     if (page.find('.field-help').length) {
       page.find('.field-help').before('<li class="page-nav"></li>');
-      page.find('.sidebar').append('<button type="button" class="btn-help hidden" id="help"></button>');
-      page.find('.sidebar').find('.btn-help').on('click', function () {
-        page.find('.field-help').toggleClass('on');
+      page.find('.sidebar').append('<button type="button" class="btn-help" id="help"></button>');
+      page.find('.sidebar').find('.btn-help').on('click', function sidebarHandleClick() {
+        var _pageVanilla$getEleme = pageVanilla.getElementsByClassName('field-help'),
+            _pageVanilla$getEleme2 = _slicedToArray(_pageVanilla$getEleme, 1),
+            helpField = _pageVanilla$getEleme2[0];
+
+        helpField.classList.toggle('on');
         jQuery(this).toggleClass('on');
         jQuery('#main-header').toggleClass('off');
+        var noScroll = helpField.classList.contains('on'); // mainNav.setAttribute('aria-expanded', state.burgerActivated);
+
+        _Window__WEBPACK_IMPORTED_MODULE_0__["default"].toggleNoScroll({
+          transitionElement: helpField,
+          noScroll: noScroll
+        });
       });
-      _Scroll__WEBPACK_IMPORTED_MODULE_0__["default"].addScrollFunction(displayHelpOnScroll);
+      fixedPositionOnScroll();
     } else {
       page.find('.main-fields').append('<li class="page-nav"></li>');
     } // nav
@@ -10131,7 +10196,7 @@ var layout = function layout() {
     if (page.find('.gfield_contains_required').length) {
       page.find('.gform_next_button').attr('disabled', true);
       page.find('.gfield_contains_required input').on('change input', function () {
-        emptyInputs = page.find('.gfield_contains_required input').filter(function () {
+        emptyInputs = page.find('.gfield_contains_required input').filter(function filterRequired() {
           return jQuery(this).val() == '';
         });
 
@@ -10147,6 +10212,7 @@ var formHandler = function formHandler() {
   jQuery(document).ready(function () {
     progress();
     layout();
+    fixedPositionOnScroll();
     jQuery(document).on('gform_post_render', function () {
       progress();
       layout();

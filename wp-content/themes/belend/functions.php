@@ -250,12 +250,20 @@ add_action( 'widgets_init', 'belend_unregister_default_widgets' );
 /*-----------------------------------------------------------------------------------*/
 
 function belend_form_next_button( $button, $form ) {
-    return "<button class='btn gform_next_button' id='gform_next_button_{$form['id']}'>Next</button>";
+    return "<button class='btn gform_next_button' id='gform_next_button_{$form['id']}'>Suivant<svg class='icon'><use xlink:href='#icon-db-arrow'></use></svg></button>";
 }
 add_filter( 'gform_next_button', 'belend_form_next_button', 10, 2 );
 
+function belend_form_prev_button( $button, $form ) {
+    return "<button class='btn-prev gform_prev_button' id='gform_prev_button_{$form['id']}'><svg class='icon'><use xlink:href='#icon-db-arrow'></use></svg>Retour</button>";
+}
+add_filter( 'gform_previous_button', 'belend_form_prev_button', 10, 2 );
+
 function belend_form_submit_button( $button, $form ) {
-    return "<button class='btn gform_next_button' id='gform_submit_button_{$form['id']}'>Submit<svg class='icon'><use xlink:href='#icon-bd-arrow'></use></button>";
+    $button_text = $form['button']['text'];
+    $icon_name = 'arrow';
+
+    return "<button class='btn gform_next_button' id='gform_submit_button_{$form['id']}'>$button_text<svg class='icon'><use xlink:href='#icon-$icon_name'></use></button>";
 }
 add_filter( 'gform_submit_button', 'belend_form_submit_button', 10, 2 );
 

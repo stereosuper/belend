@@ -10,10 +10,10 @@
 @import "abstracts/placeholders";
 
 @import "layout/grid", "layout/forms", "layout/header", "layout/footer",
-    "layout/target", "layout/form";
+    "layout/target", "layout/form", "layout/tunnel-banks";
 
 @import "components/buttons", "components/datepicker";
 
-@import "pages/home", "pages/contact";
+@import "pages/home", "pages/contact", "pages/lend";
 
 @import "base/print";

@@ -12,6 +12,30 @@
     }
 }
 
+.btn-prev {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    line-height: 1.35;
+    color: $black-grey;
+    .icon {
+        width: 1.4rem;
+        height: 1.1rem;
+        margin: 0 $gutter 0 0;
+        transform: rotateZ(180deg);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 1px;
+        left: #{$gutter + 14px};
+        right: 0;
+        bottom: -5px;
+        background-color: $black-grey;
+    }
+}
+
 .btn,
 .btn-invert {
     display: inline-flex;

@@ -489,6 +489,44 @@
                     "delay": 0
                 }
             ]
+        },
+        {
+            "key": "field_5c79483bf17b7",
+            "label": "Contact form",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5c79484df17b8",
+            "label": "Contact form id",
+            "name": "gravity_contact_id",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -508,5 +546,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550863226
+    "modified": 1551452332
 }
