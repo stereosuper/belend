@@ -1,7 +1,7 @@
 import '../scss/main.scss';
 
 import win from './Window';
-import io from './Io';
+import io from './io';
 import scroll from './Scroll';
 import fallback from './Fallback';
 
@@ -27,7 +27,7 @@ const loadHandler = () => {
     burger(win);
     homeSprite();
     mapParallax();
-    form();
+    form(win);
     headerScroll();
     hoverTarget();
     counter();

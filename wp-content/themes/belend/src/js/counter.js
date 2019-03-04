@@ -1,3 +1,4 @@
+import fetchData from './fetchData';
 import { TweenMax, Power3 } from 'gsap';
 
 const counterAnimation = () => {
@@ -113,8 +114,28 @@ const counterAnimation = () => {
         }, 5000);
     };
 
-    simulateNewNumber();
-    animate();
+    const launchCounter = response => {
+        console.log('TCL: launchCounter -> response', response);
+
+        simulateNewNumber();
+        animate();
+    };
+
+    // fetchData.fetch({
+    //     url:
+    //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
+    //     method: 'GET',
+    //     fetchParams: {
+    //         mode: 'no-cors',
+    //     },
+    //     headersContent: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         // 'Content-Type': 'application/json',
+    //         // 'Content-Type': 'text/html',
+    //         'Content-Type': 'text/plain',
+    //     },
+    //     cb: launchCounter,
+    // });
 };
 
 export default counterAnimation;
