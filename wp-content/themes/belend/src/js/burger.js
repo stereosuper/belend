@@ -1,6 +1,4 @@
-import win from './Window';
-
-const burgerHandler = windowHandler => {
+const burgerHandler = win => {
     const state = {
         burgerActivated: false,
     };
@@ -16,7 +14,7 @@ const burgerHandler = windowHandler => {
         mainNav.classList.toggle('activated');
 
         mainNav.setAttribute('aria-expanded', state.burgerActivated);
-        windowHandler.toggleNoScroll({
+        win.toggleNoScroll({
             transitionElement: mainNav,
             noScroll: state.burgerActivated,
         });

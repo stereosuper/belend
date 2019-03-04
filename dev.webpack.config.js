@@ -22,6 +22,9 @@ const config = (env, options) => {
                     test: /\.js$/,
                     exclude: /node_modules/,
                     loader: 'babel-loader',
+                    options: {
+                        plugins: ['transform-inline-environment-variables'],
+                    },
                 },
                 {
                     test: /\.(css|sass|scss)$/,

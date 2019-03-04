@@ -1,5 +1,5 @@
-import win from './Window';
 import scroll from './Scroll';
+import placesInput from './placesInput';
 
 const progress = () => {
     const progressbar = jQuery('#progressbar');
@@ -18,7 +18,7 @@ const progress = () => {
     progressbar.html(`<span style="width: ${width}px">${percent} %</span>`);
 };
 
-const fixedPositionOnScroll = () => {
+const fixedPositionOnScroll = win => {
     const progressBar = document.getElementById('progressbar');
     const helpButton = document.getElementById('help');
     const sidebar = document.getElementById('sidebar');
@@ -66,7 +66,7 @@ const fixedPositionOnScroll = () => {
     }
 };
 
-const layout = () => {
+const layout = win => {
     jQuery('.gform_page').each(function pageLogic() {
         const pageVanilla = this;
         const page = jQuery(this);
@@ -104,7 +104,7 @@ const layout = () => {
                     });
                 });
 
-            fixedPositionOnScroll();
+            fixedPositionOnScroll(win);
         } else {
             page.find('.main-fields').append('<li class="page-nav"></li>');
         }
@@ -134,15 +134,17 @@ const layout = () => {
     });
 };
 
-const formHandler = () => {
+const formHandler = win => {
     jQuery(document).ready(() => {
         progress();
-        layout();
-        fixedPositionOnScroll();
+        layout(win);
+        fixedPositionOnScroll(win);
+        placesInput();
 
         jQuery(document).on('gform_post_render', () => {
             progress();
-            layout();
+            layout(win);
+            placesInput();
         });
     });
 };
