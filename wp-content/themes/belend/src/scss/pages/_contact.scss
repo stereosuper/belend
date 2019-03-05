@@ -1,11 +1,19 @@
 .page-template-contact {
     .contact-container {
+        padding: 0;
         header {
-            margin: 0 0 $line-height;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            margin: 0 0 $line-height * 3;
             h1 {
-                margin-bottom: $line-height * 2;
-                color: $black-grey;
+                margin: 0;
+                padding: 1.8em;
+                color: $white;
             }
+        }
+        .contact-content {
+            padding: 0 $gutter * 2;
             .subtitle {
                 color: $grey;
                 text-align: center;
@@ -14,10 +22,10 @@
                     margin: 0;
                 }
             }
-        }
-        .description {
-            margin: 0 0 #{$line-height * 2};
-            text-align: center;
+            .description {
+                margin: 0 0 #{$line-height * 2};
+                text-align: center;
+            }
         }
     }
     .gform_wrapper {
@@ -132,6 +140,39 @@
             }
         }
     }
+    .contact-sidebar {
+        .lend,
+        .advisor {
+            padding: $line-height * 2 $gutter * 2;
+            h2 {
+                margin-top: 0;
+            }
+        }
+        .lend {
+            background-color: $grey-light;
+            h2,
+            p,
+            a {
+                color: $black-grey;
+            }
+        }
+        .advisor {
+            h2,
+            p {
+                color: $black-grey;
+            }
+            .btn-call-wrapper {
+                .btn-call,
+                p {
+                    color: $primary-color;
+                }
+                .btn-call {
+                    border: 2px solid currentColor;
+                    border-radius: 30px;
+                }
+            }
+        }
+    }
     .offer {
         padding: $line-height * 2 $gutter * 2;
         &:first-child {
@@ -235,13 +276,15 @@
                     margin-bottom: $line-height * 4;
                     font-size: 6.4rem;
                 }
+            }
+            .contact-content {
                 .subtitle {
                     font-size: 3.6rem;
                 }
-            }
-            .description {
-                margin: 0 0 #{$line-height * 4};
-                padding: 0 $col;
+                .description {
+                    margin: 0 0 #{$line-height * 4};
+                    padding: 0 $col;
+                }
             }
         }
         .benefits-wrapper {

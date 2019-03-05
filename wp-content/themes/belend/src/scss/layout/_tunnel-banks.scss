@@ -10,67 +10,67 @@
     }
 }
 
-input[value="cic"] {
+input[value="CIC"] {
     & + label {
         background-image: url("../../img/banks/cic.png");
     }
 }
-input[value="credit-mutuel"] {
+input[value="CREDIT MUTUEL"] {
     & + label {
         background-image: url("../../img/banks/credit-mutuel.png");
     }
 }
-input[value="caisse-d-epargne"] {
+input[value="CAISSE D'EPARGNE"] {
     & + label {
         background-image: url("../../img/banks/caisse-d-epargne.png");
     }
 }
-input[value="banque-populaire"] {
+input[value="BANQUE POPULAIRE"] {
     & + label {
         background-image: url("../../img/banks/banque-populaire.png");
     }
 }
-input[value="credit-agricole"] {
+input[value="CREDIT AGRICOLE"] {
     & + label {
         background-image: url("../../img/banks/credit-agricole.png");
     }
 }
-input[value="société-generale"] {
+input[value="SOCIETE GENERALE"] {
     & + label {
         background-image: url("../../img/banks/société-generale.png");
     }
 }
-input[value="bnp-paribas"] {
+input[value="BNP PARIBAS"] {
     & + label {
         background-image: url("../../img/banks/bnp-paribas.png");
     }
 }
-input[value="lcl"] {
+input[value="LCL"] {
     & + label {
         background-image: url("../../img/banks/lcl.png");
     }
 }
-input[value="hsbc"] {
+input[value="HSBC"] {
     & + label {
         background-image: url("../../img/banks/hsbc.png");
     }
 }
-input[value="credit-du-nord"] {
+input[value="CREDIT DU NORD"] {
     & + label {
         background-image: url("../../img/banks/credit-du-nord.png");
     }
 }
-input[value="banque-palatine"] {
+input[value="BANQUE PALATINE"] {
     & + label {
         background-image: url("../../img/banks/banque-palatine.png");
     }
 }
-input[value="credit-cooperatif"] {
+input[value="CREDIT COOPERATIF"] {
     & + label {
         background-image: url("../../img/banks/credit-cooperatif.png");
     }
 }
-input[value="autre-banque"] {
+input[value="AUTRES BANQUES"] {
     & + label {
         color: $black;
         background: none;

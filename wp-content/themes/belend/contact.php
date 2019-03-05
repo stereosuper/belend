@@ -12,32 +12,77 @@ $offers = array(
 ?>
 <?php if ( have_posts() ) : the_post(); ?>
     <article class="contact-container container-small">
-        <header>
+        <header style="background-image: url('<?php echo get_the_post_thumbnail_url() ?>')">
             <?php if ($title = get_the_title()): ?>
                 <h1><?php echo $title ?></h1>
             <?php endif; ?>
+        </header>
+        <div class="contact-content js-contact-content">
             <?php if ($sub_title = get_the_content()): ?>
                 <div class="subtitle"><?php echo $sub_title ?></div>
             <?php endif; ?>
-        </header>
-        <div class="contact-content js-contact-content">
             <?php if ($description = get_field('description')): ?>
-            <p class="description"><?php echo $description ?></p>
+                <p class="description"><?php echo $description ?></p>
             <?php endif; ?>
+            <?php 
+                if ($form = get_field('form_shortcode')) {
+                    echo do_shortcode($form);
+                    ?>
+                    <script type="text/javascript">
+                        jQuery(document).on('gform_confirmation_loaded', function(event, formId){
+                            // code to be trigger when confirmation page is loaded
+                            jQuery('.js-contact-content').remove();
+                        });
+                    </script>
+                    <?php
+                }
+            ?>
         </div>
-        <?php 
-            if ($form = get_field('form_shortcode')) {
-                echo do_shortcode($form);
-                ?>
-                <script type="text/javascript">
-                    jQuery(document).on('gform_confirmation_loaded', function(event, formId){
-                        // code to be trigger when confirmation page is loaded
-                        jQuery('.js-contact-content').remove();
-                    });
-                </script>
-                <?php
-            }
+        <?php
+            if ($sidebar = get_field('sidebar')) :
         ?>
+            <aside class="contact-sidebar">
+                <div class="lend">
+                    <?php if ($title = $sidebar['lend_title']): ?>
+                        <h2><?php echo $title ?></h2>
+                    <?php endif; ?>
+                    <?php if ($description = $sidebar['lend_description']): ?>
+                        <p><?php echo $description ?></p>
+                    <?php endif; ?>
+                    <?php
+                        if ($link = $sidebar['lend_link']): 
+                            $url = $link['url'];
+                            $title = $link['title'];
+                            $target = 'target="'. $link['target'] . '"';
+                            $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
+                    ?>
+                        <a class="btn-invert" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+                            <span><?php echo $title ?></span>
+                            <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+                <div class="advisor">
+                    <?php if ($title = $sidebar['advisor_title']): ?>
+                        <h2><?php echo $title ?></h2>
+                    <?php endif; ?>
+                    <?php if ($description = $sidebar['advisor_description']): ?>
+                        <p><?php echo $description ?></p>
+                    <?php endif; ?>
+                    <div class="btn-call-wrapper">
+                        <?php
+                            if ($phone_text = $sidebar['advisor_phone']): 
+                        ?>
+                            <a class="btn-call" href="tel:<?php echo $phone_text ?>">
+                                <svg class='icon'><use xlink:href='#icon-phone'></use></svg>
+                                <span><?php echo $phone_text ?></span>
+                            </a>
+                        <?php endif; ?>
+                        <p>Prix d'un appel local</p>
+                    </div>
+                </div>
+            </aside>
+        <?php endif; ?>
     </article>
     <article>
         <section class="offers">

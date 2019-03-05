@@ -1474,43 +1474,43 @@ input:focus + .instruction {
   background-position: 50% 50%;
   background-size: contain; }
 
-input[value="cic"] + label {
+input[value="CIC"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
 
-input[value="credit-mutuel"] + label {
+input[value="CREDIT MUTUEL"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
 
-input[value="caisse-d-epargne"] + label {
+input[value="CAISSE D'EPARGNE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
 
-input[value="banque-populaire"] + label {
+input[value="BANQUE POPULAIRE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
 
-input[value="credit-agricole"] + label {
+input[value="CREDIT AGRICOLE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
 
-input[value="société-generale"] + label {
+input[value="SOCIETE GENERALE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
 
-input[value="bnp-paribas"] + label {
+input[value="BNP PARIBAS"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
 
-input[value="lcl"] + label {
+input[value="LCL"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
 
-input[value="hsbc"] + label {
+input[value="HSBC"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
 
-input[value="credit-du-nord"] + label {
+input[value="CREDIT DU NORD"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
 
-input[value="banque-palatine"] + label {
+input[value="BANQUE PALATINE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
 
-input[value="credit-cooperatif"] + label {
+input[value="CREDIT COOPERATIF"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
 
-input[value="autre-banque"] + label {
+input[value="AUTRES BANQUES"] + label {
   color: #000;
   background: none; }
 
@@ -2106,21 +2106,28 @@ input[value="autre-banque"] + label {
       -webkit-transform: scaleY(1.075);
               transform: scaleY(1.075); } }
 
-.page-template-contact .contact-container header {
-  margin: 0 0 25px; }
-  .page-template-contact .contact-container header h1 {
-    margin-bottom: 50px;
-    color: #312f2f; }
-  .page-template-contact .contact-container header .subtitle {
-    color: #828282;
-    text-align: center;
-    font-size: 2.4rem; }
-    .page-template-contact .contact-container header .subtitle p {
-      margin: 0; }
-
-.page-template-contact .contact-container .description {
-  margin: 0 0 50px;
-  text-align: center; }
+.page-template-contact .contact-container {
+  padding: 0; }
+  .page-template-contact .contact-container header {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin: 0 0 75px; }
+    .page-template-contact .contact-container header h1 {
+      margin: 0;
+      padding: 1.8em;
+      color: #fff; }
+  .page-template-contact .contact-container .contact-content {
+    padding: 0 30px; }
+    .page-template-contact .contact-container .contact-content .subtitle {
+      color: #828282;
+      text-align: center;
+      font-size: 2.4rem; }
+      .page-template-contact .contact-container .contact-content .subtitle p {
+        margin: 0; }
+    .page-template-contact .contact-container .contact-content .description {
+      margin: 0 0 50px;
+      text-align: center; }
 
 .page-template-contact .gform_wrapper {
   padding: 0;
@@ -2206,6 +2213,32 @@ input[value="autre-banque"] + label {
     .page-template-contact .gform_confirmation_wrapper .gform_confirmation_message .confirmation-subtitle {
       font-size: 1.6rem; }
 
+.page-template-contact .contact-sidebar .lend,
+.page-template-contact .contact-sidebar .advisor {
+  padding: 50px 30px; }
+  .page-template-contact .contact-sidebar .lend h2,
+  .page-template-contact .contact-sidebar .advisor h2 {
+    margin-top: 0; }
+
+.page-template-contact .contact-sidebar .lend {
+  background-color: #e9e8e1; }
+  .page-template-contact .contact-sidebar .lend h2,
+  .page-template-contact .contact-sidebar .lend p,
+  .page-template-contact .contact-sidebar .lend a {
+    color: #312f2f; }
+
+.page-template-contact .contact-sidebar .advisor h2,
+.page-template-contact .contact-sidebar .advisor p {
+  color: #312f2f; }
+
+.page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call,
+.page-template-contact .contact-sidebar .advisor .btn-call-wrapper p {
+  color: #ff6308; }
+
+.page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call {
+  border: 2px solid currentColor;
+  border-radius: 30px; }
+
 .page-template-contact .offer {
   padding: 50px 30px; }
   .page-template-contact .offer:first-child {
@@ -2279,9 +2312,9 @@ input[value="autre-banque"] + label {
     .page-template-contact .contact-container header h1 {
       margin-bottom: 100px;
       font-size: 6.4rem; }
-    .page-template-contact .contact-container header .subtitle {
-      font-size: 3.6rem; }
-  .page-template-contact .contact-container .description {
+  .page-template-contact .contact-container .contact-content .subtitle {
+    font-size: 3.6rem; }
+  .page-template-contact .contact-container .contact-content .description {
     margin: 0 0 100px;
     padding: 0 8.33333%; }
   .page-template-contact .benefits-wrapper .benefits {
