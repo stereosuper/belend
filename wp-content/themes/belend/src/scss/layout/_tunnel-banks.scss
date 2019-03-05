@@ -1,5 +1,8 @@
 .field-banks {
     input {
+        &:checked + label {
+            color: transparent;
+        }
         & + label {
             color: transparent;
             overflow: hidden;

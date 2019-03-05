@@ -1,3 +1,11 @@
+.gform_page {
+    display: none !important;
+}
+
+#gform_page_2_20 {
+    display: flex !important;
+}
+
 .gform_page_fields {
     padding: 30px 0 0;
     position: relative;
@@ -125,6 +133,12 @@
 }
 .gform_previous_button {
     color: $black;
+    .icon {
+        width: 1.4rem;
+        height: 1.1rem;
+        margin: 0 $gutter 0 0;
+        transform: rotateZ(180deg);
+    }
 }
 .gfield {
     &.gfield_error {
