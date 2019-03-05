@@ -44,6 +44,8 @@ foreach ($rows as $row){
 foreach ($results as $result){
     if(is_string($result)){
         $test_results[]=['partenaire trouvé'];
+    }else{
+        $test_results[]= $result;
     }
 }
 
