@@ -21199,8 +21199,8 @@ var progress = function progress() {
   var pagesLength = jQuery('.gform_page').length;
   var currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
   var percent = Math.round(currentPage * 100 / pagesLength);
-  var width = progressbar.width() / 100 * percent > 35 ? Math.round(progressbar.width() / 100 * percent) : 35;
-  progressbar.html("<span style=\"width: ".concat(width, "px\">").concat(percent, " %</span>"));
+  var width = progressbar.width() / 100 * percent > 35 ? "".concat(percent, "%") : 35;
+  progressbar.html("<span style=\"width: ".concat(width, "\">").concat(percent, " %</span>"));
 };
 
 var fixedPositionOnScroll = function fixedPositionOnScroll(win) {

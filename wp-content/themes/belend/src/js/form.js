@@ -11,11 +11,9 @@ const progress = () => {
     const currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
     const percent = Math.round((currentPage * 100) / pagesLength);
     const width =
-        (progressbar.width() / 100) * percent > 35
-            ? Math.round((progressbar.width() / 100) * percent)
-            : 35;
+        (progressbar.width() / 100) * percent > 35 ? `${percent}%` : 35;
 
-    progressbar.html(`<span style="width: ${width}px">${percent} %</span>`);
+    progressbar.html(`<span style="width: ${width}">${percent} %</span>`);
 };
 
 const fixedPositionOnScroll = win => {
