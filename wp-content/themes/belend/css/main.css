@@ -2138,6 +2138,8 @@ input[value="AUTRES BANQUES"] + label {
 .page-template-contact .gform_wrapper {
   padding: 0;
   margin: 100px 0 75px; }
+  .page-template-contact .gform_wrapper .gfield_required {
+    display: inline; }
   .page-template-contact .gform_wrapper .validation_error {
     display: none; }
   .page-template-contact .gform_wrapper .gform_body {
