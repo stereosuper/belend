@@ -18,10 +18,10 @@ return [
                 ]
             ],
             [
-                "method" => "GTE",
+                "method" => "NOT_EQ",
                 "clauses" => [
                     "key" => "chiffre_affaires",
-                    "value" => 100000
+                    "value" => 'Moins de 100 000 €'
                 ]
             ],
             [
