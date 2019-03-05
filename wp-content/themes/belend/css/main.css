@@ -2106,28 +2106,34 @@ input[value="AUTRES BANQUES"] + label {
       -webkit-transform: scaleY(1.075);
               transform: scaleY(1.075); } }
 
-.page-template-contact .contact-container {
+.page-template-contact .contact-container header {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  margin: 0 0 75px; }
+  .page-template-contact .contact-container header h1 {
+    margin: 0;
+    padding: 1.8em;
+    color: #fff; }
+
+.page-template-contact .contact-container .container-small {
   padding: 0; }
-  .page-template-contact .contact-container header {
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    margin: 0 0 75px; }
-    .page-template-contact .contact-container header h1 {
-      margin: 0;
-      padding: 1.8em;
-      color: #fff; }
-  .page-template-contact .contact-container .contact-content {
-    padding: 0 30px; }
-    .page-template-contact .contact-container .contact-content .subtitle {
-      color: #828282;
-      text-align: center;
-      font-size: 2.4rem; }
-      .page-template-contact .contact-container .contact-content .subtitle p {
-        margin: 0; }
-    .page-template-contact .contact-container .contact-content .description {
-      margin: 0 0 50px;
-      text-align: center; }
+
+.page-template-contact .contact-container .contact-content {
+  padding: 0 30px; }
+  .page-template-contact .contact-container .contact-content .subtitle,
+  .page-template-contact .contact-container .contact-content .description {
+    max-width: 580px; }
+  .page-template-contact .contact-container .contact-content .subtitle {
+    margin: 0 auto 25px;
+    color: #828282;
+    text-align: center;
+    font-size: 2.4rem; }
+    .page-template-contact .contact-container .contact-content .subtitle p {
+      margin: 0; }
+  .page-template-contact .contact-container .contact-content .description {
+    margin: 0 auto 50px;
+    text-align: center; }
 
 .page-template-contact .gform_wrapper {
   padding: 0;
@@ -2217,27 +2223,75 @@ input[value="AUTRES BANQUES"] + label {
 .page-template-contact .contact-sidebar .advisor {
   padding: 50px 30px; }
   .page-template-contact .contact-sidebar .lend h2,
+  .page-template-contact .contact-sidebar .lend p,
+  .page-template-contact .contact-sidebar .advisor h2,
+  .page-template-contact .contact-sidebar .advisor p {
+    text-align: center; }
+  .page-template-contact .contact-sidebar .lend h2,
   .page-template-contact .contact-sidebar .advisor h2 {
     margin-top: 0; }
+  .page-template-contact .contact-sidebar .lend p,
+  .page-template-contact .contact-sidebar .advisor p {
+    max-width: 622.5px;
+    margin-left: auto;
+    margin-right: auto; }
 
 .page-template-contact .contact-sidebar .lend {
-  background-color: #e9e8e1; }
+  background-color: #e9e8e1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .page-template-contact .contact-sidebar .lend h2,
   .page-template-contact .contact-sidebar .lend p,
   .page-template-contact .contact-sidebar .lend a {
+    margin-top: 0;
     color: #312f2f; }
 
 .page-template-contact .contact-sidebar .advisor h2,
 .page-template-contact .contact-sidebar .advisor p {
   color: #312f2f; }
 
-.page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call,
-.page-template-contact .contact-sidebar .advisor .btn-call-wrapper p {
-  color: #ff6308; }
-
-.page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call {
-  border: 2px solid currentColor;
-  border-radius: 30px; }
+.page-template-contact .contact-sidebar .advisor .btn-call-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call,
+  .page-template-contact .contact-sidebar .advisor .btn-call-wrapper p {
+    color: #ff6308; }
+  .page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 15px 50px;
+    border: 2px solid currentColor;
+    border-radius: 30px;
+    font-size: 2.9rem; }
+    .page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call span {
+      line-height: 1; }
+    .page-template-contact .contact-sidebar .advisor .btn-call-wrapper .btn-call .icon {
+      width: 1.8rem;
+      height: 2.5rem;
+      margin-right: 8px; }
 
 .page-template-contact .offer {
   padding: 50px 30px; }
@@ -2269,6 +2323,8 @@ input[value="AUTRES BANQUES"] + label {
     margin: 0; }
 
 @media (min-width: 780px) {
+  .page-template-contact .contact-container header {
+    margin-top: 96px; }
   .page-template-contact .gform_wrapper {
     width: 622.5px;
     margin: 100px auto 75px; }
@@ -2312,16 +2368,54 @@ input[value="AUTRES BANQUES"] + label {
     .page-template-contact .contact-container header h1 {
       margin-bottom: 100px;
       font-size: 6.4rem; }
+  .page-template-contact .contact-container .contact-content .subtitle,
+  .page-template-contact .contact-container .contact-content .description {
+    max-width: 622.5px; }
   .page-template-contact .contact-container .contact-content .subtitle {
     font-size: 3.6rem; }
   .page-template-contact .contact-container .contact-content .description {
-    margin: 0 0 100px;
-    padding: 0 8.33333%; }
+    margin: 0 auto 100px;
+    padding: 0; }
   .page-template-contact .benefits-wrapper .benefits {
     padding: 0;
     margin: 70px 0 50px; } }
 
 @media (min-width: 1260px) {
+  .page-template-contact .container-small {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse; }
+    .page-template-contact .container-small .contact-content {
+      width: 758.75px;
+      padding-right: 91.25px; }
+      .page-template-contact .container-small .contact-content .subtitle,
+      .page-template-contact .container-small .contact-content .description {
+        text-align: left;
+        padding-right: 15px; }
+      .page-template-contact .container-small .contact-content .gform_wrapper {
+        width: 100%; }
+    .page-template-contact .container-small .contact-sidebar {
+      width: 516.25px;
+      padding: 0 60px; }
+      .page-template-contact .container-small .contact-sidebar .lend,
+      .page-template-contact .container-small .contact-sidebar .advisor {
+        padding: 50px 45px; }
+        .page-template-contact .container-small .contact-sidebar .lend h2,
+        .page-template-contact .container-small .contact-sidebar .advisor h2 {
+          font-size: 2.6rem; }
+        .page-template-contact .container-small .contact-sidebar .lend h2,
+        .page-template-contact .container-small .contact-sidebar .lend p,
+        .page-template-contact .container-small .contact-sidebar .advisor h2,
+        .page-template-contact .container-small .contact-sidebar .advisor p {
+          text-align: left; }
+      .page-template-contact .container-small .contact-sidebar .lend {
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start; }
   .page-template-contact .offer {
     padding: 50px 0; }
     .page-template-contact .offer:first-child {
