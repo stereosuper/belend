@@ -263,7 +263,7 @@ function belend_form_submit_button( $button, $form ) {
     $button_text = $form['button']['text'];
     $icon_name = 'arrow';
 
-    return "<button class='btn gform_next_button' id='gform_submit_button_{$form['id']}'>$button_text<svg class='icon'><use xlink:href='#icon-$icon_name'></use></button>";
+    return "<button class='btn gform_next_button' id='gform_submit_button_{$form['id']}'>Envoyer<svg class='icon'><use xlink:href='#icon-$icon_name'></use></button>";
 }
 add_filter( 'gform_submit_button', 'belend_form_submit_button', 10, 2 );
 
