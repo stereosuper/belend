@@ -1,5 +1,5 @@
 import 'intersection-observer';
-import { forEach } from './utils';
+import { forEach, createNewEvent } from './utils';
 
 function Io() {
     this.resized = true;
@@ -52,6 +52,14 @@ function Io() {
     this.revealPlopOut = entry => {
         entry.classList.remove('reveal-plop');
     };
+
+    // Reveal counter
+    this.revealCounterIn = () => {
+        const counterEvent = createNewEvent('revealCounter');
+        document.dispatchEvent(counterEvent);
+    };
+
+    this.revealCounterOut = () => {};
 }
 
 export default new Io();
