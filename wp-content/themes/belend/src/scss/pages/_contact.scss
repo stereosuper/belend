@@ -312,9 +312,8 @@
         .contact-container {
             header {
                 padding: 0 $col * 3;
-                margin-bottom: $line-height * 2;
+                margin-bottom: $line-height * 4;
                 h1 {
-                    margin-bottom: $line-height * 4;
                     font-size: 6.4rem;
                 }
             }
@@ -343,6 +342,11 @@
 
 @media (min-width: $desktop) {
     .page-template-contact {
+        .contact-container {
+            header {
+                margin-bottom: $line-height * 3;
+            }
+        }
         .container-small {
             display: flex;
             flex-direction: row-reverse;

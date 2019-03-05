@@ -2364,9 +2364,8 @@ input[value="AUTRES BANQUES"] + label {
 @media (min-width: 960px) {
   .page-template-contact .contact-container header {
     padding: 0 25%;
-    margin-bottom: 50px; }
+    margin-bottom: 100px; }
     .page-template-contact .contact-container header h1 {
-      margin-bottom: 100px;
       font-size: 6.4rem; }
   .page-template-contact .contact-container .contact-content .subtitle,
   .page-template-contact .contact-container .contact-content .description {
@@ -2381,6 +2380,8 @@ input[value="AUTRES BANQUES"] + label {
     margin: 70px 0 50px; } }
 
 @media (min-width: 1260px) {
+  .page-template-contact .contact-container header {
+    margin-bottom: 75px; }
   .page-template-contact .container-small {
     display: -webkit-box;
     display: -ms-flexbox;
