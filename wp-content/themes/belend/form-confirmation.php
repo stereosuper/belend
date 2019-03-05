@@ -25,7 +25,7 @@ $entry['chiffre_affaires'] = isset($_GET['turnover'])?$_GET['turnover']: '';
 $entry['duree_pret'] = isset($_GET['loan_time'])?$_GET['loan_time']: '';
 $entry['code_postal']= isset($_GET['post_code'])?$_GET['post_code']: '';
 $entry['siren'] = isset($_GET['siren'])?$_GET['siren']: '';
-$entry['banques_consultees'] = isset($_GET['banks'])?array(): array();
+$entry['banques_consultees'] = isset($_GET['banks'])?treat_banks($_GET['banks']): array();
 $entry['accord_banque'] = isset($_GET['deal_found'])?$_GET['deal_found']: '';
 $entry['compromis_signe'] = isset($_GET['real_estate_deal'])?$_GET['real_estate_deal']: '';
 $entry['date_compromis'] = isset($_GET['deal_time'])?$_GET['deal_time']: '';
@@ -35,14 +35,27 @@ $entry['secteur_activite'] = isset($_GET['business_segment'])?$_GET['business_se
 $compare = new compare();
 
 $results = [];
+$test_results=[];
 
 foreach ($rows as $row){
     $results[] = $compare->model_applies($entry, $row);
 }
 
-var_dump($results);
+foreach ($results as $result){
+    if(is_string($result)){
+        $test_results[]=['partenaire trouvé'];
+    }
+}
+
 
 $output = get_output($results);
+
+function treat_banks($banks){
+    if(!is_array($banks)){
+        return array($banks);
+    }
+    return $banks;
+}
 
 
 function get_output($results){
@@ -157,6 +170,7 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
+            <?php echo "<br/><br/>" . var_dump($test_results) . "<br/><br/>" ; ?>
             <?php echo $output; ?>
 
         <?php else : ?>
