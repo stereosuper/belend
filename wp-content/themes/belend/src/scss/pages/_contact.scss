@@ -1,12 +1,27 @@
 .page-template-contact {
     .contact-container {
         header {
-            margin: 0 0 $line-height;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            margin: 0 0 $line-height * 3;
             h1 {
-                margin-bottom: $line-height * 2;
-                color: $black-grey;
+                margin: 0;
+                padding: 1.8em;
+                color: $white;
+            }
+        }
+        .container-small {
+            padding: 0;
+        }
+        .contact-content {
+            padding: 0 $gutter * 2;
+            .subtitle,
+            .description {
+                max-width: $phone;
             }
             .subtitle {
+                margin: 0 auto $line-height;
                 color: $grey;
                 text-align: center;
                 font-size: 2.4rem;
@@ -14,10 +29,10 @@
                     margin: 0;
                 }
             }
-        }
-        .description {
-            margin: 0 0 #{$line-height * 2};
-            text-align: center;
+            .description {
+                margin: 0 auto #{$line-height * 2};
+                text-align: center;
+            }
         }
     }
     .gform_wrapper {
@@ -132,6 +147,68 @@
             }
         }
     }
+    .contact-sidebar {
+        .lend,
+        .advisor {
+            padding: $line-height * 2 $gutter * 2;
+            h2,
+            p {
+                text-align: center;
+            }
+            h2 {
+                margin-top: 0;
+            }
+            p {
+                max-width: #{grid-column-pixels($desktop, $gutter, 6, 12)};
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        .lend {
+            background-color: $grey-light;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2,
+            p,
+            a {
+                margin-top: 0;
+                color: $black-grey;
+            }
+        }
+        .advisor {
+            h2,
+            p {
+                color: $black-grey;
+            }
+            .btn-call-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .btn-call,
+                p {
+                    color: $primary-color;
+                }
+                .btn-call {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 15px 50px;
+                    border: 2px solid currentColor;
+                    border-radius: 30px;
+                    font-size: 2.9rem;
+                    span {
+                        line-height: 1;
+                    }
+                    .icon {
+                        width: 1.8rem;
+                        height: 2.5rem;
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+    }
     .offer {
         padding: $line-height * 2 $gutter * 2;
         &:first-child {
@@ -161,6 +238,11 @@
 
 @media (min-width: $tablet) {
     .page-template-contact {
+        .contact-container {
+            header {
+                margin-top: $header-height;
+            }
+        }
         .gform_wrapper {
             width: grid-column-pixels($desktop, $gutter, 6, 12);
             margin: $line-height * 4 auto $line-height * 3;
@@ -235,13 +317,19 @@
                     margin-bottom: $line-height * 4;
                     font-size: 6.4rem;
                 }
+            }
+            .contact-content {
+                .subtitle,
+                .description {
+                    max-width: #{grid-column-pixels($desktop, $gutter, 6, 12)};
+                }
                 .subtitle {
                     font-size: 3.6rem;
                 }
-            }
-            .description {
-                margin: 0 0 #{$line-height * 4};
-                padding: 0 $col;
+                .description {
+                    margin: 0 auto #{$line-height * 4};
+                    padding: 0;
+                }
             }
         }
         .benefits-wrapper {
@@ -255,6 +343,41 @@
 
 @media (min-width: $desktop) {
     .page-template-contact {
+        .container-small {
+            display: flex;
+            flex-direction: row-reverse;
+            .contact-content {
+                width: #{grid-column-pixels($desktop, $gutter, 7, 12) + $gutter *
+                    2};
+                padding-right: #{grid-column-pixels($desktop, $gutter, 1, 12)};
+                .subtitle,
+                .description {
+                    text-align: left;
+                    padding-right: $gutter;
+                }
+                .gform_wrapper {
+                    width: 100%;
+                }
+            }
+            .contact-sidebar {
+                width: #{grid-column-pixels($desktop, $gutter, 5, 12)};
+                padding: 0 $gutter * 4;
+                .lend,
+                .advisor {
+                    padding: $line-height * 2 $gutter * 3;
+                    h2 {
+                        font-size: 2.6rem;
+                    }
+                    h2,
+                    p {
+                        text-align: left;
+                    }
+                }
+                .lend {
+                    align-items: flex-start;
+                }
+            }
+        }
         .offer {
             padding: $line-height * 2 0;
             &:first-child {
