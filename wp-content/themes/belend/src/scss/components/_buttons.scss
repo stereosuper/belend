@@ -80,7 +80,38 @@
     }
 }
 .btn-invert {
+    color: $white;
     border: 2px solid;
+    background-color: transparent;
+    transition: plop(
+        (
+            background-color: "#{$plop-duration}"
+        )
+    );
+    span,
+    .icon {
+        transition: plop(
+            (
+                color: "#{$plop-duration}"
+            )
+        );
+    }
+    &:hover {
+        background-color: currentColor;
+        span,
+        .icon {
+            color: $black-grey;
+        }
+    }
+    &.btn-dark {
+        color: $black-grey;
+        &:hover {
+            span,
+            .icon {
+                color: $white;
+            }
+        }
+    }
 }
 .gform_next_button {
     padding: 10px 20px 11px;
@@ -89,6 +120,19 @@
 .link {
     > span {
         border-bottom: solid 1px;
+    }
+    .icon {
+        transition: plop(
+            (
+                transform: "#{$plop-duration}"
+            )
+        );
+        will-change: transform;
+    }
+    &:hover {
+        .icon {
+            transform: translate3d($gutter, 0, 0);
+        }
     }
 }
 
