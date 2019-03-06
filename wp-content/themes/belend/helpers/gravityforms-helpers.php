@@ -233,13 +233,6 @@ function belend_populate($form){
 
 add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax ) {
 
-    var_dump( $confirmation);
-    //var_dump( $form);
-    //var_dump($entry);
-    //var_dump($ajax);
-
-
-
     if( isset( $confirmation['redirect'] ) ) {
         $url          = esc_url_raw( $confirmation['redirect'] );
         $confirmation = 'Thanks for contacting us! We will get in touch with you shortly.';

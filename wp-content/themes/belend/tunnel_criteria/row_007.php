@@ -33,5 +33,5 @@ return [
             ]
         ]
     ],
-    "output" => "Pour répondre a votre besoin, nous avons fait appel à un expert en financement du poste client : Christine ROUCOULY qui va prendre contact avec vous dans un délai de 48h maximum. Nous vous remercions de lui reserver votre meilleur accueil afin qu'elle puisse trouver la solution la plus optimale pour votre entreprise"
+    "output" => "Pour répondre a votre besoin, nous avons fait appel à un expert en financement du poste client : Christine ROUCOULY qui va prendre contact avec vous dans un délai de 48h maximum. Nous vous remercions de lui réserver votre meilleur accueil afin qu'elle puisse trouver la solution la plus optimale pour votre entreprise"
 ];

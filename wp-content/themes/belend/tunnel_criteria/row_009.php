@@ -23,7 +23,7 @@ return [
                     [
                         "method" => "EQ",
                         "clauses" => [
-                            "key" => "projet_projet",
+                            "key" => "type_de_projet",
                             "value" => "Véhicule professionnel"
                         ]
                     ]
