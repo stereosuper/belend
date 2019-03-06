@@ -21082,33 +21082,33 @@ var counterAnimation = function counterAnimation() {
 
   var launchCounter = function launchCounter(_ref4) {
     var response = _ref4.response;
-    console.log(response.stats.count_dossiers_envoyes);
-    animate();
+
+    // maxNumber is the number collected after the api call
+    if (response) {
+      maxNumber = response.stats.count_dossiers_envoyes;
+      number = maxNumber.replace(/[0-9]/g, '0');
+      randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+      initCounterElements();
+      divs = [].slice.call(counter.getElementsByTagName('div'));
+      animate();
+    }
   };
 
   document.addEventListener('revealCounter', function () {
-    // maxNumber is the number collected after the api call
-    maxNumber = '5345';
-    number = maxNumber.replace(/[0-9]/g, '0');
-    randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
-    initCounterElements();
-    divs = [].slice.call(counter.getElementsByTagName('div'));
     launchCounter();
-  }, false); // fetchData.fetch({
-  //     url:
-  //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
-  //     method: 'GET',
-  //     fetchParams: {
-  //         mode: 'no-cors',
-  //     },
-  //     headersContent: {
-  //         'Access-Control-Allow-Origin': '*',
-  //         // 'Content-Type': 'application/json',
-  //         // 'Content-Type': 'text/html',
-  //         'Content-Type': 'text/plain',
-  //     },
-  //     cb: launchCounter,
-  // });
+  }, false);
+  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+  _fetchData__WEBPACK_IMPORTED_MODULE_0__["default"].fetch({
+    url: urlToFetch,
+    method: 'GET',
+    headersContent: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json' // 'Content-Type': 'text/html',
+      // 'Content-Type': 'text/plain',
+
+    },
+    cb: launchCounter
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (counterAnimation);
@@ -21154,8 +21154,8 @@ var fetchDataFactory = function fetchDataFactory() {
       params.body = JSON.stringify(data);
     }
 
-    fetch(url, params).then(function (response) {// console.log('TCL: fetchDataFactory -> response', response);
-      // response.json()
+    fetch(url, params).then(function (response) {
+      response.body.json();
     }).then(function (response) {
       if (cb) {
         cb(response);

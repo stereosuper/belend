@@ -119,42 +119,41 @@ const counterAnimation = () => {
     };
 
     const launchCounter = ({ response }) => {
-        console.log(response.stats.count_dossiers_envoyes);
-
-        animate();
-    };
-
-    document.addEventListener(
-        'revealCounter',
-        () => {
-            // maxNumber is the number collected after the api call
-            maxNumber = '5345';
+        // maxNumber is the number collected after the api call
+        if (response) {
+            maxNumber = response.stats.count_dossiers_envoyes;
             number = maxNumber.replace(/[0-9]/g, '0');
             randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
 
             initCounterElements();
             divs = [].slice.call(counter.getElementsByTagName('div'));
 
+            animate();
+        }
+    };
+
+    document.addEventListener(
+        'revealCounter',
+        () => {
             launchCounter();
         },
         false
     );
 
-    // fetchData.fetch({
-    //     url:
-    //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
-    //     method: 'GET',
-    //     fetchParams: {
-    //         mode: 'no-cors',
-    //     },
-    //     headersContent: {
-    //         'Access-Control-Allow-Origin': '*',
-    //         // 'Content-Type': 'application/json',
-    //         // 'Content-Type': 'text/html',
-    //         'Content-Type': 'text/plain',
-    //     },
-    //     cb: launchCounter,
-    // });
+    const urlToFetch =
+        'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+
+    fetchData.fetch({
+        url: urlToFetch,
+        method: 'GET',
+        headersContent: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            // 'Content-Type': 'text/html',
+            // 'Content-Type': 'text/plain',
+        },
+        cb: launchCounter,
+    });
 };
 
 export default counterAnimation;
