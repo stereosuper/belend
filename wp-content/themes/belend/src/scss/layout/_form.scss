@@ -14,6 +14,14 @@
 //     display: block !important;
 // }
 
+.gform_wrapper {
+    form {
+        > .validation_error {
+            display: none;
+        }
+    }
+}
+
 .field-year {
     &::after {
         content: "année(s)";

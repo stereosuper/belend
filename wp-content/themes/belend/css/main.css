@@ -1038,6 +1038,9 @@ button {
 .gfield_visibility_hidden {
   display: none; }
 
+.gform_wrapper form > .validation_error {
+  display: none; }
+
 .field-year::after {
   content: "année(s)"; }
 
