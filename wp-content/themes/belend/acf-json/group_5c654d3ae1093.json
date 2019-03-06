@@ -539,7 +539,7 @@
                     "key": "field_5c7feede3dc9f",
                     "label": "Description",
                     "name": "description",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -550,15 +550,15 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
                 },
                 {
                     "key": "field_5c7feef23dca0",
                     "label": "Lien",
                     "name": "link",
-                    "type": "text",
+                    "type": "link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -567,11 +567,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "return_format": "array"
                 }
             ]
         }
@@ -593,5 +589,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1551888130
+    "modified": 1551892260
 }

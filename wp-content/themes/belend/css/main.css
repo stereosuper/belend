@@ -248,7 +248,7 @@ html {
     right: 0; }
 
 body {
-  font: 1.8em/1.35 sans-serif;
+  font: 1.8em/1.35 "upgrade", sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -268,7 +268,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: sans-serif; }
+  font-family: "upgrade-lights", "upgrade", sans-serif; }
 
 h2,
 h3,
@@ -282,7 +282,7 @@ h1,
   text-align: center; }
   h1 > span,
   .h1 > span {
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-weight: 400; }
 
 h2,
@@ -375,13 +375,13 @@ cite {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  font-family: sans-serif;
+  font-family: "upgrade", sans-serif;
   text-align: right;
   color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-style: normal;
     font-weight: 400; }
   cite .img {
@@ -1236,7 +1236,7 @@ button {
   color: #fff; }
   .form-progress h1 {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-size: 1.8rem; }
 
 .field-help {
@@ -1459,7 +1459,7 @@ input:focus + .instruction {
     .sidebar .page-bar .inactive-page {
       display: block;
       margin: 65px 0 3px;
-      font-family: sans-serif;
+      font-family: "upgrade-lights", "upgrade", sans-serif;
       font-size: 2.2rem;
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
@@ -1665,7 +1665,7 @@ input[value="AUTRES BANQUES"] + label {
   background: #bdbdbd; }
 
 .ui-widget {
-  font-family: sans-serif; }
+  font-family: "upgrade", sans-serif; }
 
 .ui-datepicker {
   padding: 0;
@@ -1853,7 +1853,7 @@ a.ui-button:active,
         -ms-flex-pack: center;
             justify-content: center;
     font-size: 5.2rem;
-    font-family: sans-serif; }
+    font-family: "upgrade-lights", "upgrade", sans-serif; }
     .home .home-nb .number > div {
       position: relative;
       display: -webkit-box;
@@ -1874,6 +1874,28 @@ a.ui-button:active,
         font-variant-numeric: tabular-nums; }
         .home .home-nb .number > div span.colored {
           color: #ff6308; }
+
+.home .partners-wrapper {
+  padding: 100px 0; }
+  .home .partners-wrapper .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .home .partners-wrapper .title,
+  .home .partners-wrapper .description {
+    text-align: center;
+    color: #312f2f; }
+  .home .partners-wrapper .title {
+    margin-top: 0; }
+  .home .partners-wrapper .description {
+    margin-bottom: 50px; }
 
 @media (min-width: 400px) {
   .home .banner-img {
@@ -2068,7 +2090,17 @@ a.ui-button:active,
                 transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px); }
       .home .target.show:first-child {
         -webkit-transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px);
-                transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px); } }
+                transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px); }
+  .home .partners-wrapper {
+    padding-top: 300px;
+    margin-top: -200px;
+    background-color: #f2f2f2; }
+    .home .partners-wrapper .title,
+    .home .partners-wrapper .description {
+      max-width: 580px; }
+  .home .benefits-wrapper {
+    padding-top: 0;
+    margin-top: 0; } }
 
 @media (min-width: 1260px) {
   .home .home-quotes-wrapper {
