@@ -21080,35 +21080,33 @@ var counterAnimation = function counterAnimation() {
     }, 1000);
   };
 
-  var launchCounter = function launchCounter(_ref4) {
-    var response = _ref4.response;
-
+  var launchCounter = function launchCounter(data) {
     // maxNumber is the number collected after the api call
-    if (response) {
-      maxNumber = response.stats.count_dossiers_envoyes;
-      number = maxNumber.replace(/[0-9]/g, '0');
-      randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
-      initCounterElements();
-      divs = [].slice.call(counter.getElementsByTagName('div'));
-      animate();
+    if (data && data.response) {
+      maxNumber = data.response.stats.count_dossiers_envoyes.toString();
+    } else {
+      maxNumber = '1208';
     }
+
+    number = maxNumber.replace(/[0-9]/g, '0');
+    randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+    initCounterElements();
+    divs = [].slice.call(counter.getElementsByTagName('div')).reverse();
+    animate();
   };
 
   document.addEventListener('revealCounter', function () {
     launchCounter();
   }, false);
-  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
-  _fetchData__WEBPACK_IMPORTED_MODULE_0__["default"].fetch({
-    url: urlToFetch,
-    method: 'GET',
-    headersContent: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json' // 'Content-Type': 'text/html',
-      // 'Content-Type': 'text/plain',
-
-    },
-    cb: launchCounter
-  });
+  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos'; // fetchData.fetch({
+  //     url: urlToFetch,
+  //     method: 'GET',
+  //     headersContent: {
+  //         'Access-Control-Allow-Origin': '*',
+  //         'Content-Type': 'application/json',
+  //     },
+  //     cb: launchCounter,
+  // });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (counterAnimation);
@@ -21155,7 +21153,7 @@ var fetchDataFactory = function fetchDataFactory() {
     }
 
     fetch(url, params).then(function (response) {
-      response.body.json();
+      response.json();
     }).then(function (response) {
       if (cb) {
         cb(response);
@@ -21329,7 +21327,7 @@ var setCache = function setCache($) {
   }
 };
 
-var test = function test($) {
+var autocomplete = function autocomplete($) {
   var _scripts_l10n = scripts_l10n,
       adminAjax = _scripts_l10n.adminAjax;
   var sirenInput = jQuery('.field-siren input');
@@ -21374,14 +21372,14 @@ var test = function test($) {
 
 var formHandler = function formHandler(win) {
   jQuery(document).ready(function ($) {
-    test($);
+    autocomplete($);
     progress();
     layout(win);
     fixedPositionOnScroll(win);
     Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
     jQuery(document).on('gform_post_render', function () {
       setCache($);
-      test($);
+      autocomplete($);
       progress();
       layout(win);
       Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();

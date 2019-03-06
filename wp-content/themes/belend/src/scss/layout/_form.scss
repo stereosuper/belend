@@ -239,7 +239,7 @@
     color: #fff;
     h1 {
         margin: 0;
-        font-family: "upgrade";
+        font-family: $font-regular;
         font-size: 1.8rem;
     }
 }
@@ -529,7 +529,7 @@ input:focus {
             .inactive-page {
                 display: block;
                 margin: 65px 0 3px;
-                font-family: "upgrade-lights";
+                font-family: $font-light;
                 font-size: 2.2rem;
                 color: #bdbdbd;
                 + .inactive-page {

@@ -22,7 +22,10 @@ $form-error-color: #f12525;
 $transition: 0.3s ease-in-out;
 
 // Fonts
-// $font: 'font', sans-serif;
+// $font-regular: "upgrade", sans-serif;
+// $font-light: "upgrade-lights", $font-regular;
+$font-regular: sans-serif;
+$font-light: $font-regular;
 
 // Mediaqueries
 $retina: "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)";

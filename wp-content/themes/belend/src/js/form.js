@@ -166,7 +166,7 @@ const setCache = $ => {
     }
 };
 
-const test = $ => {
+const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
     const sirenInput = jQuery('.field-siren input');
 
@@ -213,7 +213,7 @@ const test = $ => {
 
 const formHandler = win => {
     jQuery(document).ready($ => {
-        test($);
+        autocomplete($);
         progress();
         layout(win);
         fixedPositionOnScroll(win);
@@ -221,7 +221,7 @@ const formHandler = win => {
 
         jQuery(document).on('gform_post_render', () => {
             setCache($);
-            test($);
+            autocomplete($);
             progress();
             layout(win);
             placesInput();
