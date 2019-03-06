@@ -118,7 +118,9 @@ const counterAnimation = () => {
         }, 1000);
     };
 
-    const launchCounter = response => {
+    const launchCounter = ({ response }) => {
+        console.log(response.stats.count_dossiers_envoyes);
+
         animate();
     };
 

@@ -21080,7 +21080,9 @@ var counterAnimation = function counterAnimation() {
     }, 1000);
   };
 
-  var launchCounter = function launchCounter(response) {
+  var launchCounter = function launchCounter(_ref4) {
+    var response = _ref4.response;
+    console.log(response.stats.count_dossiers_envoyes);
     animate();
   };
 
@@ -21290,15 +21292,96 @@ var layout = function layout(win) {
       });
     }
   });
+}; // Mettre en forme et compiler
+
+
+var getCookie = function getCookie(cName) {
+  var cValue = document.cookie;
+  var cStart = cValue.indexOf(" ".concat(cName, "="));
+  if (cStart == -1) cStart = cValue.indexOf("".concat(cName, "="));
+
+  if (cStart == -1) {
+    cValue = null;
+  } else {
+    cStart = cValue.indexOf('=', cStart) + 1;
+    var cEnd = cValue.indexOf(';', cStart);
+
+    if (cEnd == -1) {
+      cEnd = cValue.length;
+    }
+
+    cValue = unescape(cValue.substring(cStart, cEnd));
+  }
+
+  return cValue;
+};
+
+var setCache = function setCache($) {
+  var cookie = getCookie('gformPartialID');
+
+  if (typeof cookie === 'undefined' || $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
+    if ($('.partial_entry_id').val() != cookie) {
+      console.log('added to cookie:', $('.partial_entry_id').val());
+      document.cookie = "gformPartialID=".concat($('.partial_entry_id').val());
+    }
+  } else if (cookie && $('#partial_entry_id').val() != cookie) {
+    $('.partial_entry_id').val(cookie);
+  }
+};
+
+var test = function test($) {
+  var _scripts_l10n = scripts_l10n,
+      adminAjax = _scripts_l10n.adminAjax;
+  var sirenInput = jQuery('.field-siren input');
+  sirenInput.autocomplete({
+    source: function source(request, response) {
+      $.ajax({
+        url: adminAjax,
+        data: {
+          action: 'getSiren',
+          name_startsWith: $('.field-siren input').val()
+        },
+        success: function success(data) {
+          console.log(data);
+          response($.map(JSON.parse(data), function (company) {
+            var label = company.siren;
+            return {
+              NAF: company.codeNaf,
+              label: "".concat(company.name, ", ").concat(company.address, ", ") + "SIREN: ".concat(company.siren),
+              value: company.siren
+            }; // on retourne cette forme de suggestion
+          }));
+        }
+      });
+    },
+    search: function search(term) {
+      // console.log('TCL: search -> term', term);
+      // custom minLength
+      var returnValue = true;
+
+      if (term.length < 2) {
+        returnValue = false;
+      }
+
+      return returnValue;
+    },
+    select: function select(event, ui) {
+      // console.log(ui.item);
+      $('.field-naf input').val(ui.item.NAF);
+    }
+  });
 };
 
 var formHandler = function formHandler(win) {
-  jQuery(document).ready(function () {
+  jQuery(document).ready(function ($) {
+    test($);
     progress();
     layout(win);
     fixedPositionOnScroll(win);
     Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
     jQuery(document).on('gform_post_render', function () {
+      setCache($);
+      test($);
       progress();
       layout(win);
       Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -21666,24 +21749,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var placesInput = function placesInput() {
   var _document$getElements = document.getElementsByClassName('field-city'),
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
-      cityField = _document$getElements2[0];
+      cityField = _document$getElements2[0]; // console.log('TCL: placesInput -> cityField', cityField);
+  // if (cityField) {
+  //     const [cityInput] = cityField.getElementsByTagName('input');
+  //     if (cityInput) {
+  //         const placesAutocomplete = places({
+  //             appId: 'VRMOTBXNFK',
+  //             apiKey: '7e5464630cb1cceab996187ece87e5ae',
+  //             container: cityInput,
+  //         });
+  //         placesAutocomplete.on('change', e => {
+  //             console.log(e.suggestion.value);
+  //         });
+  //     }
+  // }
 
-  if (cityField) {
-    var _cityField$getElement = cityField.getElementsByTagName('input'),
-        _cityField$getElement2 = _slicedToArray(_cityField$getElement, 1),
-        cityInput = _cityField$getElement2[0];
-
-    if (cityInput) {
-      var placesAutocomplete = places_js__WEBPACK_IMPORTED_MODULE_0___default()({
-        appId: 'VRMOTBXNFK',
-        apiKey: '9c921661047800fcc960531fdf359692',
-        container: cityInput
-      });
-      placesAutocomplete.on('change', function (e) {
-        console.log(e.suggestion.value);
-      });
-    }
-  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (placesInput);
