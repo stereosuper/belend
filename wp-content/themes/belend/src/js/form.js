@@ -132,14 +132,96 @@ const layout = win => {
     });
 };
 
+// Mettre en forme et compiler
+const getCookie = cName => {
+    let cValue = document.cookie;
+    let cStart = cValue.indexOf(` ${cName}=`);
+    if (cStart == -1) cStart = cValue.indexOf(`${cName}=`);
+    if (cStart == -1) {
+        cValue = null;
+    } else {
+        cStart = cValue.indexOf('=', cStart) + 1;
+        let cEnd = cValue.indexOf(';', cStart);
+        if (cEnd == -1) {
+            cEnd = cValue.length;
+        }
+        cValue = unescape(cValue.substring(cStart, cEnd));
+    }
+    return cValue;
+};
+
+const setCache = $ => {
+    const cookie = getCookie('gformPartialID');
+    if (
+        typeof cookie === 'undefined' ||
+        ($('.partial_entry_id').val() != 'pending' &&
+            $('.partial_entry_id').val() != 'undefined')
+    ) {
+        if ($('.partial_entry_id').val() != cookie) {
+            console.log('added to cookie:', $('.partial_entry_id').val());
+            document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
+        }
+    } else if (cookie && $('#partial_entry_id').val() != cookie) {
+        $('.partial_entry_id').val(cookie);
+    }
+};
+
+const autocomplete = $ => {
+    const { adminAjax } = scripts_l10n;
+    const sirenInput = jQuery('.field-siren input');
+
+    sirenInput.autocomplete({
+        source(request, response) {
+            $.ajax({
+                url: adminAjax,
+                data: {
+                    action: 'getSiren',
+                    name_startsWith: $('.field-siren input').val(),
+                },
+                success(data) {
+                    console.log(data);
+                    response(
+                        $.map(JSON.parse(data), company => {
+                            const label = company.siren;
+                            return {
+                                NAF: company.codeNaf,
+                                label:
+                                    `${company.name}, ${company.address}, ` +
+                                    `SIREN: ${company.siren}`,
+                                value: company.siren,
+                            }; // on retourne cette forme de suggestion
+                        })
+                    );
+                },
+            });
+        },
+        search(term) {
+            // console.log('TCL: search -> term', term);
+            // custom minLength
+            let returnValue = true;
+            if (term.length < 2) {
+                returnValue = false;
+            }
+            return returnValue;
+        },
+        select(event, ui) {
+            // console.log(ui.item);
+            $('.field-naf input').val(ui.item.NAF);
+        },
+    });
+};
+
 const formHandler = win => {
-    jQuery(document).ready(() => {
+    jQuery(document).ready($ => {
+        autocomplete($);
         progress();
         layout(win);
         fixedPositionOnScroll(win);
         placesInput();
 
         jQuery(document).on('gform_post_render', () => {
+            setCache($);
+            autocomplete($);
             progress();
             layout(win);
             placesInput();

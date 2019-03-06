@@ -1,3 +1,4 @@
+import { reverseString } from './utils';
 import fetchData from './fetchData';
 import { TweenMax, Power3 } from 'gsap';
 
@@ -101,8 +102,8 @@ const counterAnimation = () => {
         );
 
         computeNumber({
-            newNumber: newNumber.toString(),
-            oldNumber: number.toString(),
+            newNumber: reverseString(newNumber.toString()),
+            oldNumber: reverseString(number.toString()),
         });
 
         number = newNumber;
@@ -118,38 +119,39 @@ const counterAnimation = () => {
         }, 1000);
     };
 
-    const launchCounter = response => {
+    const launchCounter = data => {
+        // maxNumber is the number collected after the api call
+        if (data && data.response) {
+            maxNumber = data.response.stats.count_dossiers_envoyes.toString();
+        } else {
+            maxNumber = '1208';
+        }
+        number = maxNumber.replace(/[0-9]/g, '0');
+        randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+
+        initCounterElements();
+        divs = [].slice.call(counter.getElementsByTagName('div')).reverse();
+
         animate();
     };
 
     document.addEventListener(
         'revealCounter',
         () => {
-            // maxNumber is the number collected after the api call
-            maxNumber = '5345';
-            number = maxNumber.replace(/[0-9]/g, '0');
-            randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
-
-            initCounterElements();
-            divs = [].slice.call(counter.getElementsByTagName('div'));
-
             launchCounter();
         },
         false
     );
 
+    const urlToFetch =
+        'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+
     // fetchData.fetch({
-    //     url:
-    //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
+    //     url: urlToFetch,
     //     method: 'GET',
-    //     fetchParams: {
-    //         mode: 'no-cors',
-    //     },
     //     headersContent: {
     //         'Access-Control-Allow-Origin': '*',
-    //         // 'Content-Type': 'application/json',
-    //         // 'Content-Type': 'text/html',
-    //         'Content-Type': 'text/plain',
+    //         'Content-Type': 'application/json',
     //     },
     //     cb: launchCounter,
     // });

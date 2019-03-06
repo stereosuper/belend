@@ -25,8 +25,7 @@ const fetchDataFactory = () => {
 
         fetch(url, params)
             .then(response => {
-                // console.log('TCL: fetchDataFactory -> response', response);
-                // response.json()
+                response.json();
             })
             .then(response => {
                 if (cb) {

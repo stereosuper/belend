@@ -248,7 +248,7 @@ html {
     right: 0; }
 
 body {
-  font: 1.8em / 1.35 "upgrade", sans-serif;
+  font: 1.8em/1.35 sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -268,7 +268,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "upgrade-lights"; }
+  font-family: sans-serif; }
 
 h2,
 h3,
@@ -282,7 +282,7 @@ h1,
   text-align: center; }
   h1 > span,
   .h1 > span {
-    font-family: "upgrade";
+    font-family: sans-serif;
     font-weight: 400; }
 
 h2,
@@ -375,13 +375,13 @@ cite {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  font-family: "upgrade-lights";
+  font-family: sans-serif;
   text-align: right;
   color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
-    font-family: "upgrade";
+    font-family: sans-serif;
     font-style: normal;
     font-weight: 400; }
   cite .img {
@@ -1035,6 +1035,12 @@ button {
     margin: 100px 0 0;
     left: 50px; } }
 
+.gfield_visibility_hidden {
+  display: none; }
+
+.field-year::after {
+  content: "année(s)"; }
+
 .gform_page_fields {
   padding: 30px 0 0;
   position: relative; }
@@ -1230,7 +1236,7 @@ button {
   color: #fff; }
   .form-progress h1 {
     margin: 0;
-    font-family: "upgrade";
+    font-family: sans-serif;
     font-size: 1.8rem; }
 
 .field-help {
@@ -1453,7 +1459,7 @@ input:focus + .instruction {
     .sidebar .page-bar .inactive-page {
       display: block;
       margin: 65px 0 3px;
-      font-family: "upgrade-lights";
+      font-family: sans-serif;
       font-size: 2.2rem;
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
@@ -1659,7 +1665,7 @@ input[value="AUTRES BANQUES"] + label {
   background: #bdbdbd; }
 
 .ui-widget {
-  font-family: 'upgrade'; }
+  font-family: sans-serif; }
 
 .ui-datepicker {
   padding: 0;
@@ -1680,21 +1686,30 @@ input[value="AUTRES BANQUES"] + label {
 .ui-datepicker-month {
   margin-right: 5px; }
 
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-icon {
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker .ui-icon {
   width: 10px;
   height: 18px; }
 
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
   top: 12px;
   cursor: pointer; }
 
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-hover .ui-state-hover {
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-hover .ui-state-hover {
   top: 12px;
   border: 0;
   background: none; }
-  .ui-state-hover.ui-datepicker-next, .ui-widget-content .ui-state-hover.ui-datepicker-next, .ui-widget-hover .ui-state-hover.ui-datepicker-next {
+  .ui-state-hover.ui-datepicker-next,
+  .ui-widget-content .ui-state-hover.ui-datepicker-next,
+  .ui-widget-hover .ui-state-hover.ui-datepicker-next {
     right: 2px; }
-  .ui-state-hover.ui-datepicker-prev, .ui-widget-content .ui-state-hover.ui-datepicker-prev, .ui-widget-hover .ui-state-hover.ui-datepicker-prev {
+  .ui-state-hover.ui-datepicker-prev,
+  .ui-widget-content .ui-state-hover.ui-datepicker-prev,
+  .ui-widget-hover .ui-state-hover.ui-datepicker-prev {
     left: 2px; }
 
 .ui-datepicker-next .ui-icon {
@@ -1705,20 +1720,33 @@ input[value="AUTRES BANQUES"] + label {
   background: url(/wp-content/themes/belend/img/date-arrow-left.svg) 0 0 no-repeat;
   background-size: 100%; }
 
-.ui-datepicker td span, .ui-datepicker td a {
+.ui-datepicker td span,
+.ui-datepicker td a {
   text-align: center; }
 
 .ui-datepicker th {
   font-weight: 500;
   color: #000; }
 
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
   border: 0;
   background: none;
   color: #000; }
 
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover, .ui-state-default:hover, .ui-widget-content .ui-state-default:hover {
-  background: #4088C5; }
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
+.ui-state-default:hover,
+.ui-widget-content .ui-state-default:hover {
+  background: #4088c5; }
 
 /* Home specific style */
 .home h1 {
@@ -1825,7 +1853,7 @@ input[value="AUTRES BANQUES"] + label {
         -ms-flex-pack: center;
             justify-content: center;
     font-size: 5.2rem;
-    font-family: "upgrade-lights"; }
+    font-family: sans-serif; }
     .home .home-nb .number > div {
       position: relative;
       display: -webkit-box;

@@ -21,7 +21,7 @@ html {
 }
 
 body {
-    font: 1.8em / 1.35 "upgrade", sans-serif;
+    font: 1.8em / 1.35 $font-regular;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -44,7 +44,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: "upgrade-lights";
+    font-family: $font-light;
 }
 
 h2,
@@ -59,7 +59,7 @@ h1,
     margin: 1.8em 0 1em;
     text-align: center;
     > span {
-        font-family: "upgrade";
+        font-family: $font-regular;
         font-weight: 400;
     }
 }
@@ -94,7 +94,7 @@ h6 {
 
 p {
     margin: 1.5em 0;
-    &:empty{
+    &:empty {
         margin: 0;
     }
 }
@@ -158,13 +158,13 @@ cite {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-    font-family: "upgrade-lights";
+    font-family: $font-regular;
     text-align: right;
     color: $black-grey;
     .name {
         display: block;
         margin: 5px 0 0;
-        font-family: "upgrade";
+        font-family: $font-regular;
         font-style: normal;
         font-weight: 400;
     }

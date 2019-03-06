@@ -1,73 +1,91 @@
-.ui-widget{
-    font-family: 'upgrade';
+.ui-widget {
+    font-family: $font-regular;
 }
 
-.ui-datepicker{
+.ui-datepicker {
     padding: 0;
     font-size: 1.4rem;
 }
 
-.ui-widget.ui-widget-content{
+.ui-widget.ui-widget-content {
     border: 0;
 }
 
-.ui-widget-header{
+.ui-widget-header {
     border: 0;
     border-radius: 0;
-    border-bottom: 1px solid rgba(#7DAFD5, 0.2);
+    border-bottom: 1px solid rgba(#7dafd5, 0.2);
     background: none;
 }
-.ui-datepicker .ui-datepicker-header{
+.ui-datepicker .ui-datepicker-header {
     padding: 10px 0;
 }
 
-.ui-datepicker-month{
+.ui-datepicker-month {
     margin-right: 5px;
 }
 
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next, .ui-datepicker .ui-icon{
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next,
+.ui-datepicker .ui-icon {
     width: 10px;
     height: 18px;
 }
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
     top: 12px;
     cursor: pointer;
 }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-hover .ui-state-hover{
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-hover .ui-state-hover {
     top: 12px;
     border: 0;
     background: none;
-    &.ui-datepicker-next{
+    &.ui-datepicker-next {
         right: 2px;
     }
-    &.ui-datepicker-prev{
+    &.ui-datepicker-prev {
         left: 2px;
     }
 }
-.ui-datepicker-next .ui-icon{
+.ui-datepicker-next .ui-icon {
     background: url(../../img/date-arrow-right.svg) 0 0 no-repeat;
     background-size: 100%;
 }
-.ui-datepicker-prev .ui-icon{
+.ui-datepicker-prev .ui-icon {
     background: url(../../img/date-arrow-left.svg) 0 0 no-repeat;
     background-size: 100%;
 }
 
-.ui-datepicker td span, .ui-datepicker td a{
+.ui-datepicker td span,
+.ui-datepicker td a {
     text-align: center;
 }
 
-.ui-datepicker th{
+.ui-datepicker th {
     font-weight: 500;
     color: $black;
 }
 
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
     border: 0;
     background: none;
     color: $black;
 }
 
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover, .ui-state-default:hover, .ui-widget-content .ui-state-default:hover{
-    background: #4088C5;
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover,
+.ui-state-default:hover,
+.ui-widget-content .ui-state-default:hover {
+    background: #4088c5;
 }

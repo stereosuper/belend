@@ -1,3 +1,25 @@
+.gfield_visibility_hidden {
+    display: none;
+}
+
+// .gform_page {
+//     display: none !important;
+// }
+
+// #gform_page_3_11 {
+//     display: flex !important;
+// }
+
+// #gform_page_3_27 {
+//     display: block !important;
+// }
+
+.field-year {
+    &::after {
+        content: "année(s)";
+    }
+}
+
 .gform_page_fields {
     padding: 30px 0 0;
     position: relative;
@@ -217,7 +239,7 @@
     color: #fff;
     h1 {
         margin: 0;
-        font-family: "upgrade";
+        font-family: $font-regular;
         font-size: 1.8rem;
     }
 }
@@ -507,7 +529,7 @@ input:focus {
             .inactive-page {
                 display: block;
                 margin: 65px 0 3px;
-                font-family: "upgrade-lights";
+                font-family: $font-light;
                 font-size: 2.2rem;
                 color: #bdbdbd;
                 + .inactive-page {

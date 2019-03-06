@@ -20936,8 +20936,9 @@ var burgerHandler = function burgerHandler(win) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _fetchData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchData */ "./wp-content/themes/belend/src/js/fetchData.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./wp-content/themes/belend/src/js/utils.js");
+/* harmony import */ var _fetchData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fetchData */ "./wp-content/themes/belend/src/js/fetchData.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -20945,6 +20946,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -20984,7 +20986,7 @@ var counterAnimation = function counterAnimation() {
         height = _container$getBoundin.height;
 
     span.style.position = 'absolute';
-    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].set(span, {
+    gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].set(span, {
       y: height
     });
     span.innerText = "".concat(digit);
@@ -20999,16 +21001,16 @@ var counterAnimation = function counterAnimation() {
       span2 = span1;
       isNewSpan = true;
     } else {
-      gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(span1, animationDuration, {
+      gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].to(span1, animationDuration, {
         y: -height,
-        ease: gsap__WEBPACK_IMPORTED_MODULE_1__["Power3"].easeInOut
+        ease: gsap__WEBPACK_IMPORTED_MODULE_2__["Power3"].easeInOut
       });
     }
 
     span2.classList.add('colored');
-    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(span2, animationDuration, {
+    gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].to(span2, animationDuration, {
       y: 0,
-      ease: gsap__WEBPACK_IMPORTED_MODULE_1__["Power3"].easeInOut,
+      ease: gsap__WEBPACK_IMPORTED_MODULE_2__["Power3"].easeInOut,
       onComplete: function onComplete() {
         span2.style.position = 'relative';
         span2.style.top = 0;
@@ -21064,8 +21066,8 @@ var counterAnimation = function counterAnimation() {
   var simulateNewNumber = function simulateNewNumber() {
     var newNumber = Math.min(number + Math.ceil(Math.random() * randomFactor), maxNumber);
     computeNumber({
-      newNumber: newNumber.toString(),
-      oldNumber: number.toString()
+      newNumber: Object(_utils__WEBPACK_IMPORTED_MODULE_0__["reverseString"])(newNumber.toString()),
+      oldNumber: Object(_utils__WEBPACK_IMPORTED_MODULE_0__["reverseString"])(number.toString())
     });
     number = newNumber;
   };
@@ -21080,30 +21082,30 @@ var counterAnimation = function counterAnimation() {
     }, 1000);
   };
 
-  var launchCounter = function launchCounter(response) {
+  var launchCounter = function launchCounter(data) {
+    // maxNumber is the number collected after the api call
+    if (data && data.response) {
+      maxNumber = data.response.stats.count_dossiers_envoyes.toString();
+    } else {
+      maxNumber = '1208';
+    }
+
+    number = maxNumber.replace(/[0-9]/g, '0');
+    randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+    initCounterElements();
+    divs = [].slice.call(counter.getElementsByTagName('div')).reverse();
     animate();
   };
 
   document.addEventListener('revealCounter', function () {
-    // maxNumber is the number collected after the api call
-    maxNumber = '5345';
-    number = maxNumber.replace(/[0-9]/g, '0');
-    randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
-    initCounterElements();
-    divs = [].slice.call(counter.getElementsByTagName('div'));
     launchCounter();
-  }, false); // fetchData.fetch({
-  //     url:
-  //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
+  }, false);
+  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos'; // fetchData.fetch({
+  //     url: urlToFetch,
   //     method: 'GET',
-  //     fetchParams: {
-  //         mode: 'no-cors',
-  //     },
   //     headersContent: {
   //         'Access-Control-Allow-Origin': '*',
-  //         // 'Content-Type': 'application/json',
-  //         // 'Content-Type': 'text/html',
-  //         'Content-Type': 'text/plain',
+  //         'Content-Type': 'application/json',
   //     },
   //     cb: launchCounter,
   // });
@@ -21152,8 +21154,8 @@ var fetchDataFactory = function fetchDataFactory() {
       params.body = JSON.stringify(data);
     }
 
-    fetch(url, params).then(function (response) {// console.log('TCL: fetchDataFactory -> response', response);
-      // response.json()
+    fetch(url, params).then(function (response) {
+      response.json();
     }).then(function (response) {
       if (cb) {
         cb(response);
@@ -21290,15 +21292,96 @@ var layout = function layout(win) {
       });
     }
   });
+}; // Mettre en forme et compiler
+
+
+var getCookie = function getCookie(cName) {
+  var cValue = document.cookie;
+  var cStart = cValue.indexOf(" ".concat(cName, "="));
+  if (cStart == -1) cStart = cValue.indexOf("".concat(cName, "="));
+
+  if (cStart == -1) {
+    cValue = null;
+  } else {
+    cStart = cValue.indexOf('=', cStart) + 1;
+    var cEnd = cValue.indexOf(';', cStart);
+
+    if (cEnd == -1) {
+      cEnd = cValue.length;
+    }
+
+    cValue = unescape(cValue.substring(cStart, cEnd));
+  }
+
+  return cValue;
+};
+
+var setCache = function setCache($) {
+  var cookie = getCookie('gformPartialID');
+
+  if (typeof cookie === 'undefined' || $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
+    if ($('.partial_entry_id').val() != cookie) {
+      console.log('added to cookie:', $('.partial_entry_id').val());
+      document.cookie = "gformPartialID=".concat($('.partial_entry_id').val());
+    }
+  } else if (cookie && $('#partial_entry_id').val() != cookie) {
+    $('.partial_entry_id').val(cookie);
+  }
+};
+
+var autocomplete = function autocomplete($) {
+  var _scripts_l10n = scripts_l10n,
+      adminAjax = _scripts_l10n.adminAjax;
+  var sirenInput = jQuery('.field-siren input');
+  sirenInput.autocomplete({
+    source: function source(request, response) {
+      $.ajax({
+        url: adminAjax,
+        data: {
+          action: 'getSiren',
+          name_startsWith: $('.field-siren input').val()
+        },
+        success: function success(data) {
+          console.log(data);
+          response($.map(JSON.parse(data), function (company) {
+            var label = company.siren;
+            return {
+              NAF: company.codeNaf,
+              label: "".concat(company.name, ", ").concat(company.address, ", ") + "SIREN: ".concat(company.siren),
+              value: company.siren
+            }; // on retourne cette forme de suggestion
+          }));
+        }
+      });
+    },
+    search: function search(term) {
+      // console.log('TCL: search -> term', term);
+      // custom minLength
+      var returnValue = true;
+
+      if (term.length < 2) {
+        returnValue = false;
+      }
+
+      return returnValue;
+    },
+    select: function select(event, ui) {
+      // console.log(ui.item);
+      $('.field-naf input').val(ui.item.NAF);
+    }
+  });
 };
 
 var formHandler = function formHandler(win) {
-  jQuery(document).ready(function () {
+  jQuery(document).ready(function ($) {
+    autocomplete($);
     progress();
     layout(win);
     fixedPositionOnScroll(win);
     Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
     jQuery(document).on('gform_post_render', function () {
+      setCache($);
+      autocomplete($);
       progress();
       layout(win);
       Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -21653,15 +21736,26 @@ var mapParallax = function mapParallax() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var places_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 /* harmony import */ var places_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(places_js__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var placesInput = function placesInput() {// const [cityField] = document.getElementsByClassName('field-city');
+
+var placesInput = function placesInput() {
+  var _document$getElements = document.getElementsByClassName('field-city'),
+      _document$getElements2 = _slicedToArray(_document$getElements, 1),
+      cityField = _document$getElements2[0]; // console.log('TCL: placesInput -> cityField', cityField);
   // if (cityField) {
   //     const [cityInput] = cityField.getElementsByTagName('input');
   //     if (cityInput) {
   //         const placesAutocomplete = places({
-  //             appId: '',
-  //             apiKey: '',
+  //             appId: 'VRMOTBXNFK',
+  //             apiKey: '7e5464630cb1cceab996187ece87e5ae',
   //             container: cityInput,
   //         });
   //         placesAutocomplete.on('change', e => {
@@ -21669,6 +21763,7 @@ var placesInput = function placesInput() {// const [cityField] = document.getEle
   //         });
   //     }
   // }
+
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (placesInput);
@@ -21679,12 +21774,13 @@ var placesInput = function placesInput() {// const [cityField] = document.getEle
 /*!**************************************************!*\
   !*** ./wp-content/themes/belend/src/js/utils.js ***!
   \**************************************************/
-/*! exports provided: forEach, createNewEvent, requestAnimFrame, throttle, default */
+/*! exports provided: forEach, reverseString, createNewEvent, requestAnimFrame, throttle, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forEach", function() { return forEach; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reverseString", function() { return reverseString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewEvent", function() { return createNewEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAnimFrame", function() { return requestAnimFrame; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return throttle; });
@@ -21696,6 +21792,9 @@ var forEach = function forEach(arr, callback) {
     callback(arr[i], i);
     i += 1;
   }
+};
+var reverseString = function reverseString(str) {
+  return str.split('').reverse().join('');
 };
 var createNewEvent = function createNewEvent(eventName) {
   var e = new Event(eventName);
@@ -21739,6 +21838,7 @@ var throttle = function throttle(callback, delay) {
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   forEach: forEach,
+  reverseString: reverseString,
   createNewEvent: createNewEvent,
   requestAnimFrame: requestAnimFrame,
   throttle: throttle
