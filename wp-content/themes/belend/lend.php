@@ -30,6 +30,8 @@ get_header();
                             <?php else : the_title(); endif; ?>
                         </h1>
                         <?php the_content(); ?>
+                    </div>
+                    <div class='container'>
                         <?php
                             if ($link = get_field('cta')): 
                                 $url = $link['url'];
@@ -37,7 +39,7 @@ get_header();
                                 $target = 'target="'. $link['target'] . '"';
                                 $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
                         ?>
-                            <a class="btn-invert btn-dark" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+                            <a class="btn" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
                                 <span><?php echo $title ?></span>
                                 <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
                             </a>

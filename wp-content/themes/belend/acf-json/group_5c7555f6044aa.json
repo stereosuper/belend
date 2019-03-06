@@ -96,6 +96,21 @@
             ]
         },
         {
+            "key": "field_5c800e9c60291",
+            "label": "CTA",
+            "name": "cta",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_5c7555f6124b5",
             "label": "Bénéfices",
             "name": "benefits",
@@ -308,5 +323,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1551452188
+    "modified": 1551899713
 }

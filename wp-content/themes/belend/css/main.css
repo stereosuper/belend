@@ -555,7 +555,7 @@ a {
   max-width: 1320px; }
 
 .container-small {
-  max-width: 1320px; }
+  max-width: 1020px; }
 
 @media (min-width: 960px) {
   .container-desk {
@@ -2580,6 +2580,11 @@ a.ui-button:active,
     transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
     transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1);
     transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
+  .page-template-lend .intro .container {
+    padding: 25px 15px;
+    background: #fff; }
+    .page-template-lend .intro .container .btn, .page-template-lend .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .intro .container .button {
+      font-size: 1.6rem; }
 
 .page-template-lend .lend-benefits-wrapper {
   text-align: center; }
@@ -2653,6 +2658,8 @@ a.ui-button:active,
     top: 0;
     right: 0;
     left: 0; }
+  .page-template-lend .intro .container .btn, .page-template-lend .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .intro .container .button {
+    font-size: 1.8rem; }
   .page-template-lend .lend-email::before {
     top: -15%; }
   .page-template-lend .lend-email::after {
@@ -2677,7 +2684,7 @@ a.ui-button:active,
     width: 500px;
     height: 350px;
     left: 35%;
-    top: 200px;
+    top: 250px;
     opacity: 0;
     -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -2689,7 +2696,7 @@ a.ui-button:active,
       opacity: 1; }
   .page-template-lend .intro {
     width: 500px;
-    padding: 50px 60px 75px 60px;
+    padding: 50px 60px 50px 60px;
     margin-top: 0px;
     margin-left: 0;
     margin-bottom: 150px;
@@ -2726,6 +2733,9 @@ a.ui-button:active,
       opacity: 1; }
       .page-template-lend .intro > .text p {
         margin-bottom: 0; }
+    .page-template-lend .intro > .container {
+      padding: 0;
+      margin-top: 25px; }
   .page-template-lend .lend-benefits-wrapper {
     margin-top: 40px; }
   .page-template-lend .lend-benefits {

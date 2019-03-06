@@ -13,7 +13,7 @@
 }
 
 .container-small {
-    max-width: #{$desktop + $gutter * 4};
+    max-width: #{$desktop-small + $gutter * 4};
 }
 
 @media (min-width: $desktop-small) {
