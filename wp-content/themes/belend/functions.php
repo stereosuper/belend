@@ -344,7 +344,7 @@ add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 // Permet de localiser les scripts JS
 function belend_localize_scripts() {
     return array(
-        'siteUrl' => get_stylesheet_directory_uri(),
+        'siteUrl' => get_site_url(),
         'adminAjax' => admin_url( 'admin-ajax.php' ),
     );
 

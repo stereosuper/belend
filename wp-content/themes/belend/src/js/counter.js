@@ -1,4 +1,4 @@
-import { reverseString } from './utils';
+import { reverseString, createNewEvent } from './utils';
 import fetchData from './fetchData';
 import { TweenMax, Power3 } from 'gsap';
 
@@ -119,7 +119,14 @@ const counterAnimation = () => {
         }, 1000);
     };
 
-    const launchCounter = data => {
+    let readyToLaunch = false;
+
+    const initCounter = data => {
+        readyToLaunch = true;
+
+        const launchEvent = createNewEvent('launchCounter');
+        document.dispatchEvent(launchEvent);
+
         // maxNumber is the number collected after the api call
         if (data && data.response) {
             maxNumber = data.response.stats.count_dossiers_envoyes.toString();
@@ -131,20 +138,22 @@ const counterAnimation = () => {
 
         initCounterElements();
         divs = [].slice.call(counter.getElementsByTagName('div')).reverse();
-
-        animate();
     };
 
     document.addEventListener(
         'revealCounter',
         () => {
-            launchCounter();
+            if (readyToLaunch) {
+                animate();
+            } else {
+                document.addEventListener('launchCounter', animate, false);
+            }
         },
         false
     );
 
-    const urlToFetch =
-        'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+    const { siteUrl } = scripts_l10n;
+    const urlToFetch = `${siteUrl}/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos`;
 
     fetchData.fetch({
         url: urlToFetch,
@@ -153,7 +162,7 @@ const counterAnimation = () => {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
         },
-        cb: launchCounter,
+        cb: initCounter,
     });
 };
 
