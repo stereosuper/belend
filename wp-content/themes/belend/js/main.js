@@ -20936,8 +20936,9 @@ var burgerHandler = function burgerHandler(win) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _fetchData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fetchData */ "./wp-content/themes/belend/src/js/fetchData.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./wp-content/themes/belend/src/js/utils.js");
+/* harmony import */ var _fetchData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./fetchData */ "./wp-content/themes/belend/src/js/fetchData.js");
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -20945,6 +20946,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -20984,7 +20986,7 @@ var counterAnimation = function counterAnimation() {
         height = _container$getBoundin.height;
 
     span.style.position = 'absolute';
-    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].set(span, {
+    gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].set(span, {
       y: height
     });
     span.innerText = "".concat(digit);
@@ -20999,16 +21001,16 @@ var counterAnimation = function counterAnimation() {
       span2 = span1;
       isNewSpan = true;
     } else {
-      gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(span1, animationDuration, {
+      gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].to(span1, animationDuration, {
         y: -height,
-        ease: gsap__WEBPACK_IMPORTED_MODULE_1__["Power3"].easeInOut
+        ease: gsap__WEBPACK_IMPORTED_MODULE_2__["Power3"].easeInOut
       });
     }
 
     span2.classList.add('colored');
-    gsap__WEBPACK_IMPORTED_MODULE_1__["TweenMax"].to(span2, animationDuration, {
+    gsap__WEBPACK_IMPORTED_MODULE_2__["TweenMax"].to(span2, animationDuration, {
       y: 0,
-      ease: gsap__WEBPACK_IMPORTED_MODULE_1__["Power3"].easeInOut,
+      ease: gsap__WEBPACK_IMPORTED_MODULE_2__["Power3"].easeInOut,
       onComplete: function onComplete() {
         span2.style.position = 'relative';
         span2.style.top = 0;
@@ -21064,8 +21066,8 @@ var counterAnimation = function counterAnimation() {
   var simulateNewNumber = function simulateNewNumber() {
     var newNumber = Math.min(number + Math.ceil(Math.random() * randomFactor), maxNumber);
     computeNumber({
-      newNumber: newNumber.toString(),
-      oldNumber: number.toString()
+      newNumber: Object(_utils__WEBPACK_IMPORTED_MODULE_0__["reverseString"])(newNumber.toString()),
+      oldNumber: Object(_utils__WEBPACK_IMPORTED_MODULE_0__["reverseString"])(number.toString())
     });
     number = newNumber;
   };
@@ -21772,12 +21774,13 @@ var placesInput = function placesInput() {
 /*!**************************************************!*\
   !*** ./wp-content/themes/belend/src/js/utils.js ***!
   \**************************************************/
-/*! exports provided: forEach, createNewEvent, requestAnimFrame, throttle, default */
+/*! exports provided: forEach, reverseString, createNewEvent, requestAnimFrame, throttle, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forEach", function() { return forEach; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reverseString", function() { return reverseString; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewEvent", function() { return createNewEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAnimFrame", function() { return requestAnimFrame; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return throttle; });
@@ -21789,6 +21792,9 @@ var forEach = function forEach(arr, callback) {
     callback(arr[i], i);
     i += 1;
   }
+};
+var reverseString = function reverseString(str) {
+  return str.split('').reverse().join('');
 };
 var createNewEvent = function createNewEvent(eventName) {
   var e = new Event(eventName);
@@ -21832,6 +21838,7 @@ var throttle = function throttle(callback, delay) {
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   forEach: forEach,
+  reverseString: reverseString,
   createNewEvent: createNewEvent,
   requestAnimFrame: requestAnimFrame,
   throttle: throttle

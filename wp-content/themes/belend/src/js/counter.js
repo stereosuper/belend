@@ -1,3 +1,4 @@
+import { reverseString } from './utils';
 import fetchData from './fetchData';
 import { TweenMax, Power3 } from 'gsap';
 
@@ -101,8 +102,8 @@ const counterAnimation = () => {
         );
 
         computeNumber({
-            newNumber: newNumber.toString(),
-            oldNumber: number.toString(),
+            newNumber: reverseString(newNumber.toString()),
+            oldNumber: reverseString(number.toString()),
         });
 
         number = newNumber;

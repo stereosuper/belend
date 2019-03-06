@@ -7,6 +7,12 @@ export const forEach = (arr, callback) => {
     }
 };
 
+export const reverseString = str =>
+    str
+        .split('')
+        .reverse()
+        .join('');
+
 export const createNewEvent = eventName => {
     let e = new Event(eventName);
     if (typeof Event !== 'function') {
@@ -49,4 +55,10 @@ export const throttle = (callback, delay) => {
     };
 };
 
-export default { forEach, createNewEvent, requestAnimFrame, throttle };
+export default {
+    forEach,
+    reverseString,
+    createNewEvent,
+    requestAnimFrame,
+    throttle,
+};
