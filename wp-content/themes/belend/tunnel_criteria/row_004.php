@@ -14,7 +14,7 @@ return [
                 "method" => "EQ",
                 "clauses" => [
                     "key" => "projet_tresorerie",
-                    "value" => "Rachat de compte courant d'associé"
+                    "value" => "Rachat de compte courant d\'associé"
                 ]
             ],
             [

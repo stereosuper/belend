@@ -37,12 +37,29 @@ return [
                     "value" => 2
                 ]
             ],
-            [
-                "method" => "GTE",
+            [   "method" => "AND",
                 "clauses" => [
-                    "key" => "chiffre_affaires",
-                    "value" => 250000
+                    [
+                        "method" => "NOT_EQ",
+                        "clauses" => [
+                            "key" => "chiffre_affaires",
+                            "value" => "Moins de 100 000 €"
+                        ]
+                    ],
+                    [ "method" => "NOT_EQ",
+                        "clauses" => [
+                            "key" => "chiffre_affaires",
+                            "value" => "De 100 000 à 150 000 €"
+                        ]
+                    ],
+                    [ "method" => "NOT_EQ",
+                        "clauses" => [
+                            "key" => "chiffre_affaires",
+                            "value" => "De 150 000 à 250 000 €"
+                        ]
+                    ]
                 ]
+
             ],
             [
                 "method" => "NOT_EQ",
