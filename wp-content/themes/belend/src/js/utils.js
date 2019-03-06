@@ -7,6 +7,15 @@ export const forEach = (arr, callback) => {
     }
 };
 
+export const createNewEvent = eventName => {
+    let e = new Event(eventName);
+    if (typeof Event !== 'function') {
+        e = document.createEvent('Event');
+        e.initEvent(eventName, true, true);
+    }
+    return e;
+};
+
 export const requestAnimFrame = cb => {
     const anim =
         window.requestAnimationFrame ||
@@ -40,4 +49,4 @@ export const throttle = (callback, delay) => {
     };
 };
 
-export default { forEach, requestAnimFrame, throttle };
+export default { forEach, createNewEvent, requestAnimFrame, throttle };

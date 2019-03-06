@@ -6,20 +6,23 @@ const counterAnimation = () => {
 
     if (!counter) return;
     const animationDuration = 0.3;
-    let number = 1781756;
-    const stringifiedNumber = number.toString();
+    let number = '0';
+    let maxNumber = '0';
+    let randomFactor = 0;
+    let divs = [];
 
     counter.innerText = '';
+    const initCounterElements = () => {
+        const digitsNumber = number.length;
+        for (let index = 0; index < digitsNumber; index += 1) {
+            const div = document.createElement('div');
+            const span = document.createElement('span');
+            span.innerText = number[index];
 
-    const digitsNumber = stringifiedNumber.length;
-    for (let index = 0; index < digitsNumber; index += 1) {
-        const div = document.createElement('div');
-        const span = document.createElement('span');
-        span.innerText = stringifiedNumber[index];
-
-        div.appendChild(span);
-        counter.appendChild(div);
-    }
+            div.appendChild(span);
+            counter.appendChild(div);
+        }
+    };
 
     const animateDigit = ({ container, digit }) => {
         let isNewSpan = false;
@@ -59,23 +62,17 @@ const counterAnimation = () => {
         });
     };
 
-    let divs = [].slice.call(counter.getElementsByTagName('div'));
-
-    const insertDiv = divNumber => {
-        const [firstDiv] = divs;
-        for (let index = 0; index < divNumber; index += 1) {
-            const div = document.createElement('div');
-            counter.insertBefore(div, firstDiv);
-        }
-        divs = [].slice.call(counter.getElementsByTagName('div'));
-    };
+    // const insertDiv = divNumber => {
+    //     const [firstDiv] = divs;
+    //     for (let index = 0; index < divNumber; index += 1) {
+    //         const div = document.createElement('div');
+    //         counter.insertBefore(div, firstDiv);
+    //     }
+    //     divs = [].slice.call(counter.getElementsByTagName('div'));
+    // };
 
     const computeNumber = ({ newNumber, oldNumber }) => {
         let startedMoving = false;
-        const deltaLength = newNumber.length - oldNumber.length;
-        if (deltaLength) {
-            insertDiv(deltaLength);
-        }
 
         const timeoutAnimation = ({ index, newDigit }) => {
             const timeoutDuration =
@@ -98,28 +95,48 @@ const counterAnimation = () => {
     };
 
     const simulateNewNumber = () => {
-        const newNumber = number + Math.ceil(Math.random() * 1000);
+        const newNumber = Math.min(
+            number + Math.ceil(Math.random() * randomFactor),
+            maxNumber
+        );
 
         computeNumber({
             newNumber: newNumber.toString(),
             oldNumber: number.toString(),
         });
+
         number = newNumber;
     };
 
     const animate = () => {
         setTimeout(() => {
             simulateNewNumber();
-            animate();
-        }, 5000);
+
+            if (number < maxNumber) {
+                animate();
+            }
+        }, 1000);
     };
 
     const launchCounter = response => {
-        console.log('TCL: launchCounter -> response', response);
-
-        simulateNewNumber();
         animate();
     };
+
+    document.addEventListener(
+        'revealCounter',
+        () => {
+            // maxNumber is the number collected after the api call
+            maxNumber = '5345';
+            number = maxNumber.replace(/[0-9]/g, '0');
+            randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+
+            initCounterElements();
+            divs = [].slice.call(counter.getElementsByTagName('div'));
+
+            launchCounter();
+        },
+        false
+    );
 
     // fetchData.fetch({
     //     url:

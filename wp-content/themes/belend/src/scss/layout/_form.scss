@@ -125,6 +125,12 @@
 }
 .gform_previous_button {
     color: $black;
+    .icon {
+        width: 1.4rem;
+        height: 1.1rem;
+        margin: 0 $gutter 0 0;
+        transform: rotateZ(180deg);
+    }
 }
 .gfield {
     &.gfield_error {
@@ -303,7 +309,7 @@ input:focus {
     align-items: center;
     position: relative;
     min-height: 21px;
-    padding: 15px 0 0;
+    margin: 15px 0 0;
     color: $primary-color;
     font-size: 1.4rem;
     line-height: 21px;
@@ -314,15 +320,20 @@ input:focus {
         left: 0;
         right: 0;
         padding: 15px $gutter * 2;
+        margin-top: 0;
         background-color: $black-grey;
         z-index: 2;
     }
     &::after {
         content: "";
         display: block;
-        width: 100%;
+        position: absolute;
+        width: calc(100% - #{$gutter * 4});
         height: 2px;
+        left: $gutter * 2;
+        bottom: 50%;
         background: rgba(#fff, 0.4);
+        transform: translateY(-50%);
     }
     > span {
         width: 35px;

@@ -255,7 +255,7 @@ function belend_form_next_button( $button, $form ) {
 add_filter( 'gform_next_button', 'belend_form_next_button', 10, 2 );
 
 function belend_form_prev_button( $button ) {
-    return "<div class='gform_prev_button'><svg class='icon'><use xlink:href='#icon-db-arrow'></use></svg>$button</div>";
+    return "<div class='gform_previous_button'><svg class='icon'><use xlink:href='#icon-db-arrow'></use></svg>$button</div>";
 }
 add_filter( 'gform_previous_button', 'belend_form_prev_button', 10, 1 );
 

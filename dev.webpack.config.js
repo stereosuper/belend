@@ -4,6 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
+const HOST = process.env.HOST || 'localhost';
+const PORT = process.env.PORT || 3000;
+const URL = 'http://belend.local/';
+
 const config = (env, options) => {
     const MODE = options.mode;
     return {
@@ -78,9 +82,9 @@ const config = (env, options) => {
                 filename: './wp-content/themes/belend/css/main.css',
             }),
             new BrowserSyncPlugin({
-                host: 'localhost',
-                port: 3000,
-                proxy: 'http://belend.local/',
+                host: HOST,
+                port: PORT,
+                proxy: URL,
                 files: [
                     {
                         match: ['**/*.php'],

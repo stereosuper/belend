@@ -83,7 +83,7 @@
             <div class='container'>
                 <?php if( get_field('nbText') ) : ?>
                     <h3><?php the_field('nbText'); ?></h3>
-                    <div class="number js-counter"><?php the_field('nb'); ?></div>
+                    <div class="number js-counter" data-io="revealCounter" data-io-single><?php the_field('nb'); ?></div>
                 <?php endif; ?>
             </div>
         </section>
@@ -122,7 +122,8 @@
 
                         <?php if( $pro['btn'] ) : ?>
                             <a class='btn-invert' href='<?php echo $pro['btn']['url']; ?>' <?php if( $pro['btn']['target'] ) echo "target='_blank'"; ?>>
-                                <?php echo $pro['btn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                                <span><?php echo $pro['btn']['title']; ?></span>
+                                <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
                             </a>
                         <?php endif; ?>
                     </div>
@@ -138,7 +139,8 @@
 
                         <?php if( $individual['btn'] ) : ?>
                             <a class='btn-invert' href='<?php echo $individual['btn']['url']; ?>' <?php if( $individual['btn']['target'] ) echo "target='_blank'"; ?>>
-                                <?php echo $individual['btn']['title']; ?><svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                                <span><?php echo $individual['btn']['title']; ?></span>
+                                <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
                             </a>
                         <?php endif; ?>
                     </div>

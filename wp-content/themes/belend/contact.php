@@ -57,7 +57,7 @@ $offers = array(
                                 $target = 'target="'. $link['target'] . '"';
                                 $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
                         ?>
-                            <a class="btn-invert" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+                            <a class="btn-invert btn-dark" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
                                 <span><?php echo $title ?></span>
                                 <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
                             </a>

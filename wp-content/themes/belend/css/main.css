@@ -1144,6 +1144,12 @@ button {
 
 .gform_previous_button {
   color: #000; }
+  .gform_previous_button .icon {
+    width: 1.4rem;
+    height: 1.1rem;
+    margin: 0 15px 0 0;
+    -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg); }
 
 .gfield.gfield_error .ginput_container input,
 .gfield.gfield_error .ginput_container textarea,
@@ -1301,7 +1307,7 @@ input:focus + .instruction {
           align-items: center;
   position: relative;
   min-height: 21px;
-  padding: 15px 0 0;
+  margin: 15px 0 0;
   color: #ff6308;
   font-size: 1.4rem;
   line-height: 21px;
@@ -1312,14 +1318,20 @@ input:focus + .instruction {
     left: 0;
     right: 0;
     padding: 15px 30px;
+    margin-top: 0;
     background-color: #312f2f;
     z-index: 2; }
   .progressbar::after {
     content: "";
     display: block;
-    width: 100%;
+    position: absolute;
+    width: calc(100% - 60px);
     height: 2px;
-    background: rgba(255, 255, 255, 0.4); }
+    left: 30px;
+    bottom: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
   .progressbar > span {
     width: 35px;
     height: 100%;
@@ -1467,6 +1479,9 @@ input:focus + .instruction {
         margin: 0 0 0 15px;
         background: #bdbdbd; } }
 
+.field-banks input:checked + label {
+  color: transparent; }
+
 .field-banks input + label {
   color: transparent;
   overflow: hidden;
@@ -1603,13 +1618,42 @@ input[value="AUTRES BANQUES"] + label {
     opacity: 1; }
 
 .btn-invert {
-  border: 2px solid; }
+  color: #fff;
+  border: 2px solid;
+  background-color: transparent;
+  -webkit-transition:  background-color 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+  transition:  background-color 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
+  .btn-invert span,
+  .btn-invert .icon {
+    -webkit-transition:  color 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+    transition:  color 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
+  .btn-invert:hover {
+    background-color: currentColor; }
+    .btn-invert:hover span,
+    .btn-invert:hover .icon {
+      color: #312f2f; }
+  .btn-invert.btn-dark {
+    color: #312f2f; }
+    .btn-invert.btn-dark:hover span,
+    .btn-invert.btn-dark:hover .icon {
+      color: #fff; }
 
 .gform_next_button {
   padding: 10px 20px 11px; }
 
 .link > span {
   border-bottom: solid 1px; }
+
+.link .icon {
+  -webkit-transition:  -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+  transition:  -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+  transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+  transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
+  will-change: transform; }
+
+.link:hover .icon {
+  -webkit-transform: translate3d(15px, 0, 0);
+          transform: translate3d(15px, 0, 0); }
 
 .btn[disabled]:before, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:before, .btn[disabled]:after, .page-template-contact .gform_wrapper .gform_footer .button[disabled]:after {
   background: #bdbdbd; }
@@ -2253,8 +2297,7 @@ input[value="AUTRES BANQUES"] + label {
   .page-template-contact .contact-sidebar .lend h2,
   .page-template-contact .contact-sidebar .lend p,
   .page-template-contact .contact-sidebar .lend a {
-    margin-top: 0;
-    color: #312f2f; }
+    margin-top: 0; }
 
 .page-template-contact .contact-sidebar .advisor h2,
 .page-template-contact .contact-sidebar .advisor p {

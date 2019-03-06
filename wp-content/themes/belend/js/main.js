@@ -20956,18 +20956,23 @@ var counterAnimation = function counterAnimation() {
 
   if (!counter) return;
   var animationDuration = 0.3;
-  var number = 1781756;
-  var stringifiedNumber = number.toString();
+  var number = '0';
+  var maxNumber = '0';
+  var randomFactor = 0;
+  var divs = [];
   counter.innerText = '';
-  var digitsNumber = stringifiedNumber.length;
 
-  for (var index = 0; index < digitsNumber; index += 1) {
-    var div = document.createElement('div');
-    var span = document.createElement('span');
-    span.innerText = stringifiedNumber[index];
-    div.appendChild(span);
-    counter.appendChild(div);
-  }
+  var initCounterElements = function initCounterElements() {
+    var digitsNumber = number.length;
+
+    for (var index = 0; index < digitsNumber; index += 1) {
+      var div = document.createElement('div');
+      var span = document.createElement('span');
+      span.innerText = number[index];
+      div.appendChild(span);
+      counter.appendChild(div);
+    }
+  };
 
   var animateDigit = function animateDigit(_ref) {
     var container = _ref.container,
@@ -21015,33 +21020,20 @@ var counterAnimation = function counterAnimation() {
         span2.classList.remove('colored');
       }
     });
-  };
+  }; // const insertDiv = divNumber => {
+  //     const [firstDiv] = divs;
+  //     for (let index = 0; index < divNumber; index += 1) {
+  //         const div = document.createElement('div');
+  //         counter.insertBefore(div, firstDiv);
+  //     }
+  //     divs = [].slice.call(counter.getElementsByTagName('div'));
+  // };
 
-  var divs = [].slice.call(counter.getElementsByTagName('div'));
-
-  var insertDiv = function insertDiv(divNumber) {
-    var _divs = divs,
-        _divs2 = _slicedToArray(_divs, 1),
-        firstDiv = _divs2[0];
-
-    for (var _index = 0; _index < divNumber; _index += 1) {
-      var _div = document.createElement('div');
-
-      counter.insertBefore(_div, firstDiv);
-    }
-
-    divs = [].slice.call(counter.getElementsByTagName('div'));
-  };
 
   var computeNumber = function computeNumber(_ref2) {
     var newNumber = _ref2.newNumber,
         oldNumber = _ref2.oldNumber;
     var startedMoving = false;
-    var deltaLength = newNumber.length - oldNumber.length;
-
-    if (deltaLength) {
-      insertDiv(deltaLength);
-    }
 
     var timeoutAnimation = function timeoutAnimation(_ref3) {
       var index = _ref3.index,
@@ -21055,13 +21047,13 @@ var counterAnimation = function counterAnimation() {
       }, timeoutDuration);
     };
 
-    for (var _index2 = 0; _index2 < newNumber.length; _index2 += 1) {
-      var oldDigit = parseInt(oldNumber[_index2], 10);
-      var newDigit = parseInt(newNumber[_index2], 10);
+    for (var index = 0; index < newNumber.length; index += 1) {
+      var oldDigit = parseInt(oldNumber[index], 10);
+      var newDigit = parseInt(newNumber[index], 10);
 
       if (startedMoving || oldDigit !== newDigit) {
         timeoutAnimation({
-          index: _index2,
+          index: index,
           newDigit: newDigit
         });
         startedMoving = true;
@@ -21070,7 +21062,7 @@ var counterAnimation = function counterAnimation() {
   };
 
   var simulateNewNumber = function simulateNewNumber() {
-    var newNumber = number + Math.ceil(Math.random() * 1000);
+    var newNumber = Math.min(number + Math.ceil(Math.random() * randomFactor), maxNumber);
     computeNumber({
       newNumber: newNumber.toString(),
       oldNumber: number.toString()
@@ -21081,15 +21073,26 @@ var counterAnimation = function counterAnimation() {
   var animate = function animate() {
     setTimeout(function () {
       simulateNewNumber();
-      animate();
-    }, 5000);
+
+      if (number < maxNumber) {
+        animate();
+      }
+    }, 1000);
   };
 
   var launchCounter = function launchCounter(response) {
-    console.log('TCL: launchCounter -> response', response);
-    simulateNewNumber();
     animate();
-  }; // fetchData.fetch({
+  };
+
+  document.addEventListener('revealCounter', function () {
+    // maxNumber is the number collected after the api call
+    maxNumber = '5345';
+    number = maxNumber.replace(/[0-9]/g, '0');
+    randomFactor = Math.floor(parseInt(maxNumber, 10) * 0.5);
+    initCounterElements();
+    divs = [].slice.call(counter.getElementsByTagName('div'));
+    launchCounter();
+  }, false); // fetchData.fetch({
   //     url:
   //         'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos',
   //     method: 'GET',
@@ -21104,7 +21107,6 @@ var counterAnimation = function counterAnimation() {
   //     },
   //     cb: launchCounter,
   // });
-
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (counterAnimation);
@@ -21148,16 +21150,15 @@ var fetchDataFactory = function fetchDataFactory() {
 
     if (method === 'POST' || method === 'PUT') {
       params.body = JSON.stringify(data);
-    } // fetch(url, params).then(response => {
-    //     // console.log('TCL: fetchDataFactory -> response', response);
-    //     // response.json()
-    // });
-    // .then(response => {
-    //     if (cb) {
-    //         cb(response);
-    //     }
-    // });
+    }
 
+    fetch(url, params).then(function (response) {// console.log('TCL: fetchDataFactory -> response', response);
+      // response.json()
+    }).then(function (response) {
+      if (cb) {
+        cb(response);
+      }
+    });
   };
 
   return Object.freeze({
@@ -21199,8 +21200,8 @@ var progress = function progress() {
   var pagesLength = jQuery('.gform_page').length;
   var currentPage = jQuery('.gform_page:visible').index('.gform_page') + 1;
   var percent = Math.round(currentPage * 100 / pagesLength);
-  var width = progressbar.width() / 100 * percent > 35 ? Math.round(progressbar.width() / 100 * percent) : 35;
-  progressbar.html("<span style=\"width: ".concat(width, "px\">").concat(percent, " %</span>"));
+  var width = progressbar.width() / 100 * percent > 35 ? "".concat(percent, "%") : 35;
+  progressbar.html("<span style=\"width: ".concat(width, "\">").concat(percent, " %</span>"));
 };
 
 var fixedPositionOnScroll = function fixedPositionOnScroll(win) {
@@ -21505,7 +21506,15 @@ function Io() {
 
   this.revealPlopOut = function (entry) {
     entry.classList.remove('reveal-plop');
+  }; // Reveal counter
+
+
+  this.revealCounterIn = function () {
+    var counterEvent = Object(_utils__WEBPACK_IMPORTED_MODULE_1__["createNewEvent"])('revealCounter');
+    document.dispatchEvent(counterEvent);
   };
+
+  this.revealCounterOut = function () {};
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (new Io());
@@ -21670,12 +21679,13 @@ var placesInput = function placesInput() {// const [cityField] = document.getEle
 /*!**************************************************!*\
   !*** ./wp-content/themes/belend/src/js/utils.js ***!
   \**************************************************/
-/*! exports provided: forEach, requestAnimFrame, throttle, default */
+/*! exports provided: forEach, createNewEvent, requestAnimFrame, throttle, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forEach", function() { return forEach; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewEvent", function() { return createNewEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAnimFrame", function() { return requestAnimFrame; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return throttle; });
 var forEach = function forEach(arr, callback) {
@@ -21686,6 +21696,16 @@ var forEach = function forEach(arr, callback) {
     callback(arr[i], i);
     i += 1;
   }
+};
+var createNewEvent = function createNewEvent(eventName) {
+  var e = new Event(eventName);
+
+  if (typeof Event !== 'function') {
+    e = document.createEvent('Event');
+    e.initEvent(eventName, true, true);
+  }
+
+  return e;
 };
 var requestAnimFrame = function requestAnimFrame(cb) {
   var anim = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -21719,6 +21739,7 @@ var throttle = function throttle(callback, delay) {
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   forEach: forEach,
+  createNewEvent: createNewEvent,
   requestAnimFrame: requestAnimFrame,
   throttle: throttle
 });
@@ -21738,86 +21759,3 @@ var throttle = function throttle(callback, delay) {
 
 /******/ });
 //# sourceMappingURL=main.js.map
-
-var liste = [
-	"Draggable",
-	"Droppable",
-	"Resizable",
-	"Selectable",
-	"Sortable"
-];
-
-jQuery(document).ready(function($){
-
-	var adminAjax = scripts_l10n.adminAjax;
-
-  $('.field-siren input').on('change', function(){
-      console.log(change);
-  });
-
-	$('.field-siren input').autocomplete({
-		source : function(request, response){
-			$.ajax({
-				url: adminAjax,
-				data: {
-					action: 'getSiren',
-					'name_startsWith' : $('.field-siren input').val()
-				},
-				success : function(data){
-					console.log(data);
-					response($.map(JSON.parse(data), function(company){
-						var label = company.siren;
-						return {'NAF':company.codeNaf,'label':company.name + ', ' + company.address + ', ' + 'SIREN: ' + company.siren, 'value':company.siren} // on retourne cette forme de suggestion
-					}));			}
-			});
-		},
-		search: function(term) {
-			// custom minLength
-			if ( term.length < 2 ) {
-				return false;
-			}
-		},
-		select : function(event, ui){
-			console.log(ui.item);
-			$('.field-naf input').val(ui.item.NAF);
-		}
-	});
-
-/*	$(document).on('click','.gform_next_button', function(){
-		var form_content = $('#gform_1').serialize()
-		console.log(form_content);
-		localStorage.setItem('belendForm', form_content);
-	});*/
-
-	$(document).on('gform_post_render', function(){
-		var cookie = getCookie('gformPartialID');
-		if( typeof cookie == "undefined" || ($('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() !='undefined')){
-
-		   if( $('.partial_entry_id').val() != cookie){
-             console.log('added to cookie:', $('.partial_entry_id').val())
-             document.cookie = "gformPartialID="+$('.partial_entry_id').val();
-           }
-
-		}else if(cookie && $('#partial_entry_id').val() != cookie){
-			$('.partial_entry_id').val(cookie);
-		}
-	});
-
-});
-
-function getCookie(c_name) {
-	var c_value = document.cookie,
-		c_start = c_value.indexOf(" " + c_name + "=");
-	if (c_start == -1) c_start = c_value.indexOf(c_name + "=");
-	if (c_start == -1) {
-		c_value = null;
-	} else {
-		c_start = c_value.indexOf("=", c_start) + 1;
-		var c_end = c_value.indexOf(";", c_start);
-		if (c_end == -1) {
-			c_end = c_value.length;
-		}
-		c_value = unescape(c_value.substring(c_start, c_end));
-	}
-	return c_value;
-}

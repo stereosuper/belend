@@ -23,15 +23,16 @@ const fetchDataFactory = () => {
             params.body = JSON.stringify(data);
         }
 
-        // fetch(url, params).then(response => {
-        //     // console.log('TCL: fetchDataFactory -> response', response);
-        //     // response.json()
-        // });
-        // .then(response => {
-        //     if (cb) {
-        //         cb(response);
-        //     }
-        // });
+        fetch(url, params)
+            .then(response => {
+                // console.log('TCL: fetchDataFactory -> response', response);
+                // response.json()
+            })
+            .then(response => {
+                if (cb) {
+                    cb(response);
+                }
+            });
     };
     return Object.freeze({
         fetch: fetchSomeData,
