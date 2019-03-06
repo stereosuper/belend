@@ -10,7 +10,7 @@
                 overflow: hidden;
                 background-repeat: no-repeat;
                 background-position: 50% 50%;
-                background-size: contain;
+                background-size: auto 90%;
             }
         }
         input[value="CIC"] {
@@ -77,6 +77,13 @@
             & + label {
                 color: $black;
                 background: none;
+            }
+        }
+    }
+    .gfield_radio {
+        input {
+            & + label {
+                background-size: auto 70%;
             }
         }
     }
