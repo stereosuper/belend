@@ -21100,7 +21100,10 @@ var counterAnimation = function counterAnimation() {
   document.addEventListener('revealCounter', function () {
     launchCounter();
   }, false);
-  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+  var _scripts_l10n = scripts_l10n,
+      siteUrl = _scripts_l10n.siteUrl;
+  var urlToFetch = "".concat(siteUrl, "/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos");
+  console.log('TCL: urlToFetch', urlToFetch);
   _fetchData__WEBPACK_IMPORTED_MODULE_1__["default"].fetch({
     url: urlToFetch,
     method: 'GET',

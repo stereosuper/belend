@@ -148,7 +148,30 @@
                 </div>
             <?php endif; ?>
         </section>
-
+        <?php if ($partners = get_field('partners')) : ?>
+            <section class='partners-wrapper'>
+                <div class='container'>
+                    <?php if ($title = $partners['title']) : ?>
+                        <h2><?php echo $title ?></h2>
+                    <?php endif; ?>
+                    <?php if ($description = $partners['description']) : ?>
+                        <p><?php echo $title ?></p>
+                    <?php endif; ?>
+                    <?php
+                        if ($link = $partners['link']): 
+                            $url = $link['url'];
+                            $title = $link['title'];
+                            $target = 'target="'. $link['target'] . '"';
+                            $is_target_blank = $target === '_blank' ? 'rel="noopener noreferrer"' : '';
+                    ?>
+                        <a class="btn" href="<?php echo $url ?>" title="<?php echo $title ?>" <?php echo $target ?> <?php echo $is_target_blank ?>>
+                            <span><?php echo $title ?></span>
+                            <svg class='icon'><use xlink:href='#icon-arrow'></use></svg>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </section>
+        <?php endif; ?>
         <?php if( have_rows('benefits', 'options') ): ?>
             <section class='benefits-wrapper'>
                 <div class='container'>

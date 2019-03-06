@@ -143,8 +143,9 @@ const counterAnimation = () => {
         false
     );
 
-    const urlToFetch =
-        'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+    const { siteUrl } = scripts_l10n;
+    const urlToFetch = `${siteUrl}/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos`;
+    console.log('TCL: urlToFetch', urlToFetch);
 
     fetchData.fetch({
         url: urlToFetch,
