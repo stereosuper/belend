@@ -21166,7 +21166,7 @@ var fetchDataFactory = function fetchDataFactory() {
     }
 
     fetch(url, params).then(function (response) {
-      response.json();
+      return response.json();
     }).then(function (response) {
       if (cb) {
         cb(response);
