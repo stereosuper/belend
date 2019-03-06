@@ -21653,22 +21653,37 @@ var mapParallax = function mapParallax() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var places_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 /* harmony import */ var places_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(places_js__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var placesInput = function placesInput() {// const [cityField] = document.getElementsByClassName('field-city');
-  // if (cityField) {
-  //     const [cityInput] = cityField.getElementsByTagName('input');
-  //     if (cityInput) {
-  //         const placesAutocomplete = places({
-  //             appId: '',
-  //             apiKey: '',
-  //             container: cityInput,
-  //         });
-  //         placesAutocomplete.on('change', e => {
-  //             console.log(e.suggestion.value);
-  //         });
-  //     }
-  // }
+
+var placesInput = function placesInput() {
+  var _document$getElements = document.getElementsByClassName('field-city'),
+      _document$getElements2 = _slicedToArray(_document$getElements, 1),
+      cityField = _document$getElements2[0];
+
+  if (cityField) {
+    var _cityField$getElement = cityField.getElementsByTagName('input'),
+        _cityField$getElement2 = _slicedToArray(_cityField$getElement, 1),
+        cityInput = _cityField$getElement2[0];
+
+    if (cityInput) {
+      var placesAutocomplete = places_js__WEBPACK_IMPORTED_MODULE_0___default()({
+        appId: 'VRMOTBXNFK',
+        apiKey: '9c921661047800fcc960531fdf359692',
+        container: cityInput
+      });
+      placesAutocomplete.on('change', function (e) {
+        console.log(e.suggestion.value);
+      });
+    }
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (placesInput);
