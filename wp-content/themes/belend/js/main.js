@@ -21087,7 +21087,7 @@ var counterAnimation = function counterAnimation() {
     if (data && data.response) {
       maxNumber = data.response.stats.count_dossiers_envoyes.toString();
     } else {
-      maxNumber = '1208';
+      maxNumber = counter.dataset.filesNumber;
     }
 
     number = maxNumber.replace(/[0-9]/g, '0');
@@ -21100,15 +21100,16 @@ var counterAnimation = function counterAnimation() {
   document.addEventListener('revealCounter', function () {
     launchCounter();
   }, false);
-  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos'; // fetchData.fetch({
-  //     url: urlToFetch,
-  //     method: 'GET',
-  //     headersContent: {
-  //         'Access-Control-Allow-Origin': '*',
-  //         'Content-Type': 'application/json',
-  //     },
-  //     cb: launchCounter,
-  // });
+  var urlToFetch = 'https://www.pretpro.fr/wp-admin/admin-ajax.php?iobs=false&geocode=false&action=getInfos';
+  _fetchData__WEBPACK_IMPORTED_MODULE_1__["default"].fetch({
+    url: urlToFetch,
+    method: 'GET',
+    headersContent: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    },
+    cb: launchCounter
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (counterAnimation);

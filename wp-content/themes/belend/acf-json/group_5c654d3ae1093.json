@@ -327,7 +327,7 @@
         },
         {
             "key": "field_5c656019b308f",
-            "label": "Texte nombre",
+            "label": "Texte nombre de dossiers",
             "name": "nbText",
             "type": "text",
             "instructions": "",
@@ -346,7 +346,7 @@
         },
         {
             "key": "field_5c656051b3090",
-            "label": "Nombre",
+            "label": "Nombre de dossiers (si API down)",
             "name": "nb",
             "type": "text",
             "instructions": "",
@@ -519,5 +519,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1550573826
+    "modified": 1551887701
 }
