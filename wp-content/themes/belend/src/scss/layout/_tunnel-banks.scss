@@ -1,81 +1,83 @@
 .field-banks {
-    input {
-        &:checked + label {
-            color: transparent;
+    .gfield_checkbox,
+    .gfield_radio {
+        input {
+            &:checked + label {
+                color: transparent;
+            }
+            & + label {
+                color: transparent;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: contain;
+            }
         }
-        & + label {
-            color: transparent;
-            overflow: hidden;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: contain;
+        input[value="CIC"] {
+            & + label {
+                background-image: url("../../img/banks/cic.png");
+            }
         }
-    }
-}
-
-input[value="CIC"] {
-    & + label {
-        background-image: url("../../img/banks/cic.png");
-    }
-}
-input[value="CREDIT MUTUEL"] {
-    & + label {
-        background-image: url("../../img/banks/credit-mutuel.png");
-    }
-}
-input[value="CAISSE D'EPARGNE"] {
-    & + label {
-        background-image: url("../../img/banks/caisse-d-epargne.png");
-    }
-}
-input[value="BANQUE POPULAIRE"] {
-    & + label {
-        background-image: url("../../img/banks/banque-populaire.png");
-    }
-}
-input[value="CREDIT AGRICOLE"] {
-    & + label {
-        background-image: url("../../img/banks/credit-agricole.png");
-    }
-}
-input[value="SOCIETE GENERALE"] {
-    & + label {
-        background-image: url("../../img/banks/société-generale.png");
-    }
-}
-input[value="BNP PARIBAS"] {
-    & + label {
-        background-image: url("../../img/banks/bnp-paribas.png");
-    }
-}
-input[value="LCL"] {
-    & + label {
-        background-image: url("../../img/banks/lcl.png");
-    }
-}
-input[value="HSBC"] {
-    & + label {
-        background-image: url("../../img/banks/hsbc.png");
-    }
-}
-input[value="CREDIT DU NORD"] {
-    & + label {
-        background-image: url("../../img/banks/credit-du-nord.png");
-    }
-}
-input[value="BANQUE PALATINE"] {
-    & + label {
-        background-image: url("../../img/banks/banque-palatine.png");
-    }
-}
-input[value="CREDIT COOPERATIF"] {
-    & + label {
-        background-image: url("../../img/banks/credit-cooperatif.png");
-    }
-}
-input[value="AUTRES BANQUES"] {
-    & + label {
-        color: $black;
-        background: none;
+        input[value="CREDIT MUTUEL"] {
+            & + label {
+                background-image: url("../../img/banks/credit-mutuel.png");
+            }
+        }
+        input[value="CAISSE D'EPARGNE"] {
+            & + label {
+                background-image: url("../../img/banks/caisse-d-epargne.png");
+            }
+        }
+        input[value="BANQUE POPULAIRE"] {
+            & + label {
+                background-image: url("../../img/banks/banque-populaire.png");
+            }
+        }
+        input[value="CREDIT AGRICOLE"] {
+            & + label {
+                background-image: url("../../img/banks/credit-agricole.png");
+            }
+        }
+        input[value="SOCIETE GENERALE"] {
+            & + label {
+                background-image: url("../../img/banks/société-generale.png");
+            }
+        }
+        input[value="BNP PARIBAS"] {
+            & + label {
+                background-image: url("../../img/banks/bnp-paribas.png");
+            }
+        }
+        input[value="LCL"] {
+            & + label {
+                background-image: url("../../img/banks/lcl.png");
+            }
+        }
+        input[value="HSBC"] {
+            & + label {
+                background-image: url("../../img/banks/hsbc.png");
+            }
+        }
+        input[value="CREDIT DU NORD"] {
+            & + label {
+                background-image: url("../../img/banks/credit-du-nord.png");
+            }
+        }
+        input[value="BANQUE PALATINE"] {
+            & + label {
+                background-image: url("../../img/banks/banque-palatine.png");
+            }
+        }
+        input[value="CREDIT COOPERATIF"] {
+            & + label {
+                background-image: url("../../img/banks/credit-cooperatif.png");
+            }
+        }
+        input[value="AUTRES BANQUES"] {
+            & + label {
+                color: $black;
+                background: none;
+            }
+        }
     }
 }
