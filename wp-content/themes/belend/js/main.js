@@ -21348,32 +21348,45 @@ var autocomplete = function autocomplete($) {
   sirenInput.autocomplete({
     source: function source(request, response) {
       if (!xhr) {
+        var s = sirenInput.val(),
+            type = 'full_text';
+
+        if (!isNaN(s) && s.length == 9) {
+          type = 'siren';
+        } //console.log(type);
+
+
         xhr = $.ajax({
-          url: adminAjax,
+          url: 'https://entreprise.data.gouv.fr/api/sirene/v1/' + type + '/' + s,
           timeout: 2000,
-          data: {
-            action: 'getSiren',
-            name_startsWith: $('.field-siren input').val()
+          complete: function complete() {
+            xhr = null;
           },
           success: function success(data) {
             //console.log(data);
-            xhr = null;
-            response($.map(JSON.parse(data), function (company) {
-              var label = company.siren;
-              var render;
-
-              if (company.address != '') {
-                render = "".concat(company.name, ", ").concat(company.address, ", SIREN: ").concat(company.siren);
-              } else {
-                render = "".concat(company.name, ", SIREN: ").concat(company.siren);
-              }
-
-              return {
-                NAF: company.codeNaf,
-                label: render,
-                value: company.siren
-              }; // on retourne cette forme de suggestion
-            }));
+            if (type == 'full_text') {
+              response($.map(data.etablissement, function (company) {
+                //console.log('company via full text', company);
+                var label = company.siren;
+                return {
+                  NAF: company.activite_principale,
+                  label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
+                  value: company.siren
+                }; // on retourne cette forme de suggestion
+              }));
+            } else if (type == 'siren') {
+              response($.map(data, function (company) {
+                //console.log('company via siren', company);
+                if (typeof company.siren !== 'undefined') {
+                  var label = company.siren;
+                  return {
+                    NAF: company.activite_principale,
+                    label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
+                    value: company.siren
+                  }; // on retourne cette forme de suggestion
+                }
+              }));
+            }
           }
         });
       }
