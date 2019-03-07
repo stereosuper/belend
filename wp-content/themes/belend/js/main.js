@@ -21356,9 +21356,17 @@ var autocomplete = function autocomplete($) {
           console.log(data);
           response($.map(JSON.parse(data), function (company) {
             var label = company.siren;
+            var render;
+
+            if (company.address != '') {
+              render = "".concat(company.name, ", ").concat(company.address, ", SIREN: ").concat(company.siren);
+            } else {
+              render = "".concat(company.name, ", SIREN: ").concat(company.siren);
+            }
+
             return {
               NAF: company.codeNaf,
-              label: "".concat(company.name, ", ").concat(company.address, ", ") + "SIREN: ".concat(company.siren),
+              label: render,
               value: company.siren
             }; // on retourne cette forme de suggestion
           }));
@@ -21378,7 +21386,9 @@ var autocomplete = function autocomplete($) {
     },
     select: function select(event, ui) {
       // console.log(ui.item);
-      $('.field-naf input').val(ui.item.NAF);
+      //$('.field-naf input').val(ui.item.NAF);
+      $('.code-naf input').val(ui.item.NAF);
+      $('.num-siren input').val(ui.item.value);
     }
   });
 };

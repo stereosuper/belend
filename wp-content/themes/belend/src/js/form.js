@@ -183,11 +183,15 @@ const autocomplete = $ => {
                     response(
                         $.map(JSON.parse(data), company => {
                             const label = company.siren;
+                            var render;
+                            if (company.address != '') {
+                                render = `${company.name}, ${company.address}, SIREN: ${company.siren}`
+                            } else {
+                                render = `${company.name}, SIREN: ${company.siren}`
+                            }
                             return {
                                 NAF: company.codeNaf,
-                                label:
-                                    `${company.name}, ${company.address}, ` +
-                                    `SIREN: ${company.siren}`,
+                                label: render,
                                 value: company.siren,
                             }; // on retourne cette forme de suggestion
                         })
@@ -206,7 +210,9 @@ const autocomplete = $ => {
         },
         select(event, ui) {
             // console.log(ui.item);
-            $('.field-naf input').val(ui.item.NAF);
+            //$('.field-naf input').val(ui.item.NAF);
+            $('.code-naf input').val(ui.item.NAF);
+            $('.num-siren input').val(ui.item.value);
         },
     });
 };

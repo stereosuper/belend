@@ -37,7 +37,7 @@ add_action( 'init', 'belend_unregister_tags' );
 
 // ACF options page
 if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page();	
+	acf_add_options_page();
 }
 
 // Gravity forms
@@ -160,14 +160,14 @@ function belend_mce_before_init( $styles ){
 add_filter( 'tiny_mce_before_init', 'belend_mce_before_init' );
 
 // Option page
-function belend_menu_order( $menu_ord ){  
-    if( !$menu_ord ) return true;  
-    
+function belend_menu_order( $menu_ord ){
+    if( !$menu_ord ) return true;
+
     $menu = 'acf-options';
     $menu_ord = array_diff($menu_ord, array( $menu ));
     array_splice( $menu_ord, 1, 0, array( $menu ) );
     return $menu_ord;
-}  
+}
 add_filter( 'custom_menu_order', 'belend_menu_order' );
 add_filter( 'menu_order', 'belend_menu_order' );
 
@@ -276,7 +276,7 @@ add_filter( 'gform_confirmation_anchor', function(){ return 0; });
 function belend_scripts(){
     // header
     wp_enqueue_style( 'belend-style', get_template_directory_uri() . '/css/main.css', array(), BELEND_VERSION );
-    
+
     wp_enqueue_style( 'belend-typekit', 'https://use.typekit.net/utk2eec.css', array(), BELEND_VERSION );
 
 	// footer
@@ -322,20 +322,20 @@ add_action( 'wp_enqueue_scripts', 'belend_scripts' );
 //             'force_activation' => false
 //         ),
 //     );
-    
+
 // 	$config = array(
 // 		'id'           => 'belend',
-// 		'default_path' => '', 
+// 		'default_path' => '',
 // 		'menu'         => 'tgmpa-install-plugins',
 // 		'parent_slug'  => 'themes.php',
-// 		'capability'   => 'edit_theme_options', 
+// 		'capability'   => 'edit_theme_options',
 // 		'has_notices'  => true,
 // 		'dismissable'  => true,
 // 		'dismiss_msg'  => '',
 // 		'is_automatic' => false,
 // 		'message'      => ''
 //     );
-    
+
 // 	tgmpa( $plugins, $config );
 // }
 // add_action( 'tgmpa_register', 'belend_register_required_plugins' );
@@ -355,43 +355,66 @@ add_action( 'wp_ajax_nopriv_getSiren', 'belend_get_siren' );
 
 function belend_get_siren(){
 
-    $name = $_GET['name_startsWith'];
+    $name   = $_GET['name_startsWith'];
+    $req    = 'https://api.insee.fr/entreprises/sirene/V3/siret?q=denominationUniteLegale:"'.$name.'"';
+    $type   = 'siret';
 
-    $response = wp_remote_get( 'https://api.insee.fr/entreprises/sirene/V3/siret?q=denominationUniteLegale:"'.$name.'"', array('headers' => array(
-        'Authorization' => 'Bearer 16d2a0e6-ef0e-36a0-b298-7f878145ade3'
+    if (is_numeric($name) && strlen($name) == 9) {
+        $req    = 'https://api.insee.fr/entreprises/sirene/V3/siren/'.$name;
+        $type   = 'siren';
+    }
+
+    $response = wp_remote_get( $req, array('headers' => array(
+        'Authorization' => 'Bearer a465ed31-2a64-3990-9e51-e52123358d86'
     )) );
     if ( is_array( $response ) ) {
-        $header = $response["headers"]; // array of http header lines
-        $body = $response['body']; // use the content
+        $header = $response['headers']; // array of http header lines
+        $body   = $response['body'];    // use the content
     }
 
     $infos = json_decode($body, true);
 
-
     $response_array=[];
 
-    foreach ($infos['etablissements'] as $etablissement){
+    if ($type == 'siret') {
 
-        $address_array =  $etablissement['adresseEtablissement'];
-        $address = '';
+        foreach ($infos['etablissements'] as $etablissement){
 
-        $address .= $address_array['numeroVoieEtablissement']? $address_array['numeroVoieEtablissement'].', ': '';
-        $address .= $address_array['typeVoieEtablissement']? $address_array['typeVoieEtablissement'].' ': '';
-        $address .= $address_array['libelleVoieEtablissement']? $address_array['libelleVoieEtablissement'].', ': '';
-        $address .= $address_array['codePostalEtablissement']? $address_array['codePostalEtablissement'].', ': '';
-        $address .= $address_array['libelleCommuneEtablissement']? $address_array['libelleCommuneEtablissement']: '';
+            $address_array =  $etablissement['adresseEtablissement'];
+            $address = '';
+
+            $address .= $address_array['numeroVoieEtablissement']? $address_array['numeroVoieEtablissement'].', ': '';
+            $address .= $address_array['typeVoieEtablissement']? $address_array['typeVoieEtablissement'].' ': '';
+            $address .= $address_array['libelleVoieEtablissement']? $address_array['libelleVoieEtablissement'].', ': '';
+            $address .= $address_array['codePostalEtablissement']? $address_array['codePostalEtablissement'].', ': '';
+            $address .= $address_array['libelleCommuneEtablissement']? $address_array['libelleCommuneEtablissement']: '';
 
 
+
+            $response_array[]=array(
+                'siren'     => $etablissement['siren'],
+                'name'      => $etablissement['uniteLegale']['denominationUniteLegale'],
+                'codeNaf'   => $etablissement['uniteLegale']['activitePrincipaleUniteLegale'],
+                'address'   => $address
+            );
+        }
+
+    } else if ($type == 'siren') {
+
+        //echo json_encode($infos['uniteLegale']);
+
+        $etablissement = $infos['uniteLegale'];
 
         $response_array[]=array(
-            'siren' => $etablissement['siren'],
-            'name' => $etablissement['uniteLegale']['denominationUniteLegale'],
-            'codeNaf' => $etablissement['uniteLegale']['activitePrincipaleUniteLegale'],
-            'address' => $address
+            'siren'     => $etablissement['siren'],
+            'name'      => $etablissement['periodesUniteLegale'][0]['denominationUniteLegale'],
+            'codeNaf'   => $etablissement['periodesUniteLegale'][0]['activitePrincipaleUniteLegale'],
+            'address'   => ''
         );
+
     }
 
-    //echo var_dump($infos['etablissements']);
+    //echo var_dump($body);
 
     echo json_encode($response_array);
 
