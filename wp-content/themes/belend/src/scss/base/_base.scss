@@ -29,6 +29,9 @@ body {
 
 main {
     overflow: hidden;
+    .page-template-default &{
+        padding-bottom: 70px;
+    }
 }
 
 h1,

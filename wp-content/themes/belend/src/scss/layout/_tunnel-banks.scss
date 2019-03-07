@@ -1,6 +1,10 @@
 .field-banks {
     .gfield_checkbox,
     .gfield_radio {
+        font-size: 1.4rem;
+        > li{
+            min-height: 95px;
+        }
         input {
             &:checked + label {
                 color: transparent;
@@ -78,13 +82,6 @@
             & + label {
                 color: $black;
                 background: none;
-            }
-        }
-    }
-    .gfield_radio {
-        input {
-            & + label {
-                background-size: auto 70%;
             }
         }
     }

@@ -21348,32 +21348,47 @@ var autocomplete = function autocomplete($) {
   sirenInput.autocomplete({
     source: function source(request, response) {
       if (!xhr) {
+        var s = sirenInput.val(),
+            type = 'full_text';
+
+        if (!isNaN(s) && s.length == 9) {
+          type = 'siren';
+        } //console.log(type);
+
+
         xhr = $.ajax({
-          url: adminAjax,
+          url: 'https://entreprise.data.gouv.fr/api/sirene/v1/' + type + '/' + s,
           timeout: 2000,
-          data: {
-            action: 'getSiren',
-            name_startsWith: $('.field-siren input').val()
+          complete: function complete() {
+            xhr = null;
           },
           success: function success(data) {
-            //console.log(data);
-            xhr = null;
-            response($.map(JSON.parse(data), function (company) {
-              var label = company.siren;
-              var render;
+            //console.log('query with '+type, data);
+            var dataToUse;
+            var resp;
 
-              if (company.address != '') {
-                render = "".concat(company.name, ", ").concat(company.address, ", SIREN: ").concat(company.siren);
-              } else {
-                render = "".concat(company.name, ", SIREN: ").concat(company.siren);
-              }
+            if (type == 'full_text') {
+              dataToUse = data.etablissement;
+              resp = $.map(dataToUse, function (company) {
+                if (typeof company.siren !== 'undefined') {
+                  var label = company.siren;
+                  return {
+                    NAF: company.activite_principale,
+                    label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
+                    value: company.siren
+                  }; // on retourne cette forme de suggestion
+                }
+              });
+            } else if (type == 'siren') {
+              dataToUse = data.siege_social;
+              resp = [{
+                NAF: dataToUse.activite_principale,
+                label: "".concat(dataToUse.l1_declaree, ", ").concat(dataToUse.geo_adresse, ", SIREN: ").concat(dataToUse.siren),
+                value: dataToUse.siren
+              }];
+            }
 
-              return {
-                NAF: company.codeNaf,
-                label: render,
-                value: company.siren
-              }; // on retourne cette forme de suggestion
-            }));
+            response(resp);
           }
         });
       }

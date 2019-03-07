@@ -255,6 +255,8 @@ body {
 
 main {
   overflow: hidden; }
+  .page-template-default main {
+    padding-bottom: 70px; }
 
 h1,
 h2,
@@ -1187,6 +1189,14 @@ button {
     display: inline-block;
     margin: 0 10px; }
 
+.field-city label + div {
+  height: 40px;
+  margin-top: 6px;
+  vertical-align: top; }
+
+.field-city .algolia-places {
+  height: 40px; }
+
 .field-price:after {
   content: " €";
   display: inline-block;
@@ -1492,74 +1502,63 @@ input:focus + .instruction {
         margin: 0 0 0 15px;
         background: #bdbdbd; } }
 
-.field-banks .gfield_checkbox input:checked + label,
-.field-banks .gfield_radio input:checked + label {
-  color: transparent; }
-
-.field-banks .gfield_checkbox input + label,
-.field-banks .gfield_radio input + label {
-  color: transparent;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 80%;
-  background-color: #fff; }
-
-.field-banks .gfield_checkbox input[value="CIC"] + label,
-.field-banks .gfield_radio input[value="CIC"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT MUTUEL"] + label,
-.field-banks .gfield_radio input[value="CREDIT MUTUEL"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
-
-.field-banks .gfield_checkbox input[value="CAISSE D'EPARGNE"] + label,
-.field-banks .gfield_radio input[value="CAISSE D'EPARGNE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
-
-.field-banks .gfield_checkbox input[value="BANQUE POPULAIRE"] + label,
-.field-banks .gfield_radio input[value="BANQUE POPULAIRE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT AGRICOLE"] + label,
-.field-banks .gfield_radio input[value="CREDIT AGRICOLE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
-
-.field-banks .gfield_checkbox input[value="SOCIETE GENERALE"] + label,
-.field-banks .gfield_radio input[value="SOCIETE GENERALE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
-
-.field-banks .gfield_checkbox input[value="BNP PARIBAS"] + label,
-.field-banks .gfield_radio input[value="BNP PARIBAS"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
-
-.field-banks .gfield_checkbox input[value="LCL"] + label,
-.field-banks .gfield_radio input[value="LCL"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
-
-.field-banks .gfield_checkbox input[value="HSBC"] + label,
-.field-banks .gfield_radio input[value="HSBC"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT DU NORD"] + label,
-.field-banks .gfield_radio input[value="CREDIT DU NORD"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
-
-.field-banks .gfield_checkbox input[value="BANQUE PALATINE"] + label,
-.field-banks .gfield_radio input[value="BANQUE PALATINE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
-.field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
-
-.field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
-.field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
-  color: #000;
-  background: none; }
-
-.field-banks .gfield_radio input + label {
-  background-size: auto 70%; }
+.field-banks .gfield_checkbox,
+.field-banks .gfield_radio {
+  font-size: 1.4rem; }
+  .field-banks .gfield_checkbox > li,
+  .field-banks .gfield_radio > li {
+    min-height: 95px; }
+  .field-banks .gfield_checkbox input:checked + label,
+  .field-banks .gfield_radio input:checked + label {
+    color: transparent; }
+  .field-banks .gfield_checkbox input + label,
+  .field-banks .gfield_radio input + label {
+    color: transparent;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 80%;
+    background-color: #fff; }
+  .field-banks .gfield_checkbox input[value="CIC"] + label,
+  .field-banks .gfield_radio input[value="CIC"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT MUTUEL"] + label,
+  .field-banks .gfield_radio input[value="CREDIT MUTUEL"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
+  .field-banks .gfield_checkbox input[value="CAISSE D'EPARGNE"] + label,
+  .field-banks .gfield_radio input[value="CAISSE D'EPARGNE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
+  .field-banks .gfield_checkbox input[value="BANQUE POPULAIRE"] + label,
+  .field-banks .gfield_radio input[value="BANQUE POPULAIRE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT AGRICOLE"] + label,
+  .field-banks .gfield_radio input[value="CREDIT AGRICOLE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
+  .field-banks .gfield_checkbox input[value="SOCIETE GENERALE"] + label,
+  .field-banks .gfield_radio input[value="SOCIETE GENERALE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
+  .field-banks .gfield_checkbox input[value="BNP PARIBAS"] + label,
+  .field-banks .gfield_radio input[value="BNP PARIBAS"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
+  .field-banks .gfield_checkbox input[value="LCL"] + label,
+  .field-banks .gfield_radio input[value="LCL"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
+  .field-banks .gfield_checkbox input[value="HSBC"] + label,
+  .field-banks .gfield_radio input[value="HSBC"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT DU NORD"] + label,
+  .field-banks .gfield_radio input[value="CREDIT DU NORD"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
+  .field-banks .gfield_checkbox input[value="BANQUE PALATINE"] + label,
+  .field-banks .gfield_radio input[value="BANQUE PALATINE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
+  .field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
+  .field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
+  .field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
+    color: #000;
+    background: none; }
 
 @media (min-width: 780px) {
   .field-banks .gfield_checkbox > li,
@@ -2251,7 +2250,7 @@ a.ui-button:active,
     padding: 1.8em;
     color: #fff; }
 
-.page-template-contact .contact-container .container-small {
+.page-template-contact .contact-container .container {
   padding: 0; }
 
 .page-template-contact .contact-container .contact-content {
@@ -2518,7 +2517,7 @@ a.ui-button:active,
 @media (min-width: 1260px) {
   .page-template-contact .contact-container header {
     margin-bottom: 75px; }
-  .page-template-contact .container-small {
+  .page-template-contact .container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2526,30 +2525,30 @@ a.ui-button:active,
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
             flex-direction: row-reverse; }
-    .page-template-contact .container-small .contact-content {
+    .page-template-contact .container .contact-content {
       width: 758.75px;
       padding-right: 91.25px; }
-      .page-template-contact .container-small .contact-content .subtitle,
-      .page-template-contact .container-small .contact-content .description {
+      .page-template-contact .container .contact-content .subtitle,
+      .page-template-contact .container .contact-content .description {
         text-align: left;
         padding-right: 15px; }
-      .page-template-contact .container-small .contact-content .gform_wrapper {
+      .page-template-contact .container .contact-content .gform_wrapper {
         width: 100%; }
-    .page-template-contact .container-small .contact-sidebar {
+    .page-template-contact .container .contact-sidebar {
       width: 516.25px;
       padding: 0 60px; }
-      .page-template-contact .container-small .contact-sidebar .lend,
-      .page-template-contact .container-small .contact-sidebar .advisor {
+      .page-template-contact .container .contact-sidebar .lend,
+      .page-template-contact .container .contact-sidebar .advisor {
         padding: 50px 45px; }
-        .page-template-contact .container-small .contact-sidebar .lend h2,
-        .page-template-contact .container-small .contact-sidebar .advisor h2 {
+        .page-template-contact .container .contact-sidebar .lend h2,
+        .page-template-contact .container .contact-sidebar .advisor h2 {
           font-size: 2.6rem; }
-        .page-template-contact .container-small .contact-sidebar .lend h2,
-        .page-template-contact .container-small .contact-sidebar .lend p,
-        .page-template-contact .container-small .contact-sidebar .advisor h2,
-        .page-template-contact .container-small .contact-sidebar .advisor p {
+        .page-template-contact .container .contact-sidebar .lend h2,
+        .page-template-contact .container .contact-sidebar .lend p,
+        .page-template-contact .container .contact-sidebar .advisor h2,
+        .page-template-contact .container .contact-sidebar .advisor p {
           text-align: left; }
-      .page-template-contact .container-small .contact-sidebar .lend {
+      .page-template-contact .container .contact-sidebar .lend {
         -webkit-box-align: start;
             -ms-flex-align: start;
                 align-items: flex-start; }

@@ -186,6 +186,17 @@
     }
 }
 
+.field-city{
+    label + div{
+        height: 40px;
+        margin-top: 6px;
+        vertical-align: top;
+    }
+    .algolia-places{
+        height: 40px;
+    }
+}
+
 .field-price {
     &:after {
         content: " €";

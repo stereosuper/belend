@@ -173,32 +173,47 @@ const autocomplete = $ => {
     sirenInput.autocomplete({
         source(request, response) {
             if (!xhr) {
+                var s       = sirenInput.val(),
+                    type    = 'full_text';
+                if (!isNaN(s) && s.length == 9){
+                    type    = 'siren';
+                }
+
+                //console.log(type);
+
                 xhr = $.ajax({
-                    url: adminAjax,
+                    url: 'https://entreprise.data.gouv.fr/api/sirene/v1/'+type+'/'+s,
                     timeout: 2000,
-                    data: {
-                        action: 'getSiren',
-                        name_startsWith: $('.field-siren input').val(),
+                    complete() {
+                        xhr = null;
                     },
                     success(data) {
-                        //console.log(data);
-                        xhr = null;
-                        response(
-                            $.map(JSON.parse(data), company => {
-                                const label = company.siren;
-                                var render;
-                                if (company.address != '') {
-                                    render = `${company.name}, ${company.address}, SIREN: ${company.siren}`
-                                } else {
-                                    render = `${company.name}, SIREN: ${company.siren}`
+                        //console.log('query with '+type, data);
+                        var dataToUse;
+                        var resp;
+                        if (type == 'full_text') {
+                            dataToUse = data.etablissement;
+                            resp = $.map(dataToUse, company => {
+                                if (typeof company.siren !== 'undefined') {
+                                    const label = company.siren;
+                                    return {
+                                        NAF: company.activite_principale,
+                                        label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
+                                        value: company.siren,
+                                    }; // on retourne cette forme de suggestion
                                 }
-                                return {
-                                    NAF: company.codeNaf,
-                                    label: render,
-                                    value: company.siren,
-                                }; // on retourne cette forme de suggestion
                             })
-                        );
+                        } else if (type == 'siren') {
+                            dataToUse = data.siege_social;
+                            resp = [
+                                {
+                                    NAF: dataToUse.activite_principale,
+                                    label: `${dataToUse.l1_declaree}, ${dataToUse.geo_adresse}, SIREN: ${dataToUse.siren}`,
+                                    value: dataToUse.siren,
+                                }
+                            ]
+                        }
+                        response(resp);
                     },
                 });
             }
