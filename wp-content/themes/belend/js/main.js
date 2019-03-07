@@ -21775,21 +21775,45 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var placesInput = function placesInput() {
   var _document$getElements = document.getElementsByClassName('field-city'),
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
-      cityField = _document$getElements2[0]; // console.log('TCL: placesInput -> cityField', cityField);
-  // if (cityField) {
-  //     const [cityInput] = cityField.getElementsByTagName('input');
-  //     if (cityInput) {
-  //         const placesAutocomplete = places({
-  //             appId: 'VRMOTBXNFK',
-  //             apiKey: '7e5464630cb1cceab996187ece87e5ae',
-  //             container: cityInput,
-  //         });
-  //         placesAutocomplete.on('change', e => {
-  //             console.log(e.suggestion.value);
-  //         });
-  //     }
-  // }
+      searchField = _document$getElements2[0];
 
+  var _document$getElements3 = document.getElementsByClassName('field-commune'),
+      _document$getElements4 = _slicedToArray(_document$getElements3, 1),
+      cityField = _document$getElements4[0];
+
+  var _document$getElements5 = document.getElementsByClassName('field-cp'),
+      _document$getElements6 = _slicedToArray(_document$getElements5, 1),
+      postcodeField = _document$getElements6[0]; //console.log('TCL: placesInput -> searchField', searchField);
+
+
+  if (searchField) {
+    var _searchField$getEleme = searchField.getElementsByTagName('input'),
+        _searchField$getEleme2 = _slicedToArray(_searchField$getEleme, 1),
+        searchInput = _searchField$getEleme2[0];
+
+    if (searchInput) {
+      var placesAutocomplete = places_js__WEBPACK_IMPORTED_MODULE_0___default()({
+        appId: 'plK1J3JKK2DL',
+        apiKey: '0d83bb5fc1b2a60b38adf14b9e33d323',
+        container: searchInput
+      });
+      placesAutocomplete.on('change', function (e) {
+        //console.log(e);
+        //console.log(e.suggestion);
+        //console.log(e.suggestion.value);
+        var _cityField$getElement = cityField.getElementsByTagName('input'),
+            _cityField$getElement2 = _slicedToArray(_cityField$getElement, 1),
+            cityInput = _cityField$getElement2[0];
+
+        var _postcodeField$getEle = postcodeField.getElementsByTagName('input'),
+            _postcodeField$getEle2 = _slicedToArray(_postcodeField$getEle, 1),
+            postcodeInput = _postcodeField$getEle2[0];
+
+        cityInput.value = e.suggestion.name;
+        postcodeInput.value = e.suggestion.postcode;
+      });
+    }
+  }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (placesInput);
