@@ -1494,74 +1494,63 @@ input:focus + .instruction {
         margin: 0 0 0 15px;
         background: #bdbdbd; } }
 
-.field-banks .gfield_checkbox input:checked + label,
-.field-banks .gfield_radio input:checked + label {
-  color: transparent; }
-
-.field-banks .gfield_checkbox input + label,
-.field-banks .gfield_radio input + label {
-  color: transparent;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 80%;
-  background-color: #fff; }
-
-.field-banks .gfield_checkbox input[value="CIC"] + label,
-.field-banks .gfield_radio input[value="CIC"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT MUTUEL"] + label,
-.field-banks .gfield_radio input[value="CREDIT MUTUEL"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
-
-.field-banks .gfield_checkbox input[value="CAISSE D'EPARGNE"] + label,
-.field-banks .gfield_radio input[value="CAISSE D'EPARGNE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
-
-.field-banks .gfield_checkbox input[value="BANQUE POPULAIRE"] + label,
-.field-banks .gfield_radio input[value="BANQUE POPULAIRE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT AGRICOLE"] + label,
-.field-banks .gfield_radio input[value="CREDIT AGRICOLE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
-
-.field-banks .gfield_checkbox input[value="SOCIETE GENERALE"] + label,
-.field-banks .gfield_radio input[value="SOCIETE GENERALE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
-
-.field-banks .gfield_checkbox input[value="BNP PARIBAS"] + label,
-.field-banks .gfield_radio input[value="BNP PARIBAS"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
-
-.field-banks .gfield_checkbox input[value="LCL"] + label,
-.field-banks .gfield_radio input[value="LCL"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
-
-.field-banks .gfield_checkbox input[value="HSBC"] + label,
-.field-banks .gfield_radio input[value="HSBC"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT DU NORD"] + label,
-.field-banks .gfield_radio input[value="CREDIT DU NORD"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
-
-.field-banks .gfield_checkbox input[value="BANQUE PALATINE"] + label,
-.field-banks .gfield_radio input[value="BANQUE PALATINE"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
-
-.field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
-.field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
-  background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
-
-.field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
-.field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
-  color: #000;
-  background: none; }
-
-.field-banks .gfield_radio input + label {
-  background-size: auto 70%; }
+.field-banks .gfield_checkbox,
+.field-banks .gfield_radio {
+  font-size: 1.4rem; }
+  .field-banks .gfield_checkbox > li,
+  .field-banks .gfield_radio > li {
+    min-height: 95px; }
+  .field-banks .gfield_checkbox input:checked + label,
+  .field-banks .gfield_radio input:checked + label {
+    color: transparent; }
+  .field-banks .gfield_checkbox input + label,
+  .field-banks .gfield_radio input + label {
+    color: transparent;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 80%;
+    background-color: #fff; }
+  .field-banks .gfield_checkbox input[value="CIC"] + label,
+  .field-banks .gfield_radio input[value="CIC"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT MUTUEL"] + label,
+  .field-banks .gfield_radio input[value="CREDIT MUTUEL"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
+  .field-banks .gfield_checkbox input[value="CAISSE D'EPARGNE"] + label,
+  .field-banks .gfield_radio input[value="CAISSE D'EPARGNE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
+  .field-banks .gfield_checkbox input[value="BANQUE POPULAIRE"] + label,
+  .field-banks .gfield_radio input[value="BANQUE POPULAIRE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT AGRICOLE"] + label,
+  .field-banks .gfield_radio input[value="CREDIT AGRICOLE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
+  .field-banks .gfield_checkbox input[value="SOCIETE GENERALE"] + label,
+  .field-banks .gfield_radio input[value="SOCIETE GENERALE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
+  .field-banks .gfield_checkbox input[value="BNP PARIBAS"] + label,
+  .field-banks .gfield_radio input[value="BNP PARIBAS"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
+  .field-banks .gfield_checkbox input[value="LCL"] + label,
+  .field-banks .gfield_radio input[value="LCL"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
+  .field-banks .gfield_checkbox input[value="HSBC"] + label,
+  .field-banks .gfield_radio input[value="HSBC"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT DU NORD"] + label,
+  .field-banks .gfield_radio input[value="CREDIT DU NORD"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
+  .field-banks .gfield_checkbox input[value="BANQUE PALATINE"] + label,
+  .field-banks .gfield_radio input[value="BANQUE PALATINE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
+  .field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
+  .field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
+  .field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
+  .field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
+    color: #000;
+    background: none; }
 
 @media (min-width: 780px) {
   .field-banks .gfield_checkbox > li,
