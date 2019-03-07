@@ -82,7 +82,8 @@ function get_output($results){
         }
     }
 
-    return 'Désolé, aucune de nos offres ne correspond à vos critères.';
+    return '<p>Nous regrettons de ne pouvoir donner une suite favorable a votre demande et vous souhaitons plein succès dans vos recherches.</p>
+            <p>l\'équipe Belend</p> <div><a href="'.home_url().'" style="text-decoration: underline;">Retour à l\'accueil</a></div>';
 }
 
 
@@ -187,12 +188,7 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
-            <?php echo "<br/><br/>" . var_dump($test_results) . "<br/><br/>" ; ?>
-            <?php echo $output; ?>
-
-            <?php echo '<br/>' ?>
-            <?php echo '<br/>' ?>
-            <?php var_dump($entry) ?>
+            <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php echo $output; ?></div>
         <?php else : ?>
 
             <h1>404</h1>
