@@ -21344,34 +21344,39 @@ var autocomplete = function autocomplete($) {
   var _scripts_l10n = scripts_l10n,
       adminAjax = _scripts_l10n.adminAjax;
   var sirenInput = jQuery('.field-siren input');
+  var xhr = null;
   sirenInput.autocomplete({
     source: function source(request, response) {
-      $.ajax({
-        url: adminAjax,
-        data: {
-          action: 'getSiren',
-          name_startsWith: $('.field-siren input').val()
-        },
-        success: function success(data) {
-          console.log(data);
-          response($.map(JSON.parse(data), function (company) {
-            var label = company.siren;
-            var render;
+      if (!xhr) {
+        xhr = $.ajax({
+          url: adminAjax,
+          timeout: 2000,
+          data: {
+            action: 'getSiren',
+            name_startsWith: $('.field-siren input').val()
+          },
+          success: function success(data) {
+            //console.log(data);
+            xhr = null;
+            response($.map(JSON.parse(data), function (company) {
+              var label = company.siren;
+              var render;
 
-            if (company.address != '') {
-              render = "".concat(company.name, ", ").concat(company.address, ", SIREN: ").concat(company.siren);
-            } else {
-              render = "".concat(company.name, ", SIREN: ").concat(company.siren);
-            }
+              if (company.address != '') {
+                render = "".concat(company.name, ", ").concat(company.address, ", SIREN: ").concat(company.siren);
+              } else {
+                render = "".concat(company.name, ", SIREN: ").concat(company.siren);
+              }
 
-            return {
-              NAF: company.codeNaf,
-              label: render,
-              value: company.siren
-            }; // on retourne cette forme de suggestion
-          }));
-        }
-      });
+              return {
+                NAF: company.codeNaf,
+                label: render,
+                value: company.siren
+              }; // on retourne cette forme de suggestion
+            }));
+          }
+        });
+      }
     },
     search: function search(term) {
       // console.log('TCL: search -> term', term);
