@@ -24,9 +24,7 @@ const fetchDataFactory = () => {
         }
 
         fetch(url, params)
-            .then(response => {
-                response.json();
-            })
+            .then(response => response.json())
             .then(response => {
                 if (cb) {
                     cb(response);

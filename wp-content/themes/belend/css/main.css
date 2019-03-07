@@ -248,7 +248,7 @@ html {
     right: 0; }
 
 body {
-  font: 1.8em/1.35 sans-serif;
+  font: 1.8em/1.35 "upgrade", sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -268,7 +268,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: sans-serif; }
+  font-family: "upgrade-lights", "upgrade", sans-serif; }
 
 h2,
 h3,
@@ -282,7 +282,7 @@ h1,
   text-align: center; }
   h1 > span,
   .h1 > span {
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-weight: 400; }
 
 h2,
@@ -375,13 +375,13 @@ cite {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  font-family: sans-serif;
+  font-family: "upgrade", sans-serif;
   text-align: right;
   color: #312f2f; }
   cite .name {
     display: block;
     margin: 5px 0 0;
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-style: normal;
     font-weight: 400; }
   cite .img {
@@ -555,7 +555,7 @@ a {
   max-width: 1320px; }
 
 .container-small {
-  max-width: 1320px; }
+  max-width: 1020px; }
 
 @media (min-width: 960px) {
   .container-desk {
@@ -1038,6 +1038,9 @@ button {
 .gfield_visibility_hidden {
   display: none; }
 
+.gform_wrapper form > .validation_error {
+  display: none; }
+
 .field-year::after {
   content: "année(s)"; }
 
@@ -1236,7 +1239,7 @@ button {
   color: #fff; }
   .form-progress h1 {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "upgrade", sans-serif;
     font-size: 1.8rem; }
 
 .field-help {
@@ -1459,7 +1462,7 @@ input:focus + .instruction {
     .sidebar .page-bar .inactive-page {
       display: block;
       margin: 65px 0 3px;
-      font-family: sans-serif;
+      font-family: "upgrade-lights", "upgrade", sans-serif;
       font-size: 2.2rem;
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
@@ -1485,55 +1488,73 @@ input:focus + .instruction {
         margin: 0 0 0 15px;
         background: #bdbdbd; } }
 
-.field-banks input:checked + label {
+.field-banks .gfield_checkbox input:checked + label,
+.field-banks .gfield_radio input:checked + label {
   color: transparent; }
 
-.field-banks input + label {
+.field-banks .gfield_checkbox input + label,
+.field-banks .gfield_radio input + label {
   color: transparent;
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: contain; }
+  background-size: auto 90%; }
 
-input[value="CIC"] + label {
+.field-banks .gfield_checkbox input[value="CIC"] + label,
+.field-banks .gfield_radio input[value="CIC"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
 
-input[value="CREDIT MUTUEL"] + label {
+.field-banks .gfield_checkbox input[value="CREDIT MUTUEL"] + label,
+.field-banks .gfield_radio input[value="CREDIT MUTUEL"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-mutuel.png); }
 
-input[value="CAISSE D'EPARGNE"] + label {
+.field-banks .gfield_checkbox input[value="CAISSE D'EPARGNE"] + label,
+.field-banks .gfield_radio input[value="CAISSE D'EPARGNE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/caisse-d-epargne.png); }
 
-input[value="BANQUE POPULAIRE"] + label {
+.field-banks .gfield_checkbox input[value="BANQUE POPULAIRE"] + label,
+.field-banks .gfield_radio input[value="BANQUE POPULAIRE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/banque-populaire.png); }
 
-input[value="CREDIT AGRICOLE"] + label {
+.field-banks .gfield_checkbox input[value="CREDIT AGRICOLE"] + label,
+.field-banks .gfield_radio input[value="CREDIT AGRICOLE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-agricole.png); }
 
-input[value="SOCIETE GENERALE"] + label {
+.field-banks .gfield_checkbox input[value="SOCIETE GENERALE"] + label,
+.field-banks .gfield_radio input[value="SOCIETE GENERALE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/société-generale.png); }
 
-input[value="BNP PARIBAS"] + label {
+.field-banks .gfield_checkbox input[value="BNP PARIBAS"] + label,
+.field-banks .gfield_radio input[value="BNP PARIBAS"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/bnp-paribas.png); }
 
-input[value="LCL"] + label {
+.field-banks .gfield_checkbox input[value="LCL"] + label,
+.field-banks .gfield_radio input[value="LCL"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/lcl.png); }
 
-input[value="HSBC"] + label {
+.field-banks .gfield_checkbox input[value="HSBC"] + label,
+.field-banks .gfield_radio input[value="HSBC"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/hsbc.png); }
 
-input[value="CREDIT DU NORD"] + label {
+.field-banks .gfield_checkbox input[value="CREDIT DU NORD"] + label,
+.field-banks .gfield_radio input[value="CREDIT DU NORD"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-du-nord.png); }
 
-input[value="BANQUE PALATINE"] + label {
+.field-banks .gfield_checkbox input[value="BANQUE PALATINE"] + label,
+.field-banks .gfield_radio input[value="BANQUE PALATINE"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/banque-palatine.png); }
 
-input[value="CREDIT COOPERATIF"] + label {
+.field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
+.field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
   background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
 
-input[value="AUTRES BANQUES"] + label {
+.field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
+.field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
   color: #000;
   background: none; }
+
+.field-banks .gfield_radio input + label {
+  background-size: auto 70%; }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
@@ -1665,7 +1686,7 @@ input[value="AUTRES BANQUES"] + label {
   background: #bdbdbd; }
 
 .ui-widget {
-  font-family: sans-serif; }
+  font-family: "upgrade", sans-serif; }
 
 .ui-datepicker {
   padding: 0;
@@ -1853,7 +1874,7 @@ a.ui-button:active,
         -ms-flex-pack: center;
             justify-content: center;
     font-size: 5.2rem;
-    font-family: sans-serif; }
+    font-family: "upgrade-lights", "upgrade", sans-serif; }
     .home .home-nb .number > div {
       position: relative;
       display: -webkit-box;
@@ -1874,6 +1895,28 @@ a.ui-button:active,
         font-variant-numeric: tabular-nums; }
         .home .home-nb .number > div span.colored {
           color: #ff6308; }
+
+.home .partners-wrapper {
+  padding: 100px 0; }
+  .home .partners-wrapper .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .home .partners-wrapper .title,
+  .home .partners-wrapper .description {
+    text-align: center;
+    color: #312f2f; }
+  .home .partners-wrapper .title {
+    margin-top: 0; }
+  .home .partners-wrapper .description {
+    margin-bottom: 50px; }
 
 @media (min-width: 400px) {
   .home .banner-img {
@@ -2068,7 +2111,17 @@ a.ui-button:active,
                 transform: scale3d(1, 1, 1) translate3d(45px, -30px, 1px); }
       .home .target.show:first-child {
         -webkit-transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px);
-                transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px); } }
+                transform: scale3d(1, 1, 1) translate3d(-30px, 45px, 1px); }
+  .home .partners-wrapper {
+    padding-top: 300px;
+    margin-top: -200px;
+    background-color: #f2f2f2; }
+    .home .partners-wrapper .title,
+    .home .partners-wrapper .description {
+      max-width: 580px; }
+  .home .benefits-wrapper {
+    padding-top: 0;
+    margin-top: 0; } }
 
 @media (min-width: 1260px) {
   .home .home-quotes-wrapper {
@@ -2545,6 +2598,11 @@ a.ui-button:active,
     transition:  opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1);
     transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1);
     transition:  transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1), opacity 0.4s 0.1s cubic-bezier(0.6, 0.2, 0.2, 1), -webkit-transform 0.4s cubic-bezier(0.6, 0.2, 0.2, 1); }
+  .page-template-lend .intro .container {
+    padding: 25px 15px;
+    background: #fff; }
+    .page-template-lend .intro .container .btn, .page-template-lend .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .intro .container .button {
+      font-size: 1.6rem; }
 
 .page-template-lend .lend-benefits-wrapper {
   text-align: center; }
@@ -2618,6 +2676,8 @@ a.ui-button:active,
     top: 0;
     right: 0;
     left: 0; }
+  .page-template-lend .intro .container .btn, .page-template-lend .intro .container .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-lend .intro .container .button {
+    font-size: 1.8rem; }
   .page-template-lend .lend-email::before {
     top: -15%; }
   .page-template-lend .lend-email::after {
@@ -2642,7 +2702,7 @@ a.ui-button:active,
     width: 500px;
     height: 350px;
     left: 35%;
-    top: 200px;
+    top: 250px;
     opacity: 0;
     -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), -webkit-transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -2654,7 +2714,7 @@ a.ui-button:active,
       opacity: 1; }
   .page-template-lend .intro {
     width: 500px;
-    padding: 50px 60px 75px 60px;
+    padding: 50px 60px 50px 60px;
     margin-top: 0px;
     margin-left: 0;
     margin-bottom: 150px;
@@ -2691,6 +2751,9 @@ a.ui-button:active,
       opacity: 1; }
       .page-template-lend .intro > .text p {
         margin-bottom: 0; }
+    .page-template-lend .intro > .container {
+      padding: 0;
+      margin-top: 25px; }
   .page-template-lend .lend-benefits-wrapper {
     margin-top: 40px; }
   .page-template-lend .lend-benefits {
