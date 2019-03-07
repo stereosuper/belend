@@ -244,12 +244,44 @@ add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax
 
 
 
-function belend_get_value_by_class( $form, $entry, $class ) {
+function belend_get_field_by_class( $form, $class ) {
     foreach ( $form['fields'] as $field ) {
         $lead_key = $field->cssClass;
-        if ( strToLower( $lead_key ) == strToLower($class) ) {
-            return $entry[ $field->id ];
+        if ( strpos(strToLower( $lead_key ), strToLower($class)) ) {
+            return $field;
         }
     }
     return false;
+}
+
+add_filter( 'gform_field_validation', 'belend_custom_field_validation' ,10, 4);
+
+function belend_custom_field_validation($result, $value, $form, $field)
+{
+    if ( strpos($field->cssClass, 'total-loan') && $value < 5000) {
+        $result['is_valid'] = false;
+        $result['message'] = 'Le montantde l\'emprunt ne peut êtr inférieur à 5000 €';
+    } elseif (strpos($field->cssClass, 'anticipated-penalties')) {
+        $loan_left = belend_get_field_by_class($form, 'loan-left');
+        if ($loan_left) {
+            $loan_left_value = str_replace('.','',rgpost('input_' . $loan_left->id));
+
+            if ( is_numeric($loan_left_value) && $value > $loan_left_value * 0.3) {
+                $result['is_valid'] = false;
+                $result['message'] = 'Le montant ne doit pas dépasser 30% du montant restant dû';
+            }
+        }
+    } elseif (strpos($field->cssClass,'loan-time') && is_float($value)) {
+        $result['is_valid'] = false;
+        $result['message'] = 'La durée de remboursement doit être un nombre entier compris entre 0 et 5';
+    } elseif ( strpos($field->cssClass, 'deal-date')){
+        $date = strtotime($value);
+        $ref_date = strtotime("- 4 months" );
+        if ($date < $ref_date){
+            $result['is_valid'] = false;
+            $result['message'] = 'La signature du compromis doit être faite au maximum 4 mois avant la date du jour';
+        }
+    }
+
+    return $result;
 }
