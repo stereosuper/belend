@@ -1,0 +1,92 @@
+<mjml>
+    <mj-head>
+        <mj-title>Belend.fr</mj-title>
+        <mj-attributes>
+            <mj-all font-family="Helvetica, Arial, sans-serif"></mj-all>
+            <mj-text font-weight="400" font-size="16px" color="#312F2F" line-height="24px"></mj-text>
+            <mj-section padding="0px"></mj-section>
+        </mj-attributes>
+    </mj-head>
+
+    <mj-body background-color="#F2F2F2">
+        <mj-section padding="20px 20px 0 20px" background-color="#FFFFFF">
+            <mj-column width="50%">
+                <mj-text align="left" font-size="11px"><a href="#" style="color: #93A5B1;">belend.fr</a></mj-text>
+            </mj-column>
+            <mj-column width="50%">
+                <mj-text align="right" font-size="11px"><a href="#" style="color: #93A5B1;">View in browser</a</mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="0px" background-color="#FFFFFF">
+            <mj-column align='center' padding='5px 0px 0px'>
+                <mj-image width="215px" src="img/logo.png"></mj-image>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="20px 0 0" background-color="#FFFFFF">
+            <mj-column width="100%">
+                <mj-text align="center" padding="30px 40px 10px 40px" font-size="16px" line-height="24px" color="#FF6308" font-weight='600'>Un expert en financement professionnel va prendre contact avec vous et ce au plus proche du lieu d'exercice de votre activité.</mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="0 20px 20px 20px" background-color="#FFFFFF">
+            <mj-column width="95%">
+                <mj-text align="center" padding-top="10px" padding="0px" font-size="14px" line-height="24px">Notre service d’intermédiation en prêts professionnels fait l’objet d’honoraires qui ne sont naturellement dus qu’en cas d’obtention du crédit.</mj-text>
+                <mj-text align="center" padding="0px" font-size="14px" line-height="24px">Nous vous remercions de lui reserver votre meilleur accueil et souhaitons que votre projet puisse se réaliser dans les meilleures condition.</mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="0 20px 70px" background-color="#FFFFFF">
+            <mj-column width="90%">
+                <mj-text align="right" padding-top="10px" padding="0px" font-size="14px" line-height="24px" font-style="italic">L'équipe Belend.fr</mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="0 20px" background-color="#E0E0E0">
+            <mj-column width="90%">
+                <mj-text align="center" padding-top="30px" padding="0px" font-size="17px" line-height="24px" font-weight="300">Belend sur les réseaux :</mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="25px 55px 25px" background-color="#E0E0E0">
+            <mj-column width="33%" align='right'>
+                <mj-image width="11px" src="img/fb.png"></mj-image>
+            </mj-column>
+            <mj-column width="33%" align='center'>
+                <mj-image width="20px" src="img/tw.png"></mj-image>
+            </mj-column>
+            <mj-column width="33%" align='left'>
+                <mj-image width="17px" src="img/in.png"></mj-image>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="50px 50px 0" background-color="#FF6308">
+            <mj-column width="33%">
+                <mj-text align="left" font-size="14px"><a href="#" style="color: #fff; white-space: nowrap;">Prêter</a></mj-text>
+            </mj-column>
+            <mj-column width="33%">
+                <mj-text align="center" font-size="14px"><a href="#" style="color: #fff; white-space: nowrap;">A propos</a></mj-text>
+            </mj-column>
+            <mj-column width="33%">
+                <mj-text align="right" font-size="14px"><a href="#" style="color: #fff; white-space: nowrap;">Contact</a></mj-text>
+            </mj-column>
+        </mj-section>
+
+        <mj-section padding="0" background-color="#FF6308">
+            <mj-column align='center' padding='50px 0px 35px'>
+                <mj-image width="215px" src="img/logo-footer.png"></mj-image>
+            </mj-column>
+        </mj-section>
+        
+        <mj-section padding="0 0 50px" background-color="#FF6308">
+            <mj-column width="60%">
+                <mj-text align="center" padding-top="20px" padding="0px" font-size="14px" line-height="20px" color="#312F2F">Cet email a été envoyé à paul@dupont.com</mj-text>
+                <mj-text align="center" padding="0px" font-size="14px" line-height="20px" color="#312F2F"><a href='#' style="color: #312F2F">se désinscrire</a> - <a href='#' style="color: #312F2F">Mettre à jour votre profill</a></mj-text>
+                <mj-text align="center" padding="0px" font-size="14px" line-height="20px" color="#312F2F">Email envoyé par Belend.fr</mj-text>
+                <mj-text align="center" padding="0px" font-size="14px" line-height="20px" color="#312F2F">12 rue Pablo Picasso, 75000 PARIS</mj-text>
+            </mj-column>
+        </mj-section>
+
+    </mj-body>
+</mjml>
