@@ -17,6 +17,7 @@ $entry['projet_murs'] = isset($_GET['proj_wall'])?$_GET['proj_wall']: '';
 $entry['projet_fonds_commerce'] = isset($_GET['proj_fund'])?$_GET['proj_fund']: '';
 $entry['projet_tresorerie'] = isset($_GET['proj_finance'])?$_GET['proj_finance']: '';
 $entry['montant_du_pret'] = isset($_GET['loan_total'])? intval(str_replace('.','',$_GET['loan_total'])): 0;
+$entry['montant_du_projet'] = isset($_GET['amout_needed'])? intval(str_replace('.','',$_GET['amount_needed'])): 0;
 $entry['apport'] = isset($_GET['downpayment'])? intval(str_replace('.','',$_GET['downpayment'])): 0;
 $entry['exercices_clos'] = isset($_GET['exercices'])?$_GET['exercices']: '';
 $entry['resultat_exploitation'] = isset($_GET['income'])?$_GET['income']: '';
@@ -26,7 +27,7 @@ $entry['duree_pret'] = isset($_GET['loan_time'])?$_GET['loan_time']: '';
 $entry['code_postal']= isset($_GET['post_code'])?$_GET['post_code']: '';
 $entry['siren'] = isset($_GET['siren'])?$_GET['siren']: '';
 $entry['banques_consultees'] = isset($_GET['banks'])?treat_banks($_GET['banks']): array();
-$entry['accord_banque'] = isset($_GET['deal_found'])?$_GET['deal_found']: '';
+$entry['accord_banque'] = isset($_GET['bank_deal_found'])?$_GET['bank_deal_found']: '';
 $entry['compromis_signe'] = isset($_GET['real_estate_deal'])?$_GET['real_estate_deal']: '';
 $entry['date_compromis'] = isset($_GET['deal_time'])?$_GET['deal_time']: '';
 $entry['avancement'] = isset($_GET['deal_search'])?$_GET['deal_search']: '';
@@ -34,8 +35,22 @@ $entry['secteur_activite'] = isset($_GET['business_segment'])?$_GET['business_se
 
 $compare = new compare();
 
+
 $results = [];
 $test_results=[];
+
+/*$entry = [
+    "type_de_projet" => "Murs commerciaux",
+    "apport" => 4000,
+    "montant_du_pret" => 250000,
+    "montant_du_projet" => 210000,
+    "code_postal" => "75",
+    "compromis_signe" => "Oui",
+    "date_compromis" => "21-01-2019",
+    "objet_identifie" => "Oui",
+    "accord_banque" => "Non",
+    "banques_consultees" => array("CIC"),
+];*/
 
 foreach ($rows as $row){
     $results[] = $compare->model_applies($entry, $row);
@@ -148,7 +163,7 @@ class Compare
     }
 
     function PERCENT($args, $entry){
-            return $entry[$args['key']] >= $entry['montant_du_pret'] * ($args['value']/100);
+            return $entry[$args['key']] >= $entry[$args['reference']] * ($args['value']/100);
     }
 
     function DATE ($args, $entry){
@@ -175,6 +190,9 @@ class Compare
             <?php echo "<br/><br/>" . var_dump($test_results) . "<br/><br/>" ; ?>
             <?php echo $output; ?>
 
+            <?php echo '<br/>' ?>
+            <?php echo '<br/>' ?>
+            <?php var_dump($entry) ?>
         <?php else : ?>
 
             <h1>404</h1>

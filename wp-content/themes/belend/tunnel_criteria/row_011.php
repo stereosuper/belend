@@ -74,17 +74,29 @@ return [
                                 "method" => "PERCENT",
                                 "clauses" => [
                                     "key" => "apport",
-                                    "value" => 15
+                                    "value" => 15,
+                                    "reference" => "montant_du_projet"
                                 ]
                             ],
                         ]
                     ],
-                    [
-                        "method" => "GTE",
+                    [   "method" => "AND",
                         "clauses" => [
-                            "key" => "chiffre_affaires",
-                            "value" => 150000
+                            [
+                                "method" => "NOT_EQ",
+                                "clauses" => [
+                                    "key" => "chiffre_affaires",
+                                    "value" => "Moins de 100 000 €"
+                                ]
+                            ],
+                            [ "method" => "NOT_EQ",
+                                "clauses" => [
+                                    "key" => "chiffre_affaires",
+                                    "value" => "De 100 000 à 150 000 €"
+                                ]
+                            ]
                         ]
+
                     ],
                 ]
 

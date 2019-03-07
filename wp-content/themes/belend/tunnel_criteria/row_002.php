@@ -64,7 +64,8 @@ return [
                 "method" => "PERCENT",
                 "clauses" => [
                     "key" => "apport",
-                    "value" => 10
+                    "value" => 10,
+                    "reference" => "montant_du_projet"
                 ]
             ],
             [
