@@ -21795,7 +21795,11 @@ var placesInput = function placesInput() {
       var placesAutocomplete = places_js__WEBPACK_IMPORTED_MODULE_0___default()({
         appId: 'plK1J3JKK2DL',
         apiKey: '0d83bb5fc1b2a60b38adf14b9e33d323',
-        container: searchInput
+        container: searchInput,
+        countries: ['fr'],
+        language: 'fr',
+        type: 'city',
+        aroundLatLngViaIP: false
       });
       placesAutocomplete.on('change', function (e) {
         //console.log(e);
