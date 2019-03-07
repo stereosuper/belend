@@ -10,7 +10,8 @@
                 overflow: hidden;
                 background-repeat: no-repeat;
                 background-position: 50% 50%;
-                background-size: auto 90%;
+                background-size: 80%;
+                background-color: #fff;
             }
         }
         input[value="CIC"] {
@@ -84,6 +85,18 @@
         input {
             & + label {
                 background-size: auto 70%;
+            }
+        }
+    }
+}
+
+
+@media (min-width: $tablet){
+    .field-banks {
+        .gfield_checkbox,
+        .gfield_radio {
+            > li{
+                width: calc(20% - 24px);
             }
         }
     }

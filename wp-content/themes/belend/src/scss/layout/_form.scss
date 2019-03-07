@@ -167,6 +167,10 @@
     color: $form-error-color;
     font-size: 1.4rem;
 }
+.gfield_error .validation_message{
+    position: absolute;
+    bottom: -20px;
+}
 .ginput_container {
     position: relative;
 }

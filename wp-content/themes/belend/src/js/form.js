@@ -169,31 +169,39 @@ const setCache = $ => {
 const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
     const sirenInput = jQuery('.field-siren input');
-
+    var xhr = null;
     sirenInput.autocomplete({
         source(request, response) {
-            $.ajax({
-                url: adminAjax,
-                data: {
-                    action: 'getSiren',
-                    name_startsWith: $('.field-siren input').val(),
-                },
-                success(data) {
-                    console.log(data);
-                    response(
-                        $.map(JSON.parse(data), company => {
-                            const label = company.siren;
-                            return {
-                                NAF: company.codeNaf,
-                                label:
-                                    `${company.name}, ${company.address}, ` +
-                                    `SIREN: ${company.siren}`,
-                                value: company.siren,
-                            }; // on retourne cette forme de suggestion
-                        })
-                    );
-                },
-            });
+            if (!xhr) {
+                xhr = $.ajax({
+                    url: adminAjax,
+                    timeout: 2000,
+                    data: {
+                        action: 'getSiren',
+                        name_startsWith: $('.field-siren input').val(),
+                    },
+                    success(data) {
+                        //console.log(data);
+                        xhr = null;
+                        response(
+                            $.map(JSON.parse(data), company => {
+                                const label = company.siren;
+                                var render;
+                                if (company.address != '') {
+                                    render = `${company.name}, ${company.address}, SIREN: ${company.siren}`
+                                } else {
+                                    render = `${company.name}, SIREN: ${company.siren}`
+                                }
+                                return {
+                                    NAF: company.codeNaf,
+                                    label: render,
+                                    value: company.siren,
+                                }; // on retourne cette forme de suggestion
+                            })
+                        );
+                    },
+                });
+            }
         },
         search(term) {
             // console.log('TCL: search -> term', term);
@@ -206,7 +214,9 @@ const autocomplete = $ => {
         },
         select(event, ui) {
             // console.log(ui.item);
-            $('.field-naf input').val(ui.item.NAF);
+            //$('.field-naf input').val(ui.item.NAF);
+            $('.code-naf input').val(ui.item.NAF);
+            $('.num-siren input').val(ui.item.value);
         },
     });
 };
