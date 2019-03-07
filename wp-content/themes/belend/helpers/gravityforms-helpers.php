@@ -197,7 +197,7 @@ function add_page_steps($form)
     return $form;
 }
 
-add_filter('gform_pre_render', 'belend_populate', 20);
+//add_filter('gform_pre_render', 'belend_populate', 20);
 
 function belend_populate($form){
 
