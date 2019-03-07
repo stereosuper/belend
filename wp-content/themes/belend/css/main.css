@@ -1498,7 +1498,8 @@ input:focus + .instruction {
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: auto 90%; }
+  background-size: 80%;
+  background-color: #fff; }
 
 .field-banks .gfield_checkbox input[value="CIC"] + label,
 .field-banks .gfield_radio input[value="CIC"] + label {
@@ -1555,6 +1556,11 @@ input:focus + .instruction {
 
 .field-banks .gfield_radio input + label {
   background-size: auto 70%; }
+
+@media (min-width: 780px) {
+  .field-banks .gfield_checkbox > li,
+  .field-banks .gfield_radio > li {
+    width: calc(20% - 24px); } }
 
 /* Buttons */
 .btn, .page-template-contact .gform_wrapper .gform_footer .button,
