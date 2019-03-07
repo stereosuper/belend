@@ -21363,20 +21363,13 @@ var autocomplete = function autocomplete($) {
             xhr = null;
           },
           success: function success(data) {
-            //console.log(data);
+            //console.log('query with '+type, data);
+            var dataToUse;
+            var resp;
+
             if (type == 'full_text') {
-              response($.map(data.etablissement, function (company) {
-                //console.log('company via full text', company);
-                var label = company.siren;
-                return {
-                  NAF: company.activite_principale,
-                  label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
-                  value: company.siren
-                }; // on retourne cette forme de suggestion
-              }));
-            } else if (type == 'siren') {
-              response($.map(data, function (company) {
-                //console.log('company via siren', company);
+              dataToUse = data.etablissement;
+              resp = $.map(dataToUse, function (company) {
                 if (typeof company.siren !== 'undefined') {
                   var label = company.siren;
                   return {
@@ -21385,8 +21378,17 @@ var autocomplete = function autocomplete($) {
                     value: company.siren
                   }; // on retourne cette forme de suggestion
                 }
-              }));
+              });
+            } else if (type == 'siren') {
+              dataToUse = data.siege_social;
+              resp = [{
+                NAF: dataToUse.activite_principale,
+                label: "".concat(dataToUse.l1_declaree, ", ").concat(dataToUse.geo_adresse, ", SIREN: ").concat(dataToUse.siren),
+                value: dataToUse.siren
+              }];
             }
+
+            response(resp);
           }
         });
       }

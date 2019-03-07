@@ -188,36 +188,32 @@ const autocomplete = $ => {
                         xhr = null;
                     },
                     success(data) {
-                        //console.log(data);
+                        //console.log('query with '+type, data);
+                        var dataToUse;
+                        var resp;
                         if (type == 'full_text') {
-                            response(
-                                $.map(data.etablissement, company => {
-                                    //console.log('company via full text', company);
+                            dataToUse = data.etablissement;
+                            resp = $.map(dataToUse, company => {
+                                if (typeof company.siren !== 'undefined') {
                                     const label = company.siren;
                                     return {
                                         NAF: company.activite_principale,
                                         label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
                                         value: company.siren,
                                     }; // on retourne cette forme de suggestion
-                                })
-                            );
+                                }
+                            })
                         } else if (type == 'siren') {
-                            response(
-                                $.map(data, company => {
-                                    //console.log('company via siren', company);
-                                    if (typeof company.siren !== 'undefined') {
-                                        const label = company.siren;
-                                        return {
-                                            NAF: company.activite_principale,
-                                            label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
-                                            value: company.siren,
-                                        }; // on retourne cette forme de suggestion
-                                    }
-
-                                })
-                            );
+                            dataToUse = data.siege_social;
+                            resp = [
+                                {
+                                    NAF: dataToUse.activite_principale,
+                                    label: `${dataToUse.l1_declaree}, ${dataToUse.geo_adresse}, SIREN: ${dataToUse.siren}`,
+                                    value: dataToUse.siren,
+                                }
+                            ]
                         }
-
+                        response(resp);
                     },
                 });
             }
