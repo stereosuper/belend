@@ -11,7 +11,7 @@
                 color: $white;
             }
         }
-        .container-small {
+        .container {
             padding: 0;
         }
         .contact-content {
@@ -349,7 +349,7 @@
                 margin-bottom: $line-height * 3;
             }
         }
-        .container-small {
+        .container {
             display: flex;
             flex-direction: row-reverse;
             .contact-content {

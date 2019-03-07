@@ -17,7 +17,7 @@ $offers = array(
                 <h1><?php echo $title ?></h1>
             <?php endif; ?>
         </header>
-        <div class="container-small">
+        <div class="container">
             <div class="contact-content js-contact-content">
                 <?php if ($sub_title = get_the_content()): ?>
                     <div class="subtitle"><?php echo $sub_title ?></div>
