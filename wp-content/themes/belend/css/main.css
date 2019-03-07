@@ -1189,6 +1189,14 @@ button {
     display: inline-block;
     margin: 0 10px; }
 
+.field-city label + div {
+  height: 40px;
+  margin-top: 6px;
+  vertical-align: top; }
+
+.field-city .algolia-places {
+  height: 40px; }
+
 .field-price:after {
   content: " €";
   display: inline-block;
