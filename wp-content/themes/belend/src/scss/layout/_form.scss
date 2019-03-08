@@ -10,6 +10,26 @@
     }
 }
 
+.partial_entry_warning {
+    position: relative;
+    padding: 10px 0;
+    margin-bottom: 0 !important;
+    color: $grey-light;
+    background-color: transparent;
+    font-size: 1.4rem;
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100vw;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        background-color: $black-grey;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+}
+
 .field-year {
     &::after {
         content: "année(s)";
