@@ -1,5 +1,5 @@
         </main>
-
+        <?php if (!is_page_template('page-maintenance.php')) { ?>
         <footer role='contentinfo' class='footer'>
             <div class='container'>
                 <div class='logo-footer'>
@@ -26,7 +26,7 @@
                 <?php endif; ?>
             </div>
         </footer>
-
+        <?php } ?>
         <?php get_template_part( 'includes/icons' ); ?>
         <?php wp_footer(); ?>
 

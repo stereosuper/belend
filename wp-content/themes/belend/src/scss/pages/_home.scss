@@ -1,6 +1,7 @@
 /* Home specific style */
 
-.home {
+.home,
+.page-template-page-maintenance {
     h1 {
         margin: 0 0 0.65em;
         text-align: left;
@@ -154,7 +155,8 @@
 }
 
 @media (min-width: $phone-small) {
-    .home {
+    .home,
+    .page-template-page-maintenance {
         .banner-img {
             height: 600px;
             position: absolute;
@@ -183,7 +185,8 @@
 }
 
 @media (min-width: $phone) {
-    .home {
+    .home,
+    .page-template-page-maintenance {
         .banner-img {
             height: 600px;
             position: absolute;
@@ -201,7 +204,8 @@
 }
 
 @media (min-width: $tablet) {
-    .home {
+    .home,
+    .page-template-page-maintenance {
         .home-quotes-wrapper {
             margin-top: 50px;
         }
@@ -334,7 +338,8 @@
 }
 
 @media (min-width: $desktop-small) {
-    .home {
+    .home,
+    .page-template-page-maintenance {
         .intro {
             width: 650px;
         }
@@ -414,7 +419,8 @@
 }
 
 @media (min-width: $desktop) {
-    .home {
+    .home,
+    .page-template-page-maintenance {
         .home-quotes-wrapper {
             display: flex;
             justify-content: space-between;

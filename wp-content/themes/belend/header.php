@@ -24,14 +24,14 @@
 					</a>
 					<?php echo wp_get_attachment_image(get_field('baseline', 'options'), 'full', false, array('alt' => get_bloginfo('description'))); ?>
 				</div>
-
+				<?php if (!is_page_template('page-maintenance.php')) { ?>
 				<button class='burger js-burger'><span></span></button>
 
 				<nav class="main-navigation js-main-navigation" aria-expanded="false">
 					<div class="main-navigation-container">
 						<?php wp_nav_menu(array('theme_location' => 'primary', 'container' => null, 'menu_id' => '', 'menu_class' => 'menu')); ?>
 						<?php
-							if ($link = get_field('header_cta', 'options')): 
+							if ($link = get_field('header_cta', 'options')):
 								$url = $link['url'];
 								$title = $link['title'];
 								$target = 'target="'. $link['target'] . '"';
@@ -44,6 +44,7 @@
 						<?php endif; ?>
 					</div>
 				</nav>
+				<?php } ?>
 			</div>
 		</header>
 
