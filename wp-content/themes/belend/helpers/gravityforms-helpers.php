@@ -1,5 +1,6 @@
 <?php
-add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
+//add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
+add_action("gform_partialentries_post_entry_updated", "belend_send_partial_entry", 10, 2);
 
 function belend_send_partial_entry($partial_entry, $form)
 {
@@ -260,7 +261,7 @@ function belend_custom_field_validation($result, $value, $form, $field)
 {
     if ( strpos($field->cssClass, 'total-loan') && $value < 5000) {
         $result['is_valid'] = false;
-        $result['message'] = 'Le montantde l\'emprunt ne peut êtr inférieur à 5000 €';
+        $result['message'] = 'Le montant de l\'emprunt ne peut être inférieur à 5000 €';
     } elseif (strpos($field->cssClass, 'anticipated-penalties')) {
         $loan_left = belend_get_field_by_class($form, 'loan-left');
         if ($loan_left) {
@@ -281,6 +282,13 @@ function belend_custom_field_validation($result, $value, $form, $field)
             $result['is_valid'] = false;
             $result['message'] = 'La signature du compromis doit être faite au maximum 4 mois avant la date du jour';
         }
+    } elseif ( strpos($field->cssClass, 'phone')){
+        $phone_string = str_replace(' ', '', $value);
+        if ( !empty($phone_string && ( !is_numeric($phone_string) || strlen($phone_string) != 10))){
+            $result['is_valid'] = false;
+            $result['message']  = 'Merci de rentrer un numéro de téléphone à 10 chiffres';
+        }
+
     }
 
     return $result;
