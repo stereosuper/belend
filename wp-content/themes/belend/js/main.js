@@ -21292,7 +21292,7 @@ var layout = function layout(win) {
     page.find('.gform_page_footer').appendTo(page.find('.page-nav')); // button next step disabled
 
     if (page.find('.gfield_contains_required').length) {
-      // page.find('.gform_next_button').attr('disabled', true);
+      page.find('.gform_next_button').attr('disabled', true);
       page.find('.gfield_contains_required input').on('change input', function () {
         emptyInputs = page.find('.gfield_contains_required input').filter(function filterRequired() {
           return jQuery(this).val() == '';
@@ -21301,21 +21301,21 @@ var layout = function layout(win) {
         if (!emptyInputs.length) {
           page.find('.gform_next_button').attr('disabled', false);
         }
-      }); // if (!page[0].style.display) {
-      //     alreadyFilledInputs = page
-      //         .find('.gform_page_fields .gfield_contains_required input')
-      //         .filter(function filterRequired() {
-      //             console.log(
-      //                 'TCL: filterRequired -> jQuery(this).val()',
-      //                 jQuery(this).val()
-      //             );
-      //             return jQuery(this).val() == '';
-      //         });
-      //     console.log(
-      //         'TCL: pageLogic -> alreadyFilledInputs',
-      //         alreadyFilledInputs
-      //     );
-      // }
+      });
+
+      if (!page[0].style.display) {
+        alreadyFilledInputs = page.find('.gform_page_fields .gfield_contains_required input').filter(function filterRequired() {
+          var input = jQuery(this);
+          var checkRadio = input[0].type === 'radio' && input.is(':checked');
+          var checkCheckbox = input[0].type === 'checkbox' && input.is(':checked');
+          var checkRest = input[0].type !== 'radio' && input[0].type !== 'checkbox' && input.val() !== '' && input.val() !== null;
+          return checkRadio || checkCheckbox || checkRest;
+        });
+
+        if (alreadyFilledInputs.length) {
+          page.find('.gform_next_button').attr('disabled', false);
+        }
+      }
     }
   });
 }; // Mettre en forme et compiler
