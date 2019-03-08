@@ -167,7 +167,7 @@
     color: $form-error-color;
     font-size: 1.4rem;
 }
-.gfield_error .validation_message{
+.gfield_error .validation_message {
     position: absolute;
     bottom: -20px;
 }
@@ -186,13 +186,13 @@
     }
 }
 
-.field-city{
-    label + div{
+.field-city {
+    label + div {
         height: 40px;
         margin-top: 6px;
         vertical-align: top;
     }
-    .algolia-places{
+    .algolia-places {
         height: 40px;
     }
 }

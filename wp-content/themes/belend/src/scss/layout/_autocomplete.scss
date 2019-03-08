@@ -1,0 +1,121 @@
+// SIREN
+.ui-menu {
+    display: block !important;
+    border-radius: 4px;
+    list-style-type: none;
+    box-shadow: 0px 4px 4px rgba($black, 0.25);
+    overflow: hidden;
+    .ui-menu-item {
+        padding: 10px $gutter;
+        background-color: transparent;
+        border-bottom: 1px solid $light-grey;
+        border-bottom: 1px solid $light-grey;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+        }
+        &::before {
+            width: auto;
+            height: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            @include fluid-background-btn("hover");
+            z-index: -2;
+        }
+        &::after {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $white;
+            z-index: -1;
+            transition: comme-dans-du-beurre(
+                (
+                    opacity: "0.3s"
+                )
+            );
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+        &:hover {
+            color: $white;
+            background-color: transparent;
+            border-bottom: none;
+            &::after {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+// Algolia places
+.ap-dropdown-menu {
+    box-shadow: 0px 4px 4px rgba($black, 0.25);
+    background-color: transparent;
+    .ap-suggestion {
+        position: relative;
+        background-color: transparent;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+        }
+        &::before {
+            width: auto;
+            height: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            @include fluid-background-btn("hover");
+            z-index: -2;
+        }
+        &::after {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $white;
+            z-index: -1;
+            transition: comme-dans-du-beurre(
+                (
+                    opacity: "0.3s"
+                )
+            );
+        }
+        &:hover {
+            &::after {
+                opacity: 0;
+            }
+            .ap-suggestion-icon {
+                svg {
+                    fill: $white;
+                }
+            }
+            .ap-name {
+                color: $white;
+            }
+            .ap-address {
+                color: $white;
+            }
+        }
+    }
+    .ap-suggestion-icon {
+        svg {
+            fill: $black-grey;
+        }
+    }
+    .ap-name {
+        color: $black-grey;
+    }
+    .ap-address {
+        color: $dark-grey;
+    }
+    .ap-footer {
+        display: none;
+    }
+}
