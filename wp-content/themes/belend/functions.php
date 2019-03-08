@@ -349,3 +349,9 @@ function belend_localize_scripts() {
     );
 
 }
+
+function belend_stop_salesforce_plugin_update( $value ) {
+    unset( $value->response['gf-salesforce-crm-perks-pro/gf-salesforce-crm-perks-pro.php'] );
+    return $value;
+}
+add_filter( 'site_transient_update_plugins', 'belend_stop_salesforce_plugin_update' );
