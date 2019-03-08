@@ -192,75 +192,78 @@ const setCache = $ => {
 
 const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
-    const sirenInput = jQuery('.field-siren input');
-    let xhr = null;
-    sirenInput.autocomplete({
-        source(request, response) {
-            if (!xhr) {
-                let s = sirenInput.val(),
-                    type = 'full_text';
-                if (!isNaN(s) && s.length == 9) {
-                    type = 'siren';
+    var xhr = null;
+
+    jQuery('.field-siren input').each(function(e){
+        var $this       = $(this),
+            $parent     = $this.parents('.gform_fields');
+
+        //console.log($this);
+
+        $this.autocomplete({
+            source(request, response) {
+                if (!xhr) {
+                    var s       = $this.val(),
+                        type    = 'full_text';
+                    if (!isNaN(s) && s.length == 9){
+                        type    = 'siren';
+                    }
+
+                    //console.log(type);
+
+                    xhr = $.ajax({
+                        url: 'https://entreprise.data.gouv.fr/api/sirene/v1/'+type+'/'+s,
+                        timeout: 2000,
+                        complete() {
+                            xhr = null;
+                        },
+                        success(data) {
+                            //console.log('query with '+type, data);
+                            var dataToUse;
+                            var resp;
+                            if (type == 'full_text') {
+                                dataToUse = data.etablissement;
+                                resp = $.map(dataToUse, company => {
+                                    if (typeof company.siren !== 'undefined') {
+                                        const label = company.siren;
+                                        return {
+                                            NAF: company.activite_principale,
+                                            label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
+                                            value: company.siren,
+                                        }; // on retourne cette forme de suggestion
+                                    }
+                                })
+                            } else if (type == 'siren') {
+                                dataToUse = data.siege_social;
+                                resp = [
+                                    {
+                                        NAF: dataToUse.activite_principale,
+                                        label: `${dataToUse.l1_declaree}, ${dataToUse.geo_adresse}, SIREN: ${dataToUse.siren}`,
+                                        value: dataToUse.siren,
+                                    }
+                                ]
+                            }
+                            response(resp);
+                        },
+                    });
                 }
-
-                // console.log(type);
-
-                xhr = $.ajax({
-                    url: `https://entreprise.data.gouv.fr/api/sirene/v1/${type}/${s}`,
-                    timeout: 2000,
-                    complete() {
-                        xhr = null;
-                    },
-                    success(data) {
-                        // console.log('query with '+type, data);
-                        let dataToUse;
-                        let resp;
-                        if (type == 'full_text') {
-                            dataToUse = data.etablissement;
-                            resp = $.map(dataToUse, company => {
-                                if (typeof company.siren !== 'undefined') {
-                                    const label = company.siren;
-                                    return {
-                                        NAF: company.activite_principale,
-                                        label: `${company.l1_declaree}, ${
-                                            company.geo_adresse
-                                        }, SIREN: ${company.siren}`,
-                                        value: company.siren,
-                                    }; // on retourne cette forme de suggestion
-                                }
-                            });
-                        } else if (type == 'siren') {
-                            dataToUse = data.siege_social;
-                            resp = [
-                                {
-                                    NAF: dataToUse.activite_principale,
-                                    label: `${dataToUse.l1_declaree}, ${
-                                        dataToUse.geo_adresse
-                                    }, SIREN: ${dataToUse.siren}`,
-                                    value: dataToUse.siren,
-                                },
-                            ];
-                        }
-                        response(resp);
-                    },
-                });
-            }
-        },
-        search(term) {
-            // console.log('TCL: search -> term', term);
-            // custom minLength
-            let returnValue = true;
-            if (term.length < 2) {
-                returnValue = false;
-            }
-            return returnValue;
-        },
-        select(event, ui) {
-            // console.log(ui.item);
-            // $('.field-naf input').val(ui.item.NAF);
-            $('.code-naf input').val(ui.item.NAF);
-            $('.num-siren input').val(ui.item.value);
-        },
+            },
+            search(term) {
+                // console.log('TCL: search -> term', term);
+                // custom minLength
+                let returnValue = true;
+                if (term.length < 2) {
+                    returnValue = false;
+                }
+                return returnValue;
+            },
+            select(event, ui) {
+                // console.log(ui.item);
+                //$('.field-naf input').val(ui.item.NAF);
+                $parent.find('.code-naf input').val(ui.item.NAF);
+                $parent.find('.num-siren input').val(ui.item.value);
+            },
+        });
     });
 };
 

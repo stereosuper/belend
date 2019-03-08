@@ -21358,73 +21358,77 @@ var setCache = function setCache($) {
 var autocomplete = function autocomplete($) {
   var _scripts_l10n = scripts_l10n,
       adminAjax = _scripts_l10n.adminAjax;
-  var sirenInput = jQuery('.field-siren input');
   var xhr = null;
-  sirenInput.autocomplete({
-    source: function source(request, response) {
-      if (!xhr) {
-        var s = sirenInput.val(),
-            type = 'full_text';
+  jQuery('.field-siren input').each(function (e) {
+    var $this = $(this),
+        $parent = $this.parents('.gform_fields'); //console.log($this);
 
-        if (!isNaN(s) && s.length == 9) {
-          type = 'siren';
-        } // console.log(type);
+    $this.autocomplete({
+      source: function source(request, response) {
+        if (!xhr) {
+          var s = $this.val(),
+              type = 'full_text';
+
+          if (!isNaN(s) && s.length == 9) {
+            type = 'siren';
+          } //console.log(type);
 
 
-        xhr = $.ajax({
-          url: "https://entreprise.data.gouv.fr/api/sirene/v1/".concat(type, "/").concat(s),
-          timeout: 2000,
-          complete: function complete() {
-            xhr = null;
-          },
-          success: function success(data) {
-            // console.log('query with '+type, data);
-            var dataToUse;
-            var resp;
+          xhr = $.ajax({
+            url: 'https://entreprise.data.gouv.fr/api/sirene/v1/' + type + '/' + s,
+            timeout: 2000,
+            complete: function complete() {
+              xhr = null;
+            },
+            success: function success(data) {
+              //console.log('query with '+type, data);
+              var dataToUse;
+              var resp;
 
-            if (type == 'full_text') {
-              dataToUse = data.etablissement;
-              resp = $.map(dataToUse, function (company) {
-                if (typeof company.siren !== 'undefined') {
-                  var label = company.siren;
-                  return {
-                    NAF: company.activite_principale,
-                    label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
-                    value: company.siren
-                  }; // on retourne cette forme de suggestion
-                }
-              });
-            } else if (type == 'siren') {
-              dataToUse = data.siege_social;
-              resp = [{
-                NAF: dataToUse.activite_principale,
-                label: "".concat(dataToUse.l1_declaree, ", ").concat(dataToUse.geo_adresse, ", SIREN: ").concat(dataToUse.siren),
-                value: dataToUse.siren
-              }];
+              if (type == 'full_text') {
+                dataToUse = data.etablissement;
+                resp = $.map(dataToUse, function (company) {
+                  if (typeof company.siren !== 'undefined') {
+                    var label = company.siren;
+                    return {
+                      NAF: company.activite_principale,
+                      label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
+                      value: company.siren
+                    }; // on retourne cette forme de suggestion
+                  }
+                });
+              } else if (type == 'siren') {
+                dataToUse = data.siege_social;
+                resp = [{
+                  NAF: dataToUse.activite_principale,
+                  label: "".concat(dataToUse.l1_declaree, ", ").concat(dataToUse.geo_adresse, ", SIREN: ").concat(dataToUse.siren),
+                  value: dataToUse.siren
+                }];
+              }
+
+              response(resp);
             }
+          });
+        }
+      },
+      search: function search(term) {
+        // console.log('TCL: search -> term', term);
+        // custom minLength
+        var returnValue = true;
 
-            response(resp);
-          }
-        });
+        if (term.length < 2) {
+          returnValue = false;
+        }
+
+        return returnValue;
+      },
+      select: function select(event, ui) {
+        // console.log(ui.item);
+        //$('.field-naf input').val(ui.item.NAF);
+        $parent.find('.code-naf input').val(ui.item.NAF);
+        $parent.find('.num-siren input').val(ui.item.value);
       }
-    },
-    search: function search(term) {
-      // console.log('TCL: search -> term', term);
-      // custom minLength
-      var returnValue = true;
-
-      if (term.length < 2) {
-        returnValue = false;
-      }
-
-      return returnValue;
-    },
-    select: function select(event, ui) {
-      // console.log(ui.item);
-      // $('.field-naf input').val(ui.item.NAF);
-      $('.code-naf input').val(ui.item.NAF);
-      $('.num-siren input').val(ui.item.value);
-    }
+    });
   });
 };
 
