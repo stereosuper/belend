@@ -21260,6 +21260,7 @@ var layout = function layout(win) {
     var pageVanilla = this;
     var page = jQuery(this);
     var emptyInputs;
+    var alreadyFilledInputs;
     if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
 
     page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar')); // help
@@ -21291,7 +21292,7 @@ var layout = function layout(win) {
     page.find('.gform_page_footer').appendTo(page.find('.page-nav')); // button next step disabled
 
     if (page.find('.gfield_contains_required').length) {
-      page.find('.gform_next_button').attr('disabled', true);
+      // page.find('.gform_next_button').attr('disabled', true);
       page.find('.gfield_contains_required input').on('change input', function () {
         emptyInputs = page.find('.gfield_contains_required input').filter(function filterRequired() {
           return jQuery(this).val() == '';
@@ -21300,7 +21301,21 @@ var layout = function layout(win) {
         if (!emptyInputs.length) {
           page.find('.gform_next_button').attr('disabled', false);
         }
-      });
+      }); // if (!page[0].style.display) {
+      //     alreadyFilledInputs = page
+      //         .find('.gform_page_fields .gfield_contains_required input')
+      //         .filter(function filterRequired() {
+      //             console.log(
+      //                 'TCL: filterRequired -> jQuery(this).val()',
+      //                 jQuery(this).val()
+      //             );
+      //             return jQuery(this).val() == '';
+      //         });
+      //     console.log(
+      //         'TCL: pageLogic -> alreadyFilledInputs',
+      //         alreadyFilledInputs
+      //     );
+      // }
     }
   });
 }; // Mettre en forme et compiler
@@ -21353,17 +21368,17 @@ var autocomplete = function autocomplete($) {
 
         if (!isNaN(s) && s.length == 9) {
           type = 'siren';
-        } //console.log(type);
+        } // console.log(type);
 
 
         xhr = $.ajax({
-          url: 'https://entreprise.data.gouv.fr/api/sirene/v1/' + type + '/' + s,
+          url: "https://entreprise.data.gouv.fr/api/sirene/v1/".concat(type, "/").concat(s),
           timeout: 2000,
           complete: function complete() {
             xhr = null;
           },
           success: function success(data) {
-            //console.log('query with '+type, data);
+            // console.log('query with '+type, data);
             var dataToUse;
             var resp;
 
@@ -21406,7 +21421,7 @@ var autocomplete = function autocomplete($) {
     },
     select: function select(event, ui) {
       // console.log(ui.item);
-      //$('.field-naf input').val(ui.item.NAF);
+      // $('.field-naf input').val(ui.item.NAF);
       $('.code-naf input').val(ui.item.NAF);
       $('.num-siren input').val(ui.item.value);
     }

@@ -69,6 +69,7 @@ const layout = win => {
         const pageVanilla = this;
         const page = jQuery(this);
         let emptyInputs;
+        let alreadyFilledInputs;
 
         if (page.find('.gform_page_fields > ul').length <= 1) return;
 
@@ -112,7 +113,7 @@ const layout = win => {
 
         // button next step disabled
         if (page.find('.gfield_contains_required').length) {
-            page.find('.gform_next_button').attr('disabled', true);
+            // page.find('.gform_next_button').attr('disabled', true);
 
             page.find('.gfield_contains_required input').on(
                 'change input',
@@ -128,6 +129,22 @@ const layout = win => {
                     }
                 }
             );
+
+            // if (!page[0].style.display) {
+            //     alreadyFilledInputs = page
+            //         .find('.gform_page_fields .gfield_contains_required input')
+            //         .filter(function filterRequired() {
+            //             console.log(
+            //                 'TCL: filterRequired -> jQuery(this).val()',
+            //                 jQuery(this).val()
+            //             );
+            //             return jQuery(this).val() == '';
+            //         });
+            //     console.log(
+            //         'TCL: pageLogic -> alreadyFilledInputs',
+            //         alreadyFilledInputs
+            //     );
+            // }
         }
     });
 };
@@ -169,28 +186,28 @@ const setCache = $ => {
 const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
     const sirenInput = jQuery('.field-siren input');
-    var xhr = null;
+    let xhr = null;
     sirenInput.autocomplete({
         source(request, response) {
             if (!xhr) {
-                var s       = sirenInput.val(),
-                    type    = 'full_text';
-                if (!isNaN(s) && s.length == 9){
-                    type    = 'siren';
+                let s = sirenInput.val(),
+                    type = 'full_text';
+                if (!isNaN(s) && s.length == 9) {
+                    type = 'siren';
                 }
 
-                //console.log(type);
+                // console.log(type);
 
                 xhr = $.ajax({
-                    url: 'https://entreprise.data.gouv.fr/api/sirene/v1/'+type+'/'+s,
+                    url: `https://entreprise.data.gouv.fr/api/sirene/v1/${type}/${s}`,
                     timeout: 2000,
                     complete() {
                         xhr = null;
                     },
                     success(data) {
-                        //console.log('query with '+type, data);
-                        var dataToUse;
-                        var resp;
+                        // console.log('query with '+type, data);
+                        let dataToUse;
+                        let resp;
                         if (type == 'full_text') {
                             dataToUse = data.etablissement;
                             resp = $.map(dataToUse, company => {
@@ -198,20 +215,24 @@ const autocomplete = $ => {
                                     const label = company.siren;
                                     return {
                                         NAF: company.activite_principale,
-                                        label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
+                                        label: `${company.l1_declaree}, ${
+                                            company.geo_adresse
+                                        }, SIREN: ${company.siren}`,
                                         value: company.siren,
                                     }; // on retourne cette forme de suggestion
                                 }
-                            })
+                            });
                         } else if (type == 'siren') {
                             dataToUse = data.siege_social;
                             resp = [
                                 {
                                     NAF: dataToUse.activite_principale,
-                                    label: `${dataToUse.l1_declaree}, ${dataToUse.geo_adresse}, SIREN: ${dataToUse.siren}`,
+                                    label: `${dataToUse.l1_declaree}, ${
+                                        dataToUse.geo_adresse
+                                    }, SIREN: ${dataToUse.siren}`,
                                     value: dataToUse.siren,
-                                }
-                            ]
+                                },
+                            ];
                         }
                         response(resp);
                     },
@@ -229,7 +250,7 @@ const autocomplete = $ => {
         },
         select(event, ui) {
             // console.log(ui.item);
-            //$('.field-naf input').val(ui.item.NAF);
+            // $('.field-naf input').val(ui.item.NAF);
             $('.code-naf input').val(ui.item.NAF);
             $('.num-siren input').val(ui.item.value);
         },
