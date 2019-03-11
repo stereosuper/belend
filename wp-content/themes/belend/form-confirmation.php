@@ -21,19 +21,23 @@ $entry['montant_du_projet'] = isset($_GET['amout_needed'])? intval(str_replace('
 $entry['apport'] = isset($_GET['downpayment'])? intval(str_replace('.','',$_GET['downpayment'])): 0;
 $entry['exercices_clos'] = isset($_GET['exercices'])?$_GET['exercices']: '';
 $entry['resultat_exploitation'] = isset($_GET['income'])?$_GET['income']: '';
-$entry['fonds_propres'] = isset($_GET['funds-positive'])?$_GET['funds-positive']: '';
+$entry['fonds_propres'] = isset($_GET['own-funds-positive'])?$_GET['own-funds-positive']: '';
 $entry['chiffre_affaires'] = isset($_GET['turnover'])?$_GET['turnover']: '';
 $entry['duree_pret'] = isset($_GET['loan_time'])?$_GET['loan_time']: '';
-$entry['code_postal']= isset($_GET['post_code'])?$_GET['post_code']: '';
+$entry['code_postal']= isset($_GET['post_code'])?substr($_GET['post_code'], 0,2): '';
+$entry['forme_juridique']= isset($_GET['legal_structure'])?$_GET['legal_structure']: '';
 $entry['siren'] = isset($_GET['siren'])?$_GET['siren']: '';
 $entry['banques_consultees'] = isset($_GET['banks'])?treat_banks($_GET['banks']): array();
 $entry['accord_banque'] = isset($_GET['bank_deal_found'])?$_GET['bank_deal_found']: '';
 $entry['compromis_signe'] = isset($_GET['real_estate_deal'])?$_GET['real_estate_deal']: '';
 $entry['date_compromis'] = isset($_GET['deal_time'])?$_GET['deal_time']: '';
 $entry['avancement'] = isset($_GET['deal_search'])?$_GET['deal_search']: '';
-$entry['secteur_activite'] = isset($_GET['business_segment'])?$_GET['business_segment']: '';
+$entry['code_naf'] = isset($_GET['naf_code'])?$_GET['naf_code']:'';
+$entry['secteur_activite'] = isset($_GET['business_field'])?$_GET['business_field']: '';
+$entry['entry_id'] = isset($_GET['entry_id'])?$_GET['entry_id']: '';
+$entry['form_id'] = isset($_GET['form_id'])?$_GET['form_id']: '';
 
-$compare = new compare();
+$compare = new Compare();
 
 
 $results = [];
@@ -67,9 +71,27 @@ foreach ($results as $result){
 
 $output = get_output($results);
 
+belend_send_notification($entry['entry_id'],$entry['form_id'] );
+
+function belend_send_notification( $entry_id, $form_id)  {
+    $entry = GFAPI::get_entry( $entry_id );
+    $form = GFAPI::get_form( $form_id );
+    $notifications         = GFCommon::get_notifications( 'form_submission', $form);
+    //running through filters that disable form submission notifications
+    foreach ( $notifications as $notification ) {
+        if ( apply_filters( "gform_disable_notification_{$form['id']}", apply_filters( 'gform_disable_notification', false, $notification, $form, $entry ), $notification, $form, $entry ) ) {
+            //skip notifications if it has been disabled by a hook
+            continue;
+        }
+        $notification['to'] = 'jamesprevot@gmail.com';
+        GFCommon::send_notification( $notification, $form, $entry);
+    }
+
+}
+
 function treat_banks($banks){
     if(!is_array($banks)){
-        return array($banks);
+        return explode(',',$banks);
     }
     return $banks;
 }
@@ -105,7 +127,6 @@ class Compare
     function AND($args, $entry){
             $results = array();
             foreach ($args as $items){
-
                 $method = $items['method'];
                 $arguments = $items['clauses'];
                 $results[] = $this->$method($arguments, $entry);
@@ -145,7 +166,21 @@ class Compare
     }
 
     function IN($args, $entry){
-            return in_array($entry[$args['key']],$args['value'] );
+        return in_array($entry[$args['key']], $args['value']);
+    }
+
+    function NOT_IN($args, $entry){
+        return !in_array($entry[$args['key']], $args['value']);
+    }
+
+    function NOT_IN_STRING($args, $entry){
+        //var_dump(strpos($entry[$args['key']], $args['value']));
+        if(strpos($entry[$args['key']], $args['value']) !== false){
+           $value = false;
+        }else{
+            $value = true;
+        }
+        return $value;
     }
 
     function EQ($args, $entry){
@@ -188,6 +223,7 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
+            <?php var_dump($results);?>
             <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php echo $output; ?></div>
         <?php else : ?>
 

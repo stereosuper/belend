@@ -62,10 +62,25 @@ return [
 
             ],
             [
-                "method" => "NOT_EQ",
+                "method" => "AND",
                 "clauses" => [
-                    "key" => "secteur_activite",
-                    "value" => "Promotion immobilière"
+
+                    [
+                        "method" => "NOT_IN_STRING",
+                        "clauses" => [
+                            "key" => "secteur_activite",
+                            "value" => "Promotion immobilière",
+                        ]
+                    ],
+                    [
+                        "method" => "NOT_IN_STRING",
+                        "clauses" => [
+                            "key" => "code_naf",
+                            "value" => "411",
+                        ]
+                    ]
+
+
                 ]
             ]
         ]
