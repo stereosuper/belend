@@ -115,24 +115,27 @@ const layout = win => {
         if (page.find('.gfield_contains_required').length) {
             page.find('.gform_next_button').attr('disabled', true);
 
-            page.find('.gfield_contains_required input').on(
-                'change input',
-                () => {
-                    emptyInputs = page
-                        .find('.gfield_contains_required input')
-                        .filter(function filterRequired() {
-                            return jQuery(this).val() == '';
-                        });
+            page.find(
+                '.gfield_contains_required input, .gfield_contains_required textarea'
+            ).on('change input', () => {
+                emptyInputs = page
+                    .find(
+                        '.gfield_contains_required input, .gfield_contains_required textarea'
+                    )
+                    .filter(function filterRequired() {
+                        return jQuery(this).val() == '';
+                    });
 
-                    if (!emptyInputs.length) {
-                        page.find('.gform_next_button').attr('disabled', false);
-                    }
+                if (!emptyInputs.length) {
+                    page.find('.gform_next_button').attr('disabled', false);
                 }
-            );
+            });
 
             if (!page[0].style.display) {
                 alreadyFilledInputs = page
-                    .find('.gform_page_fields .gfield_contains_required input')
+                    .find(
+                        '.gform_page_fields .gfield_contains_required input, .gform_page_fields .gfield_contains_required textarea'
+                    )
                     .filter(function filterRequired() {
                         const input = jQuery(this);
                         const checkRadio =
@@ -277,9 +280,7 @@ const inputWidth = () => {
     inputs.each((index, fieldItem) => {
         const [input] = jQuery(fieldItem).find('input');
         const placeholder = jQuery(input).val();
-        console.log('TCL: inputWidth -> placeholder', placeholder);
         if (placeholder) {
-            console.log('TCL: inputWidth -> placeholder', placeholder);
             jQuery(input).css('width', `${(placeholder.length + 1) * 8}px`);
         }
 
