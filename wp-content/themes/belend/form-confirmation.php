@@ -83,7 +83,7 @@ function belend_send_notification( $entry_id, $form_id)  {
             //skip notifications if it has been disabled by a hook
             continue;
         }
-        $notification['to'] = 'jamesprevot@gmail.com';
+        $notification['to'] = 'abertout@studio-goliath.com';
         GFCommon::send_notification( $notification, $form, $entry);
     }
 
