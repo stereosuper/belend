@@ -21359,9 +21359,9 @@ var autocomplete = function autocomplete($) {
   var _scripts_l10n = scripts_l10n,
       adminAjax = _scripts_l10n.adminAjax;
   var xhr = null;
-  jQuery('.field-siren input').each(function (e) {
+  jQuery('.field-siren input').each(function sirenInputs(e) {
     var $this = $(this),
-        $parent = $this.parents('.gform_fields'); //console.log($this);
+        $parent = $this.parents('.gform_fields'); // console.log($this);
 
     $this.autocomplete({
       source: function source(request, response) {
@@ -21371,17 +21371,17 @@ var autocomplete = function autocomplete($) {
 
           if (!isNaN(s) && s.length == 9) {
             type = 'siren';
-          } //console.log(type);
+          } // console.log(type);
 
 
           xhr = $.ajax({
-            url: 'https://entreprise.data.gouv.fr/api/sirene/v1/' + type + '/' + s,
+            url: "https://entreprise.data.gouv.fr/api/sirene/v1/".concat(type, "/").concat(s),
             timeout: 2000,
             complete: function complete() {
               xhr = null;
             },
             success: function success(data) {
-              //console.log('query with '+type, data);
+              // console.log('query with '+type, data);
               var dataToUse;
               var resp;
 
@@ -21424,10 +21424,31 @@ var autocomplete = function autocomplete($) {
       },
       select: function select(event, ui) {
         // console.log(ui.item);
-        //$('.field-naf input').val(ui.item.NAF);
+        // $('.field-naf input').val(ui.item.NAF);
         $parent.find('.code-naf input').val(ui.item.NAF);
         $parent.find('.num-siren input').val(ui.item.value);
       }
+    });
+  });
+};
+
+var inputWidth = function inputWidth() {
+  var inputs = jQuery('.gfield_calculation');
+  inputs.each(function (index, fieldItem) {
+    var _jQuery$find = jQuery(fieldItem).find('input'),
+        _jQuery$find2 = _slicedToArray(_jQuery$find, 1),
+        input = _jQuery$find2[0];
+
+    var placeholder = jQuery(input).val();
+    console.log('TCL: inputWidth -> placeholder', placeholder);
+
+    if (placeholder) {
+      console.log('TCL: inputWidth -> placeholder', placeholder);
+      jQuery(input).css('width', "".concat((placeholder.length + 1) * 8, "px"));
+    }
+
+    jQuery('.field-price').find('input').on('change', function () {
+      input.style.width = "".concat((input.value.length + 1) * 8, "px");
     });
   });
 };
@@ -21439,12 +21460,14 @@ var formHandler = function formHandler(win) {
     layout(win);
     fixedPositionOnScroll(win);
     Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
+    inputWidth();
     jQuery(document).on('gform_post_render', function () {
       setCache($);
       autocomplete($);
       progress();
       layout(win);
       Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
+      inputWidth();
     });
   });
 };

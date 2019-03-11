@@ -192,35 +192,35 @@ const setCache = $ => {
 
 const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
-    var xhr = null;
+    let xhr = null;
 
-    jQuery('.field-siren input').each(function(e){
-        var $this       = $(this),
-            $parent     = $this.parents('.gform_fields');
+    jQuery('.field-siren input').each(function sirenInputs(e) {
+        let $this = $(this),
+            $parent = $this.parents('.gform_fields');
 
-        //console.log($this);
+        // console.log($this);
 
         $this.autocomplete({
             source(request, response) {
                 if (!xhr) {
-                    var s       = $this.val(),
-                        type    = 'full_text';
-                    if (!isNaN(s) && s.length == 9){
-                        type    = 'siren';
+                    let s = $this.val(),
+                        type = 'full_text';
+                    if (!isNaN(s) && s.length == 9) {
+                        type = 'siren';
                     }
 
-                    //console.log(type);
+                    // console.log(type);
 
                     xhr = $.ajax({
-                        url: 'https://entreprise.data.gouv.fr/api/sirene/v1/'+type+'/'+s,
+                        url: `https://entreprise.data.gouv.fr/api/sirene/v1/${type}/${s}`,
                         timeout: 2000,
                         complete() {
                             xhr = null;
                         },
                         success(data) {
-                            //console.log('query with '+type, data);
-                            var dataToUse;
-                            var resp;
+                            // console.log('query with '+type, data);
+                            let dataToUse;
+                            let resp;
                             if (type == 'full_text') {
                                 dataToUse = data.etablissement;
                                 resp = $.map(dataToUse, company => {
@@ -228,20 +228,24 @@ const autocomplete = $ => {
                                         const label = company.siren;
                                         return {
                                             NAF: company.activite_principale,
-                                            label: `${company.l1_declaree}, ${company.geo_adresse}, SIREN: ${company.siren}`,
+                                            label: `${company.l1_declaree}, ${
+                                                company.geo_adresse
+                                            }, SIREN: ${company.siren}`,
                                             value: company.siren,
                                         }; // on retourne cette forme de suggestion
                                     }
-                                })
+                                });
                             } else if (type == 'siren') {
                                 dataToUse = data.siege_social;
                                 resp = [
                                     {
                                         NAF: dataToUse.activite_principale,
-                                        label: `${dataToUse.l1_declaree}, ${dataToUse.geo_adresse}, SIREN: ${dataToUse.siren}`,
+                                        label: `${dataToUse.l1_declaree}, ${
+                                            dataToUse.geo_adresse
+                                        }, SIREN: ${dataToUse.siren}`,
                                         value: dataToUse.siren,
-                                    }
-                                ]
+                                    },
+                                ];
                             }
                             response(resp);
                         },
@@ -259,11 +263,31 @@ const autocomplete = $ => {
             },
             select(event, ui) {
                 // console.log(ui.item);
-                //$('.field-naf input').val(ui.item.NAF);
+                // $('.field-naf input').val(ui.item.NAF);
                 $parent.find('.code-naf input').val(ui.item.NAF);
                 $parent.find('.num-siren input').val(ui.item.value);
             },
         });
+    });
+};
+
+const inputWidth = () => {
+    const inputs = jQuery('.gfield_calculation');
+
+    inputs.each((index, fieldItem) => {
+        const [input] = jQuery(fieldItem).find('input');
+        const placeholder = jQuery(input).val();
+        console.log('TCL: inputWidth -> placeholder', placeholder);
+        if (placeholder) {
+            console.log('TCL: inputWidth -> placeholder', placeholder);
+            jQuery(input).css('width', `${(placeholder.length + 1) * 8}px`);
+        }
+
+        jQuery('.field-price')
+            .find('input')
+            .on('change', () => {
+                input.style.width = `${(input.value.length + 1) * 8}px`;
+            });
     });
 };
 
@@ -274,6 +298,7 @@ const formHandler = win => {
         layout(win);
         fixedPositionOnScroll(win);
         placesInput();
+        inputWidth();
 
         jQuery(document).on('gform_post_render', () => {
             setCache($);
@@ -281,6 +306,7 @@ const formHandler = win => {
             progress();
             layout(win);
             placesInput();
+            inputWidth();
         });
     });
 };

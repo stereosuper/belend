@@ -2,7 +2,7 @@
     .gfield_checkbox,
     .gfield_radio {
         font-size: 1.4rem;
-        > li{
+        > li {
             min-height: 95px;
         }
         input {
@@ -16,6 +16,7 @@
                 background-position: 50% 50%;
                 background-size: 80%;
                 background-color: #fff;
+                user-select: none;
             }
         }
         input[value="CIC"] {
@@ -87,12 +88,11 @@
     }
 }
 
-
-@media (min-width: $tablet){
+@media (min-width: $tablet) {
     .field-banks {
         .gfield_checkbox,
         .gfield_radio {
-            > li{
+            > li {
                 width: calc(20% - 24px);
             }
         }

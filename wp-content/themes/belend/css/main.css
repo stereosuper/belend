@@ -1043,6 +1043,25 @@ button {
 .gform_wrapper form > .validation_error {
   display: none; }
 
+.partial_entry_warning {
+  position: relative;
+  padding: 10px 0;
+  margin-bottom: 0 !important;
+  color: #e9e8e1;
+  background-color: transparent;
+  font-size: 1.4rem; }
+  .partial_entry_warning::after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    background-color: #312f2f;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    z-index: -1; }
+
 .field-year::after {
   content: "année(s)"; }
 
@@ -1518,7 +1537,11 @@ input:focus + .instruction {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 80%;
-    background-color: #fff; }
+    background-color: #fff;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
   .field-banks .gfield_checkbox input[value="CIC"] + label,
   .field-banks .gfield_radio input[value="CIC"] + label {
     background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
