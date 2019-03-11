@@ -174,7 +174,6 @@ class Compare
     }
 
     function NOT_IN_STRING($args, $entry){
-        //var_dump(strpos($entry[$args['key']], $args['value']));
         if(strpos($entry[$args['key']], $args['value']) !== false){
            $value = false;
         }else{
@@ -223,7 +222,6 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
-            <?php var_dump($results);?>
             <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php echo $output; ?></div>
         <?php else : ?>
 
