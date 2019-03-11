@@ -198,7 +198,7 @@ function add_page_steps($form)
     return $form;
 }
 
-//add_filter('gform_pre_render', 'belend_populate', 20);
+add_filter('gform_pre_render', 'belend_populate', 20);
 
 function belend_populate($form){
 
@@ -217,12 +217,6 @@ function belend_populate($form){
         if (isset($entries[0][$field['id']]) && $entries[0][$field['id']]) {
             //var_dump($entries[0][$field['id']]);
             $field['defaultValue'] = $entries[0][$field['id']];
-
-            foreach ($form['fields'] as $field2){
-             if($field2['pageNumber'] == $field['pageNumber']){
-                 $field2['isRequired'] =  false;
-             }
-            }
         }
     }
 

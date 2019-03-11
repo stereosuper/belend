@@ -21318,7 +21318,24 @@ var layout = function layout(win) {
       }
     }
   });
-}; // Mettre en forme et compiler
+};
+/**
+ * Set a cookie
+ * @param {String} cname, cookie name
+ * @param {String} cvalue, cookie value
+ * @param {Int} exdays, number of days before the cookie expires
+ */
+
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date(); //Create an date object
+
+  d.setTime(d.getTime() + exdays * 1000 * 60 * 60 * 24); //Set the time to exdays from the current date in milliseconds. 1000 milliseonds = 1 second
+
+  var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
+
+  window.document.cookie = cname + "=" + cvalue + "; " + expires; //Set the cookie with value and the expiration date
+} // Mettre en forme et compiler
 
 
 var getCookie = function getCookie(cName) {
@@ -21341,18 +21358,44 @@ var getCookie = function getCookie(cName) {
 
   return cValue;
 };
+/**
+ * Delete a cookie
+ * @param {String} cname, cookie name
+ */
+
+
+function deleteCookie(cname) {
+  var d = new Date(); //Create an date object
+
+  d.setTime(d.getTime() - 1000 * 60 * 60 * 24); //Set the time to the past. 1000 milliseonds = 1 second
+
+  var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
+
+  window.document.cookie = cname + "=" + "; " + expires; //Set the cookie with name and the expiration date
+}
 
 var setCache = function setCache($) {
   var cookie = getCookie('gformPartialID');
+  console.log("loading cookie: ", cookie);
 
   if (typeof cookie === 'undefined' || $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
-    if ($('.partial_entry_id').val() != cookie) {
-      console.log('added to cookie:', $('.partial_entry_id').val());
-      document.cookie = "gformPartialID=".concat($('.partial_entry_id').val());
-    }
-  } else if (cookie && $('#partial_entry_id').val() != cookie) {
+    document.cookie = "gformPartialID=".concat($('.partial_entry_id').val());
+    setCookie('gformPartialID', $('.partial_entry_id').val(), 365);
+  } else if (cookie) {
+    console.log('new cookie', cookie);
     $('.partial_entry_id').val(cookie);
   }
+};
+
+var resetCache = function resetCache($) {
+  jQuery('#empty-cache').on('click', function () {
+    var reset = confirm("Êtes-vous sûr de vouloir réinitialiser le formulaire?");
+
+    if (reset) {
+      deleteCookie('gformPartialID');
+      location.reload();
+    }
+  });
 };
 
 var autocomplete = function autocomplete($) {
@@ -21461,6 +21504,8 @@ var formHandler = function formHandler(win) {
     fixedPositionOnScroll(win);
     Object(_placesInput__WEBPACK_IMPORTED_MODULE_1__["default"])();
     inputWidth();
+    resetCache();
+    setCache($);
     jQuery(document).on('gform_post_render', function () {
       setCache($);
       autocomplete($);
