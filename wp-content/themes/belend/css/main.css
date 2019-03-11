@@ -1040,6 +1040,27 @@ button {
 .gfield_visibility_hidden {
   display: none; }
 
+.empty-cache-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color: #312f2f; }
+
+.empty-cache {
+  position: relative;
+  margin: 25px 0;
+  font-size: 1.6rem; }
+  .empty-cache.btn-invert {
+    padding: 10px 20px; }
+
 .gform_wrapper form > .validation_error {
   display: none; }
 

@@ -2,6 +2,23 @@
     display: none;
 }
 
+.empty-cache-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $black-grey;
+}
+
+.empty-cache {
+    position: relative;
+    margin: $line-height 0;
+    font-size: 1.6rem;
+    &.btn-invert {
+        padding: 10px 20px;
+    }
+}
+
 .gform_wrapper {
     form {
         > .validation_error {

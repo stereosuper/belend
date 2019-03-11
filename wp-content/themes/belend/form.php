@@ -18,7 +18,11 @@ get_header(); ?>
 
 	<div class='form-wrapper'>
 		<?php the_content(); ?>
-        <button id="empty-cache">Réinitialiser le Questionnaire</button>
+		<div class="empty-cache-wrapper">
+			<button id="empty-cache" class="empty-cache btn-invert">
+				<span>Réinitialiser le Questionnaire</span>
+			</button>
+		</div>
 	</div>
 	
 <?php endif; ?>
