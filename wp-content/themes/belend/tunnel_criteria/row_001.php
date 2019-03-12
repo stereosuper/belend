@@ -8,8 +8,8 @@ return [
             [
                 "method" => "EQ",
                 "clauses" => [
-                    "key" => "type_de_projet",
-                    "value" => "Murs commerciaux",
+                    "key" => "projet_murs",
+                    "value" => "Acquisition de murs commerciaux",
                 ],
             ],
             [

@@ -19,6 +19,8 @@ $entry['projet_tresorerie'] = isset($_GET['proj_finance'])?$_GET['proj_finance']
 $entry['montant_du_pret'] = isset($_GET['loan_total'])? intval(str_replace('.','',$_GET['loan_total'])): 0;
 $entry['montant_du_projet'] = isset($_GET['amout_needed'])? intval(str_replace('.','',$_GET['amount_needed'])): 0;
 $entry['apport'] = isset($_GET['downpayment'])? intval(str_replace('.','',$_GET['downpayment'])): 0;
+$entry['capital_restant'] = isset($_GET['amount_left'])? intval(str_replace('.','',$_GET['amount_left'])): 0;
+$entry['montant_penalites'] = isset($_GET['penalties'])? intval(str_replace('.','',$_GET['penalties'])): 0;
 $entry['exercices_clos'] = isset($_GET['exercices'])?$_GET['exercices']: '';
 $entry['resultat_exploitation'] = isset($_GET['income'])?$_GET['income']: '';
 $entry['fonds_propres'] = isset($_GET['own-funds-positive'])?$_GET['own-funds-positive']: '';
@@ -36,6 +38,9 @@ $entry['code_naf'] = isset($_GET['naf_code'])?$_GET['naf_code']:'';
 $entry['secteur_activite'] = isset($_GET['business_field'])?$_GET['business_field']: '';
 $entry['entry_id'] = isset($_GET['entry_id'])?$_GET['entry_id']: '';
 $entry['form_id'] = isset($_GET['form_id'])?$_GET['form_id']: '';
+
+$entry['montant_avec_penalites'] = $entry['capital_restant'] + $entry['montant_penalites'];
+
 
 $compare = new Compare();
 

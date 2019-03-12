@@ -78,13 +78,20 @@ return [
                                     "reference" => "montant_du_projet"
                                 ]
                             ],
+                            [
+                                "method" => "EQ",
+                                "clauses" => [
+                                    "key" => "accord_banque",
+                                    "value" => "Oui"
+                                ]
+                            ]
                         ]
                     ],
                     [
                         "method" => "NOT_EQ",
                         "clauses" => [
-                            "key" => "projet_fonds_commerce",
-                            "value" => "Création de fonds de commerce"
+                            "key" => "projet",
+                            "value" => "Fonds de commerce"
                         ]
 
                     ],

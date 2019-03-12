@@ -20,7 +20,7 @@ return [
             [
                 "method" => "GTE",
                 "clauses" => [
-                    "key" => "montant_du_pret",
+                    "key" => "montant_avec_penalites",
                     "value" => 250000
                 ]
             ],
@@ -29,7 +29,7 @@ return [
                 "clauses" => [
                     "key" => "apport",
                     "value" => 20,
-                    "reference" => "montant_du_projet"
+                    "reference" => "montant_avec_penalites"
                 ]
             ],
             [
