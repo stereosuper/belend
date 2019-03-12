@@ -2764,41 +2764,41 @@ a.ui-button:active,
 @media (min-width: 1260px) {
   .page-template-contact .contact-container header {
     margin-bottom: 75px; }
-  .page-template-contact .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  .page-template-contact .contact-container .container {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse; }
-    .page-template-contact .container .contact-content {
-      width: 758.75px;
-      padding-right: 91.25px; }
-      .page-template-contact .container .contact-content .subtitle,
-      .page-template-contact .container .contact-content .description {
-        text-align: left;
-        padding-right: 15px; }
-      .page-template-contact .container .contact-content .gform_wrapper {
-        width: 100%; }
-    .page-template-contact .container .contact-sidebar {
-      width: 516.25px;
-      padding: 0 60px; }
-      .page-template-contact .container .contact-sidebar .lend,
-      .page-template-contact .container .contact-sidebar .advisor {
-        padding: 50px 45px; }
-        .page-template-contact .container .contact-sidebar .lend h2,
-        .page-template-contact .container .contact-sidebar .advisor h2 {
-          font-size: 2.6rem; }
-        .page-template-contact .container .contact-sidebar .lend h2,
-        .page-template-contact .container .contact-sidebar .lend p,
-        .page-template-contact .container .contact-sidebar .advisor h2,
-        .page-template-contact .container .contact-sidebar .advisor p {
-          text-align: left; }
-      .page-template-contact .container .contact-sidebar .lend {
-        -webkit-box-align: start;
-            -ms-flex-align: start;
-                align-items: flex-start; }
+            flex-direction: row-reverse;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .page-template-contact .container .contact-content {
+    width: 758.75px;
+    padding-right: 91.25px; }
+    .page-template-contact .container .contact-content .subtitle,
+    .page-template-contact .container .contact-content .description {
+      text-align: left;
+      padding-right: 15px; }
+    .page-template-contact .container .contact-content .gform_wrapper {
+      width: 100%; }
+  .page-template-contact .container .contact-sidebar {
+    width: 516.25px;
+    padding: 0 60px; }
+    .page-template-contact .container .contact-sidebar .lend,
+    .page-template-contact .container .contact-sidebar .advisor {
+      padding: 50px 45px; }
+      .page-template-contact .container .contact-sidebar .lend h2,
+      .page-template-contact .container .contact-sidebar .advisor h2 {
+        font-size: 2.6rem; }
+      .page-template-contact .container .contact-sidebar .lend h2,
+      .page-template-contact .container .contact-sidebar .lend p,
+      .page-template-contact .container .contact-sidebar .advisor h2,
+      .page-template-contact .container .contact-sidebar .advisor p {
+        text-align: left; }
+    .page-template-contact .container .contact-sidebar .lend {
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
   .page-template-contact .offer {
     padding: 50px 0; }
     .page-template-contact .offer:first-child {

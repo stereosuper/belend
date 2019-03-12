@@ -348,10 +348,12 @@
             header {
                 margin-bottom: $line-height * 3;
             }
+            .container{
+                flex-direction: row-reverse;
+                display: flex;
+            }
         }
         .container {
-            display: flex;
-            flex-direction: row-reverse;
             .contact-content {
                 width: #{grid-column-pixels($desktop, $gutter, 7, 12) + $gutter *
                     2};
