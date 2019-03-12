@@ -177,4 +177,3 @@ return [
     ],
     "output" => "Votre demande est recevable dans le cadre d'un financement sans garantie et sans penalités en cas de remboursement anticipé. Aussi, nous vous invitons à compléter vos élements via le lien ci-dessous en ouvrant votre compte emprunteur."
 ];
-//TODO: gérer les différentes  formes juridiques
