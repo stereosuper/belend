@@ -66,7 +66,7 @@ return [
                             [
                                 "method" => "EQ",
                                 "clauses" => [
-                                    "key" => "projet",
+                                    "key" => "type_de_projet",
                                     "value" => "Fonds de commerce"
                                 ]
                             ],
@@ -90,7 +90,7 @@ return [
                     [
                         "method" => "NOT_EQ",
                         "clauses" => [
-                            "key" => "projet",
+                            "key" => "type_de_projet",
                             "value" => "Fonds de commerce"
                         ]
 
