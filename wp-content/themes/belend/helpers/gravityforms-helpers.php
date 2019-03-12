@@ -220,8 +220,6 @@ function belend_populate($form){
         }
     }
 
-    var_dump($_COOKIE);
-
     return $form;
 }
 
