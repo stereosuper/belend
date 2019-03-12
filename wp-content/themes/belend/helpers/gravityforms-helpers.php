@@ -1,5 +1,5 @@
 <?php
-//add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
+add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
 add_action("gform_partialentries_post_entry_updated", "belend_send_partial_entry", 10, 2);
 
 function belend_send_partial_entry($partial_entry, $form)
@@ -202,7 +202,7 @@ add_filter('gform_pre_render', 'belend_populate', 20);
 
 function belend_populate($form){
 
-    if(isset($_COOKIE['gformPartialID'])){
+    if(isset($_COOKIE['gformPartialID']) && !empty($_COOKIE['gformPartialID']) ){
         $search_criteria = array(
             'status'        => 'active',
             'field_filters' => array(
@@ -220,7 +220,7 @@ function belend_populate($form){
         }
     }
 
-    //var_dump($_COOKIE);
+    var_dump($_COOKIE);
 
     return $form;
 }

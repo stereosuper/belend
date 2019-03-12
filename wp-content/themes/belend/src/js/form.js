@@ -169,7 +169,7 @@ function setCookie(cname,cvalue,exdays) {
     var d = new Date(); //Create an date object
     d.setTime(d.getTime() + (exdays*1000*60*60*24)); //Set the time to exdays from the current date in milliseconds. 1000 milliseonds = 1 second
     var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
-    window.document.cookie = cname+"="+cvalue+"; "+expires;//Set the cookie with value and the expiration date
+    window.document.cookie = cname+"="+cvalue+"; path='/'"+expires;//Set the cookie with value and the expiration date
 }
 
 // Mettre en forme et compiler
@@ -195,30 +195,32 @@ const getCookie = cName => {
  * @param {String} cname, cookie name
  */
 function deleteCookie(cname) {
-    var d = new Date(); //Create an date object
-    d.setTime(d.getTime() - (1000*60*60*24)); //Set the time to the past. 1000 milliseonds = 1 second
-    var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
-    window.document.cookie = cname+"="+"; "+expires;//Set the cookie with name and the expiration date
+    //console.log('delete')
+   document.cookie = cname + "=; path='/' expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    setCookie(name, "", null , 1);
+   // window.document.cookie = cname+"="+"; -1";//Set the cookie with name and the expiration dat// e
 
 }
 
 const setCache = $ => {
-    const cookie = getCookie('gformPartialID');
-    console.log("loading cookie: ", cookie);
+   const cookie = getCookie('gformPartialID');
+    //console.log("cookie in use: ", cookie);
+
     if (
-        typeof cookie === 'undefined' ||
+        (typeof cookie === 'undefined' || cookie === 'undefined' || cookie === '' )  &&
         ($('.partial_entry_id').val() != 'pending' &&
             $('.partial_entry_id').val() != 'undefined')
     ) {
-            document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
+            //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
             setCookie('gformPartialID', $('.partial_entry_id').val(), 365);
 
+            const cookie = getCookie('gformPartialID');
+            //console.log("cookie in use: ", cookie);
+
     } else if (cookie) {
-        console.log('new cookie', cookie)
         $('.partial_entry_id').val(cookie);
     }
 };
-
 
 const resetCache = $ => {
     jQuery('#empty-cache').on('click',function(){
@@ -226,9 +228,17 @@ const resetCache = $ => {
 
         if(reset){
             deleteCookie('gformPartialID');
+            //console.log('KOOKIE', getCookie('gformPartialID'))
             location.reload();
         }
    });
+
+    jQuery('.field-confirm input').on('click',function(){
+        //console.log('click');
+            deleteCookie('gformPartialID');
+   });
+
+
 };
 
 const autocomplete = $ => {
