@@ -21408,7 +21408,7 @@ var resetCache = function resetCache($) {
 
 var deleteCacheOnSubmit = function deleteCacheOnSubmit($) {
   if (jQuery(".page-template-form-confirmation").length) {
-    console.log('confirmation');
+    //console.log('confirmation');
     deleteCookie('gformPartialID');
   }
 };
