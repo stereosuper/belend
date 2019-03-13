@@ -207,7 +207,7 @@ const setCache = $ => {
     //console.log("cookie in use: ", cookie);
 
     if (
-        (typeof cookie === 'undefined' || cookie === 'undefined' || cookie === '' )  &&
+        (typeof cookie === 'undefined' || cookie == null ||cookie === 'undefined' || cookie === '' )  &&
         ($('.partial_entry_id').val() != 'pending' &&
             $('.partial_entry_id').val() != 'undefined')
     ) {

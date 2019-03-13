@@ -21373,7 +21373,7 @@ function deleteCookie(cname) {
 var setCache = function setCache($) {
   var cookie = getCookie('gformPartialID'); //console.log("cookie in use: ", cookie);
 
-  if ((typeof cookie === 'undefined' || cookie === 'undefined' || cookie === '') && $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
+  if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
     //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
     setCookie('gformPartialID', $('.partial_entry_id').val(), 365); //const cookie = getCookie('gformPartialID');
     //console.log("cookie in use: ", cookie);
