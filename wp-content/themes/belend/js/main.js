@@ -21375,10 +21375,8 @@ var setCache = function setCache($) {
 
   if ((typeof cookie === 'undefined' || cookie === 'undefined' || cookie === '') && $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
     //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
-    setCookie('gformPartialID', $('.partial_entry_id').val(), 365);
-
-    var _cookie = getCookie('gformPartialID'); //console.log("cookie in use: ", cookie);
-
+    setCookie('gformPartialID', $('.partial_entry_id').val(), 365); //const cookie = getCookie('gformPartialID');
+    //console.log("cookie in use: ", cookie);
   } else if (cookie) {
     $('.partial_entry_id').val(cookie);
   }
