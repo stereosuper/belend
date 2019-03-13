@@ -21371,16 +21371,19 @@ function deleteCookie(cname) {
 }
 
 var setCache = function setCache($) {
-  var cookie = getCookie('gformPartialID');
-  var partialID = $('.partial_entry_id').val(); //console.log("cookie in use: ", cookie);
+  if ($('.partial_entry_id').length) {
+    var cookie = getCookie('gformPartialID');
+    var partialID = $('.partial_entry_id').val();
+    console.log("cookie in use: ", cookie);
 
-  if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && partialID != 'pending' && partialID != 'undefined') {
-    if (testPartialID(partialID)) {
-      //console.log('test passed')
-      setCookie('gformPartialID', partialID, 365);
+    if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && partialID != 'pending' && partialID != 'undefined') {
+      if (testPartialID(partialID)) {
+        //console.log('test passed')
+        setCookie('gformPartialID', partialID, 365);
+      }
+    } else if (cookie && typeof cookie != 'undefined' && cookie != null && cookie != 'undefined' && cookie != '') {
+      if (testPartialID(cookie)) $('.partial_entry_id').val(cookie);
     }
-  } else if (cookie && typeof cookie != 'undefined' && cookie != null && cookie != 'undefined' && cookie != '') {
-    if (testPartialID(cookie)) $('.partial_entry_id').val(cookie);
   }
 };
 

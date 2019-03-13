@@ -203,24 +203,27 @@ function deleteCookie(cname) {
 }
 
 const setCache = $ => {
-   const cookie = getCookie('gformPartialID');
-   const partialID =  $('.partial_entry_id').val();
-    //console.log("cookie in use: ", cookie);
+    if( $('.partial_entry_id').length){
+        const cookie = getCookie('gformPartialID');
+        const partialID =  $('.partial_entry_id').val();
+        console.log("cookie in use: ", cookie);
 
-    if (
-        (typeof cookie === 'undefined' || cookie == null ||cookie === 'undefined' || cookie === '' )  &&
-        (partialID != 'pending' &&
-            partialID != 'undefined')
-    ) {
+
+        if (
+            (typeof cookie === 'undefined' || cookie == null ||cookie === 'undefined' || cookie === '' )  &&
+            (partialID != 'pending' &&
+                partialID != 'undefined')
+        ) {
             if(testPartialID( partialID)){
                 //console.log('test passed')
                 setCookie('gformPartialID', partialID, 365);
             }
 
-    } else if (cookie && (typeof cookie != 'undefined') && cookie != null && cookie != 'undefined' && cookie != '' ) {
+        } else if (cookie && (typeof cookie != 'undefined') && cookie != null && cookie != 'undefined' && cookie != '' ) {
 
-        if (testPartialID( cookie))
-        $('.partial_entry_id').val(cookie);
+            if (testPartialID( cookie))
+                $('.partial_entry_id').val(cookie);
+        }
     }
 };
 
