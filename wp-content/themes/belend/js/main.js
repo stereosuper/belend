@@ -21371,7 +21371,8 @@ function deleteCookie(cname) {
 }
 
 var setCache = function setCache($) {
-  var cookie = getCookie('gformPartialID'); //console.log("cookie in use: ", cookie);
+  var cookie = getCookie('gformPartialID');
+  console.log("cookie in use: ", cookie);
 
   if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
     //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
