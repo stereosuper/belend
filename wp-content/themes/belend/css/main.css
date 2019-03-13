@@ -3121,6 +3121,29 @@ a.ui-button:active,
       -webkit-transform: translateX(-125%);
               transform: translateX(-125%); } }
 
+.page-template-default .container-small {
+  position: relative; }
+  .page-template-default .container-small:before, .page-template-default .container-small:after {
+    content: "";
+    position: absolute;
+    width: 405px;
+    height: 415px;
+    background: url(/wp-content/themes/belend/img/bgform.svg);
+    background-size: cover;
+    -webkit-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+    z-index: -1; }
+  .page-template-default .container-small:before {
+    top: -70px;
+    right: 30px;
+    -webkit-transform: rotate(-30deg) scale(0.8);
+            transform: rotate(-30deg) scale(0.8); }
+  .page-template-default .container-small:after {
+    top: 300px;
+    left: -100px;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8); }
+
 /******* PRINT *******/
 @media print {
   *, *:before {
