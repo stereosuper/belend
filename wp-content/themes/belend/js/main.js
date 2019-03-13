@@ -21371,15 +21371,24 @@ function deleteCookie(cname) {
 }
 
 var setCache = function setCache($) {
-  var cookie = getCookie('gformPartialID'); //console.log("cookie in use: ", cookie);
+  var cookie = getCookie('gformPartialID');
+  var partialID = $('.partial_entry_id').val(); //console.log("cookie in use: ", cookie);
 
-  if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && $('.partial_entry_id').val() != 'pending' && $('.partial_entry_id').val() != 'undefined') {
-    //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
-    setCookie('gformPartialID', $('.partial_entry_id').val(), 365); //const cookie = getCookie('gformPartialID');
-    //console.log("cookie in use: ", cookie);
-  } else if (cookie) {
-    $('.partial_entry_id').val(cookie);
+  if ((typeof cookie === 'undefined' || cookie == null || cookie === 'undefined' || cookie === '') && partialID != 'pending' && partialID != 'undefined') {
+    if (testPartialID(partialID)) {
+      //console.log('test passed')
+      setCookie('gformPartialID', partialID, 365);
+    }
+  } else if (cookie && typeof cookie != 'undefined' && cookie != null && cookie != 'undefined' && cookie != '') {
+    if (testPartialID(cookie)) $('.partial_entry_id').val(cookie);
   }
+};
+
+var testPartialID = function testPartialID(str) {
+  //console.log('string ', str);
+  var regex = /[0-9A-Fa-f]{32}/gm;
+  var res = str.match(regex);
+  return res;
 };
 
 var resetCache = function resetCache($) {

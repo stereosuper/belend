@@ -204,23 +204,33 @@ function deleteCookie(cname) {
 
 const setCache = $ => {
    const cookie = getCookie('gformPartialID');
+   const partialID =  $('.partial_entry_id').val();
     //console.log("cookie in use: ", cookie);
 
     if (
         (typeof cookie === 'undefined' || cookie == null ||cookie === 'undefined' || cookie === '' )  &&
-        ($('.partial_entry_id').val() != 'pending' &&
-            $('.partial_entry_id').val() != 'undefined')
+        (partialID != 'pending' &&
+            partialID != 'undefined')
     ) {
-            //document.cookie = `gformPartialID=${$('.partial_entry_id').val()}`;
-            setCookie('gformPartialID', $('.partial_entry_id').val(), 365);
+            if(testPartialID( partialID)){
+                //console.log('test passed')
+                setCookie('gformPartialID', partialID, 365);
+            }
 
-            //const cookie = getCookie('gformPartialID');
-            //console.log("cookie in use: ", cookie);
+    } else if (cookie && (typeof cookie != 'undefined') && cookie != null && cookie != 'undefined' && cookie != '' ) {
 
-    } else if (cookie) {
+        if (testPartialID( cookie))
         $('.partial_entry_id').val(cookie);
     }
 };
+
+const testPartialID = str =>{
+    //console.log('string ', str);
+    var regex = /[0-9A-Fa-f]{32}/gm;
+    var res = str.match(regex);
+
+    return res;
+}
 
 const resetCache = $ => {
     jQuery('#empty-cache').on('click',function(){

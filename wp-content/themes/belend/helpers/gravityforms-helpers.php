@@ -202,7 +202,9 @@ add_filter('gform_pre_render', 'belend_populate', 20);
 
 function belend_populate($form){
 
-    if(isset($_COOKIE['gformPartialID']) && !empty($_COOKIE['gformPartialID']) ){
+    $rule = '/[0-9A-Fa-f]{32}/m';
+
+    if(isset($_COOKIE['gformPartialID']) && !empty($_COOKIE['gformPartialID']) &&   preg_match_all($rule,  $_COOKIE['gformPartialID'], $matches, PREG_SET_ORDER, 0) ){
         $search_criteria = array(
             'status'        => 'active',
             'field_filters' => array(
