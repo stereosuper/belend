@@ -267,13 +267,6 @@ function belend_custom_field_validation($result, $value, $form, $field)
     } elseif (strpos($field->cssClass,'loan-time') && is_float($value)) {
         $result['is_valid'] = false;
         $result['message'] = 'La durée de remboursement doit être un nombre entier compris entre 0 et 5';
-    } elseif ( strpos($field->cssClass, 'deal-date')){
-        $date = strtotime($value);
-        $ref_date = strtotime("- 4 months" );
-        if ($date < $ref_date){
-            $result['is_valid'] = false;
-            $result['message'] = 'La signature du compromis doit être faite au maximum 4 mois avant la date du jour';
-        }
     } elseif ( strpos($field->cssClass, 'phone')){
         $phone_string = str_replace(' ', '', $value);
         if ( !empty($phone_string && ( !is_numeric($phone_string) || strlen($phone_string) != 10))){
