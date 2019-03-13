@@ -204,7 +204,7 @@ function deleteCookie(cname) {
 
 const setCache = $ => {
    const cookie = getCookie('gformPartialID');
-    console.log("cookie in use: ", cookie);
+    //console.log("cookie in use: ", cookie);
 
     if (
         (typeof cookie === 'undefined' || cookie == null ||cookie === 'undefined' || cookie === '' )  &&
