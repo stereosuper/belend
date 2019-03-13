@@ -122,5 +122,5 @@ return [
         ]
     ],
     "output" => "Le réseau PRETPRO est spécialisé en financement professionnel depuis 2006 et est devenu leader sur ce marché.  Partenaire de Belend.fr, et présent sur l'ensemble du territoire, un de leurs experts va prendre contact avec vous dans un déali de 48h maximum afin de vous accompagner dans votre recherche de financement. ",
-    "email" => "abertout@studio-goliath.com"
+    "email" => "sylvie.delepine@pretpro.fr"
 ];
