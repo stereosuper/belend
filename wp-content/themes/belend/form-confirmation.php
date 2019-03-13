@@ -38,28 +38,14 @@ $entry['code_naf'] = isset($_GET['naf_code'])?$_GET['naf_code']:'';
 $entry['secteur_activite'] = isset($_GET['business_field'])?$_GET['business_field']: '';
 $entry['entry_id'] = isset($_GET['entry_id'])?$_GET['entry_id']: '';
 $entry['form_id'] = isset($_GET['form_id'])?$_GET['form_id']: '';
+$entry['email'] = isset($_GET['email'])?$_GET['email']: '';
 
 $entry['montant_avec_penalites'] = $entry['capital_restant'] + $entry['montant_penalites'];
 
-
 $compare = new Compare();
-
 
 $results = [];
 $test_results=[];
-
-/*$entry = [
-    "type_de_projet" => "Murs commerciaux",
-    "apport" => 4000,
-    "montant_du_pret" => 250000,
-    "montant_du_projet" => 210000,
-    "code_postal" => "75",
-    "compromis_signe" => "Oui",
-    "date_compromis" => "21-01-2019",
-    "objet_identifie" => "Oui",
-    "accord_banque" => "Non",
-    "banques_consultees" => array("CIC"),
-];*/
 
 foreach ($rows as $row){
     $results[] = $compare->model_applies($entry, $row);
@@ -76,9 +62,21 @@ foreach ($results as $result){
 
 $output = get_output($results);
 
-belend_send_notification($entry['entry_id'],$entry['form_id'] );
+if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
+    if(isset($output['content'])){
+        $output['content'] .= "<br/><form action='https://www.belend-participatif.fr/register/' target='_blank' method='post'>";
+        $output['content'] .= "<input type='hidden' name='email' value={$entry['email']} />";
+        $output['content'] .= "<input type='hidden' name='siren' value={$entry['siren']} />";
+        $output['content'] .= "<input type='hidden' name='amount' value={$entry['montant_du_pret']} />";
+        $output['content'] .= "<input type='hidden' name='duration' value={$entry['duree_pret']} />";
+        $output['content'] .= "<input type='submit' value='Belend Participatif'/></form>";
+    }
+}elseif(isset($output['email'])) {
 
-function belend_send_notification( $entry_id, $form_id)  {
+        belend_send_notification($entry['entry_id'], $entry['form_id'], $output['email']  );
+}
+
+function belend_send_notification( $entry_id, $form_id, $email)  {
     $entry = GFAPI::get_entry( $entry_id );
     $form = GFAPI::get_form( $form_id );
     $notifications         = GFCommon::get_notifications( 'form_submission', $form);
@@ -88,7 +86,7 @@ function belend_send_notification( $entry_id, $form_id)  {
             //skip notifications if it has been disabled by a hook
             continue;
         }
-        $notification['to'] = 'abertout@studio-goliath.com';
+        $notification['to'] = $email;
         GFCommon::send_notification( $notification, $form, $entry);
     }
 
@@ -109,8 +107,10 @@ function get_output($results){
         }
     }
 
-    return '<p>Nous regrettons de ne pouvoir donner une suite favorable a votre demande et vous souhaitons plein succès dans vos recherches.</p>
-            <p>l\'équipe Belend</p> <div><a href="'.home_url().'" style="text-decoration: underline;">Retour à l\'accueil</a></div>';
+    return array(
+            "content" =>
+            '<p>Nous regrettons de ne pouvoir donner une suite favorable a votre demande et vous souhaitons plein succès dans vos recherches.</p>
+            <p>l\'équipe Belend</p> <div><a href="'.home_url().'" style="text-decoration: underline;">Retour à l\'accueil</a></div>');
 }
 
 
@@ -126,7 +126,10 @@ class Compare
                         return false;
                 }
 
-            return $model['output'];
+            return array(
+                'content' => $model['output'],
+                'email'   => isset($model['email'])?$model['email']:''
+            );
     }
 
     function AND($args, $entry){
@@ -227,7 +230,7 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
-            <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php echo $output; ?></div>
+            <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php if(isset($output['content'])) echo $output['content']; ?></div>
         <?php else : ?>
 
             <h1>404</h1>
