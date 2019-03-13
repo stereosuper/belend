@@ -169,7 +169,7 @@ function setCookie(cname,cvalue,exdays) {
     var d = new Date(); //Create an date object
     d.setTime(d.getTime() + (exdays*1000*60*60*24)); //Set the time to exdays from the current date in milliseconds. 1000 milliseonds = 1 second
     var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
-    window.document.cookie = cname+"="+cvalue+"; path='/'"+expires;//Set the cookie with value and the expiration date
+    window.document.cookie = cname+"="+cvalue+"; path=/;"+expires;//Set the cookie with value and the expiration date
 }
 
 // Mettre en forme et compiler
@@ -196,8 +196,8 @@ const getCookie = cName => {
  */
 function deleteCookie(cname) {
     //console.log('delete')
-   document.cookie = cname + "=; path='/' expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    setCookie(name, "", null , 1);
+   document.cookie = cname + "=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    //setCookie(name, "", null , 1);
    // window.document.cookie = cname+"="+"; -1";//Set the cookie with name and the expiration dat// e
 
 }
@@ -232,14 +232,15 @@ const resetCache = $ => {
             location.reload();
         }
    });
-
-    jQuery('.field-confirm input').on('click',function(){
-        //console.log('click');
-            deleteCookie('gformPartialID');
-   });
-
-
 };
+
+const deleteCacheOnSubmit  = $ => {
+    if(jQuery(".page-template-form-confirmation").length){
+        console.log('confirmation');
+        deleteCookie('gformPartialID');
+    }
+}
+
 
 const autocomplete = $ => {
     const { adminAjax } = scripts_l10n;
@@ -350,6 +351,7 @@ const formHandler = win => {
         inputWidth();
         resetCache();
         setCache($);
+        deleteCacheOnSubmit();
 
         jQuery(document).on('gform_post_render', () => {
             setCache($);

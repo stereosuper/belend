@@ -21334,7 +21334,7 @@ function setCookie(cname, cvalue, exdays) {
 
   var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
 
-  window.document.cookie = cname + "=" + cvalue + "; path='/'" + expires; //Set the cookie with value and the expiration date
+  window.document.cookie = cname + "=" + cvalue + "; path=/;" + expires; //Set the cookie with value and the expiration date
 } // Mettre en forme et compiler
 
 
@@ -21366,8 +21366,8 @@ var getCookie = function getCookie(cName) {
 
 function deleteCookie(cname) {
   //console.log('delete')
-  document.cookie = cname + "=; path='/' expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-  setCookie(name, "", null, 1); // window.document.cookie = cname+"="+"; -1";//Set the cookie with name and the expiration dat// e
+  document.cookie = cname + "=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;"; //setCookie(name, "", null , 1);
+  // window.document.cookie = cname+"="+"; -1";//Set the cookie with name and the expiration dat// e
 }
 
 var setCache = function setCache($) {
@@ -21393,10 +21393,13 @@ var resetCache = function resetCache($) {
       location.reload();
     }
   });
-  jQuery('.field-confirm input').on('click', function () {
-    //console.log('click');
+};
+
+var deleteCacheOnSubmit = function deleteCacheOnSubmit($) {
+  if (jQuery(".page-template-form-confirmation").length) {
+    console.log('confirmation');
     deleteCookie('gformPartialID');
-  });
+  }
 };
 
 var autocomplete = function autocomplete($) {
@@ -21505,6 +21508,7 @@ var formHandler = function formHandler(win) {
     inputWidth();
     resetCache();
     setCache($);
+    deleteCacheOnSubmit();
     jQuery(document).on('gform_post_render', function () {
       setCache($);
       autocomplete($);
