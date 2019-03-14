@@ -206,7 +206,7 @@ const setCache = $ => {
     if( $('.partial_entry_id').length){
         const cookie = getCookie('gformPartialID');
         const partialID =  $('.partial_entry_id').val();
-        console.log("cookie in use: ", cookie);
+        //console.log("cookie in use: ", cookie);
 
 
         if (
