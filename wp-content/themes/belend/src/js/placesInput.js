@@ -9,8 +9,8 @@ const placesInput = () => {
          const [searchInput] = searchField.getElementsByTagName('input');
          if (searchInput) {
              const placesAutocomplete = places({
-                 appId: 'plK1J3JKK2DL',
-                 apiKey: '0d83bb5fc1b2a60b38adf14b9e33d323',
+                 appId: 'plUJTHJBR34X',
+                 apiKey: '40b38d4e46fb2041888da94f9a6934b5',
                  container: searchInput,
                  countries: ['fr'],
                  language: 'fr',

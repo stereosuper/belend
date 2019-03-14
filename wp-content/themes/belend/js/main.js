@@ -21909,8 +21909,8 @@ var placesInput = function placesInput() {
 
     if (searchInput) {
       var placesAutocomplete = places_js__WEBPACK_IMPORTED_MODULE_0___default()({
-        appId: 'plK1J3JKK2DL',
-        apiKey: '0d83bb5fc1b2a60b38adf14b9e33d323',
+        appId: 'plUJTHJBR34X',
+        apiKey: '40b38d4e46fb2041888da94f9a6934b5',
         container: searchInput,
         countries: ['fr'],
         language: 'fr',
