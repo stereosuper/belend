@@ -263,7 +263,8 @@
         .intro {
             width: 500px;
             padding: 45px $gutter * 4 70px $gutter * 4;
-            margin-top: #{230px - 100px};
+            margin-top: #{130px - 100px};
+            margin-bottom: 100px;
             margin-left: 0;
             text-align: left;
             background: #fff;
@@ -342,6 +343,8 @@
     .page-template-page-maintenance {
         .intro {
             width: 650px;
+            margin-bottom: #{200px - $gutter * 2};
+            margin-top: #{100px - $gutter * 2};
         }
         .banner-img {
             width: 450px;
@@ -542,7 +545,6 @@
         }
 
         .intro {
-            margin-top: #{200px - $gutter * 2};
             margin-left: #{150px - $gutter * 2};
         }
 
