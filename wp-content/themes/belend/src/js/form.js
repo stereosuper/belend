@@ -116,11 +116,11 @@ const layout = win => {
             page.find('.gform_next_button').attr('disabled', true);
 
             page.find(
-                '.gfield_contains_required input, .gfield_contains_required textarea'
+                '.gfield_contains_required input, .gfield_contains_required textarea, .gfield_contains_required select'
             ).on('change input', () => {
                 emptyInputs = page
                     .find(
-                        '.gfield_contains_required input, .gfield_contains_required textarea'
+                        '.gfield_contains_required input, .gfield_contains_required textarea, .gfield_contains_required select'
                     )
                     .filter(function filterRequired() {
                         return jQuery(this).val() == '';
@@ -134,7 +134,9 @@ const layout = win => {
             if (!page[0].style.display) {
                 alreadyFilledInputs = page
                     .find(
-                        '.gform_page_fields .gfield_contains_required input, .gform_page_fields .gfield_contains_required textarea'
+                        '.gform_page_fields .gfield_contains_required input, ' +
+                        '.gform_page_fields .gfield_contains_required textarea ,' +
+                        '.gform_page_fields .gfield_contains_required select'
                     )
                     .filter(function filterRequired() {
                         const input = jQuery(this);
@@ -143,12 +145,15 @@ const layout = win => {
                         const checkCheckbox =
                             input[0].type === 'checkbox' &&
                             input.is(':checked');
+                        const checkSelect =
+                            input[0].type === 'select' &&
+                            input.val()!== '';
                         const checkRest =
                             input[0].type !== 'radio' &&
                             input[0].type !== 'checkbox' &&
                             input.val() !== '' &&
                             input.val() !== null;
-                        return checkRadio || checkCheckbox || checkRest;
+                        return checkRadio || checkCheckbox || checkRest || checkSelect;
                     });
 
                 if (alreadyFilledInputs.length) {

@@ -21293,8 +21293,8 @@ var layout = function layout(win) {
 
     if (page.find('.gfield_contains_required').length) {
       page.find('.gform_next_button').attr('disabled', true);
-      page.find('.gfield_contains_required input, .gfield_contains_required textarea').on('change input', function () {
-        emptyInputs = page.find('.gfield_contains_required input, .gfield_contains_required textarea').filter(function filterRequired() {
+      page.find('.gfield_contains_required input, .gfield_contains_required textarea, .gfield_contains_required select').on('change input', function () {
+        emptyInputs = page.find('.gfield_contains_required input, .gfield_contains_required textarea, .gfield_contains_required select').filter(function filterRequired() {
           return jQuery(this).val() == '';
         });
 
@@ -21304,12 +21304,13 @@ var layout = function layout(win) {
       });
 
       if (!page[0].style.display) {
-        alreadyFilledInputs = page.find('.gform_page_fields .gfield_contains_required input, .gform_page_fields .gfield_contains_required textarea').filter(function filterRequired() {
+        alreadyFilledInputs = page.find('.gform_page_fields .gfield_contains_required input, ' + '.gform_page_fields .gfield_contains_required textarea ,' + '.gform_page_fields .gfield_contains_required select').filter(function filterRequired() {
           var input = jQuery(this);
           var checkRadio = input[0].type === 'radio' && input.is(':checked');
           var checkCheckbox = input[0].type === 'checkbox' && input.is(':checked');
+          var checkSelect = input[0].type === 'select' && input.val() !== '';
           var checkRest = input[0].type !== 'radio' && input[0].type !== 'checkbox' && input.val() !== '' && input.val() !== null;
-          return checkRadio || checkCheckbox || checkRest;
+          return checkRadio || checkCheckbox || checkRest || checkSelect;
         });
 
         if (alreadyFilledInputs.length) {

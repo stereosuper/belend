@@ -26,7 +26,7 @@ $entry['resultat_exploitation'] = isset($_GET['income'])?$_GET['income']: '';
 $entry['fonds_propres'] = isset($_GET['own-funds-positive'])?$_GET['own-funds-positive']: '';
 $entry['chiffre_affaires'] = isset($_GET['turnover'])?$_GET['turnover']: '';
 $entry['duree_pret'] = isset($_GET['loan_time'])?$_GET['loan_time']: '';
-$entry['code_postal']= isset($_GET['post_code'])?substr($_GET['post_code'], 0,2): '';
+$entry['code_postal']= isset($_GET['post_code'])?treat_post_code($_GET['post_code']): '';
 $entry['forme_juridique']= isset($_GET['legal_structure'])?$_GET['legal_structure']: '';
 $entry['siren'] = isset($_GET['siren'])?$_GET['siren']: '';
 $entry['banques_consultees'] = isset($_GET['banks'])?treat_banks($_GET['banks']): array();
@@ -99,6 +99,12 @@ function treat_banks($banks){
     return $banks;
 }
 
+function treat_post_code($post_code){
+    if(isset($_GET['project_post_code'])){
+        $post_code = $_GET['project_post_code'];
+    }
+    return substr($post_code, 0,2);
+}
 
 function get_output($results){
     foreach ($results as $result){
