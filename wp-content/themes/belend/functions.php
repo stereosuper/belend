@@ -1,6 +1,6 @@
 <?php
 
-define( 'BELEND_VERSION', 1.04 );
+define( 'BELEND_VERSION', 1.05 );
 
 
 foreach (glob( plugin_dir_path( __FILE__ ) . "/helpers/*.php" ) as $filename){
