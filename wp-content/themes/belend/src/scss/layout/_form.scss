@@ -1,4 +1,5 @@
-.gfield_visibility_hidden {
+.gfield_visibility_hidden,
+.gform_validation_container {
     display: none;
 }
 
@@ -453,11 +454,7 @@ input:focus {
                 + label {
                     font-weight: 400;
                     color: #fff;
-                    background: linear-gradient(
-                        61deg,
-                        #f12525 32%,
-                        #ff6308 68%
-                    );
+                    background: linear-gradient(61deg, #f12525 32%, #ff6308 68%);
                 }
             }
         }

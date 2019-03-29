@@ -42,17 +42,18 @@ Snif.prototype.isChrome = function isChrome() {
     return !!window.chrome && !!window.chrome.webstore;
 };
 
-(Snif.prototype.isMobile = function isMobile() {
+Snif.prototype.isMobile = function isMobile() {
     return (
         this.getSnifTests().isMobileAndroid ||
         this.getSnifTests().isBlackberry ||
         this.getSnifTests().isIOS ||
         this.getSnifTests().isMobileIE
     );
-}),
-    (Snif.prototype.isChromeAndroid = function isChromeAndroid() {
-        return this.getSnifTests().isMobileAndroid && this.isChrome();
-    });
+};
+
+Snif.prototype.isChromeAndroid = function isChromeAndroid() {
+    return this.getSnifTests().isMobileAndroid && this.isChrome();
+};
 
 Snif.prototype.isSafari = function isSafari() {
     return this.getSnifTests().isSafari;

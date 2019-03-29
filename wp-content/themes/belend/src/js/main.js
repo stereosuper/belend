@@ -33,12 +33,16 @@ const loadHandler = () => {
     counter();
 };
 
-document.addEventListener(
-    'readystatechange',
-    () => {
-        if (document.readyState === 'complete') {
-            loadHandler();
-        }
-    },
-    false
-);
+if (document.readyState === 'complete') {
+    loadHandler();
+} else {
+    document.addEventListener(
+        'readystatechange',
+        () => {
+            if (document.readyState === 'complete') {
+                loadHandler();
+            }
+        },
+        false
+    );
+}

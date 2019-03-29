@@ -20579,7 +20579,9 @@ Snif.prototype.isChrome = function isChrome() {
 
 Snif.prototype.isMobile = function isMobile() {
   return this.getSnifTests().isMobileAndroid || this.getSnifTests().isBlackberry || this.getSnifTests().isIOS || this.getSnifTests().isMobileIE;
-}, Snif.prototype.isChromeAndroid = function isChromeAndroid() {
+};
+
+Snif.prototype.isChromeAndroid = function isChromeAndroid() {
   return this.getSnifTests().isMobileAndroid && this.isChrome();
 };
 
@@ -20650,9 +20652,9 @@ function Sprite(_ref) {
   var ypos;
 
   for (var r = 0; r < this.rows; r += 1) {
-    var _columns = r === this.rows - 1 ? this.cols - this.numberEmpty : this.cols;
+    var cols = r === this.rows - 1 ? this.cols - this.numberEmpty : this.cols;
 
-    for (var c = 0; c < _columns; c += 1) {
+    for (var c = 0; c < cols; c += 1) {
       xpos = c * this.gridWidth;
       ypos = r * this.gridHeight;
       this.tl.set(this.image, {
@@ -21797,11 +21799,15 @@ var loadHandler = function loadHandler() {
   Object(_counter__WEBPACK_IMPORTED_MODULE_10__["default"])();
 };
 
-document.addEventListener('readystatechange', function () {
-  if (document.readyState === 'complete') {
-    loadHandler();
-  }
-}, false);
+if (document.readyState === 'complete') {
+  loadHandler();
+} else {
+  document.addEventListener('readystatechange', function () {
+    if (document.readyState === 'complete') {
+      loadHandler();
+    }
+  }, false);
+}
 
 /***/ }),
 

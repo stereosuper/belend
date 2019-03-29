@@ -79,6 +79,12 @@
                 background-image: url("../../img/banks/credit-cooperatif.png");
             }
         }
+        input[value="BANQUE POSTALE"] {
+            & + label {
+                background-image: url("../../img/banks/banque-postale.png");
+                background-size: 50%;
+            }
+        }
         input[value="AUTRES BANQUES"] {
             & + label {
                 color: $black;
