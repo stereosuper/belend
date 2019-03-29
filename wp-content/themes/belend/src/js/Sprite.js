@@ -34,10 +34,10 @@ function Sprite({
     let ypos;
 
     for (let r = 0; r < this.rows; r += 1) {
-        const columns =
+        const cols =
             r === this.rows - 1 ? this.cols - this.numberEmpty : this.cols;
 
-        for (let c = 0; c < columns; c += 1) {
+        for (let c = 0; c < cols; c += 1) {
             xpos = c * this.gridWidth;
             ypos = r * this.gridHeight;
             this.tl.set(

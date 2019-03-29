@@ -22,7 +22,7 @@ Scroll.prototype.scrollHandler = function scrollHandler() {
         this.onScrollEnd();
     }, 66);
 
-    this.scrollFunctions.forEach((f) => {
+    this.scrollFunctions.forEach(f => {
         f();
     });
 };
@@ -58,14 +58,17 @@ Scroll.prototype.destroyScroll = function destroyScroll() {
 
 Scroll.prototype.onScrollEnd = function onScrollEnd() {
     this.scrollEnd = true;
-    this.endFunctions.forEach((f) => {
+    this.endFunctions.forEach(f => {
         f();
     });
 };
 
-Scroll.prototype.addScrollFunction = function addScrollFunction(f, onEnd = false) {
+Scroll.prototype.addScrollFunction = function addScrollFunction(
+    f,
+    onEnd = false
+) {
     this.scrollFunctions.push(f);
-    if(onEnd) this.endFunctions.push(f);
+    if (onEnd) this.endFunctions.push(f);
 };
 
 Scroll.prototype.addEndFunction = function addEndFunction(f) {

@@ -1599,6 +1599,9 @@ input:focus + .instruction {
   .field-banks .gfield_checkbox input[value="CREDIT COOPERATIF"] + label,
   .field-banks .gfield_radio input[value="CREDIT COOPERATIF"] + label {
     background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
+  .field-banks .gfield_checkbox input[value="BANQUE POSTALE"] + label,
+  .field-banks .gfield_radio input[value="BANQUE POSTALE"] + label {
+    background-image: url(/wp-content/themes/belend/img/banks/banque-postale.png); }
   .field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
   .field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
     color: #000;
@@ -2766,13 +2769,13 @@ a.ui-button:active,
   .page-template-contact .contact-container header {
     margin-bottom: 75px; }
   .page-template-contact .contact-container .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
+            flex-direction: row-reverse; }
   .page-template-contact .container .contact-content {
     width: 758.75px;
     padding-right: 91.25px; }
