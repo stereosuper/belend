@@ -1602,7 +1602,8 @@ input:focus + .instruction {
     background-image: url(/wp-content/themes/belend/img/banks/credit-cooperatif.png); }
   .field-banks .gfield_checkbox input[value="BANQUE POSTALE"] + label,
   .field-banks .gfield_radio input[value="BANQUE POSTALE"] + label {
-    background-image: url(/wp-content/themes/belend/img/banks/banque-postale.png); }
+    background-image: url(/wp-content/themes/belend/img/banks/banque-postale.png);
+    background-size: 50%; }
   .field-banks .gfield_checkbox input[value="AUTRES BANQUES"] + label,
   .field-banks .gfield_radio input[value="AUTRES BANQUES"] + label {
     color: #000;
