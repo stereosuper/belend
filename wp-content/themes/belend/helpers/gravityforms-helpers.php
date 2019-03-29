@@ -276,6 +276,13 @@ function belend_custom_field_validation($result, $value, $form, $field)
             $result['message']  = 'Merci de rentrer un numéro de téléphone à 10 chiffres';
         }
 
+    }elseif ( strpos($field->cssClass, 'birthday')){
+        $date = strtotime($value);
+        $ref_date = strtotime("- 18 years" );
+        if ($date > $ref_date){
+            $result['is_valid'] = false;
+            $result['message'] = 'Vous devez avoir plus de 18 ans';
+        }
     }
 
     return $result;
