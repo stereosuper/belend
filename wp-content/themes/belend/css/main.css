@@ -1037,7 +1037,8 @@ button {
     margin: 100px 0 0;
     left: 50px; } }
 
-.gfield_visibility_hidden {
+.gfield_visibility_hidden,
+.gform_validation_container {
   display: none; }
 
 .empty-cache-wrapper {
