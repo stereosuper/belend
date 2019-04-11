@@ -113,10 +113,7 @@ function get_output($results){
         }
     }
 
-    return array(
-            "content" =>
-            '<p>Nous regrettons de ne pouvoir donner une suite favorable a votre demande et vous souhaitons plein succès dans vos recherches.</p>
-            <p>l\'équipe Belend</p> <div><a href="'.home_url().'" style="text-decoration: underline;">Retour à l\'accueil</a></div>');
+    return null;
 }
 
 
@@ -236,7 +233,16 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
-            <div class="entry-content container" style="text-align: center; margin-bottom: 3em;"><?php if(isset($output['content'])) echo $output['content']; ?></div>
+                <?php if(isset($output['content'])):?>
+                    <div class="entry-content container" style="text-align: center; margin-bottom: 3em;">
+                        <?php echo $output['content']; ?>
+                    </div>
+                <?php else: ?>
+                    <div class="entry-content container" style="margin-bottom: 3em;">
+                        <?php the_content(); ?>
+                        <p style="text-align: center;"><a href="<?php echo home_url()?>" style="text-decoration: underline;">Retour à l'accueil</a></p>
+                    </div>
+                <?php endif; ?>
         <?php else : ?>
 
             <h1>404</h1>
