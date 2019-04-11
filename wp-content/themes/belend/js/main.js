@@ -21403,7 +21403,7 @@ var resetCache = function resetCache($) {
     if (reset) {
       deleteCookie('gformPartialID'); //console.log('KOOKIE', getCookie('gformPartialID'))
 
-      location.reload();
+      window.location = window.location.href;
     }
   });
 };
