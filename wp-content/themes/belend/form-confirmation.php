@@ -71,8 +71,7 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
         $output['content'] .= "<input type='hidden' name='duration' value={$entry['duree_pret']} />";
         $output['content'] .= "<input type='submit' value='Belend Participatif'/></form>";
     }
-}elseif(isset($output['email'])) {
-
+}elseif(isset($output['email']) && get_field('no_gravity_email', 'option') == false) {
         belend_send_notification($entry['entry_id'], $entry['form_id'], $output['email']  );
 }
 

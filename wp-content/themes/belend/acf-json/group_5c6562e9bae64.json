@@ -527,6 +527,42 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_5cb874210d226",
+            "label": "Envoi emails",
+            "name": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_5cb874490d227",
+            "label": "Ne pas envoyer d'émail aux partenaires à la complétion du formulaire (DEBUG)",
+            "name": "no_gravity_email",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -546,5 +582,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1551452332
+    "modified": 1555592422
 }
