@@ -4,7 +4,13 @@
     border-radius: 4px;
     list-style-type: none;
     box-shadow: 0px 4px 4px rgba($black, 0.25);
-    overflow: hidden;
+    max-height: 35vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
     .ui-menu-item {
         padding: 10px $gutter;
         background-color: transparent;
@@ -22,7 +28,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            @include fluid-background-btn("hover");
+           // @include fluid-background-btn("hover");
             z-index: -2;
         }
         &::after {
@@ -48,6 +54,10 @@
             &::after {
                 opacity: 0;
             }
+        }
+
+        &.ui-state-focus{
+            font-weight: 400;
         }
     }
 }

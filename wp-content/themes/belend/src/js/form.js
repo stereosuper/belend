@@ -322,9 +322,10 @@ const autocomplete = $ => {
                     });
                 }
             },
-            search(term) {
+            search(event) {
                 // console.log('TCL: search -> term', term);
                 // custom minLength
+                let term = event.target.value;
                 let returnValue = true;
                 if (term.length < 2) {
                     returnValue = false;
@@ -332,13 +333,70 @@ const autocomplete = $ => {
                 return returnValue;
             },
             select(event, ui) {
-                // console.log(ui.item);
-                // $('.field-naf input').val(ui.item.NAF);
                 $parent.find('.code-naf input').val(ui.item.NAF);
                 $parent.find('.num-siren input').val(ui.item.value);
             },
         });
     });
+
+
+    jQuery('.activity-field input').each(function (e) {
+        let $this = $(this),
+            $parent = $this.parents('.gform_body');
+
+        // console.log($this);
+
+        $this.autocomplete( {
+            source(request, response) {
+                if (!xhr) {
+                    let s = $this.val(),
+                        type = 'full_text';
+                    if (!isNaN(s) && s.length == 9) {
+                        type = 'siren';
+                    }
+
+                    // console.log(type);
+
+                    xhr = $.ajax({
+                        url: `https://public.opendatasoft.com/api/records/1.0/search/?dataset=nomenclature-dactivites-francaise-naf-rev-2&q=${s}`,
+                        timeout: 2000,
+                        complete() {
+                            xhr = null;
+                        },
+                        success(data) {
+                             console.log('data: ', data);
+                            let dataToUse;
+                            let resp;
+
+                            dataToUse = data.records;
+                            resp = $.map(dataToUse, record => {
+                                return {
+                                    label: record.fields.intitule_naf,
+                                    NAF: record.fields.code_naf
+                                }; // on retourne cette forme de suggestion
+                            });
+                            response(resp);
+                        },
+                    });
+                }
+            },
+            search(event) {
+                let term = event.target.value;
+                console.log('TCL: search -> term', term);
+                // custom minLength
+                let returnValue = true;
+                if (term.length < 2) {
+                    console.log('false')
+                    returnValue = false;
+                }
+                return returnValue;
+            },
+            select(event, ui) {
+                $parent.find('.code-naf input').val(ui.item.NAF);
+            },
+        });
+    });
+
 };
 
 const inputWidth = () => {

@@ -21471,9 +21471,10 @@ var autocomplete = function autocomplete($) {
           });
         }
       },
-      search: function search(term) {
+      search: function search(event) {
         // console.log('TCL: search -> term', term);
         // custom minLength
+        var term = event.target.value;
         var returnValue = true;
 
         if (term.length < 2) {
@@ -21483,10 +21484,63 @@ var autocomplete = function autocomplete($) {
         return returnValue;
       },
       select: function select(event, ui) {
-        // console.log(ui.item);
-        // $('.field-naf input').val(ui.item.NAF);
         $parent.find('.code-naf input').val(ui.item.NAF);
         $parent.find('.num-siren input').val(ui.item.value);
+      }
+    });
+  });
+  jQuery('.activity-field input').each(function (e) {
+    var $this = $(this),
+        $parent = $this.parents('.gform_body'); // console.log($this);
+
+    $this.autocomplete({
+      source: function source(request, response) {
+        if (!xhr) {
+          var s = $this.val(),
+              type = 'full_text';
+
+          if (!isNaN(s) && s.length == 9) {
+            type = 'siren';
+          } // console.log(type);
+
+
+          xhr = $.ajax({
+            url: "https://public.opendatasoft.com/api/records/1.0/search/?dataset=nomenclature-dactivites-francaise-naf-rev-2&q=".concat(s),
+            timeout: 2000,
+            complete: function complete() {
+              xhr = null;
+            },
+            success: function success(data) {
+              console.log('data: ', data);
+              var dataToUse;
+              var resp;
+              dataToUse = data.records;
+              resp = $.map(dataToUse, function (record) {
+                return {
+                  label: record.fields.intitule_naf,
+                  NAF: record.fields.code_naf
+                }; // on retourne cette forme de suggestion
+              });
+              response(resp);
+            }
+          });
+        }
+      },
+      search: function search(event) {
+        var term = event.target.value;
+        console.log('TCL: search -> term', term); // custom minLength
+
+        var returnValue = true;
+
+        if (term.length < 2) {
+          console.log('false');
+          returnValue = false;
+        }
+
+        return returnValue;
+      },
+      select: function select(event, ui) {
+        $parent.find('.code-naf input').val(ui.item.NAF);
       }
     });
   });

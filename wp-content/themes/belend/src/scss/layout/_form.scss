@@ -235,6 +235,12 @@
     }
 }
 
+.activity-field{
+    input{
+        width: 100%;
+    }
+}
+
 .field-price {
     &:after {
         content: " €";
