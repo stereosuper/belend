@@ -1,17 +1,19 @@
 <?php
-/*add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
+add_action("gform_partialentries_post_entry_saved", "belend_send_partial_entry", 10, 2);
 add_action("gform_partialentries_post_entry_updated", "belend_send_partial_entry", 10, 2);
 
 function belend_send_partial_entry($partial_entry, $form)
 {
 
-    if(class_exists('vxg_salesforce')){
+    echo $partial_entry;
+    echo $form;
+
+   /* if(class_exists('vxg_salesforce')){
         $vxg_salesforce = new vxg_salesforce();
         $vxg_salesforce->instance();
         $vxg_salesforce->push($partial_entry, $form);
-    }
-
-}*/
+    }*/
+}
 
 
 /**

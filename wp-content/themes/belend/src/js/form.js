@@ -266,6 +266,7 @@ const autocomplete = $ => {
 
     jQuery('.field-siren input').each(function sirenInputs(e) {
         let $this = $(this),
+            $grandparent = $this.parents('.gform_body'),
             $parent = $this.parents('.gform_fields');
 
         // console.log($this);
@@ -333,7 +334,7 @@ const autocomplete = $ => {
                 return returnValue;
             },
             select(event, ui) {
-                $parent.find('.code-naf input').val(ui.item.NAF);
+                $grandparent.find('.code-naf input').val(ui.item.NAF);
                 $parent.find('.num-siren input').val(ui.item.value);
             },
         });
@@ -342,7 +343,8 @@ const autocomplete = $ => {
 
     jQuery('.activity-field input').each(function (e) {
         let $this = $(this),
-            $parent = $this.parents('.gform_body');
+            $grandparent = $this.parents('.gform_body'),
+            $parent = $this.parents('.gform_fields');
 
         // console.log($this);
 
@@ -382,17 +384,17 @@ const autocomplete = $ => {
             },
             search(event) {
                 let term = event.target.value;
-                console.log('TCL: search -> term', term);
+                //console.log('TCL: search -> term', term);
                 // custom minLength
                 let returnValue = true;
                 if (term.length < 2) {
-                    console.log('false')
                     returnValue = false;
                 }
                 return returnValue;
             },
             select(event, ui) {
-                $parent.find('.code-naf input').val(ui.item.NAF);
+                let $naf_container = $grandparent.find('.code-naf');
+                $naf_container.find('input').val(ui.item.NAF);
             },
         });
     });

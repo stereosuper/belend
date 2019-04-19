@@ -21421,6 +21421,7 @@ var autocomplete = function autocomplete($) {
   var xhr = null;
   jQuery('.field-siren input').each(function sirenInputs(e) {
     var $this = $(this),
+        $grandparent = $this.parents('.gform_body'),
         $parent = $this.parents('.gform_fields'); // console.log($this);
 
     $this.autocomplete({
@@ -21484,14 +21485,15 @@ var autocomplete = function autocomplete($) {
         return returnValue;
       },
       select: function select(event, ui) {
-        $parent.find('.code-naf input').val(ui.item.NAF);
+        $grandparent.find('.code-naf input').val(ui.item.NAF);
         $parent.find('.num-siren input').val(ui.item.value);
       }
     });
   });
   jQuery('.activity-field input').each(function (e) {
     var $this = $(this),
-        $parent = $this.parents('.gform_body'); // console.log($this);
+        $grandparent = $this.parents('.gform_body'),
+        $parent = $this.parents('.gform_fields'); // console.log($this);
 
     $this.autocomplete({
       source: function source(request, response) {
@@ -21527,20 +21529,20 @@ var autocomplete = function autocomplete($) {
         }
       },
       search: function search(event) {
-        var term = event.target.value;
-        console.log('TCL: search -> term', term); // custom minLength
+        var term = event.target.value; //console.log('TCL: search -> term', term);
+        // custom minLength
 
         var returnValue = true;
 
         if (term.length < 2) {
-          console.log('false');
           returnValue = false;
         }
 
         return returnValue;
       },
       select: function select(event, ui) {
-        $parent.find('.code-naf input').val(ui.item.NAF);
+        var $naf_container = $grandparent.find('.code-naf');
+        $naf_container.find('input').val(ui.item.NAF);
       }
     });
   });
