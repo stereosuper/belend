@@ -1170,9 +1170,8 @@ button {
       content: none; }
 
 .gform_wrapper .field-help {
-  padding: 125px 30px 75px; }
-  .gform_wrapper .field-help:before {
-    content: ""; }
+  padding: 125px 30px 75px;
+  background: #F3F3F3; }
 
 .gform_fields {
   line-height: 3; }
@@ -1320,14 +1319,6 @@ button {
     visibility: visible;
     -webkit-transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition:  opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), visibility 0s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
-  .field-help:before {
-    width: auto;
-    height: 1px;
-    position: absolute;
-    top: 92px;
-    left: 80px;
-    right: 80px;
-    background: #e0e0e0; }
   .field-help:after {
     content: "";
     width: 38px;
@@ -1335,9 +1326,10 @@ button {
     position: absolute;
     top: 75px;
     left: 30px;
+    margin: 0 0 0 20px;
     border-radius: 50%;
-    border: 1px solid #828282;
-    background: url(/wp-content/themes/belend/img/question.svg) no-repeat 50% 50%;
+    border: 2px solid #F3F3F3;
+    background: #fff url(/wp-content/themes/belend/img/info.svg) no-repeat 50% 50%;
     background-size: 6px 12px; }
 
 .gfield_required {
@@ -1450,20 +1442,15 @@ input:focus + .instruction {
   .btn-help {
     display: none; }
   .gform_wrapper .field-help {
-    padding: 35px 0 0; }
+    padding: 34px 20px 12px; }
   .field-help {
     display: block;
     position: relative;
-    max-width: 622.5px;
     top: 0;
-    margin: 50px 0 50px auto;
+    margin: 50px 0;
     background: none;
     opacity: 1;
     visibility: visible; }
-    .field-help:before {
-      top: 0;
-      right: 0;
-      left: 50px; }
     .field-help:after {
       top: -19px;
       left: 0; } }
@@ -1555,6 +1542,12 @@ input:focus + .instruction {
   .field-banks .gfield_checkbox input:checked + label,
   .field-banks .gfield_radio input:checked + label {
     color: transparent; }
+    .field-banks .gfield_checkbox input:checked + label:before,
+    .field-banks .gfield_radio input:checked + label:before {
+      border-color: #ff6308; }
+    .field-banks .gfield_checkbox input:checked + label:after,
+    .field-banks .gfield_radio input:checked + label:after {
+      opacity: 1; }
   .field-banks .gfield_checkbox input + label,
   .field-banks .gfield_radio input + label {
     color: transparent;
@@ -1567,6 +1560,25 @@ input:focus + .instruction {
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none; }
+    .field-banks .gfield_checkbox input + label:before, .field-banks .gfield_checkbox input + label:after,
+    .field-banks .gfield_radio input + label:before,
+    .field-banks .gfield_radio input + label:after {
+      content: '';
+      width: 13px;
+      height: 13px;
+      position: absolute;
+      top: -6px;
+      left: -6px; }
+    .field-banks .gfield_checkbox input + label:before,
+    .field-banks .gfield_radio input + label:before {
+      border: 1px solid #BDBDBD;
+      border-radius: 50%;
+      background: #fff; }
+    .field-banks .gfield_checkbox input + label:after,
+    .field-banks .gfield_radio input + label:after {
+      background: url(/wp-content/themes/belend/img/check.svg) no-repeat 50% 50%;
+      background-size: 9px 7px;
+      opacity: 0; }
   .field-banks .gfield_checkbox input[value="CIC"] + label,
   .field-banks .gfield_radio input[value="CIC"] + label {
     background-image: url(/wp-content/themes/belend/img/banks/cic.png); }
@@ -2021,14 +2033,9 @@ a.ui-button:active,
   .page-template-page-maintenance .home-map h3,
   .page-template-page-maintenance .home-map h4 {
     color: inherit; }
-  .home .home-map > img,
-  .page-template-page-maintenance .home-map > img {
-    display: none;
-    width: 55%;
-    max-width: 750px;
-    position: absolute;
-    bottom: -30%;
-    right: 15px; }
+  .home .home-map img,
+  .page-template-page-maintenance .home-map img {
+    display: none; }
 
 .home .home-nb,
 .page-template-page-maintenance .home-nb {
@@ -2427,10 +2434,22 @@ a.ui-button:active,
   .home .home-map,
   .page-template-page-maintenance .home-map {
     padding-top: 100px;
-    padding-bottom: 350px; }
-    .home .home-map > img,
-    .page-template-page-maintenance .home-map > img {
-      display: block; }
+    padding-bottom: 80px; }
+    .home .home-map > .container,
+    .page-template-page-maintenance .home-map > .container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between; }
+    .home .home-map img,
+    .page-template-page-maintenance .home-map img {
+      display: block;
+      max-width: 48.5%; }
     .home .home-map .txt,
     .page-template-page-maintenance .home-map .txt {
       width: 45%;

@@ -85,14 +85,17 @@
         position: relative;
         overflow: hidden;
         @include background-gradient(117deg, "dark");
-        > img {
+        img{
             display: none;
-            width: 55%;
-            max-width: 750px;
-            position: absolute;
-            bottom: -30%;
-            right: $gutter;
         }
+        // > img {
+        //     display: none;
+        //     width: 55%;
+        //     max-width: 750px;
+        //     position: absolute;
+        //     bottom: -30%;
+        //     right: $gutter;
+        // }
     }
 
     .home-nb {
@@ -483,9 +486,15 @@
 
         .home-map {
             padding-top: 100px;
-            padding-bottom: 350px;
-            > img {
+            padding-bottom: 80px;
+            > .container{
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+            img{
                 display: block;
+                max-width: 48.5%;
             }
             .txt {
                 width: 45%;

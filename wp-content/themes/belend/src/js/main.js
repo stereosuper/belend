@@ -26,7 +26,7 @@ const loadHandler = () => {
 
     burger(win);
     homeSprite();
-    mapParallax();
+    //mapParallax();
     form(win);
     headerScroll();
     hoverTarget();

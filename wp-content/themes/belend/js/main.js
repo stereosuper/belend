@@ -21847,8 +21847,8 @@ var loadHandler = function loadHandler() {
   _io__WEBPACK_IMPORTED_MODULE_2__["default"].init();
   _Fallback__WEBPACK_IMPORTED_MODULE_4__["default"].init();
   Object(_burger__WEBPACK_IMPORTED_MODULE_5__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  Object(_mapParallax__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  Object(_homeSprite__WEBPACK_IMPORTED_MODULE_7__["default"])(); //mapParallax();
+
   Object(_form__WEBPACK_IMPORTED_MODULE_11__["default"])(_Window__WEBPACK_IMPORTED_MODULE_1__["default"]);
   Object(_headerScroll__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_hoverTarget__WEBPACK_IMPORTED_MODULE_9__["default"])();

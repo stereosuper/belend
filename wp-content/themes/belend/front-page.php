@@ -74,8 +74,8 @@
                             </a>
                         <?php endif; ?>
                     </div>
+                    <?php echo wp_get_attachment_image($loc['img'], 'full', false); ?>
                 </div>
-                <?php echo wp_get_attachment_image($loc['img'], 'full', false, ['class'=> 'js-map']); ?>
             </section>
         <?php endif; ?>
 

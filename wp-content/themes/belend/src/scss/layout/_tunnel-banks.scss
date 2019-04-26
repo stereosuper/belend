@@ -8,8 +8,14 @@
         input {
             &:checked + label {
                 color: transparent;
+                &:before{
+                    border-color: $primary-color;
+                }
+                &:after{
+                    opacity: 1;
+                }
             }
-            & + label {
+            + label {
                 color: transparent;
                 overflow: hidden;
                 background-repeat: no-repeat;
@@ -17,76 +23,94 @@
                 background-size: 80%;
                 background-color: #fff;
                 user-select: none;
+                &:before, &:after{
+                    content: '';
+                    width: 13px;
+                    height: 13px;
+                    position: absolute;
+                    top: -6px;
+                    left: -6px;
+                }
+                &:before{
+                    border: 1px solid #BDBDBD;
+                    border-radius: 50%;
+                    background: #fff;
+                }
+                &:after{
+                    background: url(../../img/check.svg) no-repeat 50% 50%;
+                    background-size: 9px 7px;
+                    opacity: 0;
+                }
             }
         }
         input[value="CIC"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/cic.png");
             }
         }
         input[value="CREDIT MUTUEL"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/credit-mutuel.png");
             }
         }
         input[value="CAISSE D'EPARGNE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/caisse-d-epargne.png");
             }
         }
         input[value="BANQUE POPULAIRE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/banque-populaire.png");
             }
         }
         input[value="CREDIT AGRICOLE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/credit-agricole.png");
             }
         }
         input[value="SOCIETE GENERALE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/société-generale.png");
             }
         }
         input[value="BNP PARIBAS"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/bnp-paribas.png");
             }
         }
         input[value="LCL"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/lcl.png");
             }
         }
         input[value="HSBC"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/hsbc.png");
             }
         }
         input[value="CREDIT DU NORD"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/credit-du-nord.png");
             }
         }
         input[value="BANQUE PALATINE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/banque-palatine.png");
             }
         }
         input[value="CREDIT COOPERATIF"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/credit-cooperatif.png");
             }
         }
         input[value="BANQUE POSTALE"] {
-            & + label {
+            + label {
                 background-image: url("../../img/banks/banque-postale.png");
                 background-size: 50%;
             }
         }
         input[value="AUTRES BANQUES"] {
-            & + label {
+            + label {
                 color: $black;
                 background: none;
             }
