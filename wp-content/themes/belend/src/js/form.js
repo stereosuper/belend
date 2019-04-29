@@ -79,8 +79,10 @@ const layout = win => {
             .appendTo(page.find('.sidebar'));
 
         // help
+        page.find('.main-fields').append('<li class="page-nav"></li>');
+        
         if (page.find('.field-help').length) {
-            page.find('.field-help').before('<li class="page-nav"></li>');
+            //page.find('.field-help').before('<li class="page-nav"></li>');
             page.find('.sidebar').append(
                 '<button type="button" class="btn-help" id="help"></button>'
             );
@@ -105,7 +107,7 @@ const layout = win => {
 
             fixedPositionOnScroll(win);
         } else {
-            page.find('.main-fields').append('<li class="page-nav"></li>');
+            
         }
 
         // nav

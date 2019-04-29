@@ -21267,8 +21267,10 @@ var layout = function layout(win) {
 
     page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar')); // help
 
+    page.find('.main-fields').append('<li class="page-nav"></li>');
+
     if (page.find('.field-help').length) {
-      page.find('.field-help').before('<li class="page-nav"></li>');
+      //page.find('.field-help').before('<li class="page-nav"></li>');
       page.find('.sidebar').append('<button type="button" class="btn-help" id="help"></button>');
       page.find('.sidebar').find('.btn-help').on('click', function sidebarHandleClick() {
         var _pageVanilla$getEleme = pageVanilla.getElementsByClassName('field-help'),
@@ -21286,9 +21288,7 @@ var layout = function layout(win) {
         });
       });
       fixedPositionOnScroll(win);
-    } else {
-      page.find('.main-fields').append('<li class="page-nav"></li>');
-    } // nav
+    } else {} // nav
 
 
     page.find('.gform_page_footer').appendTo(page.find('.page-nav')); // button next step disabled
