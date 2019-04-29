@@ -167,7 +167,22 @@ if (!class_exists('GF_Field_Column') && class_exists('GF_Field')) {
 add_filter('gform_progress_steps', 'progress_steps_markup', 10, 3);
 function progress_steps_markup($progress_steps, $form, $page)
 {
-    return '';
+
+    $pages = isset($form['pagination']['pages']) ? $form['pagination']['pages'] : array();
+
+    $page_list = array_unique($pages);
+
+    $content = '';
+
+    foreach ($page_list as $page_title) {
+        if ($pages[($page - 1)] === $page_title) {
+            $content .= '<h2 class="active-page">' . $page_title . '</h2>';
+        } else {
+            $content .= '<p class="inactive-page">' . $page_title . '</p>';
+        }
+    }
+
+    return '<div class="form-steps page-bar">'. $content .'</div>';
 }
 
 add_filter('gform_pre_render', 'add_page_steps');

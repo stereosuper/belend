@@ -21263,11 +21263,16 @@ var layout = function layout(win) {
     var page = jQuery(this);
     var emptyInputs;
     var alreadyFilledInputs;
-    if (page.find('.gform_page_fields > ul').length <= 1) return; // sidebar
+    if (!page.find('.gform_page_fields').length) return; // sidebar
 
-    page.prepend('<div id="sidebar" class="sidebar"></div>').find('.gform_page_fields > ul:first-child').appendTo(page.find('.sidebar')); // help
+    page.prepend('<div id="sidebar" class="sidebar"></div>');
 
-    page.find('.main-fields').append('<li class="page-nav"></li>');
+    if (page.is(':visible')) {
+      jQuery('.form-steps').appendTo(page.find('.sidebar'));
+    } // help
+
+
+    page.find('.gform_page_fields').append('<div class="page-nav"></div>');
 
     if (page.find('.field-help').length) {
       page.find('.sidebar').append('<button type="button" class="btn-help" id="help"></button>');

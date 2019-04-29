@@ -1436,8 +1436,13 @@ input:focus + .instruction {
     border-radius: 50px;
     background: #fff; }
 
-.form-legend {
+.gfield_label, .gfield_description {
   line-height: 1.3; }
+  .gfield_label p, .gfield_description p {
+    margin: 10px 0 30px; }
+
+.page-nav {
+  padding: 0 0 30px; }
 
 @media (min-width: 400px) {
   .gfield_radio label,

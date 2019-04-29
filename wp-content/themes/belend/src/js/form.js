@@ -71,15 +71,18 @@ const layout = win => {
         let emptyInputs;
         let alreadyFilledInputs;
 
-        if (page.find('.gform_page_fields > ul').length <= 1) return;
+        if (!page.find('.gform_page_fields').length) return;
 
         // sidebar
-        page.prepend('<div id="sidebar" class="sidebar"></div>')
-            .find('.gform_page_fields > ul:first-child')
-            .appendTo(page.find('.sidebar'));
+        page.prepend('<div id="sidebar" class="sidebar"></div>');
+
+        if(page.is(':visible')){
+            jQuery('.form-steps')
+                .appendTo(page.find('.sidebar'));
+        }
 
         // help
-        page.find('.main-fields').append('<li class="page-nav"></li>');
+        page.find('.gform_page_fields').append('<div class="page-nav"></div>');
 
         if (page.find('.field-help').length) {
             page.find('.sidebar').append(
