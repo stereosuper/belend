@@ -80,12 +80,12 @@ const layout = win => {
 
         // help
         page.find('.main-fields').append('<li class="page-nav"></li>');
-        
+
         if (page.find('.field-help').length) {
-            //page.find('.field-help').before('<li class="page-nav"></li>');
             page.find('.sidebar').append(
                 '<button type="button" class="btn-help" id="help"></button>'
             );
+            
             page.find('.sidebar')
                 .find('.btn-help')
                 .on('click', function sidebarHandleClick() {
@@ -106,8 +106,6 @@ const layout = win => {
                 });
 
             fixedPositionOnScroll(win);
-        } else {
-            
         }
 
         // nav

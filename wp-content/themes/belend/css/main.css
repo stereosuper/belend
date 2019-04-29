@@ -1436,6 +1436,9 @@ input:focus + .instruction {
     border-radius: 50px;
     background: #fff; }
 
+.form-legend {
+  line-height: 1.3; }
+
 @media (min-width: 400px) {
   .gfield_radio label,
   .gfield_checkbox label {
@@ -1538,6 +1541,7 @@ input:focus + .instruction {
       left: -50vw;
       background: #e9e8e1; }
     .sidebar h2 {
+      margin: 0;
       font-size: 3.6rem; }
     .sidebar h3 {
       line-height: 1.5;
@@ -1550,6 +1554,8 @@ input:focus + .instruction {
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
         height: 20px; }
+    .sidebar .page-bar .active-page + .inactive-page:before {
+      content: none; }
     .sidebar .page-bar > *:first-child:after {
       content: "";
       display: block;
