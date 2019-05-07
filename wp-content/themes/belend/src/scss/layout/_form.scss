@@ -178,6 +178,7 @@
     margin-left: auto;
 }
 .gform_previous_button {
+    z-index: 2;
     color: $black;
     .icon {
         width: 1.4rem;
@@ -469,6 +470,13 @@ input:focus {
     }
 }
 
+
+
+.gfield:not(.field-inline) .gfield_label, .field-title{
+        color: $black-grey;
+        font-size: 2.3rem;
+}
+
 .page-nav{
     padding: 0 0 30px;
 }
@@ -601,6 +609,7 @@ input:focus {
 
     .sidebar {
         width: 35%;
+        padding-top: calc(30px + 1em);
         padding-bottom: 220px;
         z-index: 10;
         background-image: url(../../img/lightbulb.svg);
@@ -626,9 +635,9 @@ input:focus {
         }
 
         .page-bar {
+
             .inactive-page {
                 display: block;
-                margin: 65px 0 3px;
                 font-family: $font-light;
                 font-size: 2.2rem;
                 color: #bdbdbd;
@@ -638,32 +647,42 @@ input:focus {
                     }
                 }
             }
+
             .active-page{
-                + .inactive-page {
+
+                &:first-child{
+                    &:before{
+                        content: none;
+                    }
+                }
+
+                &:last-child{
+                    &:after{
+                        content: none;
+                    }
+                }
+
+               + .inactive-page  {
                     &:before {
                         content: none;
                     }
                 }
+
+                &:after, &:before {
+                    content: "";
+                    display: block;
+                    width: 1px;
+                    height: 40px;
+                    margin: 0 0 0 15px;
+                    background: #bdbdbd;
+                }
+
             }
             > * {
-                &:first-child {
-                    &:after {
-                        content: "";
-                        display: block;
-                        width: 1px;
-                        height: 40px;
-                        margin: 0 0 0 15px;
-                        background: #bdbdbd;
-                    }
+                &:first-child:not(h2){
+                    padding-top: 0.5em;
                 }
-                h2 {
-                    &:after {
-                        margin-top: -35px;
-                    }
-                }
-                + h2 {
-                    line-height: 2;
-                }
+
                 + .inactive-page {
                     margin-top: 0;
                     &:before {

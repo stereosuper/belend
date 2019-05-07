@@ -1194,6 +1194,7 @@ button {
   margin-left: auto; }
 
 .gform_previous_button {
+  z-index: 2;
   color: #000; }
   .gform_previous_button .icon {
     width: 1.4rem;
@@ -1441,6 +1442,10 @@ input:focus + .instruction {
   .gfield_label p, .gfield_description p {
     margin: 10px 0 30px; }
 
+.gfield:not(.field-inline) .gfield_label, .field-title {
+  color: #312f2f;
+  font-size: 2.3rem; }
+
 .page-nav {
   padding: 0 0 30px; }
 
@@ -1531,6 +1536,7 @@ input:focus + .instruction {
               transform: scale(1); }
   .sidebar {
     width: 35%;
+    padding-top: calc(30px + 1em);
     padding-bottom: 220px;
     z-index: 10;
     background-image: url(/wp-content/themes/belend/img/lightbulb.svg);
@@ -1553,25 +1559,26 @@ input:focus + .instruction {
       margin: 0 0 20px; }
     .sidebar .page-bar .inactive-page {
       display: block;
-      margin: 65px 0 3px;
       font-family: "upgrade-lights", "upgrade", sans-serif;
       font-size: 2.2rem;
       color: #bdbdbd; }
       .sidebar .page-bar .inactive-page + .inactive-page:before {
         height: 20px; }
+    .sidebar .page-bar .active-page:first-child:before {
+      content: none; }
+    .sidebar .page-bar .active-page:last-child:after {
+      content: none; }
     .sidebar .page-bar .active-page + .inactive-page:before {
       content: none; }
-    .sidebar .page-bar > *:first-child:after {
+    .sidebar .page-bar .active-page:after, .sidebar .page-bar .active-page:before {
       content: "";
       display: block;
       width: 1px;
       height: 40px;
       margin: 0 0 0 15px;
       background: #bdbdbd; }
-    .sidebar .page-bar > * h2:after {
-      margin-top: -35px; }
-    .sidebar .page-bar > * + h2 {
-      line-height: 2; }
+    .sidebar .page-bar > *:first-child:not(h2) {
+      padding-top: 0.5em; }
     .sidebar .page-bar > * + .inactive-page {
       margin-top: 0; }
       .sidebar .page-bar > * + .inactive-page:before {
