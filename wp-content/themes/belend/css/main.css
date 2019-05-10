@@ -1442,12 +1442,19 @@ input:focus + .instruction {
   .gfield_label p, .gfield_description p {
     margin: 10px 0 30px; }
 
-.gfield:not(.field-inline) .gfield_label, .field-title {
+.gfield:not(.field-inline):not(.sub-title) .gfield_label, .field-title {
   color: #312f2f;
   font-size: 2.3rem; }
 
 .page-nav {
   padding: 0 0 30px; }
+
+.loan-time {
+  width: 70%; }
+  .loan-time .ginput_container {
+    width: 70%; }
+  .loan-time input {
+    width: 100%; }
 
 @media (min-width: 400px) {
   .gfield_radio label,

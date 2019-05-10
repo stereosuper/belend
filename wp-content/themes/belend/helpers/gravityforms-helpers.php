@@ -185,36 +185,6 @@ function progress_steps_markup($progress_steps, $form, $page)
     return '<div class="form-steps page-bar">'. $content .'</div>';
 }
 
-add_filter('gform_pre_render', 'add_page_steps');
-
-function add_page_steps($form)
-{
-    $pages = isset($form['pagination']['pages']) ? $form['pagination']['pages'] : array();
-
-    $page_list = array_unique($pages);
-
-    if(isset($form['fields']) && !empty($form['fields'])){
-        foreach ($form['fields'] as $field) {
-            if ($field->cssClass === 'page-bar') {
-                $content = $field->content;
-                if (!strpos($field->content, 'active-page')) {
-                    $field->content = '';
-                    foreach ($page_list as $page) {
-                        if ($pages[($field->pageNumber - 1)] === $page) {
-                            $field->content .= '<h2 class="active-page">' . $page . '</h2>';
-                            $field->content .= $content;
-                        } else {
-                            $field->content .= '<p class="inactive-page">' . $page . '</p>';
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return $form;
-}
-
 add_filter('gform_pre_render', 'belend_populate', 20);
 
 function belend_populate($form){
