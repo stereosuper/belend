@@ -10,44 +10,46 @@ const homeSprite = () => {
 
         const columns = 9;
         const rows = 11;
-        // const spriteHandler = new Sprite();
+
+        const setBackgroundImage = image => {
+            waterElement.style.backgroundImage = `url(${image.src})`;
+        };
 
         const spUrl = bannerImage.getAttribute('data-src');
         const spImage = new Image();
-        spImage.src = spUrl;
+        spImage.addEventListener(
+            'load',
+            () => {
+                if (waterElement) {
+                    if (Image.prototype.decode) {
+                        spImage
+                            .decode()
+                            .then(() => {
+                                setBackgroundImage(spImage);
+                            })
+                            .catch(() => {
+                                setBackgroundImage(spImage);
+                            });
+                    } else {
+                        setBackgroundImage(spImage);
+                    }
 
-        const noDecodeApi = () => {
-            waterElement.style.backgroundImage = `url(${spImage.src})`;
-        };
-
-        if (waterElement) {
-            if (Image.prototype.decode) {
-                spImage
-                    .decode()
-                    .then(() => {
-                        waterElement.style.backgroundImage = `url(${
-                            spImage.src
-                        })`;
-                    })
-                    .catch(() => {
-                        noDecodeApi();
+                    const spriteAnimation = new Sprite({
+                        image: waterElement,
+                        columns,
+                        rows,
+                        interval: 0.05,
+                        parent: bannerImage,
+                        loop: true,
+                        numberEmpty: 0,
                     });
-            } else {
-                noDecodeApi();
-            }
 
-            const spriteAnimation = new Sprite({
-                image: waterElement,
-                columns,
-                rows,
-                interval: 0.05,
-                parent: bannerImage,
-                loop: true,
-                numberEmpty: 0,
-            });
-
-            spriteAnimation.play();
-        }
+                    spriteAnimation.play();
+                }
+            },
+            false
+        );
+        spImage.src = spUrl;
     }
 };
 
