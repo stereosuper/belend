@@ -8,7 +8,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: $black-grey;
+    position: relative;
+    background: $black-grey;
 }
 
 .empty-cache {
@@ -479,6 +480,8 @@ input:focus {
 
 .page-nav{
     padding: 0 0 30px;
+    position: relative;
+    z-index: 10;
 }
 
 

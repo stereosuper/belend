@@ -1053,7 +1053,8 @@ button {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background-color: #312f2f; }
+  position: relative;
+  background: #312f2f; }
 
 .empty-cache {
   position: relative;
@@ -1447,7 +1448,9 @@ input:focus + .instruction {
   font-size: 2.3rem; }
 
 .page-nav {
-  padding: 0 0 30px; }
+  padding: 0 0 30px;
+  position: relative;
+  z-index: 10; }
 
 .loan-time {
   width: 70%; }
