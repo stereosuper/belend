@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/pretpro-api-gravity-forms-feed"]
+	path = wp-content/plugins/pretpro-api-gravity-forms-feed
+	url = git@gitlab.studio-goliath.fr:pretpro/pretpro-api-gravity-forms-feed.git

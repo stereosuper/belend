@@ -3212,9 +3212,9 @@ a.ui-button:active,
       -webkit-transform: translateX(-125%);
               transform: translateX(-125%); } }
 
-.page-template-default .container-small {
+.page-template-default .container-small, .page-template-form-confirmation .container-small {
   position: relative; }
-  .page-template-default .container-small:before, .page-template-default .container-small:after {
+  .page-template-default .container-small:before, .page-template-default .container-small:after, .page-template-form-confirmation .container-small:before, .page-template-form-confirmation .container-small:after {
     content: "";
     position: absolute;
     width: 405px;
@@ -3224,12 +3224,12 @@ a.ui-button:active,
     -webkit-transform-origin: 50% 50%;
             transform-origin: 50% 50%;
     z-index: -1; }
-  .page-template-default .container-small:before {
+  .page-template-default .container-small:before, .page-template-form-confirmation .container-small:before {
     top: -170px;
     right: 30px;
     -webkit-transform: rotate(-30deg) scale(0.8);
             transform: rotate(-30deg) scale(0.8); }
-  .page-template-default .container-small:after {
+  .page-template-default .container-small:after, .page-template-form-confirmation .container-small:after {
     bottom: -200px;
     left: -100px;
     -webkit-transform: scale(0.8);
@@ -3253,3 +3253,5 @@ a.ui-button:active,
   h2, h3 {
     page-break-after: avoid; } }
 
+
+/*# sourceMappingURL=main.css.map*/

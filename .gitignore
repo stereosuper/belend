@@ -26,3 +26,6 @@ wp-content/uploads
 wp-content/*.php
 wp-admin/**
 wp-includes/**
+
+
+!wp-content/plugins/pretpro-api-gravity-forms-feed

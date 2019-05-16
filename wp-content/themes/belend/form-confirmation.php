@@ -227,7 +227,7 @@ class Compare
 
 <?php get_header(); ?>
 
-    <div class='container'>
+    <div class='container-small'>
 
         <?php if ( have_posts() ) : the_post(); ?>
 
