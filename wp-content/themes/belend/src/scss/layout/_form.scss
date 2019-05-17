@@ -497,6 +497,22 @@ input:focus {
     }
 }
 
+.page-template-form-confirmation{
+    h1{
+        font-size: 3.6rem;
+        text-align: left;
+        color: #828282;
+    }
+    main{
+        padding-bottom: 5em;
+        overflow: hidden;
+        .btn{
+            float: right;
+        }
+    }
+}
+
+
 @media (min-width: $phone-small) {
     .gfield_radio,
     .gfield_checkbox {
@@ -562,6 +578,12 @@ input:focus {
         }
         &:after {
             left: 0;
+        }
+    }
+
+    .page-template-form-confirmation{
+        h1{
+            margin-top: 6em;
         }
     }
 }
