@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const config = (env, options) => {
     const MODE = options.mode;
@@ -67,7 +69,12 @@ const config = (env, options) => {
         node: {
             fs: 'empty', // avoids error messages
         },
-
+        optimization: {
+            minimizer: [
+                new TerserJSPlugin({}),
+                new OptimizeCSSAssetsPlugin({}),
+            ],
+        },
         plugins: [
             new MiniCssExtractPlugin({
                 filename: 'wp-content/themes/belend/css/main.css',
