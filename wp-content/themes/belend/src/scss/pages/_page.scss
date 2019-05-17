@@ -1,29 +1,46 @@
-
 .page-template-default, .page-template-form-confirmation{
-  .container-small{
-    position: relative;
+    .container-small{
+        position: relative;
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            width: 405px;
+            height: 415px;
+            background: url(../../img/bgform.svg);
+            background-size: cover;
+            transform-origin: 50% 50%;
+            z-index: -1;
+        }
+        &:before {
+            top: -170px;
+            right: 30px;
+        }
+    }
+}
 
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      width: 405px;
-      height: 415px;
-      background: url(../../img/bgform.svg);
-      background-size: cover;
-      transform-origin: 50% 50%;
-      z-index: -1;
+.page-template-default{
+    .container-small{
+        &:before {
+            transform: rotate(-30deg) scale(0.8);
+        }
+        &:after {
+            bottom: -200px;
+            left: -100px;
+            transform: scale(0.8);
+        }
     }
-    &:before {
-      top: -170px;
-      right: 30px;
-      transform: rotate(-30deg) scale(0.8);
-    }
-    &:after {
-      bottom: -200px;
-      left: -100px;
-      transform: scale(0.8);
-    }
-  }
+}
 
+
+.page-template-form-confirmation{
+    .container-small{
+        &:before {
+            transform: rotate(-45deg);
+        }
+        &:after {
+            bottom: -250px;
+            left: -230px;
+        }
+    }
 }

@@ -1459,6 +1459,17 @@ input:focus + .instruction {
   .loan-time input {
     width: 100%; }
 
+.page-template-form-confirmation h1 {
+  font-size: 3.6rem;
+  text-align: left;
+  color: #828282; }
+
+.page-template-form-confirmation main {
+  padding-bottom: 5em;
+  overflow: hidden; }
+  .page-template-form-confirmation main .btn, .page-template-form-confirmation main .page-template-contact .gform_wrapper .gform_footer .button, .page-template-contact .gform_wrapper .gform_footer .page-template-form-confirmation main .button {
+    float: right; }
+
 @media (min-width: 400px) {
   .gfield_radio label,
   .gfield_checkbox label {
@@ -1497,7 +1508,9 @@ input:focus + .instruction {
     .gform_page_fields:before {
       top: -150px; }
     .gform_page_fields:after {
-      left: 0; } }
+      left: 0; }
+  .page-template-form-confirmation h1 {
+    margin-top: 6em; } }
 
 @media (min-width: 960px) {
   .btn-help {
@@ -3229,14 +3242,25 @@ a.ui-button:active,
     z-index: -1; }
   .page-template-default .container-small:before, .page-template-form-confirmation .container-small:before {
     top: -170px;
-    right: 30px;
-    -webkit-transform: rotate(-30deg) scale(0.8);
-            transform: rotate(-30deg) scale(0.8); }
-  .page-template-default .container-small:after, .page-template-form-confirmation .container-small:after {
-    bottom: -200px;
-    left: -100px;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8); }
+    right: 30px; }
+
+.page-template-default .container-small:before {
+  -webkit-transform: rotate(-30deg) scale(0.8);
+          transform: rotate(-30deg) scale(0.8); }
+
+.page-template-default .container-small:after {
+  bottom: -200px;
+  left: -100px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8); }
+
+.page-template-form-confirmation .container-small:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
+
+.page-template-form-confirmation .container-small:after {
+  bottom: -250px;
+  left: -230px; }
 
 /******* PRINT *******/
 @media print {

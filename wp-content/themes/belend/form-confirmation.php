@@ -232,16 +232,21 @@ class Compare
         <?php if ( have_posts() ) : the_post(); ?>
 
             <h1><?php the_title(); ?></h1>
-                <?php if(isset($output['content'])):?>
-                    <div class="entry-content container" style="text-align: center; margin-bottom: 3em;">
-                        <?php echo $output['content']; ?>
-                    </div>
-                <?php else: ?>
-                    <div class="entry-content container" style="margin-bottom: 3em;">
-                        <?php the_content(); ?>
-                        <p style="text-align: center;"><a href="<?php echo home_url()?>" style="text-decoration: underline;">Retour à l'accueil</a></p>
-                    </div>
-                <?php endif; ?>
+
+            <?php if( isset($output['content']) ) : ?>
+
+                <?php echo $output['content']; ?>
+
+            <?php else : ?>
+
+                <?php the_content(); ?>
+                <a class="btn" href="<?php echo home_url()?>">
+					<span>Retour à l'accueil</span>
+					<svg class="icon"><use xlink:href="#icon-arrow"></use></svg>
+                </a>
+                
+            <?php endif; ?>
+        
         <?php else : ?>
 
             <h1>404</h1>
