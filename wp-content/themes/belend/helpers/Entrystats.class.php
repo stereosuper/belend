@@ -14,7 +14,7 @@ class GFEntryStats {
         echo "Recherche des entrées du formulaire. \n";
 
         $this->entries = GFAPI::get_entries($form_id);
-        echo sprintf( '"%1$s" entrées trouvées', count($this->entries));
+        echo sprintf( '%1$s entrées trouvées', count($this->entries));
         echo "\n";
         $this->form =  GFAPI::get_form($form_id);
 
@@ -27,8 +27,6 @@ class GFEntryStats {
         $entry_tags = $this->get_tags();
 
         $partner_emails =array();
-
-        var_dump($this->entries);
 
         foreach ($this->entries as $current_entry) {
 
@@ -48,7 +46,7 @@ class GFEntryStats {
             $output = get_output($results);
 
             if($output){
-                echo sprintf( 'Partenaire trouvé !', count($current_entry['id']));
+                echo 'Partenaire trouvé !';
                 echo "\n";
                 $partner_emails[$current_entry['id']] = $output['email'];
                 $this->n++;
@@ -56,12 +54,10 @@ class GFEntryStats {
 
         }
 
-        var_dump($partner_emails);
-
-        echo sprintf( '"%1$s" Partenaire trouvés', $this->n);
+        echo sprintf( '%1$s Partenaire trouvés', $this->n);
         echo "\n";
         foreach ($partner_emails as $key=>$value){
-            echo sprintf( 'formulaire "%1$s": "%2$s" ', $key, $value);
+            echo sprintf( 'Formulaire %1$s: %2$s ', $key, $value);
             echo "\n";
         }
 
