@@ -4,10 +4,6 @@ add_action("gform_partialentries_post_entry_updated", "belend_send_partial_entry
 
 function belend_send_partial_entry($partial_entry, $form)
 {
-
-    echo $partial_entry;
-    echo $form;
-
    /* if(class_exists('vxg_salesforce')){
         $vxg_salesforce = new vxg_salesforce();
         $vxg_salesforce->instance();
@@ -229,7 +225,7 @@ add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax
 function belend_get_field_by_class( $form, $class ) {
     foreach ( $form['fields'] as $field ) {
         $lead_key = $field->cssClass;
-        if ( strpos(strToLower( $lead_key ), strToLower($class)) ) {
+        if ( strToLower( $lead_key ) === strToLower($class) ) {
             return $field;
         }
     }
@@ -273,4 +269,28 @@ function belend_custom_field_validation($result, $value, $form, $field)
     }
 
     return $result;
+}
+
+
+function treat_banks($banks){
+    if(!is_array($banks)){
+        return explode(',',$banks);
+    }
+    return $banks;
+}
+
+function treat_post_code($post_code){
+    if(isset($_GET['project_post_code'])){
+        $post_code = $_GET['project_post_code'];
+    }
+    return substr($post_code, 0,2);
+}
+
+function get_output($results){
+    foreach ($results as $result){
+        if ($result !== false){
+            return $result;
+        }
+    }
+    return null;
 }
