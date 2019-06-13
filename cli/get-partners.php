@@ -18,7 +18,8 @@ if (defined('STDIN')) {
     require_once('../wp-content/themes/belend/helpers/Entrystats.class.php');
     require_once('../wp-content/themes/belend/helpers/gravityforms-helpers.php');
 
-    $importer = new GFEntryStats(12);
+    $id = $argv[1];
+    $importer = new GFEntryStats($id);
     $importer->find_partner_emails();
 } else {
     echo 'Cet outil doit être exécuté en ligne de commande';
