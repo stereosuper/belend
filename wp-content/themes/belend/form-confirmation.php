@@ -60,7 +60,7 @@ $real_entry[$field['id']] = 1;
 $update = GFAPI::update_entry($real_entry);
 $vxg_salesforce = new vxg_salesforce();
 $vxg_salesforce->instance();
-$res  = $vxg_salesforce->push($real_entry, $form, "update");
+$res  = $vxg_salesforce->push($real_entry, $real_form, "update");
 
 foreach ($rows as $row){
     $results[] = $compare->model_applies($entry, $row);
@@ -107,7 +107,7 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
 
         $vxg_salesforce = new vxg_salesforce();
         $vxg_salesforce->instance();
-        $vxg_salesforce->push($real_entry, $form, 'update');
+        $vxg_salesforce->push($real_entry, $real_form, 'update');
     }
 
 }
