@@ -209,19 +209,6 @@ function belend_populate($form){
 }
 
 
-add_filter( 'gform_confirmation', function ( $confirmation, $form, $entry, $ajax ) {
-
-    if( isset( $confirmation['redirect'] ) ) {
-        $url          = esc_url_raw( $confirmation['redirect'] );
-        $confirmation = 'Thanks for contacting us! We will get in touch with you shortly.';
-        $confirmation .= "<script type=\"text/javascript\">window.open('$url', '_blank');</script>";
-    }
-
-    return $confirmation;
-}, 10, 4 );
-
-
-
 function belend_get_field_by_class( $form, $class ) {
     foreach ( $form['fields'] as $field ) {
         $lead_key = $field->cssClass;
