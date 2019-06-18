@@ -99,6 +99,10 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
         // var_dump($field['id']);
 
         $real_entry[$field['id']] = $output['email'];
+
+        var_dump($real_entry);
+        die();
+
         $res = GFAPI::update_entry($real_entry);
         $res = $vxg_salesforce->push($real_entry, $real_form, 'update');
     }
