@@ -96,12 +96,8 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
         $real_form = GFAPI::get_form($entry['form_id']);
 
         $field = belend_get_field_by_class( $real_form, 'partner-email' );
-        // var_dump($field['id']);
 
         $real_entry[$field['id']] = $output['email'];
-
-        var_dump($real_entry);
-        die();
 
         $res = GFAPI::update_entry($real_entry);
         $res = $vxg_salesforce->push($real_entry, $real_form, 'update');
