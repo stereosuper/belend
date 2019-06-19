@@ -51,7 +51,8 @@ class GFEntryStats {
             if($output){
                 echo 'Partenaire trouvé !';
                 echo "\n";
-                $partner_emails[$current_entry['id']] = $output['email'];
+                $partner_emails[$current_entry['id']]['partner'] = $output['email'];
+                $partner_emails[$current_entry['id']]['contact'] = $formatted_entry['email'];
                 $this->n++;
             }
 
@@ -60,7 +61,7 @@ class GFEntryStats {
         echo sprintf( '%1$s Partenaire trouvés', $this->n);
         echo "\n";
         foreach ($partner_emails as $key=>$value){
-            echo sprintf( 'Formulaire %1$s: %2$s ', $key, $value);
+            echo sprintf( 'Formulaire %1$s - partenaire:%2$s  - contacy: %3$s', $key, $value['contact'], $value['contact']);
             echo "\n";
         }
 
@@ -100,8 +101,7 @@ class GFEntryStats {
         }
 
         $formatted_entry = $this->format_entry($entry_values);
-
-        //var_dump($formatted_entry);
+        
 
         return $formatted_entry;
 
