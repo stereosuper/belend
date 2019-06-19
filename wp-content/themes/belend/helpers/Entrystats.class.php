@@ -61,7 +61,7 @@ class GFEntryStats {
         echo sprintf( '%1$s Partenaire trouvés', $this->n);
         echo "\n";
         foreach ($partner_emails as $key=>$value){
-            echo sprintf( 'Formulaire %1$s - partenaire:%2$s  - contacy: %3$s', $key, $value['contact'], $value['contact']);
+            echo sprintf( 'Formulaire %1$s - partenaire:%2$s  - contacy: %3$s', $key, $value['partner'], $value['contact']);
             echo "\n";
         }
 
