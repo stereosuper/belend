@@ -46,37 +46,40 @@ $entry['montant_avec_penalites'] = $entry['capital_restant'] + $entry['montant_p
 $compare = new Compare();
 
 $results = [];
- $test_results=[];
+//$test_results=[];
 
 // Création d'un Finanement une fois que le Formulaire Web a été envoyé à Salesforce
 $real_entry = GFAPI::get_entry($entry['entry_id']);
 $real_form = GFAPI::get_form($entry['form_id']);
 
-// On remplit le champ "formulaire terminé" qui est mappé au champ correspondant coté Salesforce.
-// Ça déclenche la création d'un Financement
-$field = belend_get_field_by_class( $real_form, 'form-complete' );
-$real_entry[$field['id']] = 1;
+//Email du partenaire vidé, on le remplira si besoin (pour éviter que d'autres email soient utilisés)
+$email_field = belend_get_field_by_class( $real_form, 'partner-email' );
+$real_entry[$email_field['id']] = '';
+$vxg_salesforce = false;
 
-$update = GFAPI::update_entry($real_entry);
-$vxg_salesforce = new vxg_salesforce();
-$vxg_salesforce->instance();
-$res  = $vxg_salesforce->push($real_entry, $real_form, "update");
+if (class_exists('vxg_salesforce')) {
+    $update = GFAPI::update_entry($real_entry);
+    $vxg_salesforce = new vxg_salesforce();
+    $vxg_salesforce->instance();
+}
 
 foreach ($rows as $row){
     $results[] = $compare->model_applies($entry, $row);
 }
 
-foreach ($results as $result){
+/*foreach ($results as $result){
     if(is_string($result)){
         $test_results[]=['partenaire trouvé'];
     }else{
         $test_results[]= $result;
     }
-}
+}*/
 
+//var_dump($test_results)
 
 $output = get_output($results);
 
+// Si le resultat est "Entrepreteurs"
 if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
     if(isset($output['content'])){
         $output['content'] .= "<br/><form action='https://www.belend-participatif.fr/register/' target='_blank' method='post'>";
@@ -87,38 +90,22 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
         $output['content'] .= "<input type='submit' value='Belend Participatif'/></form>";
     }
 }elseif(isset($output['email']) && get_field('no_gravity_email', 'option') == false) {
-
     // belend_send_notification($entry['entry_id'], $entry['form_id'], $output['email']  );
+    // on remplit le champ "Email du partenaire"
+    $real_entry[$email_field['id']] = $output['email'];
 
-    if (class_exists('vxg_salesforce')) {
-
-        $real_entry = GFAPI::get_entry($entry['entry_id']);
-        $real_form = GFAPI::get_form($entry['form_id']);
-
-        $field = belend_get_field_by_class( $real_form, 'partner-email' );
-
-        $real_entry[$field['id']] = $output['email'];
-
-        $res = GFAPI::update_entry($real_entry);
-        $res = $vxg_salesforce->push($real_entry, $real_form, 'update');
-    }
-
+    // On remplit le champ "formulaire terminé" qui est mappé au champ correspondant coté Salesforce.
+    // Ça déclenchera la création d'un Financement
+    $field = belend_get_field_by_class( $real_form, 'form-complete' );
+    $real_entry[$field['id']] = 1;
+    $field = belend_get_field_by_class( $real_form, 'form-complete' );
+    $real_entry[$field['id']] = 1;
 }
 
-function belend_send_notification( $entry_id, $form_id, $email)  {
-    $entry = GFAPI::get_entry( $entry_id );
-    $form = GFAPI::get_form( $form_id );
-    $notifications         = GFCommon::get_notifications( 'form_submission', $form);
-    //running through filters that disable form submission notifications
-    foreach ( $notifications as $notification ) {
-        if ( apply_filters( "gform_disable_notification_{$form['id']}", apply_filters( 'gform_disable_notification', false, $notification, $form, $entry ), $notification, $form, $entry ) ) {
-            //skip notifications if it has been disabled by a hook
-            continue;
-        }
-        $notification['to'] = $email;
-        GFCommon::send_notification( $notification, $form, $entry);
-    }
+$update = GFAPI::update_entry($real_entry);
 
+if($vxg_salesforce){
+    $res  = $vxg_salesforce->push($real_entry, $real_form, "update");
 }
 
 ?>
