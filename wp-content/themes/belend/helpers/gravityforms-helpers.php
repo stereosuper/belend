@@ -222,8 +222,7 @@ function belend_get_field_by_class( $form, $class ) {
 add_filter( 'gform_field_validation', 'belend_custom_field_validation' ,10, 4);
 
 function belend_custom_field_validation($result, $value, $form, $field)
-{
-    if ( strpos($field->cssClass, 'total-loan') && $value < 5000) {
+{    if ( strpos($field->cssClass, 'total-loan') && $value < 5000) {
         $result['is_valid'] = false;
         $result['message'] = 'Le montant de l\'emprunt ne peut être inférieur à 5000 €';
     } elseif (strpos($field->cssClass, 'anticipated-penalties')) {
@@ -246,13 +245,20 @@ function belend_custom_field_validation($result, $value, $form, $field)
             $result['message']  = 'Merci de rentrer un numéro de téléphone à 10 chiffres';
         }
 
-    }elseif ( strpos($field->cssClass, 'birthday')){
+    } elseif ( strpos($field->cssClass, 'birthday')){
         $date = strtotime($value);
         $ref_date = strtotime("- 18 years" );
         if ($date > $ref_date){
             $result['is_valid'] = false;
             $result['message'] = 'Vous devez avoir plus de 18 ans';
         }
+    } elseif ( strpos($field->cssClass, 'field-siren')) {
+        $siren_string = $value;
+        if ( !empty($siren_string && (!preg_match('/^0$|^\d{9}$|^$/', $siren_string)))){
+            $result['is_valid'] = false;
+            $result['message'] = 'Le numéro SIREN doit comporter 9 chiffres sans espaces';
+        }
+
     }
 
     return $result;
