@@ -14,7 +14,7 @@ class GFEntryStats {
         echo "Recherche des entrées du formulaire. \n";
 
 
-        $search_criteria = [];
+        $search_criteria = array('status' => 'active');
         $search_criteria['field_filters'][] = array( 'key' => 'partial_entry_id', 'value' => false);
         $this->entries = GFAPI::get_entries($form_id, $search_criteria, null, array( 'offset' => 0, 'page_size' => 10000 ));
         echo sprintf( '%1$s entrées trouvées', count($this->entries));
