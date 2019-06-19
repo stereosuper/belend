@@ -13,7 +13,7 @@ class GFEntryStats {
 
         echo "Recherche des entrées du formulaire. \n";
 
-        $this->entries = GFAPI::get_entries($form_id);
+        $this->entries = GFAPI::get_entries($form_id, array(), null, array( 'offset' => 0, 'page_size' => 10000 ));
         echo sprintf( '%1$s entrées trouvées', count($this->entries));
         echo "\n";
         $this->form =  GFAPI::get_form($form_id);

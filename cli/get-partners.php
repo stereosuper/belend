@@ -2,7 +2,7 @@
 <?php
 /*
  * Appel :
- * > cd ./cli; ./get-partners
+ * > cd ./cli; php ./get-partners.php <id>
 */
 if (defined('STDIN')) {
     ini_set("memory_limit", "512M");
