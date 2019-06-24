@@ -48,19 +48,23 @@ $compare = new Compare();
 $results = [];
 //$test_results=[];
 
-// Création d'un Finanement une fois que le Formulaire Web a été envoyé à Salesforce
+// Création d'un Finanement une si besoin et une fois que le Formulaire Web a été envoyé à Salesforce
 $real_entry = GFAPI::get_entry($entry['entry_id']);
 $real_form = GFAPI::get_form($entry['form_id']);
 
-//Email du partenaire vidé, on le remplira si besoin (pour éviter que d'autres email soient utilisés)
-$email_field = belend_get_field_by_class( $real_form, 'partner-email' );
-$real_entry[$email_field['id']] = '';
 $vxg_salesforce = false;
 
-if (class_exists('vxg_salesforce')) {
-    $update = GFAPI::update_entry($real_entry);
-    $vxg_salesforce = new vxg_salesforce();
-    $vxg_salesforce->instance();
+
+if(!is_wp_error($real_entry)){
+    //Email du partenaire vidé, on le remplira si besoin (pour éviter que d'autres email soient utilisés)
+    $email_field = belend_get_field_by_class( $real_form, 'partner-email' );
+    $real_entry[$email_field['id']] = '';
+
+    if (class_exists('vxg_salesforce')) {
+        $update = GFAPI::update_entry($real_entry);
+        $vxg_salesforce = new vxg_salesforce();
+        $vxg_salesforce->instance();
+    }
 }
 
 foreach ($rows as $row){
@@ -74,7 +78,6 @@ foreach ($rows as $row){
         $test_results[]= $result;
     }
 }*/
-
 //var_dump($test_results)
 
 $output = get_output($results);
@@ -90,22 +93,24 @@ if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
         $output['content'] .= "<input type='submit' value='Belend Participatif'/></form>";
     }
 }elseif(isset($output['email']) && get_field('no_gravity_email', 'option') == false) {
-    // belend_send_notification($entry['entry_id'], $entry['form_id'], $output['email']  );
-    // on remplit le champ "Email du partenaire"
-    $real_entry[$email_field['id']] = $output['email'];
 
-    // On remplit le champ "formulaire terminé" qui est mappé au champ correspondant coté Salesforce.
-    // Ça déclenchera la création d'un Financement
-    $field = belend_get_field_by_class( $real_form, 'form-complete' );
-    $real_entry[$field['id']] = 1;
-    $field = belend_get_field_by_class( $real_form, 'form-complete' );
-    $real_entry[$field['id']] = 1;
+    if(!is_wp_error($real_entry)) {
+        // on remplit le champ "Email du partenaire"
+        $real_entry[$email_field['id']] = $output['email'];
+
+        // On remplit le champ "formulaire terminé" qui est mappé au champ correspondant coté Salesforce.
+        // Ça déclenchera la création d'un Financement
+        $field = belend_get_field_by_class($real_form, 'form-complete');
+        $real_entry[$field['id']] = 1;
+    }
 }
 
-$update = GFAPI::update_entry($real_entry);
+if(!is_wp_error($real_entry)) {
+    $update = GFAPI::update_entry($real_entry);
 
-if($vxg_salesforce){
-    $res  = $vxg_salesforce->push($real_entry, $real_form, "update");
+    if ($vxg_salesforce) {
+        $res = $vxg_salesforce->push($real_entry, $real_form, "update");
+    }
 }
 
 ?>
