@@ -9,7 +9,7 @@ return [
                 "method" => "EQ",
                 "clauses" => [
                     "key" => "projet_murs",
-                    "value" => "Acquisition de murs commerciaux",
+                    "value" => "Construction ou acquisition de murs commerciaux",
                 ],
             ],
             [
