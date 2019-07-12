@@ -40,6 +40,8 @@ $entry['secteur_activite'] = isset($_GET['business_field'])?$_GET['business_fiel
 $entry['entry_id'] = isset($_GET['entry_id'])?$_GET['entry_id']: '';
 $entry['form_id'] = isset($_GET['form_id'])?$_GET['form_id']: '';
 $entry['email'] = isset($_GET['email'])?$_GET['email']: '';
+$entry['first_name'] = isset($_GET['first_name'])?$_GET['first_name']: '';
+$entry['gender'] = isset($_GET['gender'])?$_GET['gender']: '';
 
 $entry['montant_avec_penalites'] = $entry['capital_restant'] + $entry['montant_penalites'];
 
@@ -123,6 +125,12 @@ if(!is_wp_error($real_entry)) {
 
             <h1><?php the_title(); ?></h1>
 
+            <?php
+            if(!empty($entry['gender']) && !empty($entry['first_name'])){
+                $salutation = $entry['gender'] =='Mme' || $entry['gender'] == 'Mlle' ? 'Chère': 'Cher';
+                echo $salutation . ' ' . $entry['first_name'] . ", <br/>";
+            }
+            ?>
             <?php if( isset($output['content']) ) : ?>
 
                 <?php echo $output['content']; ?>
