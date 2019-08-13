@@ -17,14 +17,26 @@ const placesInput = () => {
                  type: 'city',
                  aroundLatLngViaIP: false
              });
+             const [cityInput] = cityField.getElementsByTagName('input');
+             const [postcodeInput] = postcodeField.getElementsByTagName('input');
+
              placesAutocomplete.on('change', e => {
                  //console.log(e);
                  //console.log(e.suggestion);
                  //console.log(e.suggestion.value);
-                 const [cityInput] = cityField.getElementsByTagName('input');
-                 const [postcodeInput] = postcodeField.getElementsByTagName('input');
                  cityInput.value = e.suggestion.name;
                  postcodeInput.value = e.suggestion.postcode;
+             });
+
+             const $search_input = jQuery('.field-city input');
+             $search_input.on('change', e => {
+                 if(jQuery.isNumeric($search_input.val())){
+                     cityInput.value = '';
+                     postcodeInput.value = $search_input.val();
+                 }else if( !postcodeInput.value || !cityInput.value || ($search_input.val().indexOf(cityInput.value) < 0 )){
+                     cityInput.value = $search_input.val();
+                     postcodeInput.value = '';
+                 }
              });
          }
      }
