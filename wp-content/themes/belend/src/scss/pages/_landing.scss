@@ -36,6 +36,13 @@ $landing-header-height: 170px;
 }
 
 .page-template-landing-page{
+   h2{
+    color: $black-grey;
+  }
+
+  h2{
+    font-weight: 600;
+  }
 
   .banner{
     position: relative;

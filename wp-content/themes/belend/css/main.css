@@ -3297,6 +3297,12 @@ a.ui-button:active,
 .page-template-landing-page .form-progress, .page-template-landing-page-tunnel .form-progress {
   margin-top: 0 !important; }
 
+.page-template-landing-page h2 {
+  color: #312f2f; }
+
+.page-template-landing-page h2 {
+  font-weight: 600; }
+
 .page-template-landing-page .banner {
   position: relative;
   height: 485px; }
