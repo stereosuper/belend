@@ -21960,13 +21960,17 @@ var placesInput = function placesInput() {
       _document$getElements2 = _slicedToArray(_document$getElements, 1),
       searchField = _document$getElements2[0];
 
-  var _document$getElements3 = document.getElementsByClassName('field-commune'),
+  var _document$getElements3 = document.getElementsByClassName('field-other-city'),
       _document$getElements4 = _slicedToArray(_document$getElements3, 1),
-      cityField = _document$getElements4[0];
+      otherSearchField = _document$getElements4[0];
 
-  var _document$getElements5 = document.getElementsByClassName('field-cp'),
+  var _document$getElements5 = document.getElementsByClassName('field-commune'),
       _document$getElements6 = _slicedToArray(_document$getElements5, 1),
-      postcodeField = _document$getElements6[0]; //console.log('TCL: placesInput -> searchField', searchField);
+      cityField = _document$getElements6[0];
+
+  var _document$getElements7 = document.getElementsByClassName('field-cp'),
+      _document$getElements8 = _slicedToArray(_document$getElements7, 1),
+      postcodeField = _document$getElements8[0]; //console.log('TCL: placesInput -> searchField', searchField);
 
 
   if (searchField) {
@@ -22010,6 +22014,27 @@ var placesInput = function placesInput() {
           postcodeInput.value = '';
         }
       });
+
+      var _otherSearchField$get = otherSearchField.getElementsByTagName('input'),
+          _otherSearchField$get2 = _slicedToArray(_otherSearchField$get, 1),
+          otherSearchInput = _otherSearchField$get2[0];
+
+      if (otherSearchInput) {
+        places_js__WEBPACK_IMPORTED_MODULE_0___default()({
+          appId: 'plUJTHJBR34X',
+          apiKey: '40b38d4e46fb2041888da94f9a6934b5',
+          container: otherSearchInput,
+          countries: ['fr'],
+          language: 'fr',
+          type: 'city',
+          templates: {
+            value: function value(suggestion) {
+              return suggestion.postcode;
+            }
+          },
+          aroundLatLngViaIP: false
+        });
+      }
     }
   }
 };

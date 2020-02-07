@@ -1,0 +1,304 @@
+{
+    "key": "group_5e3c1d1c52a61",
+    "title": "[page] Landing Page",
+    "fields": [
+        {
+            "key": "field_5e3c1ddca8063",
+            "label": "Logo partenaire",
+            "name": "partner_logo",
+            "type": "image",
+            "instructions": "Choisissez le logo du partenaire qui apparaîtra dans l'entête de la Landing page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5e3c236c135ed",
+            "label": "Couleur du thême",
+            "name": "theme_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5e3c1e14a8476",
+            "label": "Tunnel lié",
+            "name": "tunnel_link",
+            "type": "page_link",
+            "instructions": "Choisissez la page qui apparaitra en lien dans les Call-to-action",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "allow_archives": 1,
+            "multiple": 0
+        },
+        {
+            "key": "field_5e3c1f0d57b1b",
+            "label": "Introduction",
+            "name": "lp-intro",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e3c1f2357b1c",
+                    "label": "TItre",
+                    "name": "intro-title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "L’allié de tous  vos défis",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e3c1faa57b1d",
+                    "label": "Contenu",
+                    "name": "intro-content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "<p>Vous avez décidé de créer votre entreprise, d'entreprendre un projet ou tout simplement besoin de souffler en trésorerie. Tout commence ici.<\/p>",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5e3c1fc057b1e",
+            "label": "Paragraphe 1",
+            "name": "paragraph_1",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e3c210357b20",
+                    "label": "Titre",
+                    "name": "paragraph_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Votre partenaire de financement",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e3c212057b21",
+                    "label": "Contenu",
+                    "name": "paragraph_content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "<p>Partenaire de votre enseigne pour la recherche des <strong>financements professionnels, que vous soyez déjà installé(e) ou que vous envisagiez de l’être<\/strong>, nous intervenons pour tous les besoins : Création ou Reprise d’un point de vente : Achat ou construction des murs | Achat de matériel, véhicule, outillage | Autres besoins que vous pourriez avoir (Stock, Trésorerie… etc).<\/p> \r\n<p>Nous avons accès à tous les financeurs installés à coté de chez vous : Banques | Leasing | Financement participatif | Aides régionales | Subventions [ Contre-garantie | Co-financement… etc. En une seule démarche auprès de notre société, vous accéderez à toutes les solutions de financement pour votre projet.<\/p>",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5e3c214e57b22",
+            "label": "Paragraphe 2",
+            "name": "paragraph_2",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e3c214e57b23",
+                    "label": "Titre",
+                    "name": "paragraph_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "3 étapes simples et pratiques pour obtenir votre financement",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e3c214e57b24",
+                    "label": "Contenu",
+                    "name": "paragraph_content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "<ul>\r\n<li>Vous remplissez en quelques minutes notre formulaire ci-dessous<\/li>\r\n<li>Nous validons la faisabilité de votre demande de financement<\/li>\r\n<li>Votre dossier complet est transmis à tous nos <strong>partenaires financiers implantés localement<\/strong>, autour de votre projet<\/li>\r\n<\/ul>",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5e3c217057b25",
+            "label": "Call to Action",
+            "name": "cta",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5e3c21d957b26",
+                    "label": "Titre",
+                    "name": "cta_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Déposez votre demande de financement",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5e3c21e957b27",
+                    "label": "Contenu",
+                    "name": "cta_content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fermentum sit nisl quis commodo scelerisque. Ornare enim egestas nisl at molestie facilisis ullamcorper.<\/p>",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "landing-page.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1581070118
+}

@@ -27,5 +27,10 @@ wp-content/*.php
 wp-admin/**
 wp-includes/**
 
+wp-content/themes/twentysixteen
+wp-content/themes/twentyseventeen
+wp-content/themes/twentyeighteen
+wp-content/themes/twentynineteen
+wp-content/themes/twentytwenty
 
 !wp-content/plugins/pretpro-api-gravity-forms-feed

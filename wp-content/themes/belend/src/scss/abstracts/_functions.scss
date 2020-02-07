@@ -1,2 +1,6 @@
 /* Functions */
 @import "./animations";
+
+@function em($target, $context:16px) {
+  @return ($target / $context) + 0em;
+}

@@ -1,5 +1,5 @@
         </main>
-        <?php if (!is_page_template('page-maintenance.php')) { ?>
+        <?php if (!is_page_template('page-maintenance.php') && !is_page_template('landing-page.php')) { ?>
         <footer role='contentinfo' class='footer'>
             <div class='container'>
                 <div class='logo-footer'>

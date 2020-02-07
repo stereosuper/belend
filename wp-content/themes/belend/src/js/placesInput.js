@@ -2,6 +2,7 @@ import places from 'places.js';
 
 const placesInput = () => {
     const [searchField]     = document.getElementsByClassName('field-city');
+    const [otherSearchField]     = document.getElementsByClassName('field-other-city');
     const [cityField]       = document.getElementsByClassName('field-commune');
     const [postcodeField]   = document.getElementsByClassName('field-cp');
      //console.log('TCL: placesInput -> searchField', searchField);
@@ -38,6 +39,24 @@ const placesInput = () => {
                      postcodeInput.value = '';
                  }
              });
+
+             const [otherSearchInput] = otherSearchField.getElementsByTagName('input');
+             if (otherSearchInput) {
+                 places({
+                     appId: 'plUJTHJBR34X',
+                     apiKey: '40b38d4e46fb2041888da94f9a6934b5',
+                     container: otherSearchInput,
+                     countries: ['fr'],
+                     language: 'fr',
+                     type: 'city',
+                     templates: {
+                         value: function(suggestion) {
+                             return suggestion.postcode;
+                         }
+                     },
+                     aroundLatLngViaIP: false
+                 });
+             }
          }
      }
 };
