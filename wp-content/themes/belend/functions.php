@@ -1,6 +1,6 @@
 <?php
 
-define('BELEND_VERSION', '1.0.14');
+define('BELEND_VERSION', '1.0.15');
 
 
 foreach (glob(plugin_dir_path(__FILE__) . "/helpers/*.php") as $filename) {
@@ -203,7 +203,7 @@ add_filter('menu_order', 'belend_menu_order');
 /*-----------------------------------------------------------------------------------*/
 /* Menus
 /*-----------------------------------------------------------------------------------*/
-register_nav_menus(array('primary' => 'Primary Menu', 'secondary' => 'Secondary Menu'));
+register_nav_menus(array('primary' => 'Primary Menu', 'secondary' => 'Secondary Menu', 'landing-page' => 'Landing Page'));
 
 // Cleanup WP Menu html
 function belend_css_attributes_filter($var)

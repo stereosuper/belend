@@ -27,6 +27,10 @@
             </div>
         </footer>
         <?php } ?>
+        <?php if( is_page_template('landing-page.php') || is_page_template('landing-page-tunnel.php')){
+            get_template_part('template-parts/landing-footer');
+        }
+        ?>
         <?php get_template_part( 'includes/icons' ); ?>
         <?php wp_footer(); ?>
 

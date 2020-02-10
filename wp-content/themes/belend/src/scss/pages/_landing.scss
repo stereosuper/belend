@@ -25,17 +25,56 @@ $landing-header-height: 170px;
         margin-bottom: 0.5em;
       }
     }
+    .container{
+      margin-bottom: initial;
+    }
   }
 
   .container{
     width: 100%;
+    margin-bottom: em(75px);
   }
 
   .form-progress{
     margin-top: 0 !important;
   }
 
-  @media(min-width: $desktop-small){
+  .landing-footer{
+
+    .container{
+      margin: 0 auto;
+    }
+
+  }
+
+  .menu-footer{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    border-top: 1px solid $light-grey;
+    padding-top: 1em;
+    text-align: center;
+    margin-bottom: 0;
+
+    li{
+      padding: 0 1em;
+      &:before{
+        display: none;
+      }
+    }
+
+    li:not(:first-child){
+      border-left: 1px solid $light-grey;
+    }
+
+    a{
+      text-decoration: none;
+      border-bottom: none;
+      color: $light-grey;
+    }
+  }
+
+  @media(min-width: $tablet){
 
     .landing-header{
       margin-left: em(100px);
@@ -44,7 +83,7 @@ $landing-header-height: 170px;
 
     .container{
       max-width: 1320px;
-      margin: 0 auto;
+      margin: 0 auto em(75px, 18px);
     }
   }
 
@@ -82,10 +121,6 @@ $landing-header-height: 170px;
       transform: translateX(-50%);
       margin: 0 auto;
     }
-  }
-
-  section{
-    margin-bottom: 5em;
   }
 
   .landing-intro{
@@ -181,6 +216,16 @@ $landing-header-height: 170px;
   }
 
   @media (min-width: $desktop-small) {
+    .landing-intro {
+      width: 50%;
+    }
+
+    .first-bloc, .second-bloc, .cta{
+      padding:  0 em(85px);
+    }
+
+  }
+  @media (min-width: $tablet) {
 
     .banner{
       position: relative;
@@ -195,14 +240,13 @@ $landing-header-height: 170px;
         transform: initial;
         margin: 0 auto;
       }
-
     }
 
     .landing-intro{
       position: relative;
       bottom: initial;
       padding: em(90px) em(100px);
-      width: 50%;
+      width: 70%;
 
       h1{
         margin-bottom: em(16px, 64px);
@@ -267,7 +311,7 @@ $landing-header-height: 170px;
     }
 
     .first-bloc, .second-bloc, .cta{
-      padding:  0 em(85px);
+      padding:  0 em(60px);
     }
 
   }
