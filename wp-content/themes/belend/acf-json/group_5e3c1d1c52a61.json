@@ -164,7 +164,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "<p>Partenaire de votre enseigne pour la recherche des <strong>financements professionnels, que vous soyez déjà installé(e) ou que vous envisagiez de l’être<\/strong>, nous intervenons pour tous les besoins : Création ou Reprise d’un point de vente : Achat ou construction des murs | Achat de matériel, véhicule, outillage | Autres besoins que vous pourriez avoir (Stock, Trésorerie… etc).<\/p> \r\n<p>Nous avons accès à tous les financeurs installés à coté de chez vous : Banques | Leasing | Financement participatif | Aides régionales | Subventions [ Contre-garantie | Co-financement… etc. En une seule démarche auprès de notre société, vous accéderez à toutes les solutions de financement pour votre projet.<\/p>",
+                    "default_value": "<p>Dans toute entreprise, la trésorerie est le nerf de la guerre, selon l'expression. \r\n<\/p> \r\n<p>Vous pouvez en avoir besoin pour investir rapidement, faire face à un besoin de financement de votre stock, recruter, ou tout simplement pour souffler un peu ! <\/p>\r\n<p>Vous avez plus de 6 mois d'activité ? Obtenez en 72h un maximum de 25 000 € sans caution, sans assurance de pret et sans pénalités en cas de remboursement anticipé. Le tout versé sur votre compte pro habituel !<\/p>",
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
@@ -219,7 +219,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "<ul>\r\n<li>Vous remplissez en quelques minutes notre formulaire ci-dessous<\/li>\r\n<li>Nous validons la faisabilité de votre demande de financement<\/li>\r\n<li>Votre dossier complet est transmis à tous nos <strong>partenaires financiers implantés localement<\/strong>, autour de votre projet<\/li>\r\n<\/ul>",
+                    "default_value": "<ul>\r\n<li>Vous remplissez en quelques minutes notre formulaire ci-dessous<\/li>\r\n<li>Nous validons la faisabilité de votre demande de financement<\/li>\r\n<li>Votre financement est versé sous 72 h sur votre compte pro sans aucune autre démarche<\/li>\r\n<\/ul>",
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
@@ -300,5 +300,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1581070118
+    "modified": 1581373734
 }
