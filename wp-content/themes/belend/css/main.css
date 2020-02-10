@@ -3282,7 +3282,8 @@ a.ui-button:active,
     display: -ms-flexbox;
     display: flex; }
     .page-template-landing-page .landing-header .logo-wrapper img, .page-template-landing-page-tunnel .landing-header .logo-wrapper img {
-      max-height: 100px; }
+      max-height: 100px;
+      width: auto; }
   .page-template-landing-page .landing-header .main-logo, .page-template-landing-page-tunnel .landing-header .main-logo {
     border-left: 1px solid #828282;
     text-align: left;
