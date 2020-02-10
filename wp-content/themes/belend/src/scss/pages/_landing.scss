@@ -1,18 +1,15 @@
 $landing-header-height: 170px;
 
 .page-template-landing-page, .page-template-landing-page-tunnel{
+
   .landing-header {
-    height: $landing-header-height ;
+    height: 20vh ;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    .container{
-      width: 1320px;
-      margin: 0 auto;
-    }
+
     .logo-wrapper{
       display: flex;
-      margin-left: em(100px);
       img{
         max-height: 100px;
       }
@@ -30,9 +27,27 @@ $landing-header-height: 170px;
     }
   }
 
+  .container{
+    width: 100%;
+  }
+
   .form-progress{
     margin-top: 0 !important;
   }
+
+  @media(min-width: $desktop-small){
+
+    .landing-header{
+      margin-left: em(100px);
+      height: $landing-header-height ;
+    }
+
+    .container{
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+  }
+
 }
 
 .page-template-landing-page{
@@ -46,16 +61,26 @@ $landing-header-height: 170px;
 
   .banner{
     position: relative;
-    height: 485px;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: 90% 50%;
     &:after{
       z-index: 1;
       content: '';
-      background: $image-gradient;
+      background: $mobile-image-gradient;
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+    }
+
+    .button{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0 auto;
     }
   }
 
@@ -64,10 +89,11 @@ $landing-header-height: 170px;
   }
 
   .landing-intro{
-    position: relative;
+    position: absolute;
+    bottom: 0;
     z-index: 2;
-    padding: em(90px) em(100px);
-    width: 50%;
+    padding: em(30px) 5%;
+    //width: 50%;
     color: $white;
 
     h1{
@@ -80,52 +106,22 @@ $landing-header-height: 170px;
   }
 
   .first-bloc{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 
     .entry-content{
       text-align: center;
-      width: 65%;
     }
 
     .left-part, .right-part{
-      width: 17.5%;
+      display: none;
     }
 
-    .left-part{
-      position: relative;;
-      svg{
-        &:first-child{
-          position: absolute;
-          top: 2em;
-          right: 1em;
-        }
-        &:nth-child(2){
-          position: absolute;
-          bottom: 1em;
-          left: 0;
-        }
-      }
-    }
-
-    .right-part{
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      svg{
-        transform: translateY(-25%);
-
-      }
-    }
   }
 
   .second-bloc{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    div{
-      width: 45%;
+    svg{
+      display: block;
+      margin: 0 auto;
+      width: 70%
     }
   }
 
@@ -137,7 +133,7 @@ $landing-header-height: 170px;
 
     .entry-content{
       z-index:10;
-      padding: 3em 25%;
+      padding: 2em 5%;
       margin: 0 auto;
       text-align: center;
       background-color: $white;
@@ -167,7 +163,7 @@ $landing-header-height: 170px;
   }
 
   .first-bloc, .second-bloc, .cta{
-    padding:  0 em(85px);
+    padding:  0 em(35px);
   }
 
   .button{
@@ -184,5 +180,97 @@ $landing-header-height: 170px;
     border-radius: 100px;
   }
 
+  @media (min-width: $desktop-small) {
+
+    .banner{
+      position: relative;
+      height: 485px;
+      &:after{
+        background: $image-gradient;
+      }
+
+      .button{
+        position: initial;
+        left: inherit;
+        transform: initial;
+        margin: 0 auto;
+      }
+
+    }
+
+    .landing-intro{
+      position: relative;
+      bottom: initial;
+      padding: em(90px) em(100px);
+      width: 50%;
+
+      h1{
+        margin-bottom: em(16px, 64px);
+      }
+
+    }
+
+    .first-bloc, .second-bloc{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .first-bloc{
+
+      .entry-content{
+        width: 65%;
+      }
+
+      .left-part, .right-part{
+        width: 17.5%;
+      }
+
+      .left-part{
+        display: block;
+        position: relative;;
+        svg{
+          &:first-child{
+            position: absolute;
+            top: 2em;
+            right: 1em;
+          }
+          &:nth-child(2){
+            position: absolute;
+            bottom: 1em;
+            left: 0;
+          }
+        }
+      }
+
+      .right-part{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        svg{
+          transform: translateY(-25%);
+
+        }
+      }
+    }
+
+    .second-bloc{
+      div{
+        width: 45%;
+      }
+    }
+
+    .cta{
+      .entry-content{
+        padding: 3em 25%;
+      }
+    }
+
+    .first-bloc, .second-bloc, .cta{
+      padding:  0 em(85px);
+    }
+
+  }
 
 }
+
