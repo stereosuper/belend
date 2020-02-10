@@ -55,6 +55,12 @@
     }
 }
 
+.field-months {
+    &::after {
+        content: "mois";
+    }
+}
+
 .gform_page_fields {
     padding: 30px 0 0;
     position: relative;
