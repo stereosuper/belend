@@ -33,6 +33,5 @@ return [
             ]
         ]
     ],
-    "output" => "Pour répondre a votre besoin, nous avons fait appel à un expert en financement du matériel : Sébastien COSQUER qui va prendre contact avec vous dans un délai de 48h maximum pour un montant financé inférieur à 50 k€ (au delà, prévoir 72h minimum). Nous vous remercions de lui réserver votre meilleur accueil afin qu'il puisse trouver la solution la plus optimale pour votre entreprise.",
     "email" => "sebastien.cosquer@axialease.fr"
 ];

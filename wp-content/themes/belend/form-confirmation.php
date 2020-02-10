@@ -42,6 +42,7 @@ $entry['form_id'] = isset($_GET['form_id'])?$_GET['form_id']: '';
 $entry['email'] = isset($_GET['email'])?$_GET['email']: '';
 $entry['first_name'] = isset($_GET['first_name'])?$_GET['first_name']: '';
 $entry['gender'] = isset($_GET['gender'])?$_GET['gender']: '';
+$entry['crowd_funding'] = isset($_GET['crowd_funding'])?$_GET['crowd_funding']: false;
 
 $entry['montant_avec_penalites'] = $entry['capital_restant'] + $entry['montant_penalites'];
 
@@ -85,7 +86,7 @@ foreach ($rows as $row){
 $output = get_output($results);
 
 // Si le resultat est "Entrepreteurs"
-if(isset($output['email']) && $output['email'] === 'entrepreteurs'){
+if(isset($output['email']) && $output['email'] === 'entrepreteurs' && $entry['crowd_funding']){
     if(isset($output['content'])){
         $output['content'] .= "<br/><form action='https://www.belend-participatif.fr/register/' target='_blank' method='post'>";
         $output['content'] .= "<input type='hidden' name='email' value={$entry['email']} />";
