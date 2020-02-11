@@ -205,6 +205,12 @@ function belend_populate($form){
         }
     }
 
+    if(is_page_template('landing-page-tunnel.php')|| is_page_template('form.php') ){
+        $field = belend_get_field_by_class($form, 'landing-page');
+        $landing_url = str_replace(get_home_url(),'', get_permalink() );
+        $field['defaultValue'] = $landing_url;
+    }
+
     return $form;
 }
 
