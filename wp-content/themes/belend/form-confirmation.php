@@ -132,7 +132,7 @@ if(!is_wp_error($real_entry)) {
                 echo $salutation . ' ' . $entry['first_name'] . ", <br/>";
             }
             ?>
-            <?php if( isset($output['content']) ) : ?>
+            <?php if( isset($output['content'])  && $entry['crowd_funding'] ) : ?>
 
                 <?php echo $output['content']; ?>
 

@@ -299,10 +299,9 @@ const autocomplete = $ => {
                                 dataToUse = data.etablissement;
                                 resp = $.map(dataToUse, company => {
                                     if (typeof company.siren !== 'undefined') {
-                                        const label = company.siren;
                                         return {
                                             NAF: company.activite_principale,
-                                            label: `${company.l1_declaree}, ${
+                                            label: `${company.nom_raison_sociale}, ${
                                                 company.geo_adresse
                                             }, SIREN: ${company.siren}`,
                                             value: company.siren,

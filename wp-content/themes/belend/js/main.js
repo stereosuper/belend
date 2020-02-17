@@ -21454,10 +21454,9 @@ var autocomplete = function autocomplete($) {
                 dataToUse = data.etablissement;
                 resp = $.map(dataToUse, function (company) {
                   if (typeof company.siren !== 'undefined') {
-                    var label = company.siren;
                     return {
                       NAF: company.activite_principale,
-                      label: "".concat(company.l1_declaree, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
+                      label: "".concat(company.nom_raison_sociale, ", ").concat(company.geo_adresse, ", SIREN: ").concat(company.siren),
                       value: company.siren
                     }; // on retourne cette forme de suggestion
                   }
