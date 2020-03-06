@@ -88,7 +88,6 @@ add_filter('login_errors', 'belend_login_errors');
 // Remove some useless admin stuff
 function belend_remove_submenus()
 {
-    $page = remove_submenu_page('themes.php', 'themes.php');
     remove_menu_page('edit-comments.php');
 }
 
@@ -288,7 +287,7 @@ function belend_form_next_button($button, $form)
     return "<button class='btn gform_next_button' id='gform_next_button_{$form['id']}'>Suivant<svg class='icon'><use xlink:href='#icon-db-arrow'></use></svg></button>";
 }
 
-add_filter('gform_next_button', 'belend_form_next_button', 10, 2);
+//add_filter('gform_next_button', 'belend_form_next_button', 10, 2);
 
 function belend_form_prev_button($button)
 {
